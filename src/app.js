@@ -489,6 +489,25 @@
     })().catch(() => { setTimeout(() => { regLoading[key] = false; }, 15000); });
   }
   const regionalLayers = [];
+  // Výpadek serveru kraje nebo města: když dlaždice nebo obrázky výkresu opakovaně selžou a žádné nedorazí,
+  // mapa to řekne (jinak by uživatel jen koukal na prázdné místo)
+  const loadState = new Map();
+  function watchLoad(src, cfg) {
+    const st = { err: 0, ok: 0, t: 0, warned: 0 };
+    loadState.set(src, st);
+    const bad = () => {
+      const now = Date.now();
+      if (now - st.t > 20000) { st.err = 0; st.ok = 0; st.t = now; }
+      st.err++;
+      if (st.err >= 4 && st.ok === 0 && now - st.warned > 60000) {
+        st.warned = now;
+        toast(`Server s výkresem ${cfg.obec ? 'města' : 'kraje'} teď neodpovídá (${cfg.name}). Zkuste to za chvíli, ostatní data mapa ukazuje dál.`, 7000);
+      }
+    };
+    const good = () => { st.ok++; };
+    ['tileloaderror', 'imageloaderror'].forEach(ev => src.on(ev, bad));
+    ['tileloadend', 'imageloadend'].forEach(ev => src.on(ev, good));
+  }
   REGIONAL.forEach(cfg => cfg.layers.forEach(L => {
     if (L.kind === 'arcgisPerObec' || L.kind === 'tilesPerObec') {
       L.layer = new ol.layer.Group({ zIndex: 9, minZoom: L.minZoom || 12.6, opacity: 0.66, layers: [] });
@@ -523,6 +542,7 @@
     L.layer = layer;
     layer.on('prerender', e => clipRegional(e, L));
     layer.on('postrender', e => { if (e.context) e.context.restore(); });
+    watchLoad(src, cfg);
     regionalLayers.push(layer);
   }));
   // Kraje, kde má každá obec vlastní mapovou službu s georeferencovanými výkresy (Plzeňský kraj)
@@ -1102,7 +1122,12 @@
       ? 'Tady jednotná data zatím nejsou. Klikněte do mapy a ukážeme, kde najdete územní plán obce.'
       : (S.intent !== null || S.plan)
         ? (regionalCfgsInView().some(c => c.layers.some(L => L.std || L.kind === 'arcgisVector')) ? 'Plány s typem plochy jsou přebarvené podle režimu, ostatní plány jsou šedě.' : 'Tady jednotná data nejsou, režim mapu nepřebarví. Šedě je plán obce z dat kraje.')
-        : (regionalCfgsInView().every(c => c.obec) ? 'Plán z dat města. Jednotná data tu zatím nejsou.' : 'Plán obce z dat kraje. Jednotná data tu zatím nejsou.');
+        : (() => {
+          const cs = regionalCfgsInView();
+          const kde = cs.every(c => c.pdf) ? 'Výkres z PDF obce.' : cs.every(c => c.obec) ? 'Plán z dat města.'
+            : cs.every(c => !c.obec && !c.only && !c.layers.some(L => L.obce)) ? 'Plán obce z dat kraje.' : 'Plány obcí z dat krajů, ORP a měst.';
+          return kde + ' Jednotná data tu zatím nejsou.';
+        })();
     const h = $('#hint'); h.textContent = msg; h.hidden = !msg;
   }
   function updateRatio() {
@@ -1785,7 +1810,8 @@
     if (S.covMap) {
       loadHranice().then(() => { covMapLayer.setVisible(S.covMap); renderLegend(); })
         .catch(() => { S.covMap = false; covLayer.setVisible(true); toast('Mapu pokrytí se nepodařilo načíst.'); renderLegend(); });
-      if (fit) view.animate({ center: ol.proj.fromLonLat([15.45, 49.8]), zoom: isMobile() ? 6.3 : 7.4, duration: dur(600) });
+      // přehled celé republiky: oddálit i tehdy, když se mapa pokrytí zapne z detailu ulic
+      if (fit || view.getZoom() > 12.5) view.animate({ center: ol.proj.fromLonLat([15.45, 49.8]), zoom: isMobile() ? 6.3 : 7.4, duration: dur(600) });
     } else covMapLayer.setVisible(false);
     renderLegend(); updateHint(); writeHash();
   }
@@ -2276,7 +2302,7 @@
     else if (h.bod) centerOn(ol.proj.fromLonLat([h.bod.lon, h.bod.lat]), 17, false);
     hashLock = false;
     if (h.bod) selectAt(ol.proj.fromLonLat([h.bod.lon, h.bod.lat])); else if (S.sel) clearSelection();
-    if (!!h.pokryti !== !!S.covMap) setCovMap(!!h.pokryti, false);
+    if (!!h.pokryti !== !!S.covMap) setCovMap(!!h.pokryti, !h.view);
     updateHint();
   });
 
