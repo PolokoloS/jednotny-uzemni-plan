@@ -1094,7 +1094,7 @@
     }
     const regCfgs = regionalCfgsInView();
     if (regCfgs.length && S.intent === null && !S.plan) {
-      html += `<div class="lg-fam">Obce bez jednotných dat</div>` + regCfgs.map(c => `<div class="lg-row wide"><span class="sw" style="background:repeating-linear-gradient(90deg,#e0a0a0 0 6px,#f0d060 6px 11px,#a8c8a0 11px 16px)"></span><span>${esc(cap(c.name))}: ${c.layers.every(L => L.kind === 'arcgisVector') ? 'barvy podle jednotné legendy' : 'barvy podle legendy obce'}, ${c.info ? 'po kliknutí ukážeme, co plocha znamená' : 'legendu najdete po kliknutí'}.</span></div>`).join('');
+      html += `<div class="lg-fam">Obce bez jednotných dat</div>` + regCfgs.map(c => `<div class="lg-row wide"><span class="sw" style="background:repeating-linear-gradient(90deg,#e0a0a0 0 6px,#f0d060 6px 11px,#a8c8a0 11px 16px)"></span><span>${esc(cap(c.name))}: ${c.layers.every(L => L.kind === 'arcgisVector') ? 'barvy podle jednotné legendy' : 'barvy podle legendy obce'}, ${c.info ? 'po kliknutí ukážeme, co plocha znamená' : c.doc || c.links || c.pdf ? 'legendu najdete po kliknutí' : 'legendu najdete v dokumentech obce'}.</span></div>`).join('');
     } else if (regCfgs.length) {
       const std = regCfgs.some(c => c.layers.some(L => L.std || L.kind === 'arcgisVector'));
       const grey = regCfgs.some(c => c.layers.some(L => !L.std && L.kind !== 'arcgisVector'));
