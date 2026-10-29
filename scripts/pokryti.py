@@ -233,13 +233,15 @@ def probe_tiles_obec(L, o, xy):
     it = (L.get('obce') or {}).get(str(o['kod']))
     if not it:
         return False
+    if L.get('crs') == 'EPSG:3857':
+        return probe_tiles3857(dict(L, url=it[0]), o['p4326'])
     return probe_tiles5514(dict(L, url=it[0]), xy)
 
 
 def probe_source(cfg, o):
     """Vrátí 'k' (typ plochy), 'v' (jen výkres) nebo None."""
     ll, xy = o['p4326'], o['p5514']
-    if not ll or o['kod'] in (cfg.get('skip') or []):
+    if not ll or o['kod'] in (cfg.get('skip') or []) or (cfg.get('only') and o['kod'] not in cfg['only']):
         return None
     for inf in cfg.get('info', []):
         try:

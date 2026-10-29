@@ -349,7 +349,8 @@
   const safeUrl = u => (typeof u === 'string' && /^https?:\/\/[^\s"'<>]+$/i.test(u.trim()) ? u.trim() : null);
   const KRAJ_RINGS = {}, OBEC_RINGS = new Map(), regLoading = {};
   // tvar, do kterého se data kreslí: celý kraj, nebo jedna obec (městská data)
-  const shapeKey = cfg => (cfg.obec ? 'o' + cfg.obec : cfg.kraj);
+  // záznam jen pro vyjmenované obce (`only`) se ořízne jejich hranicemi
+  const shapeKey = cfg => (cfg.obec ? 'o' + cfg.obec : cfg.only ? 'w' + cfg.kraj + '_' + cfg.only.length + '_' + cfg.only[0] : cfg.kraj);
   const shapeOf = cfg => KRAJ_RINGS[shapeKey(cfg)];
   REGIONAL.forEach(cfg => {
     cfg.layers.forEach((L, i) => {
@@ -431,7 +432,8 @@
     const ngup = COV.filter(o => (OKR[o[2]] || [])[1] === cfg.kraj).map(o => o[0])
       .concat(REGIONAL.filter(c => c.obec && c.kraj === cfg.kraj && c.layers.length).map(c => c.obec))
       .concat(cfg.skip || [])
-      .concat(REGIONAL.filter(c => c !== cfg && c.kraj === cfg.kraj && !c.obec).flatMap(c => c.layers.filter(L => L.obce).flatMap(L => Object.keys(L.obce).map(Number))));
+      .concat(REGIONAL.filter(c => c !== cfg && c.kraj === cfg.kraj && !c.obec).flatMap(c => c.layers.filter(L => L.obce).flatMap(L => Object.keys(L.obce).map(Number))))
+      .concat(cfg.only ? [] : REGIONAL.filter(c => c !== cfg && c.kraj === cfg.kraj && c.only).flatMap(c => c.only));
     for (const L of cfg.layers) {
       if (!L.cover || L.coverCodes) continue;
       try {
@@ -457,6 +459,9 @@
       if (cfg.obec) {
         await fetchObecRings([cfg.obec]);
         rings = (OBEC_RINGS.get(cfg.obec) || {}).rings || [];
+      } else if (cfg.only) {
+        await fetchObecRings(cfg.only);
+        rings = cfg.only.flatMap(k => (OBEC_RINGS.get(k) || {}).rings || []);
       } else {
         const k = await fetchJSON(`${CFG.ruian}17/query?where=${encodeURIComponent('kod IN (' + cfg.kraj + ')')}&returnGeometry=true&outSR=3857&maxAllowableOffset=60&geometryPrecision=0&f=json`, 25000);
         rings = (k.features || []).flatMap(f => (f.geometry && f.geometry.rings) || []);
@@ -574,7 +579,9 @@
           if (!lyr) {
             lyr = new ol.layer.Tile({
               extent: o.box, className: 'ol-layer up-reg up-reg-' + L.key,
-              source: new ol.source.XYZ({ projection: 'EPSG:5514', url: t[0], transition: dur(150), tileGrid: new ol.tilegrid.TileGrid({ origin: L.origin, resolutions: L.resolutions, tileSize: L.tileSize || 256 }) })
+              source: L.crs === 'EPSG:3857'
+                ? new ol.source.XYZ({ url: t[0], transition: dur(150), minZoom: L.minZoomData || 0, maxZoom: L.maxZoom || 18 })
+                : new ol.source.XYZ({ projection: 'EPSG:5514', url: t[0], transition: dur(150), tileGrid: new ol.tilegrid.TileGrid({ origin: L.origin, resolutions: L.resolutions, tileSize: L.tileSize || 256 }) })
             });
             lyr.set('obec', o.kod);
             lyr.on('prerender', e => clipToRings(e, o.rings));
@@ -617,7 +624,8 @@
     if (r && r[1] >= 0 && REGIONAL[r[1]]) return REGIONAL[r[1]];
     return (obec && REGIONAL.find(c => c.obec === +obec))
       || (obec && REGIONAL.find(c => c.kraj === +kraj && c.layers.some(L => L.obce && L.obce[String(obec)])))
-      || REGIONAL.find(c => c.kraj === +kraj && !c.obec && !c.orp && !c.layers.some(L => L.obce)) || null;
+      || (obec && REGIONAL.find(c => c.kraj === +kraj && c.only && c.only.includes(+obec)))
+      || REGIONAL.find(c => c.kraj === +kraj && !c.obec && !c.orp && !c.only && !c.layers.some(L => L.obce) && !(c.skip || []).includes(+obec)) || null;
   };
   function regionalCfgsInView() {
     if (!S.layers.regional || view.getZoom() < REG_MINZOOM) return [];
@@ -1199,7 +1207,11 @@
       const v = k => pickVal(a, dc.fields, k);
       ['title', 'doc', 'author', 'maker', 'obec', 'court', 'courtNote'].forEach(k => { if (!doc[k] && v(k)) doc[k] = String(v(k)); });
       if (!doc.date && v('date')) { doc.date = fmtDateVal(v('date')); doc.dateLabel = dc.dateLabel; }
-      ['text', 'link', 'legend', 'docs', 'changes'].forEach(k => { const u = safeUrl(v(k)); if (u && !doc[k] && !(dc.skip && u.endsWith(dc.skip))) doc[k] = u; });
+      // odkaz může přijít i jako HTML obrázek (<img src='…'>), např. legenda z GetFeatureInfo Pardubického kraje
+      ['text', 'link', 'legend', 'docs', 'changes'].forEach(k => {
+        const raw = v(k), u = safeUrl(raw) || safeUrl(((/src=['"]([^'"]+)['"]/i.exec(String(raw || '')) || [])[1]) || '');
+        if (u && !doc[k] && !(dc.skip && u.endsWith(dc.skip))) doc[k] = u;
+      });
     });
     return { cfg, hit, doc, failed };
   }
@@ -1415,6 +1427,8 @@
     else if (r.cfg.drawing) lead = r.cfg.lead ? esc(r.cfg.lead) : `Obec zatím nemá plán v jednotných datech, takže ho neumíme převést do lidské řeči. V mapě vidíte hlavní výkres jejího územního plánu ${esc(r.cfg.from)}. Barvy a zkratky čtěte podle legendy obce.`;
     else lead = `Obec zatím nemá plán v jednotných datech a ${esc(r.cfg.from)} jsme pro toto místo plochu nenašli.`;
     let html = `<p${pl && pl.regional ? '' : ' class="meaning"'}>${lead}</p>`;
+    // zdroj, u kterého neznáme verzi plánu (krajská mozaika bez data a čísla změny)
+    if (r.cfg.versionNote) html += `<p class="note">${esc(r.cfg.versionNote)}</p>`;
     if (d.court) html += `<ul class="flags" style="margin:8px 0"><li class="warn"><span><b>Tuto část územního plánu zrušil soud</b> (č. j. ${esc(d.court)}). Ověřte si na úřadu, co tu teď platí.${d.courtNote ? ' ' + esc(d.courtNote) : ''}</span></li></ul>`;
     const ex = (r.hit && r.hit.extra) || [];
     if (ex.length) html += `<dl class="kv" style="margin-bottom:8px">${ex.map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join('')}</dl>`;
