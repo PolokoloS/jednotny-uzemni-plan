@@ -127,6 +127,8 @@ a { color: var(--blueprint); text-underline-offset: 2px; }
 .cov-bar span.reg[style*="width:0"] { border: 0; }
 .cov p { margin: 0; color: var(--ink-soft); }
 .link-btn { align-self: flex-start; border: 0; background: none; padding: 0; color: var(--blueprint); text-decoration: underline; text-underline-offset: 2px; }
+.cov-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; }
+.cov-actions .btn[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
 .try { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
 .try span { color: var(--ink-soft); margin-right: 2px; }
 .try button { border: 1px solid var(--rule); background: var(--paper); border-radius: 999px; padding: 4px 11px; font-size: 13px; }
@@ -261,6 +263,8 @@ a { color: var(--blueprint); text-underline-offset: 2px; }
 .lg-fam { font-size: 11.5px; font-weight: 600; font-stretch: 80%; color: var(--ink-soft); margin: 9px 0 3px; }
 .lg-row { display: grid; grid-template-columns: 22px 30px 1fr; gap: 6px; align-items: center; padding: 2px 0; font-size: 13px; }
 .lg-row.wide { grid-template-columns: 22px 1fr; }
+.lg-row.wide:has(.lg-num) { grid-template-columns: 22px 1fr auto; }
+.lg-num { color: var(--ink-soft); text-align: right; }
 .sw { width: 22px; height: 14px; border: 1px solid rgba(0,0,0,.45); display: block; }
 .sw.hatch { background-image: repeating-linear-gradient(-45deg, var(--hc) 0 2px, transparent 2px 5px) !important; }
 .lg-code { font-weight: 700; font-size: 12px; font-stretch: 90%; }
@@ -294,6 +298,36 @@ a { color: var(--blueprint); text-underline-offset: 2px; }
   padding: 4px 8px; border-radius: 4px; font-size: 12.5px; white-space: nowrap; transform: translate(12px, 12px);
 }
 .tip b { font-stretch: 90%; margin-right: 6px; }
+
+/* ---------- Dnes a podle plánu (porovnání) ---------- */
+.swipe-on .up-plan, .swipe-on .up-reg { clip-path: inset(0 0 0 var(--swipe-x, 50%)); }
+.swipe { position: absolute; inset: 0; z-index: 11; pointer-events: none; }
+.swipe::before { content: ""; position: absolute; top: 0; bottom: 0; left: var(--swipe-x, 50%); width: 3px; margin-left: -1.5px; background: var(--ink); box-shadow: 0 0 0 1px var(--paper); }
+.swipe-bar { position: absolute; left: var(--swipe-x, 50%); top: 50%; transform: translate(-50%, -50%); display: flex; align-items: center; gap: 10px; }
+.swipe-knob { pointer-events: auto; touch-action: none; cursor: ew-resize; width: 44px; height: 44px; border-radius: 50%; border: 2px solid var(--ink); background: var(--sheet); box-shadow: var(--shadow); }
+.swipe-knob::before { content: "‹ ›"; font-weight: 800; font-size: 15px; color: var(--ink); }
+.swipe-l, .swipe-r { background: var(--ink); color: var(--paper); font-size: 12.5px; font-weight: 700; padding: 4px 8px; border-radius: 4px; white-space: nowrap; }
+.ctl[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+
+/* ---------- Prohlídka (prezentace) ---------- */
+.tour {
+  position: absolute; z-index: 40; left: calc((100% + var(--panel-w) + var(--gap)) / 2); transform: translateX(-50%);
+  bottom: calc(52px + env(safe-area-inset-bottom, 0px)); width: min(620px, calc(100% - var(--panel-w) - 48px));
+  background: var(--sheet); border: 1.5px solid var(--ink); border-radius: 8px; box-shadow: var(--shadow); padding: 16px 18px 14px;
+}
+.tour-n { font-size: 12px; font-weight: 700; color: var(--ink-soft); }
+.tour h3 { margin: 4px 0 6px; font-size: 21px; font-stretch: 110%; line-height: 1.2; }
+.tour p { margin: 0; font-size: 15.5px; line-height: 1.45; }
+.tour-nav { display: flex; gap: 8px; align-items: center; justify-content: flex-end; margin-top: 12px; }
+.tour-nav .icon-btn { margin-left: 4px; }
+.tour-on .legend, .tour-on .hint { display: none; }
+
+/* ---------- QR kód ---------- */
+#qrDlg { width: min(420px, calc(100vw - 32px)); }
+.qr-body { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 8px; }
+.qr { width: min(300px, 70vw); aspect-ratio: 1; background: #fff; display: grid; place-items: center; }
+.qr svg { width: 100%; height: 100%; display: block; }
+.qr-url { word-break: break-all; font-size: 12px; margin: 0; }
 
 /* ---------- Dialogs ---------- */
 dialog {
@@ -353,6 +387,13 @@ dialog::backdrop { background: var(--veil); }
   .card .sample-strip { font-size: 12.5px; padding: 6px 10px; }
   .tb-swatch { min-height: 82px; }
   .tb-title { font-size: 18px; }
+  /* sloupec ovládání: menší tlačítka, ať se vejde nad spodní kartu */
+  .controls { gap: 4px; }
+  .ctl { width: 40px; height: 40px; }
+  .tour { left: var(--gap); right: var(--gap); width: auto; transform: none; bottom: calc(var(--sheet-h, 212px) + 10px); padding: 12px 14px 10px; }
+  .tour h3 { font-size: 18px; }
+  .tour p { font-size: 14px; }
+  .swipe-l, .swipe-r { font-size: 11.5px; padding: 3px 6px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

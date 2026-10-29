@@ -40,6 +40,9 @@
     <symbol id="i-no" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6.5 6.5l11 11M17.5 6.5l-11 11"/></symbol>
     <symbol id="i-link" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M10 14a4 4 0 0 0 5.66 0l3-3a4 4 0 0 0-5.66-5.66l-1 1"/><path d="M14 10a4 4 0 0 0-5.66 0l-3 3a4 4 0 0 0 5.66 5.66l1-1"/></symbol>
     <symbol id="i-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></symbol>
+    <symbol id="i-qr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3.5" y="3.5" width="6.5" height="6.5"/><rect x="14" y="3.5" width="6.5" height="6.5"/><rect x="3.5" y="14" width="6.5" height="6.5"/><path d="M14 14h3v3h-3zM20.5 14v3M17 20.5h3.5M14 20.5h.5"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M7.5 5v14l11-7z"/></symbol>
+    <symbol id="i-swipe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="3.5" y="4.5" width="17" height="15"/><path d="M12 2.5v19M8.5 12h-3M15.5 12h3"/></symbol>
   </defs>
 </svg>
 
@@ -77,7 +80,7 @@
           <div class="cov-top"><span class="cov-big num" id="covN">346</span><span class="cov-of">obcí z <span class="num" id="covTotal">6 254</span> už má územní plán v jednotných datech</span></div>
           <div class="cov-bar" aria-hidden="true"><span id="covBar" style="width:5.5%"></span><span id="covBarReg" class="reg" style="width:0"></span></div>
           <p id="covRest">Ostatní obce ho mají jen jako PDF. U nich vás pošleme na krajský portál, kde ho najdete.</p>
-          <button class="link-btn" id="covBtn">Seznam obcí s jednotnými daty</button>
+          <div class="cov-actions"><button class="btn" id="covMapBtn" aria-pressed="false">Ukázat pokrytí na mapě</button><button class="link-btn" id="covBtn">Seznam obcí s jednotnými daty</button></div>
         </div>
         <div class="try" id="try"><span>Vyzkoušejte:</span></div>
         <p class="disclaimer">Neoficiální nástroj nad otevřenými daty státu. Informace jsou orientační, závazný je územní plán vydaný obcí.</p>
@@ -106,6 +109,14 @@
     </div>
     <button class="ctl" id="locateBtn" aria-label="Najít moji polohu"><svg><use href="#i-locate"/></svg></button>
     <button class="ctl" id="layersBtn" aria-label="Podklad a vrstvy" aria-expanded="false" aria-controls="layersPop"><svg><use href="#i-layers"/></svg></button>
+    <button class="ctl" id="swipeBtn" aria-label="Porovnat: dnes a podle plánu" aria-pressed="false" title="Dnes a podle plánu"><svg><use href="#i-swipe"/></svg></button>
+    <button class="ctl" id="qrBtn" aria-label="Otevřít v telefonu (QR kód)" title="Otevřít v telefonu"><svg><use href="#i-qr"/></svg></button>
+    <button class="ctl" id="tourBtn" aria-label="Prohlídka mapou krok za krokem" title="Prohlídka"><svg><use href="#i-play"/></svg></button>
+  </div>
+  <div id="swipe" class="swipe" hidden><div class="swipe-bar"><span class="swipe-l">Dnes</span><button class="swipe-knob" id="swipeKnob" aria-label="Posunout předěl mezi leteckým snímkem a plánem"></button><span class="swipe-r">Podle plánu</span></div></div>
+  <div id="tour" class="tour" hidden role="dialog" aria-label="Prohlídka mapou">
+    <div class="tour-step"><span class="tour-n num" id="tourN"></span><h3 id="tourTitle"></h3><p id="tourText"></p></div>
+    <div class="tour-nav"><button class="btn" id="tourPrev" aria-label="Předchozí krok">Zpět</button><button class="btn primary" id="tourNext">Další</button><button class="icon-btn" id="tourClose" aria-label="Ukončit prohlídku"><svg><use href="#i-close"/></svg></button></div>
   </div>
 
   <div id="layersPop" class="pop" hidden>
@@ -117,6 +128,7 @@
     </div>
     <h4>Vrstvy</h4>
     <div class="opts">
+      <label><input type="checkbox" id="lyCov"><span>Mapa pokrytí obcí <small>odkud mapa zná plán každé obce</small></span></label>
       <label><input type="checkbox" id="lyUp" checked><span>Územní plán</span></label>
       <div class="range"><input type="range" id="upOpacity" min="25" max="100" value="66" aria-label="Sytost barev územního plánu"><span class="num" id="upOpacityVal">66 %</span></div>
       <label><input type="checkbox" id="lyRegional" checked><span>Plány obcí z dat krajů <small>tam, kde jednotná data zatím nejsou</small></span></label>
@@ -142,6 +154,17 @@
 
   <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
   <div id="tip" class="tip" hidden></div>
+
+  <dialog id="qrDlg" aria-labelledby="qrTitle">
+    <div class="dlg">
+      <div class="dlg-head"><h2 id="qrTitle">Otevřít v telefonu</h2><button class="icon-btn" data-close aria-label="Zavřít"><svg><use href="#i-close"/></svg></button></div>
+      <div class="dlg-body qr-body">
+        <div class="qr" id="qrBox" aria-hidden="true"></div>
+        <p>Namiřte fotoaparát telefonu na kód. Otevře se stejné místo, stejná karta i režim mapy.</p>
+        <p class="muted qr-url" id="qrUrl"></p>
+      </div>
+    </div>
+  </dialog>
 
   <dialog id="aboutDlg" aria-labelledby="aboutTitle">
     <div class="dlg">

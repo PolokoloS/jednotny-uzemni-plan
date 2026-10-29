@@ -20,7 +20,10 @@
     rasterMinZoom: 13.05,
     coverageMaxZoom: 13.4,
     cardMinZoom: 11.5,
-    showcase: { lon: 15.090024, lat: 50.749004, z: 16.3 }
+    showcase: { lon: 15.090024, lat: 50.749004, z: 16.3 },
+    // veřejná adresa pro QR kód (náhled i lokální soubor vedou sem)
+    publicHost: 'venerable-custard-504746.netlify.app',
+    publicUrl: 'https://venerable-custard-504746.netlify.app/'
   };
   const INTENTS = [
     { label: 'Rodinný dům', acc: 'rodinný dům', icon: 'i-rd', key: 'rd' },
@@ -178,7 +181,7 @@
   }
 
   const upRaster = new ol.layer.Image({
-    zIndex: 10, minZoom: CFG.rasterMinZoom, maxZoom: CFG.vectorMinZoom, opacity: 0.66,
+    zIndex: 10, minZoom: CFG.rasterMinZoom, maxZoom: CFG.vectorMinZoom, opacity: 0.66, className: 'ol-layer up-plan',
     source: new ol.source.ImageArcGISRest({ url: CFG.ngup + 'DUP_HLV/MapServer', ratio: 1.15, params: { layers: 'show:12', format: 'png32', transparent: true } })
   });
 
@@ -321,7 +324,7 @@
     styleCache.set(key, st);
     return st;
   }
-  const upLayer = new ol.layer.VectorImage({ zIndex: 11, minZoom: CFG.vectorMinZoom, source: upSource, style: upStyle, imageRatio: 1.25, opacity: 0.66,
+  const upLayer = new ol.layer.VectorImage({ zIndex: 11, minZoom: CFG.vectorMinZoom, source: upSource, style: upStyle, imageRatio: 1.25, opacity: 0.66, className: 'ol-layer up-plan',
     renderOrder: (a, b) => (a.get('id_metadata') - b.get('id_metadata')) || (a.get('cash') - b.get('cash')) });
 
   const parcelLayer = new ol.layer.Image({
@@ -588,20 +591,24 @@
           if (!t) return;
           want.add(o.kod);
           L.items = L.items || new Map();
-          let lyr = L.items.get(o.kod);
-          if (!lyr) {
-            lyr = new ol.layer.Tile({
-              extent: o.box, className: 'ol-layer up-reg up-reg-' + L.key,
-              source: L.crs === 'EPSG:3857'
-                ? new ol.source.XYZ({ url: t[0], transition: dur(150), minZoom: L.minZoomData || 0, maxZoom: L.maxZoom || 18 })
-                : new ol.source.XYZ({ projection: 'EPSG:5514', url: t[0], transition: dur(150), tileGrid: new ol.tilegrid.TileGrid({ origin: L.origin, resolutions: L.resolutions, tileSize: L.tileSize || 256 }) })
+          let lyrs = L.items.get(o.kod);
+          if (!lyrs) {
+            // víc adres = víc listů výkresu nebo základní plán a vrstvy změn nad ním (kreslí se v tomhle pořadí)
+            lyrs = (Array.isArray(t[0]) ? t[0] : [t[0]]).map(url => {
+              const lyr = new ol.layer.Tile({
+                extent: o.box, className: 'ol-layer up-reg up-reg-' + L.key,
+                source: L.crs === 'EPSG:3857'
+                  ? new ol.source.XYZ({ url, transition: dur(150), minZoom: L.minZoomData || 0, maxZoom: L.maxZoom || 18 })
+                  : new ol.source.XYZ({ projection: 'EPSG:5514', url, transition: dur(150), tileGrid: new ol.tilegrid.TileGrid({ origin: L.origin, resolutions: L.resolutions, tileSize: L.tileSize || 256 }) })
+              });
+              lyr.set('obec', o.kod);
+              lyr.on('prerender', e => clipToRings(e, o.rings));
+              lyr.on('postrender', e => { if (e.context) e.context.restore(); });
+              return lyr;
             });
-            lyr.set('obec', o.kod);
-            lyr.on('prerender', e => clipToRings(e, o.rings));
-            lyr.on('postrender', e => { if (e.context) e.context.restore(); });
-            L.items.set(o.kod, lyr);
+            L.items.set(o.kod, lyrs);
           }
-          if (!kids.getArray().includes(lyr)) kids.push(lyr);
+          lyrs.forEach(lyr => { if (!kids.getArray().includes(lyr)) kids.push(lyr); });
           return;
         }
         const it = await perObecItem(L, o.kod, o.nazev, o.okres);
@@ -1015,6 +1022,17 @@
     const z = view.getZoom();
     const P = pal();
     let title = 'Legenda', html = '';
+    if (S.covMap) {
+      // mapa pokrytí: kategorie s počtem obcí a podílem obyvatel
+      const n = {}, pop = {}; let all = 0, allPop = 0;
+      if (OBCE) Object.values(OBCE.o).forEach(r => { n[r[9]] = (n[r[9]] || 0) + 1; pop[r[9]] = (pop[r[9]] || 0) + (+r[11] || 0); all++; allPop += +r[11] || 0; });
+      html = COV_CAT.map(([k, label, rgb]) => `<div class="lg-row wide"><span class="sw" style="background:${rgba(rgb, 0.85)}"></span><span>${esc(label)}</span><span class="lg-num num">${fmtInt(n[k] || 0)}</span></div>`).join('');
+      const inMap = ['n', 'k', 'm', 'p'].reduce((s, k) => s + (n[k] || 0), 0), inPop = ['n', 'k', 'm', 'p'].reduce((s, k) => s + (pop[k] || 0), 0);
+      if (all) html += `<p class="lg-note">Plán přímo v mapě má <b>${fmtInt(inMap)}</b> obcí z ${fmtInt(all)}, žije v nich ${Math.round(100 * inPop / allPop)} % obyvatel. U ostatních karta odkáže na dokumenty obce. Stav k ${esc(OBCE.stav.split('-').reverse().map(Number).join('. '))}.</p>`;
+      $('#legendTitle').textContent = 'Pokrytí obcí';
+      $('#legendBody').innerHTML = html;
+      return;
+    }
     if (S.intent !== null && z >= CFG.rasterMinZoom) {
       title = 'Kde postavit ' + INTENTS[S.intent].acc;
       html += `<div class="lg-row wide"><span class="sw" style="background:${rgba(P.ok, 0.6)}"></span><span>Typicky ano</span></div>`;
@@ -1079,7 +1097,8 @@
   function updateHint() {
     const z = view.getZoom();
     let msg = '';
-    if (z < CFG.rasterMinZoom - 0.4) msg = 'Modré čtverečky jsou obce s jednotnými daty. Přibližte si obec nebo ji vyhledejte.';
+    if (S.covMap) msg = 'Barvy ukazují, odkud mapa zná plán obce. Klikněte na obec a otevře se její karta.';
+    else if (z < CFG.rasterMinZoom - 0.4) msg = 'Modré čtverečky jsou obce s jednotnými daty. Přibližte si obec nebo ji vyhledejte.';
     else if (S.layers.up && !coverageInView()) msg = !regionalInView()
       ? 'Tady jednotná data zatím nejsou. Klikněte do mapy a ukážeme, kde najdete územní plán obce.'
       : (S.intent !== null || S.plan)
@@ -1419,7 +1438,7 @@
       const P = planInfo(sel);
       if (P && P.stav === 'x') {
         sw = `<div class="tb-swatch none"><b>bez ÚP</b></div>`;
-        title = 'Obec nemá územní plán';
+        title = 'Bez územního plánu v evidenci';
         official = 'V evidenci Národního geoportálu není žádný vydaný územní plán obce.' + (P.porizuje ? ' Obec ho pořizuje.' : '');
       } else if (P && P.stav === 'p') {
         sw = `<div class="tb-swatch none"><b>PDF</b></div>`;
@@ -1650,7 +1669,8 @@
     } else if (cov === false) {
       const P = planInfo(sel);
       if (P && P.stav === 'x') {
-        html += `<p>${esc(obecName)} podle evidence Národního geoportálu územního plánování nemá vydaný územní plán.${P.porizuje ? ' Nový plán se pořizuje.' : ''} Bez územního plánu se nové stavby umisťují hlavně v zastavěném území obce, co přesně jde, posoudí stavební úřad.</p>`;
+        html += `<p>${esc(obecName)} podle evidence Národního geoportálu územního plánování nemá vydaný územní plán.${P.porizuje ? ' Nový plán se pořizuje.' : ''} Bez územního plánu se nové stavby umisťují hlavně v zastavěném území obce, co přesně jde, posoudí stavební úřad.</p>`
+          + `<p class="note">Obce do evidence plány postupně doplňují. Pokud obec plán má, najdete ho na jejím webu.</p>`;
       } else if (P && P.stav === 'p') {
         html += `<p>${esc(obecName)} má platný ${esc(P.nazev.replace(/^Územní plán/, 'územní plán'))}${P.ucinnost ? `, účinný od ${esc(P.ucinnost)}` : ''}.`
           + (P.zmen ? ` Od té doby ${plural(P.zmen, 'vyšla', 'vyšly', 'vyšlo')} ${P.zmen} ${plural(P.zmen, 'změna', 'změny', 'změn')}${P.posledni ? `, poslední účinná od ${esc(P.posledni)}` : ''}.` : '')
@@ -1706,8 +1726,82 @@
   // ---------------------------------------------------------------------------
   // Interakce s mapou
   // ---------------------------------------------------------------------------
+  // ---------------------------------------------------------------------------
+  // Mapa pokrytí: každá obec obarvená podle toho, odkud mapa zná její plán (dist/hranice.json + obce.json)
+  // ---------------------------------------------------------------------------
+  const COV_CAT = [
+    ['n', 'Jednotný standard', [46, 125, 50]],
+    ['k', 'Data kraje', [62, 115, 196]],
+    ['m', 'Data města nebo ORP', [123, 92, 196]],
+    ['p', 'Výkres z PDF', [204, 140, 40]],
+    ['d', 'Jen v dokumentech', [176, 170, 156]],
+    ['x', 'Bez územního plánu v evidenci', [200, 84, 80]]
+  ];
+  const covCat = c => COV_CAT.find(x => x[0] === c) || COV_CAT[4];
+  const covMapSrc = new ol.source.Vector();
+  const covMapStyles = {};
+  const covMapLayer = new ol.layer.VectorImage({
+    zIndex: 52, source: covMapSrc, visible: false, imageRatio: 1.2,
+    style: f => {
+      const c = f.get('cat');
+      if (!covMapStyles[c + theme]) covMapStyles[c + theme] = new ol.style.Style({
+        fill: new ol.style.Fill({ color: rgba(covCat(c)[2], 0.82) }),
+        stroke: new ol.style.Stroke({ color: theme === 'dark' ? 'rgba(20,24,22,.6)' : 'rgba(255,255,255,.8)', width: 0.5 })
+      });
+      return covMapStyles[c + theme];
+    }
+  });
+  map.addLayer(covMapLayer);
+  let hraniceP = null;
+  function loadHranice() {
+    if (!hraniceP) hraniceP = Promise.all([fetch('hranice.json').then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); }), loadObce()]).then(([h]) => {
+      const k = h.krok, feats = [];
+      Object.entries(h.o).forEach(([kod, rings]) => {
+        const polys = [];
+        rings.forEach(r => {
+          const pts = [[r[0] * k, r[1] * k]];
+          for (let i = 2; i < r.length; i += 2) { const p = pts[pts.length - 1]; pts.push([p[0] + r[i] * k, p[1] + r[i + 1] * k]); }
+          if (pts[0][0] !== pts[pts.length - 1][0] || pts[0][1] !== pts[pts.length - 1][1]) pts.push(pts[0].slice());
+          // Esri: vnější prstenec jde po směru hodinových ručiček (záporná plocha), díry proti směru
+          let a = 0; for (let i = 0; i < pts.length - 1; i++) a += pts[i][0] * pts[i + 1][1] - pts[i + 1][0] * pts[i][1];
+          if (a < 0 || !polys.length) polys.push([pts]); else polys[polys.length - 1].push(pts);
+        });
+        const rec = obecRec(kod);
+        feats.push(new ol.Feature({ geometry: new ol.geom.MultiPolygon(polys), kod: +kod, cat: rec ? rec[9] : 'd', name: rec ? rec[10] : '' }));
+      });
+      covMapSrc.addFeatures(feats);
+    });
+    return hraniceP;
+  }
+  function setCovMap(on, fit) {
+    S.covMap = !!on;
+    if ($('#lyCov')) $('#lyCov').checked = S.covMap;
+    $('#covMapBtn') && $('#covMapBtn').setAttribute('aria-pressed', String(S.covMap));
+    covLayer.setVisible(!S.covMap);
+    if (S.covMap) {
+      loadHranice().then(() => { covMapLayer.setVisible(S.covMap); renderLegend(); })
+        .catch(() => { S.covMap = false; covLayer.setVisible(true); toast('Mapu pokrytí se nepodařilo načíst.'); renderLegend(); });
+      if (fit) view.animate({ center: ol.proj.fromLonLat([15.45, 49.8]), zoom: isMobile() ? 6.3 : 7.4, duration: dur(600) });
+    } else covMapLayer.setVisible(false);
+    renderLegend(); updateHint(); writeHash();
+  }
+  function covMapAt(pixel) {
+    return S.covMap && covMapLayer.getVisible() ? map.forEachFeatureAtPixel(pixel, x => x, { layerFilter: l => l === covMapLayer }) : null;
+  }
+
   map.on('singleclick', e => {
     if (Date.now() - popClosedAt < 700) return;
+    if (S.covMap) {
+      // klik na obec v mapě pokrytí: přiblížit na obec a otevřít kartu uprostřed její největší části
+      const f = covMapAt(e.pixel);
+      if (!f) return;
+      const g = f.getGeometry(), part = g.getPolygons().sort((a, b) => b.getArea() - a.getArea())[0];
+      const p = part.getInteriorPoint().getCoordinates().slice(0, 2);
+      setCovMap(false);
+      view.fit(g.getExtent(), { padding: [80, 80, 80, 80], maxZoom: 14.5, duration: dur(500) });
+      setTimeout(() => selectAt(p), dur(500) + 30);
+      return;
+    }
     const z = view.getZoom();
     if (z < CFG.coverageMaxZoom) {
       const f = map.forEachFeatureAtPixel(e.pixel, x => x, { layerFilter: l => l === covLayer, hitTolerance: 6 });
@@ -1728,6 +1822,12 @@
   function hoverAt(pixel, coord) {
     const z = view.getZoom();
     const el = map.getTargetElement();
+    if (S.covMap) {
+      const f = covMapAt(pixel);
+      el.style.cursor = f ? 'pointer' : '';
+      if (f) { tip.innerHTML = `${esc(f.get('name'))} <span style="opacity:.75">${esc(covCat(f.get('cat'))[1].toLocaleLowerCase('cs'))}</span>`; placeTip(pixel); } else tip.hidden = true;
+      return;
+    }
     if (z < CFG.coverageMaxZoom) {
       const f = map.forEachFeatureAtPixel(pixel, x => x, { layerFilter: l => l === covLayer, hitTolerance: 6 });
       el.style.cursor = f ? 'pointer' : '';
@@ -1752,7 +1852,11 @@
     tip.style.left = (r.left + pixel[0]) + 'px'; tip.style.top = (r.top + pixel[1]) + 'px'; tip.hidden = false;
   }
   map.on('movestart', () => { tip.hidden = true; if (isMobile() && $('#sheet').dataset.state === 'full') setSheet('peek'); });
-  map.on('moveend', () => { updateRatio(); updateHint(); scheduleLegend(); writeHash(); updateRaster(); updateAttrib(); schedulePerObec(); });
+  map.on('moveend', () => {
+    // mapa pokrytí je přehled krajů a obcí, při přiblížení na ulice se vypne a ukáže plán
+    if (S.covMap && view.getZoom() > 12.5) setCovMap(false);
+    updateRatio(); updateHint(); scheduleLegend(); writeHash(); updateRaster(); updateAttrib(); schedulePerObec();
+  });
 
   $('#zoomIn').addEventListener('click', () => view.animate({ zoom: view.getZoom() + 1, duration: dur(250) }));
   $('#zoomOut').addEventListener('click', () => view.animate({ zoom: view.getZoom() - 1, duration: dur(250) }));
@@ -1978,6 +2082,117 @@
     $('#covList').innerHTML = list.map(o => `<li><button data-kod="${o[0]}"><span>${esc(o[1])}</span><small>okres ${esc((OKR[o[2]] || ['?'])[0])}</small></button></li>`).join('') || '<li class="muted">Nic neodpovídá filtru.</li>';
   }
   $('#covBtn').addEventListener('click', () => { renderCovList(''); $('#covFilter').value = ''; $('#covDlg').showModal(); $('#covFilter').focus(); });
+  $('#covMapBtn').addEventListener('click', () => setCovMap(!S.covMap, true));
+  $('#lyCov').addEventListener('change', e => setCovMap(e.target.checked, e.target.checked));
+
+  // ---------------------------------------------------------------------------
+  // Na mobil: QR kód s adresou výřezu, karty a režimu (publikum si na přednášce otevře totéž v telefonu)
+  // ---------------------------------------------------------------------------
+  let qrLib = null;
+  const loadQrLib = () => (qrLib = qrLib || new Promise((res, rej) => {
+    const s = document.createElement('script');
+    s.src = 'https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js';
+    s.onload = () => (window.qrcode ? res(window.qrcode) : rej(new Error('qr')));
+    s.onerror = () => { qrLib = null; rej(new Error('qr')); };
+    document.head.appendChild(s);
+  }));
+  function shareUrl() {
+    writeHash();
+    // lokální soubor, localhost nebo náhled: kód musí vést na veřejný web
+    return location.protocol === 'https:' && location.hostname === CFG.publicHost ? location.href : CFG.publicUrl + location.hash;
+  }
+  async function showQr() {
+    const url = shareUrl();
+    $('#qrUrl').textContent = url.replace(/^https:\/\//, '');
+    $('#qrBox').innerHTML = '<span class="skel w60"></span>';
+    if (!$('#qrDlg').open) $('#qrDlg').showModal();
+    try {
+      const qrcode = await loadQrLib();
+      const qr = qrcode(0, 'M'); qr.addData(url); qr.make();
+      $('#qrBox').innerHTML = qr.createSvgTag({ cellSize: 6, margin: 2, scalable: true });
+    } catch (_) { $('#qrBox').textContent = 'Kód se nepodařilo vytvořit. Adresu najdete pod ním.'; }
+  }
+  $('#qrBtn').addEventListener('click', showQr);
+
+  // ---------------------------------------------------------------------------
+  // Dnes a podle plánu: vlevo letecký snímek, vpravo plán, předělem jde táhnout
+  // ---------------------------------------------------------------------------
+  let swipeX = 0.5, swipePrevBase = null;
+  function setBase(b) {
+    S.base = b;
+    const r = document.querySelector(`input[name="base"][value="${b}"]`); if (r) r.checked = true;
+    applyBase();
+  }
+  function placeSwipe() {
+    const w = map.getTargetElement().clientWidth;
+    $('#map').style.setProperty('--swipe-x', Math.round(swipeX * w) + 'px');
+    $('#swipe').style.setProperty('--swipe-x', (swipeX * 100).toFixed(2) + '%');
+  }
+  function setSwipe(on) {
+    if (!!on === !!S.swipe) return;
+    S.swipe = !!on;
+    $('#swipeBtn').setAttribute('aria-pressed', String(S.swipe));
+    $('#swipe').hidden = !S.swipe;
+    $('#app').classList.toggle('swipe-on', S.swipe);
+    if (S.swipe) {
+      swipePrevBase = S.base; if (S.base !== 'orto') setBase('orto');
+      placeSwipe();
+      if (view.getZoom() < CFG.rasterMinZoom) toast('Přibližte si obec a posouvejte předěl: vlevo je dnešní letecký snímek, vpravo územní plán.');
+    } else if (swipePrevBase && swipePrevBase !== S.base) setBase(swipePrevBase);
+  }
+  $('#swipeBtn').addEventListener('click', () => setSwipe(!S.swipe));
+  (() => {
+    const knob = $('#swipeKnob');
+    const move = e => { const r = map.getTargetElement().getBoundingClientRect(); swipeX = Math.min(0.98, Math.max(0.02, (e.clientX - r.left) / r.width)); placeSwipe(); };
+    knob.addEventListener('pointerdown', e => { knob.setPointerCapture(e.pointerId); knob.addEventListener('pointermove', move); });
+    knob.addEventListener('pointerup', e => { knob.releasePointerCapture(e.pointerId); knob.removeEventListener('pointermove', move); });
+    knob.addEventListener('keydown', e => { if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') { swipeX = Math.min(0.98, Math.max(0.02, swipeX + (e.key === 'ArrowLeft' ? -0.05 : 0.05))); placeSwipe(); e.preventDefault(); } });
+    window.addEventListener('resize', debounce(() => { if (S.swipe) placeSwipe(); }, 100));
+  })();
+
+  // ---------------------------------------------------------------------------
+  // Prohlídka mapou krok za krokem (pro přednášku: šipky, PageUp/PageDown z klikru, Esc)
+  // ---------------------------------------------------------------------------
+  const lonlat = (lon, lat) => ol.proj.fromLonLat([lon, lat]);
+  const TOUR = [
+    { t: 'Územní plány celé země v jedné mapě', x: () => `Každá obec má vlastní územní plán. Stát ho sbírá v jednotné podobě, kraje a města ve vlastních mapách. Tady jsou pohromadě: barva ukazuje, odkud mapa zná plán které obce.`,
+      go: () => { setSwipe(false); setIntent(null); clearSelection(); setCovMap(true, true); } },
+    { t: 'Klik na pozemek řekne, co se tu smí', x: () => 'Karta převede plochu z územního plánu do lidské řeči: k čemu slouží, co se tu typicky smí postavit a na co si dát pozor.',
+      go: () => { setCovMap(false); setSwipe(false); setIntent(null); centerOn(lonlat(15.090024, 50.749004), 16.3); selectAt(lonlat(15.090024, 50.749004)); } },
+    { t: 'Chci postavit rodinný dům', x: () => 'Režim přebarví mapu podle záměru: zeleně tam, kde rodinný dům typicky jde, šrafou tam, kde záleží na podmínkách.',
+      go: () => { setCovMap(false); setSwipe(false); clearSelection(); view.animate({ center: lonlat(15.0905, 50.7505), zoom: 14.6, duration: dur(700) }); setIntent(0); } },
+    { t: 'Dnes a podle plánu', x: () => 'Vlevo letecký snímek, vpravo plán. Na dnešních polích plán počítá s novými domy. Předěl jde táhnout.',
+      go: () => { setCovMap(false); setIntent(null); clearSelection(); view.animate({ center: lonlat(15.0905, 50.7505), zoom: 16.2, duration: dur(700) }); setSwipe(true); } },
+    { t: 'Nový plán Hradce Králové', x: () => 'Hradec Králové platí od 13. 3. 2026 nový územní plán. Mapa ukazuje jeho hlavní výkres přímo ze serveru města.',
+      go: () => { setSwipe(false); setCovMap(false); setIntent(null); centerOn(lonlat(15.83272, 50.20918), 16.2); selectAt(lonlat(15.83272, 50.20918)); } },
+    { t: 'Kde plán v mapě zatím není', x: () => 'U zbylých obcí karta řekne, jestli obec platný plán má, a pošle vás rovnou na jeho dokumenty.',
+      go: () => { setSwipe(false); setIntent(null); clearSelection(); setCovMap(true, true); } },
+    { t: 'Vyzkoušejte si to v telefonu', x: () => 'Naskenujte kód a najděte svůj pozemek.',
+      go: () => { setSwipe(false); setCovMap(false); clearSelection(); view.animate({ center: lonlat(15.45, 49.8), zoom: isMobile() ? 6.3 : 7.4, duration: dur(600) }); setTimeout(showQr, dur(650)); } }
+  ];
+  let tourI = -1;
+  function tourGo(i) {
+    tourI = Math.max(0, Math.min(TOUR.length - 1, i));
+    const s = TOUR[tourI];
+    $('#tour').hidden = false; $('#app').classList.add('tour-on');
+    $('#tourN').textContent = `${tourI + 1} / ${TOUR.length}`;
+    $('#tourTitle').textContent = s.t; $('#tourText').textContent = s.x();
+    $('#tourPrev').disabled = tourI === 0;
+    $('#tourNext').textContent = tourI === TOUR.length - 1 ? 'Konec' : 'Další';
+    if ($('#qrDlg').open) $('#qrDlg').close();
+    s.go();
+  }
+  function tourEnd() { tourI = -1; $('#tour').hidden = true; $('#app').classList.remove('tour-on'); if ($('#qrDlg').open) $('#qrDlg').close(); }
+  $('#tourBtn').addEventListener('click', () => tourGo(0));
+  $('#tourNext').addEventListener('click', () => (tourI >= TOUR.length - 1 ? tourEnd() : tourGo(tourI + 1)));
+  $('#tourPrev').addEventListener('click', () => tourGo(tourI - 1));
+  $('#tourClose').addEventListener('click', tourEnd);
+  document.addEventListener('keydown', e => {
+    if (tourI < 0 || e.target.closest('input, textarea')) return;
+    if (['ArrowRight', 'PageDown', ' '].includes(e.key)) { e.preventDefault(); tourI >= TOUR.length - 1 ? tourEnd() : tourGo(tourI + 1); }
+    else if (['ArrowLeft', 'PageUp'].includes(e.key)) { e.preventDefault(); tourGo(tourI - 1); }
+    else if (e.key === 'Escape') tourEnd();
+  });
   $('#covFilter').addEventListener('input', e => renderCovList(e.target.value));
   $('#covList').addEventListener('click', e => { const b = e.target.closest('[data-kod]'); if (!b) return; $('#covDlg').close(); fitObec(+b.dataset.kod); });
   $('#aboutBtn').addEventListener('click', () => $('#aboutDlg').showModal());
@@ -2013,6 +2228,7 @@
     if (S.sel) p.set('bod', `${S.sel.ll[1].toFixed(6)},${S.sel.ll[0].toFixed(6)}`);
     if (S.intent !== null) p.set('chci', INTENTS[S.intent].key);
     if (S.plan) p.set('rezim', 'zmeny');
+    if (S.covMap) p.set('pokryti', '1');
     try { history.replaceState(null, '', '#' + p.toString().replace(/%2F/g, '/').replace(/%2C/g, ',')); } catch (_) { /* sandbox */ }
   }
   function readHash() {
@@ -2027,7 +2243,8 @@
     const ch = INTENTS.findIndex(i => i.key === p.get('chci'));
     if (ch >= 0) out.intent = ch;
     if (p.get('rezim') === 'zmeny') out.plan = true;
-    return (out.view || out.bod) ? out : null;
+    if (p.get('pokryti') === '1') out.pokryti = true;
+    return (out.view || out.bod || out.pokryti) ? out : null;
   }
 
   // odkaz vložený do adresy v už otevřené záložce (nebo zpět/vpřed v historii)
@@ -2040,6 +2257,7 @@
     else if (h.bod) centerOn(ol.proj.fromLonLat([h.bod.lon, h.bod.lat]), 17, false);
     hashLock = false;
     if (h.bod) selectAt(ol.proj.fromLonLat([h.bod.lon, h.bod.lat])); else if (S.sel) clearSelection();
+    if (!!h.pokryti !== !!S.covMap) setCovMap(!!h.pokryti, false);
     updateHint();
   });
 
@@ -2058,6 +2276,7 @@
       else if (h.bod) centerOn(ol.proj.fromLonLat([h.bod.lon, h.bod.lat]), 17, false);
       hashLock = false;
       if (h.bod) selectAt(ol.proj.fromLonLat([h.bod.lon, h.bod.lat]));
+      if (h.pokryti) setCovMap(true, !h.view);
     } else {
       const c = ol.proj.fromLonLat([CFG.showcase.lon, CFG.showcase.lat]);
       requestAnimationFrame(() => {

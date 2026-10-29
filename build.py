@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Sestaví jednosouborovou appku dist/index.html ze zdrojů v src/ a dat v data/."""
-import json, os, sys
+import json, os, shutil, sys
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 
@@ -55,8 +55,24 @@ print(f'{out}: {len(html)/1024:.1f} KB, obcí {len(cov)}, ploch {plochy_total}, 
 
 # Obce: odkud mají data v mapě (scripts/pokryti.py) a stav územního plánu v evidenci NGÚP (scripts/stav_up.py).
 # Appka si soubor načte po startu: vybere podle něj zdroj pro kartu a u obcí bez dat ukáže stav plánu.
-# Záznam: [zdroj, index v REGIONAL nebo -1, stav plánu, název plánu nebo 0, účinnost, změn, poslední změna, pořizuje se, web]
+# Záznam: [zdroj, index v REGIONAL nebo -1, stav plánu, název plánu nebo 0, účinnost, změn, poslední změna, pořizuje se, web,
+#          kategorie pro mapu pokrytí, název obce, obyvatel]
+# Kategorie: n jednotný standard, k data kraje, m data města nebo ORP, p výkres z PDF, d jen v dokumentech, x bez ÚP v evidenci
 pok_f, stav_f = os.path.join(ROOT, 'data/pokryti.json'), os.path.join(ROOT, 'data/stav_up.json')
+
+
+def kategorie(z, cfg, stav_planu):
+    if z == 'n':
+        return 'n'
+    if z in ('k', 'v', 'm'):
+        if cfg and (cfg.get('obec') or cfg.get('only') or cfg.get('obce') == 1 or any(L.get('obce') for L in cfg['layers'])):
+            return 'm'
+        return 'k'
+    if z == 'p':
+        return 'p'
+    return 'x' if stav_planu == 'x' else 'd'
+
+
 if os.path.exists(pok_f):
     pok = json.load(open(pok_f, encoding='utf-8'))
     stav = json.load(open(stav_f, encoding='utf-8'))['obce'] if os.path.exists(stav_f) else {}
@@ -65,9 +81,16 @@ if os.path.exists(pok_f):
     for kod, nazev, kraj, orp, oby, z, zname in pok['obce']:
         s = stav.get(str(kod)) or ['?', None, None, 0, None, False, None]
         plan = s[1] if s[1] and ' '.join(s[1].split()) not in (f'Územní plán {nazev}', f'Územní plán obce {nazev}') else 0
-        rec[str(kod)] = [z, names.get(zname, -1), s[0], plan, s[2] or 0, s[3] or 0, s[4] or 0, 1 if s[5] else 0, s[6] or 0]
-        cnt[z] = cnt.get(z, 0) + 1
+        ri = names.get(zname, -1)
+        kat = kategorie(z, regional[ri] if ri >= 0 else None, s[0])
+        rec[str(kod)] = [z, ri, s[0], plan, s[2] or 0, s[3] or 0, s[4] or 0, 1 if s[5] else 0, s[6] or 0, kat, nazev, oby]
+        cnt[kat] = cnt.get(kat, 0) + 1
     obce_out = {'stav': pok['stav'], 'stavUP': json.load(open(stav_f, encoding='utf-8'))['stav'] if os.path.exists(stav_f) else None, 'o': rec}
     with open(os.path.join(ROOT, 'dist/obce.json'), 'w', encoding='utf-8') as f:
         json.dump(obce_out, f, ensure_ascii=False, separators=(',', ':'))
-    print(f'dist/obce.json: {os.path.getsize(os.path.join(ROOT, "dist/obce.json"))/1024:.0f} KB, zdroje {cnt}')
+    print(f'dist/obce.json: {os.path.getsize(os.path.join(ROOT, "dist/obce.json"))/1024:.0f} KB, kategorie {cnt}')
+
+# Hranice obcí pro mapu pokrytí (scripts/hranice.py), appka je načte až při zapnutí mapy pokrytí
+hr_f = os.path.join(ROOT, 'data/hranice_obci.json')
+if os.path.exists(hr_f):
+    shutil.copyfile(hr_f, os.path.join(ROOT, 'dist/hranice.json'))

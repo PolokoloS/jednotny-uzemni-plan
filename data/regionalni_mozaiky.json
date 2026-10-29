@@ -1960,7 +1960,7 @@
   "kraj": 116,
   "name": "výkresy územních plánů obcí v ORP Hodonín, Kyjov, Mikulov a Veselí nad Moravou",
   "from": "z výkresů územních plánů obcí, které zveřejňují ORP Hodonín, Kyjov, Mikulov a Veselí nad Moravou",
-  "obce": 74,
+  "obce": 77,
   "attribution": "Výkresy ÚP obcí © ORP Hodonín, Kyjov, Mikulov, Veselí nad Moravou",
   "drawing": true,
   "layers": [
@@ -2052,6 +2052,10 @@
      "584789": [
       "https://mikulov.tmapserver.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upd-perna-hlv-z2/default/EPSG:5514/{z}/{y}/{x}.png",
       "Územní plán Perná, úplné znění po změně č. 2"
+     ],
+     "586021": [
+      "https://gis.muhodonin.cz:7443/services/mapserver/local/up/gservice/wmts/1.0.0/upd-hodonin-hlv-zm11/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Hodonín, úplné znění po změně č. 11"
      ],
      "586030": [
       "https://mestokyjov.tmapserver.cz/services/mapserver/local/up/gservice/wmts/1.0.0/up-archlebov-kov-z1/default/EPSG:5514/{z}/{y}/{x}.png",
@@ -2157,6 +2161,13 @@
       "https://gis.muhodonin.cz:7443/services/mapserver/local/up/gservice/wmts/1.0.0/upd-luzice-hlv-z2/default/EPSG:5514/{z}/{y}/{x}.png",
       "Územní plán Lužice, úplné znění po změně č. 2"
      ],
+     "586366": [
+      [
+       "https://gisportal.veseli-nad-moravou.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upd-m-vrbka-hlv/default/EPSG:5514/{z}/{y}/{x}.png",
+       "https://gisportal.veseli-nad-moravou.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upd-m-vrbka-hlv-z1/default/EPSG:5514/{z}/{y}/{x}.png"
+      ],
+      "Územní plán Malá Vrbka po změně č. 1"
+     ],
      "586412": [
       "https://gis.muhodonin.cz:7443/services/mapserver/local/up/gservice/wmts/1.0.0/upd-mutenice-hlv-zm3/default/EPSG:5514/{z}/{y}/{x}.png",
       "Územní plán Mutěnice, úplné znění po změně č. 3"
@@ -2168,6 +2179,14 @@
      "586447": [
       "https://mestokyjov.tmapserver.cz/services/mapserver/local/up/gservice/wmts/1.0.0/up-nenkovice-kov-z2/default/EPSG:5514/{z}/{y}/{x}.png",
       "Územní plán Nenkovice, koordinační výkres, úplné znění po změně č. 2"
+     ],
+     "586455": [
+      [
+       "https://gisportal.veseli-nad-moravou.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upd-n-lhota-hlv/default/EPSG:5514/{z}/{y}/{x}.png",
+       "https://gisportal.veseli-nad-moravou.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upd-n-lhota-hlv-z1/default/EPSG:5514/{z}/{y}/{x}.png",
+       "https://gisportal.veseli-nad-moravou.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upd-n-lhota-hlv-z2/default/EPSG:5514/{z}/{y}/{x}.png"
+      ],
+      "Územní plán Nová Lhota po změnách č. 1 a 2"
      ],
      "586463": [
       "https://gis.muhodonin.cz:7443/services/mapserver/local/up/gservice/wmts/1.0.0/upd-novy-poddvorov-hlv/default/EPSG:5514/{z}/{y}/{x}.png",
@@ -2210,7 +2229,10 @@
       "Územní plán Svatobořice-Mistřín, koordinační výkres, úplné znění po změně č. 1"
      ],
      "586633": [
-      "https://mestokyjov.tmapserver.cz/services/mapserver/local/up/gservice/wmts/1.0.0/up-syrovin-kov-z1_1,up-syrovin-kov-z1_2/default/EPSG:5514/{z}/{y}/{x}.png",
+      [
+       "https://mestokyjov.tmapserver.cz/services/mapserver/local/up/gservice/wmts/1.0.0/up-syrovin-kov-z1_1/default/EPSG:5514/{z}/{y}/{x}.png",
+       "https://mestokyjov.tmapserver.cz/services/mapserver/local/up/gservice/wmts/1.0.0/up-syrovin-kov-z1_2/default/EPSG:5514/{z}/{y}/{x}.png"
+      ],
       "Územní plán Syrovín, koordinační výkres, úplné znění po změně č. 1"
      ],
      "586641": [
@@ -2270,8 +2292,11 @@
       "Územní plán Žádovice, koordinační výkres, úplné znění po změně č. 1"
      ],
      "586790": [
-      "https://mestokyjov.tmapserver.cz/services/mapserver/local/up/gservice/wmts/1.0.0/up-zarosice-kov-z1,upzarosice-kov/default/EPSG:5514/{z}/{y}/{x}.png",
-      "Územní plán Žarošice, koordinační výkres, úplné znění po změně č. 1"
+      [
+       "https://mestokyjov.tmapserver.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upzarosice-kov/default/EPSG:5514/{z}/{y}/{x}.png",
+       "https://mestokyjov.tmapserver.cz/services/mapserver/local/up/gservice/wmts/1.0.0/up-zarosice-kov-z1/default/EPSG:5514/{z}/{y}/{x}.png"
+      ],
+      "Územní plán Žarošice, koordinační výkres, po změně č. 1"
      ],
      "586803": [
       "https://mestokyjov.tmapserver.cz/services/mapserver/local/up/gservice/wmts/1.0.0/up-zdanice-kov-z2/default/EPSG:5514/{z}/{y}/{x}.png",
@@ -2776,7 +2801,8 @@
      -1176616
     ]
    }
-  ]
+  ],
+  "lead": "Obec zatím nemá plán v jednotných datech. V mapě vidíte plochy s rozdílným způsobem využití podle jejího územního plánu, jak je vedou územně analytické podklady ORP Pohořelice."
  },
  {
   "kraj": 116,
@@ -2863,7 +2889,8 @@
      -1171855
     ]
    }
-  ]
+  ],
+  "lead": "Obec zatím nemá plán v jednotných datech. V mapě vidíte plochy s rozdílným způsobem využití podle hlavního výkresu jejího územního plánu, jak je vedou územně analytické podklady ORP Znojmo."
  },
  {
   "kraj": 124,
