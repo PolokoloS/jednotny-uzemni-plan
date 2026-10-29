@@ -770,8 +770,9 @@
   // Mapa
   // ---------------------------------------------------------------------------
   const view = new ol.View({ center: ol.proj.fromLonLat([15.45, 49.8]), zoom: 7.4, minZoom: 6.3, maxZoom: 20.5, enableRotation: false, extent: ol.proj.transformExtent([10.5, 47.8, 20.2, 51.8], 'EPSG:4326', 'EPSG:3857'), constrainOnlyCenter: true });
+  // cíl dostane mapa až po načtení stránky, viz boot() na konci
   const map = new ol.Map({
-    target: 'map', view, controls: [],
+    view, controls: [],
     layers: [baseLayer].concat(regionalLayers, [upRaster, upLayer, radonLayer, natureLayer, floodLayer, parcelLayer, covLayer, hoverLayer, selLayer])
   });
   map.addControl(new ol.control.ScaleLine({ target: $('#scale'), units: 'metric', minWidth: 64 }));
@@ -1860,5 +1861,8 @@
       refreshCoverage().catch(() => { /* zůstává přehled ze snímku */ });
     }, 2500);
   }
-  start();
+  // Dlaždice a skripty JSONP spuštěné před událostí load by ji držely, dokud neodpoví
+  // nejpomalejší server (stránka by se pořád načítala). Mapa proto startuje až po load.
+  function boot() { map.setTarget('map'); start(); }
+  if (document.readyState === 'complete') boot(); else window.addEventListener('load', boot, { once: true });
 })();
