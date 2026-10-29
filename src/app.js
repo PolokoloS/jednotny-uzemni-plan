@@ -58,6 +58,7 @@
   const rgba = (rgb, a) => `rgba(${rgb[0]},${rgb[1]},${rgb[2]},${a})`;
   const darken = (rgb, f) => rgb.map(v => Math.round(v * (1 - f)));
   const czDate = ms => { const d = new Date(+ms); return isNaN(d) ? null : `${d.getDate()}. ${d.getMonth() + 1}. ${d.getFullYear()}`; };
+  const plural = (n, one, few, many) => (n === 1 ? one : n >= 2 && n <= 4 ? few : many);
   const niceRound = n => { const p = Math.pow(10, Math.max(0, Math.floor(Math.log10(n)) - 1)); return Math.round(n / p) * p; };
 
   let jsonpSeq = 0;
@@ -365,6 +366,19 @@
       });
     }
     if (L.kind === 'tiles3857') return new ol.source.XYZ({ url: L.url, maxZoom: L.maxZoom || 19, transition: dur(150) });
+    if (L.kind === 'wms') {
+      // WMS (Marushka, GObec, MapServer, ArcGIS WMS): obraz v S-JTSK OpenLayers přepočítá do mapy.
+      // Pomalé servery po dlaždicích (`tiled`): mapa se dokresluje postupně a nečeká na jeden velký obraz.
+      const params = Object.assign({ FORMAT: 'image/png', TRANSPARENT: true, VERSION: L.version || '1.3.0', STYLES: '' }, L.params || {});
+      const proj = L.crs || 'EPSG:3857';
+      if (L.tiled) {
+        const grid = proj === 'EPSG:5514'
+          ? new ol.tilegrid.TileGrid({ origin: [-950000, -900000], resolutions: Array.from({ length: 13 }, (_, i) => 1024 / Math.pow(2, i)), tileSize: L.tileSize || 256 })
+          : undefined;
+        return new ol.source.TileWMS({ url: L.url, projection: proj, tileGrid: grid, params, transition: dur(150), serverType: L.serverType });
+      }
+      return new ol.source.ImageWMS({ url: L.url, ratio: 1.15, projection: proj, serverType: L.serverType, params });
+    }
     if (L.kind === 'arcgisExport' || L.kind === 'arcgisImage') {
       // OpenLayers 10 posílá parametry malými písmeny (format, dpi, ...), tak je přepisujeme stejně
       const p = Object.assign(L.kind === 'arcgisImage' ? { format: 'jpgpng' } : { format: 'png32', transparent: true }, L.params || {});
@@ -413,8 +427,11 @@
   async function updateHoles(cfg) {
     if (cfg.obec) { cfg.layers.forEach(L => { L.holes = new Set(COVMAP.has(cfg.obec) ? [cfg.obec] : []); }); return; }
     // obce s jednotnými daty a města s vlastními daty se z krajské vrstvy vynechají
+    // vynechají se i obce s neaktuální verzí v krajských datech (`skip`) a obce, které kreslí výkresy po obcích téhož kraje
     const ngup = COV.filter(o => (OKR[o[2]] || [])[1] === cfg.kraj).map(o => o[0])
-      .concat(REGIONAL.filter(c => c.obec && c.kraj === cfg.kraj && c.layers.length).map(c => c.obec));
+      .concat(REGIONAL.filter(c => c.obec && c.kraj === cfg.kraj && c.layers.length).map(c => c.obec))
+      .concat(cfg.skip || [])
+      .concat(REGIONAL.filter(c => c !== cfg && c.kraj === cfg.kraj && !c.obec).flatMap(c => c.layers.filter(L => L.obce).flatMap(L => Object.keys(L.obce).map(Number))));
     for (const L of cfg.layers) {
       if (!L.cover || L.coverCodes) continue;
       try {
@@ -453,7 +470,7 @@
   }
   const regionalLayers = [];
   REGIONAL.forEach(cfg => cfg.layers.forEach(L => {
-    if (L.kind === 'arcgisPerObec') {
+    if (L.kind === 'arcgisPerObec' || L.kind === 'tilesPerObec') {
       L.layer = new ol.layer.Group({ zIndex: 9, minZoom: L.minZoom || 12.6, opacity: 0.66, layers: [] });
       L.items = new Map();
       regionalLayers.push(L.layer);
@@ -478,7 +495,7 @@
     }
     const src = regionalSource(L);
     if (!src) return;
-    const Ctor = L.kind.indexOf('tiles') === 0 ? ol.layer.Tile : ol.layer.Image;
+    const Ctor = L.kind.indexOf('tiles') === 0 || (L.kind === 'wms' && L.tiled) ? ol.layer.Tile : ol.layer.Image;
     const layer = new Ctor({
       zIndex: 9, minZoom: L.minZoom || REG_MINZOOM, opacity: 0.66, source: src, extent: L.extent3857 || undefined,
       className: 'ol-layer up-reg up-reg-' + L.key + (L.std ? ' up-reg-std' : '')
@@ -528,7 +545,7 @@
   async function updatePerObec() {
     const token = ++perObecToken;
     for (const cfg of REGIONAL) for (const L of cfg.layers) {
-      if (L.kind !== 'arcgisPerObec') continue;
+      if (L.kind !== 'arcgisPerObec' && L.kind !== 'tilesPerObec') continue;
       const kids = L.layer.getLayers();
       const z = view.getZoom(), ext = view.calculateExtent(map.getSize());
       if (cfg.extent3857 && ol.extent.intersects(ext, cfg.extent3857) && !shapeOf(cfg)) ensureRegional(cfg);
@@ -536,7 +553,7 @@
       let d;
       try {
         const env = encodeURIComponent(JSON.stringify({ xmin: ext[0], ymin: ext[1], xmax: ext[2], ymax: ext[3], spatialReference: { wkid: 3857 } }));
-        const where = encodeURIComponent('okres IN (' + Object.keys(L.okresy || {}).join(',') + ')');
+        const where = encodeURIComponent(L.kind === 'tilesPerObec' ? 'kod IN (' + Object.keys(L.obce).join(',') + ')' : 'okres IN (' + Object.keys(L.okresy || {}).join(',') + ')');
         d = await fetchJSON(`${CFG.ruian}12/query?where=${where}&geometry=${env}&geometryType=esriGeometryEnvelope&inSR=3857&spatialRel=esriSpatialRelIntersects&outFields=kod,nazev,okres&returnGeometry=true&outSR=3857&maxAllowableOffset=8&geometryPrecision=0&f=json`, 20000);
       } catch (_) { continue; }
       if (token !== perObecToken) return;
@@ -547,6 +564,26 @@
         .sort((a, b) => a.dist - b.dist).slice(0, 24);
       const want = new Set();
       await Promise.all(obce.map(async o => {
+        if (L.kind === 'tilesPerObec') {
+          // dlaždice výkresu obce (WMTS/cache v S-JTSK), ořez hranicí obce
+          const t = L.obce[String(o.kod)];
+          if (!t) return;
+          want.add(o.kod);
+          L.items = L.items || new Map();
+          let lyr = L.items.get(o.kod);
+          if (!lyr) {
+            lyr = new ol.layer.Tile({
+              extent: o.box, className: 'ol-layer up-reg up-reg-' + L.key,
+              source: new ol.source.XYZ({ projection: 'EPSG:5514', url: t[0], transition: dur(150), tileGrid: new ol.tilegrid.TileGrid({ origin: L.origin, resolutions: L.resolutions, tileSize: L.tileSize || 256 }) })
+            });
+            lyr.set('obec', o.kod);
+            lyr.on('prerender', e => clipToRings(e, o.rings));
+            lyr.on('postrender', e => { if (e.context) e.context.restore(); });
+            L.items.set(o.kod, lyr);
+          }
+          if (!kids.getArray().includes(lyr)) kids.push(lyr);
+          return;
+        }
         const it = await perObecItem(L, o.kod, o.nazev, o.okres);
         if (!it || token !== perObecToken) return;
         want.add(o.kod);
@@ -567,7 +604,21 @@
   }
 
   const schedulePerObec = debounce(() => { updatePerObec().catch(() => {}); }, 250);
-  const regionalCfgFor = (kraj, obec) => (obec && REGIONAL.find(c => c.obec === +obec)) || REGIONAL.find(c => c.kraj === +kraj && !c.obec) || null;
+  // Obce (dist/obce.json z build.py): odkud má obec data v mapě a stav jejího plánu v evidenci NGÚP.
+  // [zdroj n|m|k|v|p|-, index v REGIONAL, stav plánu p|x|?, název plánu, účinnost, změn, poslední změna, pořizuje se, web]
+  let OBCE = null, obceP = null;
+  function loadObce() {
+    if (!obceP) obceP = fetch('obce.json').then(r => (r.ok ? r.json() : null)).then(d => { OBCE = d && d.o ? d : null; return OBCE; }).catch(() => null);
+    return obceP;
+  }
+  const obecRec = kod => (OBCE && kod != null ? OBCE.o[String(kod)] || null : null);
+  const regionalCfgFor = (kraj, obec) => {
+    const r = obecRec(obec);
+    if (r && r[1] >= 0 && REGIONAL[r[1]]) return REGIONAL[r[1]];
+    return (obec && REGIONAL.find(c => c.obec === +obec))
+      || (obec && REGIONAL.find(c => c.kraj === +kraj && c.layers.some(L => L.obce && L.obce[String(obec)])))
+      || REGIONAL.find(c => c.kraj === +kraj && !c.obec && !c.orp && !c.layers.some(L => L.obce)) || null;
+  };
   function regionalCfgsInView() {
     if (!S.layers.regional || view.getZoom() < REG_MINZOOM) return [];
     const ext = view.calculateExtent(map.getSize());
@@ -718,6 +769,61 @@
     const d = spec && spec.cors ? await fetchJSON(q, timeout || 25000) : await jsonp(q, timeout || 25000);
     if (d && d.error) throw new Error(d.error.message || 'query');
     return (d.features || []).map(f => Object.assign({}, f.attributes || {}, f.geometry ? { __geom: f.geometry } : {}));
+  }
+  // GetFeatureInfo z WMS: odpověď v JSON, GML/XML (i ArcGIS <FIELDS>) nebo HTML tabulce převede na seznam atributů
+  async function wmsQuery(spec, coord) {
+    const crs = spec.crs || 'EPSG:3857';
+    const p = crs === 'EPSG:3857' ? coord : ol.proj.transform(coord, 'EPSG:3857', crs);
+    const half = spec.half || 25, n = 51;
+    const v13 = (spec.version || '1.3.0') === '1.3.0';
+    // WMS 1.3.0 bere u EPSG:5514 pořadí os podle EPSG (X, Y), stejně jako u 3857
+    const bbox = [p[0] - half, p[1] - half, p[0] + half, p[1] + half].map(v => v.toFixed(2)).join(',');
+    const q = Object.assign({
+      SERVICE: 'WMS', REQUEST: 'GetFeatureInfo', VERSION: spec.version || '1.3.0', LAYERS: spec.layers, QUERY_LAYERS: spec.layers,
+      STYLES: '', FORMAT: 'image/png', INFO_FORMAT: spec.format || 'application/json', FEATURE_COUNT: 8, WIDTH: n, HEIGHT: n
+    }, v13 ? { CRS: crs, I: 25, J: 25 } : { SRS: crs, X: 25, Y: 25 }, { BBOX: bbox }, spec.params || {});
+    const url = spec.url + (spec.url.indexOf('?') >= 0 ? '&' : '?') + Object.entries(q).map(([k, v]) => k + '=' + encodeURIComponent(v)).join('&');
+    const ctl = new AbortController(); const t = setTimeout(() => ctl.abort(), spec.timeout || 20000);
+    try {
+      const r = await fetch(url, { signal: ctl.signal });
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      const txt = await r.text();
+      return parseFeatureInfo(txt, spec.format || 'application/json');
+    } finally { clearTimeout(t); }
+  }
+  function parseFeatureInfo(txt, fmt) {
+    if (/json/i.test(fmt)) {
+      const j = JSON.parse(txt);
+      return (j.features || []).map(f => Object.assign({}, f.properties || f.attributes || {}));
+    }
+    const doc = new DOMParser().parseFromString(txt, /html/i.test(fmt) ? 'text/html' : 'text/xml');
+    if (/html/i.test(fmt)) {
+      const out = [];
+      doc.querySelectorAll('table').forEach(tb => {
+        const rows = [...tb.querySelectorAll('tr')].map(tr => [...tr.children].map(c => c.textContent.trim()));
+        if (rows.length > 1 && rows[0].length > 2 && tb.querySelector('th')) {
+          rows.slice(1).forEach(r => { const a = {}; rows[0].forEach((h, i) => { a[h] = r[i]; }); out.push(a); });
+        } else {
+          const a = {}; rows.forEach(r => { if (r.length >= 2) a[r[0].replace(/:\s*$/, '')] = r[r.length - 1]; }); if (Object.keys(a).length) out.push(a);
+        }
+      });
+      return out;
+    }
+    const out = [];
+    // ArcGIS WMS: <FIELDS a="…" b="…"/>
+    doc.querySelectorAll('FIELDS').forEach(el => { const a = {}; [...el.attributes].forEach(x => { a[x.name] = x.value; }); out.push(a); });
+    if (out.length) return out;
+    // GML a obecné XML: prvky, jejichž děti jsou jen listy s textem
+    const all = doc.getElementsByTagName('*');
+    for (const el of all) {
+      const kids = [...el.children];
+      if (kids.length < 2 || !kids.every(k => !k.children.length)) continue;
+      if (kids.some(k => /^(gml:)?(boundedBy|coordinates|posList|pos)$/i.test(k.tagName))) continue;
+      const a = {}; kids.forEach(k => { a[k.localName] = k.textContent.trim(); });
+      [...el.attributes].forEach(x => { if (!/^(gml:)?id$|^fid$/i.test(x.name)) a[x.localName] = x.value; });
+      out.push(a);
+    }
+    return out;
   }
   const pickVal = (a, F, k) => { const f = F[k]; if (!f) return null; const x = a[f]; return nul(typeof x === 'string' ? x.trim() : x); };
 
@@ -978,8 +1084,9 @@
     track(identifyNgup(coord)).then(r => { sel.ngup = processNgup(r); }, e => { sel.ngup = { error: e }; }).then(done);
     const ruianP = track(identifyRuian(coord)).then(r => { sel.ruian = processRuian(r); }, e => { sel.ruian = { error: e }; });
     ruianP.then(done);
-    ruianP.then(() => {
+    ruianP.then(() => Promise.race([loadObce(), new Promise(r => setTimeout(r, 4000))])).then(() => {
       const R = sel.ruian && !sel.ruian.error ? sel.ruian : null;
+      sel.obec = R && R.obec ? obecRec(R.obec.kod) : null;
       const cfg = R && R.kraj && !(R.obec && COVMAP.has(+R.obec.kod)) ? regionalCfgFor(R.kraj.kod, R.obec && R.obec.kod) : null;
       if (!cfg) { sel.regional = { none: true }; return; }
       return identifyRegional(coord, cfg, R).then(r => {
@@ -992,7 +1099,7 @@
             o.set('kind', 'outline'); selSource.addFeature(o); sel.outlined = true;
           } catch (_) { /* geometrie bez obrysu */ }
         }
-      }, () => { sel.regional = { cfg }; });
+      }, () => { sel.regional = { cfg, failed: true }; });
     }).then(done);
     identifyRadon(coord).then(r => { sel.radon = processRadon(r); }, e => { sel.radon = { error: e }; }).then(done);
     identifyFlood(coord).then(r => { sel.flood = processFlood(r); }, e => { sel.flood = { error: e }; }).then(done);
@@ -1047,6 +1154,11 @@
     return fetchJSON(CFG.ruian + 'identify?' + pointQuery(coord, 60, '&tolerance=1&returnFieldName=true&layers=all:5,7,12,15,17,22,24,28,30,32,34,40,42,44,46,48,50,52,54,56,58,60,62'), 15000);
   }
   async function identifyRegional(coord, cfg, R) {
+    const perT = cfg.layers.find(L => L.kind === 'tilesPerObec');
+    if (perT) {
+      const t = R && R.obec ? perT.obce[String(R.obec.kod)] : null;
+      return t ? { cfg, hit: null, doc: { title: t[1] } } : { none: true };
+    }
     const per = cfg.layers.find(L => L.kind === 'arcgisPerObec');
     if (per) {
       const it = R && R.obec ? await perObecItem(per, +R.obec.kod, R.obec.nazev, String(R.okres ? R.okres.kod : '')) : null;
@@ -1057,11 +1169,13 @@
     const infos = cfg.info || [], docs = cfg.doc || [];
     const fieldsOf = (F, inf) => (inf && (inf.rulesFields) ? ['*'] : [...new Set(Object.values(F).concat(inf && inf.namesFrom ? [inf.namesFrom] : [], ((inf && inf.extra) || []).map(x => x[1])).filter(Boolean))]);
     const [hits, docHits, nameMaps] = await Promise.all([
-      Promise.all(infos.map(inf => regionalQuery(inf.url, ll, fieldsOf(inf.fields, inf), inf.timeout, true, inf).catch(() => null))),
-      Promise.all(docs.map(dc => regionalQuery(dc.url, ll, fieldsOf(dc.fields), dc.timeout, false, dc).catch(() => null))),
+      Promise.all(infos.map(inf => (inf.kind === 'wms' ? wmsQuery(inf, coord) : regionalQuery(inf.url, ll, fieldsOf(inf.fields, inf), inf.timeout, true, inf)).catch(() => null))),
+      Promise.all(docs.map(dc => (dc.kind === 'wms' ? wmsQuery(dc, coord) : regionalQuery(dc.url, ll, fieldsOf(dc.fields), dc.timeout, false, dc)).catch(() => null))),
       Promise.all(infos.map(inf => namesFor(inf)))
     ]);
     let hit = null;
+    // všechny dotazy na plochu selhaly (server neodpověděl nebo vrátil chybu): karta to řekne a nabídne nový pokus
+    const failed = infos.length > 0 && hits.every(h => h === null);
     for (let i = 0; i < infos.length && !hit; i++) {
       const inf = infos[i];
       for (const a of hits[i] || []) {
@@ -1087,7 +1201,7 @@
       if (!doc.date && v('date')) { doc.date = fmtDateVal(v('date')); doc.dateLabel = dc.dateLabel; }
       ['text', 'link', 'legend', 'docs', 'changes'].forEach(k => { const u = safeUrl(v(k)); if (u && !doc[k] && !(dc.skip && u.endsWith(dc.skip))) doc[k] = u; });
     });
-    return { cfg, hit, doc };
+    return { cfg, hit, doc, failed };
   }
   const NATURE = { 30: 'Národní park', 32: 'Ochranné pásmo národního parku', 34: 'Zóna národního parku', 40: 'Chráněná krajinná oblast', 42: 'Zóna CHKO', 44: 'Národní přírodní rezervace', 46: 'Ochranné pásmo NPR', 48: 'Národní přírodní památka', 50: 'Ochranné pásmo NPP', 52: 'Přírodní rezervace', 54: 'Ochranné pásmo přírodní rezervace', 56: 'Přírodní památka', 58: 'Ochranné pásmo přírodní památky', 60: 'Evropsky významná lokalita (Natura 2000)', 62: 'Ptačí oblast (Natura 2000)' };
   function processRuian(json) {
@@ -1177,8 +1291,20 @@
     }
     if (N && ob && COVMAP.has(ob)) return 'obec';
     if (!N || !sel.ruian || sel.regional === undefined) return null;
+    // obec, kterou data kraje podle ověření (scripts/pokryti.py) nepokrývají: bez nálezu v bodě je to obec bez dat
+    // (týká se jen krajských mozaik; záznam města nebo výkres obce, který obec výslovně uvádí, platí vždy)
+    const explicit = reg && (sel.regional.cfg.obec || sel.regional.cfg.layers.some(L => L.obce));
+    if (reg && !explicit && sel.obec && sel.obec[0] === '-' && !sel.regional.hit) return false;
     if (reg) return 'regional';
     return false;
+  }
+  // stav územního plánu obce podle evidence NGÚP (dist/obce.json)
+  function planInfo(sel) {
+    const r = sel.obec; if (!r) return null;
+    const R = sel.ruian && !sel.ruian.error ? sel.ruian : null;
+    const obec = R && R.obec ? R.obec.nazev : '';
+    const d = s => { const m = /^(\d{4})-(\d{2})-(\d{2})/.exec(String(s || '')); return m ? `${+m[3]}. ${+m[2]}. ${m[1]}` : null; };
+    return { stav: r[2], nazev: r[3] || (obec ? 'Územní plán ' + obec : 'Územní plán'), ucinnost: d(r[4]), zmen: +r[5] || 0, posledni: d(r[6]), porizuje: !!r[7], web: safeUrl(r[8] || '') };
   }
   function titleBlock(sel) {
     const pl = plochaOf(sel);
@@ -1219,6 +1345,11 @@
         sw = `<div class="tb-swatch none"><b>${esc(String(h.raw || '?').slice(0, 6))}</b></div>`;
         title = esc(h.name ? String(h.name).charAt(0).toUpperCase() + String(h.name).slice(1) : 'Plocha ' + (h.raw || ''));
         official = `Typ plochy z dat ${r.cfg.obec ? 'města' : 'kraje'}, který neumíme převést do jednotné legendy.`;
+      } else if (r.failed) {
+        const kdo = r.cfg.obec ? 'města' : 'kraje';
+        sw = `<div class="tb-swatch none"><b>!</b></div>`;
+        title = r.cfg.drawing ? 'Výkres územního plánu' : `Server ${kdo} teď neodpovídá`;
+        official = (r.cfg.drawing ? `Typ plochy se nepodařilo načíst, server ${kdo} neodpověděl. ` : 'Plochu se nepodařilo načíst. ') + '<button class="link-btn" data-act="retry">Zkusit znovu</button>';
       } else {
         sw = `<div class="tb-swatch none"><b>ÚP</b></div>`;
         title = r.cfg.drawing ? 'Výkres územního plánu' : `Plocha v datech ${r.cfg.obec ? 'města' : 'kraje'} nenalezena`;
@@ -1233,9 +1364,20 @@
       title = 'Plocha nenalezena';
       official = 'Na tomto místě územní plán obce žádnou plochu nevymezuje.';
     } else {
-      sw = `<div class="tb-swatch none"><b>PDF</b></div>`;
-      title = 'Územní plán zatím jen jako PDF';
-      official = 'Tato obec ještě nemá plán v jednotných datech.';
+      const P = planInfo(sel);
+      if (P && P.stav === 'x') {
+        sw = `<div class="tb-swatch none"><b>bez ÚP</b></div>`;
+        title = 'Obec nemá územní plán';
+        official = 'V evidenci Národního geoportálu není žádný vydaný územní plán obce.' + (P.porizuje ? ' Obec ho pořizuje.' : '');
+      } else if (P && P.stav === 'p') {
+        sw = `<div class="tb-swatch none"><b>PDF</b></div>`;
+        title = 'Územní plán zatím jen v dokumentech';
+        official = esc(P.nazev) + (P.ucinnost ? `, účinný od ${esc(P.ucinnost)}` : '') + (P.zmen ? `, ${P.zmen} ${plural(P.zmen, 'změna', 'změny', 'změn')}` : '') + '. V mapě ho zatím nemáme.';
+      } else {
+        sw = `<div class="tb-swatch none"><b>PDF</b></div>`;
+        title = 'Územní plán zatím jen v dokumentech';
+        official = 'Tato obec ještě nemá plán v datech, která umíme zobrazit.';
+      }
     }
     return `<div class="tb">
       <div class="tb-head"><div class="tb-place">${placeLine(sel)}<small>${subLine(sel)}</small></div><button class="icon-btn" data-act="close" aria-label="Zavřít kartu">${icon('i-close')}</button></div>
@@ -1447,11 +1589,23 @@
     } else if (cov === 'error') {
       html += `<p>Data územního plánu se teď nepodařilo načíst ze serveru NGÚP.</p><div class="actions"><button class="btn" data-act="retry">Zkusit znovu</button></div>`;
     } else if (cov === false) {
-      html += `<p>${esc(obecName)} zatím nemá územní plán v jednotných datech. Platný plán i s výkresy v PDF najdete tady:</p>`;
+      const P = planInfo(sel);
+      if (P && P.stav === 'x') {
+        html += `<p>${esc(obecName)} podle evidence Národního geoportálu územního plánování nemá vydaný územní plán.${P.porizuje ? ' Nový plán se pořizuje.' : ''} Bez územního plánu se nové stavby umisťují hlavně v zastavěném území obce, co přesně jde, posoudí stavební úřad.</p>`;
+      } else if (P && P.stav === 'p') {
+        html += `<p>${esc(obecName)} má platný ${esc(P.nazev.replace(/^Územní plán/, 'územní plán'))}${P.ucinnost ? `, účinný od ${esc(P.ucinnost)}` : ''}.`
+          + (P.zmen ? ` Od té doby ${plural(P.zmen, 'vyšla', 'vyšly', 'vyšlo')} ${P.zmen} ${plural(P.zmen, 'změna', 'změny', 'změn')}${P.posledni ? `, poslední účinná od ${esc(P.posledni)}` : ''}.` : '')
+          + (P.porizuje ? ' Obec teď pořizuje nový plán nebo další změnu.' : '')
+          + ` V mapě ho zatím nemáme, výkresy a textovou část najdete v dokumentech:</p>`;
+      } else {
+        html += `<p>${esc(obecName)} zatím nemá územní plán v datech, která umíme zobrazit. Platný plán i s výkresy najdete tady:</p>`;
+      }
       const ngupBtn = cls => `<a class="btn${cls}" href="${esc(ngupDocsUrl(R))}" target="_blank" rel="noopener">Dokumenty obce v Národním geoportálu</a>`;
+      const webBtn = P && P.web ? `<a class="btn" href="${esc(P.web)}" target="_blank" rel="noopener">Web obce</a>` : '';
       const krajBtn = cls => (kraj ? `<a class="btn${cls}" href="${esc(kraj.url)}" target="_blank" rel="noopener">${esc(kraj.label)}</a>` : '');
-      html += `<div class="actions">${kraj && kraj.primary ? krajBtn(' primary') + ngupBtn('') : ngupBtn(' primary') + krajBtn('')}</div>`;
+      html += `<div class="actions">${kraj && kraj.primary ? krajBtn(' primary') + ngupBtn('') : ngupBtn(' primary') + krajBtn('')}${webBtn}</div>`;
       if (kraj && kraj.note) html += `<p class="note">${esc(kraj.note)}</p>`;
+      if (OBCE && OBCE.stavUP) html += `<p class="note">Stav plánu podle evidence NGÚP k ${esc(OBCE.stavUP.split('-').reverse().map(Number).join('. '))}.</p>`;
     } else {
       html += skel();
     }
@@ -1834,6 +1988,7 @@
   // Start
   // ---------------------------------------------------------------------------
   function start() {
+    loadObce();
     const h = readHash();
     hashLock = true;
     if (h) {

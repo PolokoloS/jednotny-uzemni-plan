@@ -52,3 +52,22 @@ out = os.path.join(ROOT, 'dist/index.html')
 with open(out, 'w', encoding='utf-8') as f:
     f.write(html)
 print(f'{out}: {len(html)/1024:.1f} KB, obcí {len(cov)}, ploch {plochy_total}, obcí se staršími verzemi {len(sup)}')
+
+# Obce: odkud mají data v mapě (scripts/pokryti.py) a stav územního plánu v evidenci NGÚP (scripts/stav_up.py).
+# Appka si soubor načte po startu: vybere podle něj zdroj pro kartu a u obcí bez dat ukáže stav plánu.
+# Záznam: [zdroj, index v REGIONAL nebo -1, stav plánu, název plánu nebo 0, účinnost, změn, poslední změna, pořizuje se, web]
+pok_f, stav_f = os.path.join(ROOT, 'data/pokryti.json'), os.path.join(ROOT, 'data/stav_up.json')
+if os.path.exists(pok_f):
+    pok = json.load(open(pok_f, encoding='utf-8'))
+    stav = json.load(open(stav_f, encoding='utf-8'))['obce'] if os.path.exists(stav_f) else {}
+    names = {c['name']: i for i, c in enumerate(regional)}
+    rec, cnt = {}, {}
+    for kod, nazev, kraj, orp, oby, z, zname in pok['obce']:
+        s = stav.get(str(kod)) or ['?', None, None, 0, None, False, None]
+        plan = s[1] if s[1] and ' '.join(s[1].split()) not in (f'Územní plán {nazev}', f'Územní plán obce {nazev}') else 0
+        rec[str(kod)] = [z, names.get(zname, -1), s[0], plan, s[2] or 0, s[3] or 0, s[4] or 0, 1 if s[5] else 0, s[6] or 0]
+        cnt[z] = cnt.get(z, 0) + 1
+    obce_out = {'stav': pok['stav'], 'stavUP': json.load(open(stav_f, encoding='utf-8'))['stav'] if os.path.exists(stav_f) else None, 'o': rec}
+    with open(os.path.join(ROOT, 'dist/obce.json'), 'w', encoding='utf-8') as f:
+        json.dump(obce_out, f, ensure_ascii=False, separators=(',', ':'))
+    print(f'dist/obce.json: {os.path.getsize(os.path.join(ROOT, "dist/obce.json"))/1024:.0f} KB, zdroje {cnt}')
