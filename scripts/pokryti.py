@@ -175,7 +175,7 @@ def probe_tiles3857(L, ll):
     lat = math.radians(ll[1])
     fy = (1 - math.log(math.tan(lat) + 1 / math.cos(lat)) / math.pi) / 2 * n
     col, row = int(fx), int(fy)
-    url = L['url'].replace('{z}', str(z)).replace('{y}', str(row)).replace('{x}', str(col))
+    url = L['url'].replace('{a-c}', 'a').replace('{z}', str(z)).replace('{y}', str(row)).replace('{x}', str(col))
     try:
         img = get(url, raw=True)
     except urllib.error.HTTPError:
@@ -196,17 +196,38 @@ def probe_export(L, xy, image=False):
     return nonblank(get(url, raw=True)) > 0.05
 
 
-def probe_wms(L, xy):
-    d = 250
+def to3857(ll):
+    return (ll[0] * 20037508.342789 / 180, math.log(math.tan((90 + ll[1]) * math.pi / 360)) * 6378137)
+
+
+def probe_wms(L, xy, ll):
+    # kolem 3 m na pixel: některé WMS (JÚAP) kreslí plány jen v podrobném měřítku
+    d = 150
     p = {'SERVICE': 'WMS', 'REQUEST': 'GetMap', 'VERSION': L.get('version', '1.3.0'), 'LAYERS': L['params']['LAYERS'],
-         'STYLES': L['params'].get('STYLES', ''), 'FORMAT': 'image/png', 'TRANSPARENT': 'TRUE', 'WIDTH': 64, 'HEIGHT': 64}
+         'STYLES': L['params'].get('STYLES', ''), 'FORMAT': 'image/png', 'TRANSPARENT': 'TRUE', 'WIDTH': 100, 'HEIGHT': 100}
     crs = L.get('crs', 'EPSG:5514')
+    c = to3857(ll) if crs == 'EPSG:3857' else xy
     p['CRS' if p['VERSION'] == '1.3.0' else 'SRS'] = crs
-    p['BBOX'] = f'{xy[0]-d},{xy[1]-d},{xy[0]+d},{xy[1]+d}'
+    p['BBOX'] = f'{c[0]-d},{c[1]-d},{c[0]+d},{c[1]+d}'
     for k, v in (L['params'] or {}).items():
         p.setdefault(k, v)
-    url = L['url'] + ('&' if '?' in L['url'] else '?') + urllib.parse.urlencode(p)
+    # čárky a dvojtečky nekódovat: dlouhé seznamy vrstev by přelezly limit délky adresy
+    url = L['url'] + ('&' if '?' in L['url'] else '?') + urllib.parse.urlencode(p, safe=',:')
     return nonblank(get(url, raw=True)) > 0.05
+
+
+def probe_tilecache(L, xy):
+    ext, res = L['gridExtent'], L['resolutions']
+    z = min(range(len(res)), key=lambda i: abs(math.log(res[i] / 2.0)))
+    span = res[z] * 256
+    tx, ty = int((xy[0] - ext[0]) // span), int((xy[1] - ext[1]) // span)
+    trip = lambda n: '{:09d}'.format(n)[0:3] + '/' + '{:09d}'.format(n)[3:6] + '/' + '{:09d}'.format(n)[6:9]
+    url = L['url'].replace('{z}', '{:02d}'.format(z)).replace('{x}', trip(tx)).replace('{y}', trip(ty))
+    try:
+        img = get(url, raw=True)
+    except urllib.error.HTTPError:
+        return False
+    return nonblank(img) > 0.05
 
 
 SLUG = lambda s: re.sub(r'^_|_$', '', re.sub(r'[^a-z0-9]+', '_', fold(s)))
@@ -259,7 +280,8 @@ def probe_source(cfg, o):
                   probe_perobec(L, o) if k == 'arcgisPerObec' else
                   probe_tiles_obec(L, o, xy) if k == 'tilesPerObec' else
                   probe_query(L['url'], ll) if k == 'arcgisVector' else
-                  probe_wms(L, xy) if k == 'wms' else False)
+                  probe_wms(L, xy, ll) if k == 'wms' else
+                  probe_tilecache(L, xy) if k == 'tilecache' else False)
         except Exception:
             ok = False
         if ok:

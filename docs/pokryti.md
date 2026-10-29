@@ -5,11 +5,11 @@ Vytváří `python scripts/pokryti.py`. Zdroj u každé obce je ověřený dotaz
 | Zdroj | Obcí | Obyvatel |
 |---|---:|---:|
 | jednotná data NGÚP | 381 | 1 429 165 |
-| data města | 7 | 979 087 |
-| kraj, typ plochy | 1 048 | 1 160 224 |
-| kraj, jen výkres | 2 073 | 4 236 126 |
+| data města | 8 | 1 071 800 |
+| kraj, typ plochy | 1 104 | 1 201 778 |
+| kraj, jen výkres | 2 669 | 4 783 458 |
 | výkres z PDF | 0 | 0 |
-| nic | 2 749 | 3 111 237 |
+| nic | 2 096 | 2 429 638 |
 | **celkem** | **6 258** | **10 915 839** |
 
 ## Po krajích
@@ -23,10 +23,10 @@ Vytváří `python scripts/pokryti.py`. Zdroj u každé obce je ověřený dotaz
 | Karlovarský kraj | 134 | 123 | 11 | 22 580 |
 | Ústecký kraj | 354 | 257 | 97 | 192 981 |
 | Liberecký kraj | 215 | 50 | 165 | 174 833 |
-| Královéhradecký kraj | 448 | 334 | 114 | 157 998 |
-| Pardubický kraj | 451 | 15 | 436 | 475 674 |
+| Královéhradecký kraj | 448 | 335 | 113 | 157 393 |
+| Pardubický kraj | 451 | 439 | 12 | 16 387 |
 | Kraj Vysočina | 704 | 675 | 29 | 4 521 |
-| Jihomoravský kraj | 673 | 29 | 644 | 774 829 |
+| Jihomoravský kraj | 673 | 257 | 416 | 553 122 |
 | Olomoucký kraj | 402 | 12 | 390 | 506 952 |
 | Moravskoslezský kraj | 300 | 298 | 2 | 741 |
 | Zlínský kraj | 307 | 21 | 286 | 453 472 |
@@ -132,14 +132,14 @@ Seřazeno podle počtu obyvatel bez dat, u každého ORP největší obce.
 - ORP Železný Brod: 11 obcí, 12 246 obyv. Železný Brod (5 993), Pěnčín (2 102), Koberovy (998), Zásada (901), Skuhrov (643), Držkov (581), Líšný (262), Jílové u Držkova (233), Loužnice (212), Radčice (179), Vlastiboř (142)
 - ORP Jablonec nad Nisou: 10 obcí, 10 784 obyv. Rychnov u Jablonce nad Nisou (2 845), Lučany nad Nisou (1 958), Janov nad Nisou (1 488), Rádlo (1 039), Josefův Důl (860), Frýdštejn (853), Maršovice (638), Pulečný (489), Bedřichov (389), Dalešice (225)
 
-### Královéhradecký kraj: 114 obcí, 157 998 obyvatel
+### Královéhradecký kraj: 113 obcí, 157 393 obyvatel
 
 - ORP Náchod: 17 obcí, 32 319 obyv. Červený Kostelec (8 202), Hronov (6 063), Česká Skalice (4 970), Police nad Metují (4 164), Velké Poříčí (2 310), Kramolna (1 059), Nový Hrádek (887), Dolní Radechová (765), Žďár nad Metují (643), Hořičky (585), Žďárky (584), Vysokov (534) a dalších 5
 - ORP Vrchlabí: 8 obcí, 18 612 obyv. Vrchlabí (12 028), Rudník (1 993), Lánov (1 771), Špindlerův Mlýn (1 089), Černý Důl (674), Čermná (427), Horní Kalná (370), Dolní Dvůr (260)
 - ORP Rychnov nad Kněžnou: 6 obcí, 15 293 obyv. Rychnov nad Kněžnou (11 693), Potštejn (971), Černíkovice (809), Liberk (690), Lično (657), Pěčín (473)
 - ORP Jaroměř: 5 obcí, 14 814 obyv. Jaroměř (12 487), Velichovky (777), Dolany (721), Zaloňov (447), Rožnov (382)
 - ORP Jičín: 26 obcí, 14 114 obyv. Lázně Bělohrad (3 701), Sobotka (2 401), Kopidlno (2 135), Jičíněves (661), Slatiny (552), Markvartice (526), Libošovice (522), Konecchlumí (424), Údrnice (332), Samšina (272), Češov (246), Vršce (237) a dalších 14
-- ORP Trutnov: 9 obcí, 13 269 obyv. Úpice (5 379), Žacléř (3 097), Hajnice (1 071), Havlovice (1 009), Batňovice (787), Janské Lázně (647), Jívka (605), Dolní Olešnice (370), Horní Olešnice (304)
+- ORP Trutnov: 8 obcí, 12 664 obyv. Úpice (5 379), Žacléř (3 097), Hajnice (1 071), Havlovice (1 009), Batňovice (787), Janské Lázně (647), Dolní Olešnice (370), Horní Olešnice (304)
 - ORP Hradec Králové: 19 obcí, 11 347 obyv. Nechanice (2 545), Všestary (1 770), Roudnice (792), Dolní Přím (773), Kratonohy (645), Osice (566), Syrovátka (467), Blešno (444), Lodín (433), Běleč nad Orlicí (414), Klamoš (393), Kunčice (387) a dalších 7
 - ORP Hořice: 3 obcí, 10 406 obyv. Hořice (8 427), Ostroměř (1 339), Podhorní Újezd a Vojice (640)
 - ORP Kostelec nad Orlicí: 5 obcí, 8 958 obyv. Týniště nad Orlicí (6 133), Doudleby nad Orlicí (1 791), Bolehošť (665), Chleny (201), Svídnice (168)
@@ -149,23 +149,15 @@ Seřazeno podle počtu obyvatel bez dat, u každého ORP největší obce.
 - ORP Nový Bydžov: 1 obcí, 990 obyv. Nepolisy (990)
 - ORP Nové Město nad Metují: 1 obcí, 111 obyv. Sendraž (111)
 
-### Pardubický kraj: 436 obcí, 475 674 obyvatel
+### Pardubický kraj: 12 obcí, 16 387 obyvatel
 
-- ORP Pardubice: 55 obcí, 134 990 obyv. Pardubice (92 713), Sezemice (4 393), Lázně Bohdaneč (3 323), Opatovice nad Labem (2 968), Dašice (2 773), Staré Hradiště (2 079), Moravany (1 887), Srch (1 799), Rybitví (1 529), Mikulovice (1 324), Čeperka (1 191), Ostřešany (1 134) a dalších 43
-- ORP Chrudim: 82 obcí, 60 105 obyv. Skuteč (5 061), Heřmanův Městec (4 933), Slatiňany (4 134), Třemošnice (3 380), Chrast (3 181), Luže (2 589), Hrochův Týnec (2 187), Proseč (2 143), Seč (1 869), Nasavrky (1 690), Ronov nad Doubravou (1 677), Prachovice (1 404) a dalších 70
-- ORP Svitavy: 28 obcí, 30 757 obyv. Svitavy (16 041), Hradec nad Svitavou (1 663), Březová nad Svitavou (1 578), Radiměř (1 260), Brněnec (1 221), Opatov (1 103), Vendolí (988), Koclířov (740), Opatovec (727), Rohozná (646), Bělá nad Svitavou (476), Vítějeves (430) a dalších 16
-- ORP Žamberk: 25 obcí, 27 888 obyv. Letohrad (6 345), Žamberk (5 770), Jablonné nad Orlicí (3 085), Lukavice (1 227), Nekoř (985), Kunvald (929), Klášterec nad Orlicí (904), Dlouhoňovice (845), Verměřovice (787), Záchlumí (774), Líšnice (768), Jamné nad Orlicí (738) a dalších 13
-- ORP Přelouč: 42 obcí, 27 002 obyv. Přelouč (10 195), Chvaletice (2 897), Řečany nad Labem (1 419), Choltice (1 244), Břehy (1 129), Zdechovice (686), Kladruby nad Labem (651), Semín (641), Svinčany (568), Valy (512), Kojice (442), Lipoltice (437) a dalších 30
-- ORP Litomyšl: 33 obcí, 26 601 obyv. Litomyšl (10 411), Dolní Újezd (1 958), Sloupnice (1 829), Čistá (1 067), Osík (1 060), Janov (1 041), Sebranice (959), Lubná (945), Cerekvice nad Loučnou (889), Morašice (740), Trstěnice (547), Poříčí u Litomyšle (528) a dalších 21
-- ORP Ústí nad Orlicí: 15 obcí, 25 908 obyv. Ústí nad Orlicí (13 988), Dolní Dobrouč (2 553), Libchavy (1 815), Dlouhá Třebová (1 298), Brandýs nad Orlicí (1 293), Sopotnice (941), Hnátnice (812), Orlické Podhůří (683), Řetová (678), České Libchavy (660), Jehnědí (330), Voděrady (330) a dalších 3
-- ORP Moravská Třebová: 33 obcí, 25 766 obyv. Moravská Třebová (9 418), Jevíčko (2 837), Městečko Trnávka (1 425), Kunčina (1 398), Jaroměřice (1 177), Staré Město (1 031), Třebařov (904), Chornice (846), Linhartice (623), Rychnov na Moravě (612), Dlouhá Loučka (588), Biskupice (476) a dalších 21
-- ORP Hlinsko: 22 obcí, 20 978 obyv. Hlinsko (9 504), Krouna (1 399), Miřetice (1 286), Trhová Kamenice (1 007), Svratouch (905), Holetín (805), Kameničky (780), Vysočina (699), Včelákov (562), Vítanov (481), Jeníkov (459), Studnice (455) a dalších 10
-- ORP Vysoké Mýto: 39 obcí, 20 524 obyv. Choceň (8 700), Zámrsk (765), Vraclav (749), Tisová (628), České Heřmanice (606), Dobříkov (590), Sruby (585), Slatina (463), Běstovice (436), Skořenice (405), Hrušová (397), Řepníky (387) a dalších 27
-- ORP Lanškroun: 20 obcí, 20 319 obyv. Lanškroun (9 845), Dolní Čermná (1 326), Horní Čermná (1 004), Žichlínek (988), Výprachtice (947), Luková (763), Ostrov (730), Damníkov (698), Horní Třešňovec (645), Sázava (553), Horní Heřmanice (457), Albrechtice (448) a dalších 8
-- ORP Česká Třebová: 5 obcí, 17 679 obyv. Česká Třebová (14 982), Rybník (851), Třebovice (819), Semanín (656), Přívrat (371)
-- ORP Holice: 13 obcí, 17 658 obyv. Holice (6 783), Horní Jelení (2 149), Dolní Roveň (2 148), Býšť (1 689), Dolní Ředice (1 116), Ostřetín (917), Chvojenec (805), Veliny (496), Vysoké Chvojno (456), Poběžovice u Holic (314), Uhersko (304), Jaroslav (269) a dalších 1
-- ORP Polička: 19 obcí, 11 040 obyv. Bystré (1 561), Pomezí (1 341), Jedlová (1 106), Borová (1 041), Korouhev (810), Oldřiš (662), Kamenec u Poličky (598), Sádek (556), Trpín (449), Květná (425), Telecí (412), Široký Důl (397) a dalších 7
-- ORP Králíky: 5 obcí, 8 459 obyv. Králíky (4 042), Červená Voda (2 927), Mladkov (555), Lichkov (478), Dolní Morava (457)
+- ORP Ústí nad Orlicí: 1 obcí, 13 988 obyv. Ústí nad Orlicí (13 988)
+- ORP Litomyšl: 2 obcí, 613 obyv. Trstěnice (547), Nová Ves u Jarošova (66)
+- ORP Lanškroun: 2 obcí, 567 obyv. Cotkytle (385), Čenkovice (182)
+- ORP Chrudim: 2 obcí, 387 obyv. Ctětín (261), Nabočany (126)
+- ORP Přelouč: 3 obcí, 378 obyv. Jedousov (171), Sovolusky (118), Bukovina u Přelouče (89)
+- ORP Moravská Třebová: 1 obcí, 348 obyv. Útěchov (348)
+- ORP Pardubice: 1 obcí, 106 obyv. Plch (106)
 
 ### Kraj Vysočina: 29 obcí, 4 521 obyvatel
 
@@ -181,28 +173,28 @@ Seřazeno podle počtu obyvatel bez dat, u každého ORP největší obce.
 - ORP Bystřice nad Pernštejnem: 1 obcí, 98 obyv. Velké Tresné (98)
 - ORP Žďár nad Sázavou: 1 obcí, 58 obyv. Kyjov (58)
 
-### Jihomoravský kraj: 644 obcí, 774 829 obyvatel
+### Jihomoravský kraj: 416 obcí, 553 122 obyvatel
 
-- ORP Znojmo: 104 obcí, 85 572 obyv. Znojmo (33 989), Hrušovany nad Jevišovkou (3 354), Dobšice (2 225), Nový Šaldorf-Sedlešovice (1 871), Šanov (1 729), Suchohrdly (1 431), Tasovice (1 429), Vrbovec (1 292), Únanov (1 282), Jaroslavice (1 244), Blížkovice (1 204), Jevišovice (1 156) a dalších 92
-- ORP Šlapanice: 39 obcí, 72 496 obyv. Šlapanice (7 940), Modřice (5 673), Bílovice nad Svitavou (3 690), Moravany (3 607), Újezd u Brna (3 422), Střelice (3 249), Ořechov (2 936), Mokrá-Horákov (2 897), Sokolnice (2 515), Pozořice (2 424), Troubsko (2 394), Želešice (2 005) a dalších 27
+- ORP Šlapanice: 38 obcí, 71 574 obyv. Šlapanice (7 940), Modřice (5 673), Bílovice nad Svitavou (3 690), Moravany (3 607), Újezd u Brna (3 422), Střelice (3 249), Ořechov (2 936), Mokrá-Horákov (2 897), Sokolnice (2 515), Pozořice (2 424), Troubsko (2 394), Želešice (2 005) a dalších 26
+- ORP Znojmo: 46 obcí, 60 068 obyv. Znojmo (33 989), Dobšice (2 225), Nový Šaldorf-Sedlešovice (1 871), Suchohrdly (1 431), Vrbovec (1 292), Únanov (1 282), Blížkovice (1 204), Jevišovice (1 156), Višňové (1 077), Strachotice (1 031), Dyjákovice (932), Prosiměřice (867) a dalších 34
 - ORP Břeclav: 17 obcí, 57 362 obyv. Břeclav (24 583), Velké Bílovice (3 862), Lanžhot (3 625), Valtice (3 568), Podivín (2 912), Moravská Nová Ves (2 690), Rakvice (2 247), Tvrdonice (2 075), Kostice (1 861), Hrušky (1 652), Zaječí (1 583), Moravský Žižkov (1 521) a dalších 5
 - ORP Blansko: 42 obcí, 56 465 obyv. Blansko (19 900), Adamov (4 564), Rájec-Jestřebí (3 740), Jedovnice (2 947), Černá Hora (2 124), Lipůvka (1 516), Ráječko (1 462), Doubravice nad Svitavou (1 294), Bořitov (1 290), Lipovec (1 197), Ostrov u Macochy (1 091), Olomučany (1 085) a dalších 30
-- ORP Hodonín: 17 obcí, 55 149 obyv. Hodonín (23 344), Dubňany (6 179), Mutěnice (3 735), Rohatec (3 446), Dolní Bojanovice (3 050), Lužice (2 911), Čejkovice (2 360), Prušánky (2 167), Mikulčice (1 968), Petrov (1 302), Čejč (1 259), Sudoměřice (1 247) a dalších 5
-- ORP Vyškov: 42 obcí, 53 770 obyv. Vyškov (20 664), Rousínov (5 948), Ivanovice na Hané (2 996), Drnovice (2 403), Pustiměř (1 929), Račice-Pístovice (1 369), Švábenice (1 052), Luleč (997), Bohdalice-Pavlovice (973), Habrovany (933), Nemojany (912), Komořany (781) a dalších 30
-- ORP Boskovice: 71 obcí, 52 948 obyv. Boskovice (12 457), Letovice (7 071), Velké Opatovice (3 410), Kunštát (2 946), Lysice (1 970), Svitávka (1 965), Olešnice (1 610), Drnovice (1 395), Knínice (979), Žďárná (828), Šebetov (826), Sebranice (705) a dalších 59
-- ORP Kyjov: 39 obcí, 42 724 obyv. Vracov (4 528), Bzenec (4 525), Svatobořice-Mistřín (3 557), Ždánice (2 549), Šardice (2 162), Vacenovice (2 156), Hovorany (2 155), Milotice (1 884), Dambořice (1 566), Žarošice (1 117), Domanín (1 017), Vlkoš (1 007) a dalších 27
-- ORP Hustopeče: 28 obcí, 37 583 obyv. Hustopeče (6 391), Velké Pavlovice (3 112), Klobouky u Brna (2 471), Šitbořice (2 124), Kobylí (1 961), Velké Němčice (1 886), Šakvice (1 595), Bořetice (1 411), Křepice (1 330), Krumvíř (1 297), Uherčice (1 127), Vrbice (1 098) a dalších 16
-- ORP Židlochovice: 24 obcí, 34 625 obyv. Rajhrad (4 113), Židlochovice (3 662), Hrušovany u Brna (3 545), Blučina (2 252), Syrovice (2 126), Měnín (1 902), Žabčice (1 665), Rajhradice (1 595), Holasice (1 422), Nosislav (1 375), Těšany (1 299), Vojkovice (1 186) a dalších 12
-- ORP Tišnov: 57 obcí, 32 321 obyv. Tišnov (9 270), Drásov (2 101), Lomnice (1 470), Předklášteří (1 464), Dolní Loučky (1 301), Nedvědice (1 268), Deblín (1 131), Malhostovice (1 017), Doubravník (842), Lažánky (805), Sentice (678), Hradčany (677) a dalších 45
-- ORP Veselí nad Moravou: 19 obcí, 28 468 obyv. Veselí nad Moravou (10 574), Vnorovy (2 914), Velká nad Veličkou (2 778), Blatnice pod Svatým Antonínkem (1 870), Lipov (1 394), Hroznová Lhota (1 153), Kněždub (1 044), Louka (921), Tvarožná Lhota (921), Radějov (845), Javorník (654), Nová Lhota (610) a dalších 7
+- ORP Vyškov: 40 obcí, 52 978 obyv. Vyškov (20 664), Rousínov (5 948), Ivanovice na Hané (2 996), Drnovice (2 403), Pustiměř (1 929), Račice-Pístovice (1 369), Švábenice (1 052), Luleč (997), Bohdalice-Pavlovice (973), Habrovany (933), Nemojany (912), Komořany (781) a dalších 28
+- ORP Židlochovice: 23 obcí, 33 944 obyv. Rajhrad (4 113), Židlochovice (3 662), Hrušovany u Brna (3 545), Blučina (2 252), Syrovice (2 126), Měnín (1 902), Žabčice (1 665), Rajhradice (1 595), Holasice (1 422), Nosislav (1 375), Těšany (1 299), Vojkovice (1 186) a dalších 11
+- ORP Tišnov: 56 obcí, 30 851 obyv. Tišnov (9 270), Drásov (2 101), Předklášteří (1 464), Dolní Loučky (1 301), Nedvědice (1 268), Deblín (1 131), Malhostovice (1 017), Doubravník (842), Lažánky (805), Sentice (678), Hradčany (677), Železné (628) a dalších 44
+- ORP Hodonín: 5 obcí, 27 933 obyv. Hodonín (23 344), Mikulčice (1 968), Sudoměřice (1 247), Starý Poddvorov (921), Josefov (453)
 - ORP Rosice: 24 obcí, 27 329 obyv. Rosice (6 825), Zbýšov (3 707), Zastávka (2 483), Říčany (2 153), Zbraslav (1 313), Tetčice (1 156), Veverské Knínice (975), Ostrovačice (849), Zakřany (817), Babice u Rosic (798), Vysoké Popovice (763), Domašov (720) a dalších 12
-- ORP Slavkov u Brna: 18 obcí, 25 410 obyv. Slavkov u Brna (7 294), Křenovice (2 083), Holubice (1 929), Otnice (1 571), Bošovice (1 258), Velešovice (1 209), Hodějice (1 135), Šaratice (1 064), Heršpice (953), Hostěrádky-Rešov (828), Nížkovice (817), Němčany (799) a dalších 6
-- ORP Ivančice: 16 obcí, 24 798 obyv. Ivančice (9 905), Oslavany (4 844), Dolní Kounice (2 635), Neslovice (1 008), Moravské Bránice (983), Nové Bránice (946), Nová Ves (847), Ketkovice (633), Mělčany (514), Čučice (450), Kupařovice (393), Senorady (393) a dalších 4
+- ORP Slavkov u Brna: 17 obcí, 24 675 obyv. Slavkov u Brna (7 294), Křenovice (2 083), Holubice (1 929), Otnice (1 571), Bošovice (1 258), Velešovice (1 209), Hodějice (1 135), Šaratice (1 064), Heršpice (953), Hostěrádky-Rešov (828), Nížkovice (817), Němčany (799) a dalších 5
+- ORP Ivančice: 14 obcí, 23 891 obyv. Ivančice (9 905), Oslavany (4 844), Dolní Kounice (2 635), Neslovice (1 008), Moravské Bránice (983), Nové Bránice (946), Nová Ves (847), Ketkovice (633), Čučice (450), Senorady (393), Trboušany (389), Němčičky (359) a dalších 2
 - ORP Moravský Krumlov: 33 obcí, 22 721 obyv. Moravský Krumlov (5 635), Miroslav (3 019), Hostěradice (1 671), Olbramovice (1 177), Vedrovice (914), Jezeřany-Maršovice (782), Bohutice (693), Vémyslice (687), Tavíkovice (552), Suchohrdly u Miroslavi (539), Skalice (518), Trstěnice (514) a dalších 21
 - ORP Kuřim: 7 obcí, 20 275 obyv. Kuřim (11 499), Veverská Bítýška (3 521), Čebín (1 948), Moravské Knínice (1 151), Chudčice (1 014), Jinačovice (792), Hvozdec (350)
-- ORP Mikulov: 16 obcí, 18 999 obyv. Mikulov (7 552), Březí (1 840), Dolní Dunajovice (1 730), Novosedly (1 357), Sedlec (839), Perná (795), Jevišovka (662), Pavlov (618), Brod nad Dyjí (555), Horní Věstonice (526), Milovice (512), Klentnice (465) a dalších 4
-- ORP Pohořelice: 13 obcí, 16 579 obyv. Pohořelice (6 299), Vranovice (2 426), Přibice (1 123), Vlasatice (978), Malešovice (873), Pasohlávky (781), Troskotovice (778), Ivaň (756), Cvrčovice (676), Branišovice (641), Loděnice (635), Šumice (325) a dalších 1
+- ORP Kyjov: 12 obcí, 10 442 obyv. Milotice (1 884), Dambořice (1 566), Žarošice (1 117), Domanín (1 017), Kostelec (863), Násedlovice (847), Sobůlky (844), Moravany (700), Vřesovice (586), Skoronice (493), Syrovín (370), Skalka (155)
 - ORP Bučovice: 18 obcí, 9 235 obyv. Letonice (1 385), Nesovice (1 130), Dražovice (965), Brankovice (904), Křižanovice (826), Mouřínov (507), Nemotice (429), Nevojice (420), Milonice (376), Kojátky (360), Nemochovice (334), Snovídky (316) a dalších 6
+- ORP Hustopeče: 2 obcí, 7 220 obyv. Hustopeče (6 391), Borkovany (829)
+- ORP Pohořelice: 2 obcí, 6 624 obyv. Pohořelice (6 299), Šumice (325)
+- ORP Boskovice: 15 obcí, 5 519 obyv. Svitávka (1 965), Šebetov (826), Sebranice (705), Sulíkov (305), Prostřední Poříčí (268), Pamětice (260), Světlá (256), Vážany (249), Stvolová (165), Lhota u Lysic (134), Petrov (126), Žerůtky (79) a dalších 3
+- ORP Mikulov: 3 obcí, 3 234 obyv. Březí (1 840), Sedlec (839), Brod nad Dyjí (555)
+- ORP Veselí nad Moravou: 2 obcí, 782 obyv. Nová Lhota (610), Malá Vrbka (172)
 
 ### Olomoucký kraj: 390 obcí, 506 952 obyvatel
 

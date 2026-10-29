@@ -16,6 +16,7 @@ import datetime as dt
 import json
 import os
 import sys
+import tempfile
 import time
 import urllib.parse
 import urllib.request
@@ -83,8 +84,19 @@ def main():
                 done += 1
                 if done % 500 == 0:
                     print(f'  {done}/{len(kody)}', flush=True)
+    def save():
+        with open(path, 'w', encoding='utf-8') as f:
+            f.write('{\n "stav": ' + json.dumps(dt.date.today().isoformat()) + ',\n')
+            f.write(' "popis": "Evidence NGÚP: kód obce -> [p platný plán | x bez vydaného plánu | ? neznámo, název plánu, účinnost, počet změn po něm, poslední změna, pořizuje se nový plán nebo změna, web uvedený u plánu]",\n')
+            f.write(' "obce": {\n' + ',\n'.join(f'  "{k}": ' + json.dumps(out[k], ensure_ascii=False, separators=(',', ':')) for k in kody) + '\n }\n}\n')
+
+    if not args.recheck:
+        save()
     # Portál při souběžných dotazech občas vrátí prázdný seznam. Obce bez plánu a s chybou proto ověřit znovu postupně.
-    again = [k for k in kody if out.get(k, ['?'])[0] in ('x', '?')]
+    # Postup se ukládá průběžně (a potvrzené obce bez plánu do dočasného souboru), takže přerušený běh pokračuje.
+    done_f = os.path.join(tempfile.gettempdir(), 'stav_up_overeno.json')
+    confirmed = set(json.load(open(done_f))) if args.recheck and os.path.exists(done_f) else set()
+    again = [k for k in kody if out.get(k, ['?'])[0] in ('x', '?') and k not in confirmed]
     print(f'Postupné ověření {len(again)} obcí bez plánu nebo s chybou', flush=True)
     for i, k in enumerate(again):
         for attempt in range(2):
@@ -96,17 +108,19 @@ def main():
                 break
             time.sleep(1.0)
         out[k] = r
+        if r[0] == 'x':
+            confirmed.add(k)
         time.sleep(0.3)
-        if (i + 1) % 100 == 0:
+        if (i + 1) % 20 == 0:
+            save()
+            json.dump(sorted(confirmed), open(done_f, 'w'))
             print(f'  {i + 1}/{len(again)}', flush=True)
+    save()
+    json.dump(sorted(confirmed), open(done_f, 'w'))
     cnt = {}
     for v in out.values():
         cnt[v[0]] = cnt.get(v[0], 0) + 1
     print('stav:', cnt)
-    with open(path, 'w', encoding='utf-8') as f:
-        f.write('{\n "stav": ' + json.dumps(dt.date.today().isoformat()) + ',\n')
-        f.write(' "popis": "Evidence NGÚP: kód obce -> [p platný plán | x bez vydaného plánu | ? neznámo, název plánu, účinnost, počet změn po něm, poslední změna, pořizuje se nový plán nebo změna, web uvedený u plánu]",\n')
-        f.write(' "obce": {\n' + ',\n'.join(f'  "{k}": ' + json.dumps(out[k], ensure_ascii=False, separators=(',', ':')) for k in kody) + '\n }\n}\n')
 
 
 if __name__ == '__main__':

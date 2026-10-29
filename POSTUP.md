@@ -6,37 +6,37 @@ Zadání (29. 10. 2026, přednáška): Fáze 1 pokrytí (všech 14 krajských m�
 
 ## Hotovo
 
-- [x] Drobnosti v `main` se `[skip netlify]`: PR #1 mergnutý a větev smazaná, týdenní kontrola zdrojů zrušená, v CLAUDE.md Postup práce, issue #2 zavřené.
-- [x] Větev `prace`, POSTUP.md, screenshoty před (`docs/screenshots/pred`, počítač 1440 px a telefon 390 px).
-- [x] `data/obyvatele_2026.json`: počet obyvatel všech 6 258 obcí (ČSÚ, sada OBY02A, k 1. 1. 2026).
-- [x] `scripts/pokryti.py` → `data/pokryti.json` a `docs/pokryti.md`: u každé obce zdroj (n NGÚP, m město, k kraj s typem plochy, v kraj jen výkres, p PDF, - nic), ověřený dotazem na bod hlavní části obce. První běh: NGÚP 381, města 5, kraj s typem 1 048, kraj výkres 1 754, nic 3 070.
-- [x] `scripts/hranice.py` → `data/hranice_obci.json` (zjednodušené hranice obcí pro mapu pokrytí, 1,8 MB, gzip 625 KB).
-- [x] Appka: typ zdroje `wms` (ImageWMS nebo po dlaždicích, GetFeatureInfo JSON/XML/GML/HTML), `tilesPerObec` (dlaždice výkresu po obcích), `skip` (obce vynechané z krajské vrstvy), `obce.json` z buildu (zdroj podle obce a stav plánu), karta pro obce bez dat (má/nemá platný ÚP, odkazy), karta při výpadku zdroje (Zkusit znovu).
-- [x] Zdroje KHK v konfiguraci: Hradec Králové (ÚP 2026, dlaždice města), Jičín (po změně č. 3), výkresy T-MAPY 22 obcí (Trutnov, Dvůr Králové, obce ORP Trutnov), bezešvá WMS kraje u 297 obcí s aktuální verzí (151 obcí vynecháno: neaktuální, nejasné, bez výkresu, NGÚP, jiný zdroj).
+- [x] Drobnosti v `main` se `[skip netlify]`: PR #1 mergnutý, týdenní kontrola zdrojů zrušená, Postup práce v CLAUDE.md, issue #2 zavřené.
+- [x] Větev `prace`, POSTUP.md, screenshoty před (`docs/screenshots/pred`).
+- [x] Data: `data/obyvatele_2026.json` (ČSÚ), `scripts/pokryti.py` → `data/pokryti.json` + `docs/pokryti.md`, `scripts/stav_up.py` → `data/stav_up.json` (evidence NGÚP), `scripts/hranice.py` → `data/hranice_obci.json`.
+- [x] Appka, nové typy zdrojů: `wms` (obraz nebo dlaždice, `rawCommas`, GetFeatureInfo JSON/XML/GML/HTML, `<Attribute Name>`), `tilesPerObec` (výkres po obcích v S-JTSK i Web Mercatoru), `tilecache` (OpenLayers 2 TileCache, Prostějov), dotaz na plochu přes WFS (`info.kind: "wfs"`), `skip` a `only` (vynechané nebo vyjmenované obce), `versionNote`, odkaz na legendu z `<img src>`.
+- [x] Appka, karta: zdroj podle obce z `obce.json`, karta pro obce bez dat (má/nemá platný ÚP podle NGÚP, odkazy), karta při výpadku zdroje (Zkusit znovu), koordinační výkres pojmenovaný.
+- [x] KHK: Hradec Králové (ÚP 2026), Jičín, T-MAPY 22 obcí (Trutnov, Dvůr Králové, ORP Trutnov), bezešvá WMS kraje u 297 obcí s aktuální verzí. Ověřeno kliknutím (HK, Jičín, Trutnov, Dvůr Králové, Náchod, Albrechtice).
+- [x] Pardubický kraj: Pardubice (nový ÚP od 1. 8. 2026), Marushka ORP Svitavy a Polička (47), GObec ORP Vysoké Mýto a Žamberk (61, Žamberk jen koordinační výkresy), ORP Chrudim vektory s typem plochy (56), krajská bezešvá mapa (259, verze neznámá, poznámka v kartě). Ověřeno kliknutím (8 míst).
+- [x] JMK: T-MAPY Hodonín, Kyjov, Mikulov, Veselí (69), GObec (65), ArcGIS Online Hustopeče (26), ÚAP Pohořelice a Znojmo (68), vše jen obce s ověřeně aktuální verzí.
+- [x] Olomoucký a Zlínský kraj v konfiguraci: Prostějov, Přerov, Jeseník, Mohelnice, T-MAPY ORP Šumperk, Zábřeh, Hranice (s WFS typem plochy), Vsetín, Val. Meziříčí, Uh. Hradiště, Uh. Brod, JÚAP mozaika Zlínského kraje (306 obcí).
 
 ## Rozdělané
 
-- `scripts/stav_up.py` → `data/stav_up.json`: stav ÚP každé obce z API portálu NGÚP (`/o/rest/ais/dup/byTerritory/v2`). Po doběhnutí spustit `python scripts/stav_up.py --recheck` (API při souběhu vrací prázdné seznamy).
-- Přepočet pokrytí pro KHK a Prahu: `python scripts/pokryti.py --kraj 86 --kraj 19`.
-- Ověřit KHK kliknutím (scratchpad `verify.js`, místa HK, Jičín, Trutnov, Dvůr Králové, Náchod, Albrechtice n. O.).
-- Průzkum (subagenti): Pardubický, JMK, Olomoucký, Zlínský kraj. KHK hotový.
+- Přepočet pokrytí OLK a ZLK (`python scripts/pokryti.py --kraj 124 --kraj 141`), pak kliknutím ověřit JMK, OLK, ZLK.
+- `python scripts/stav_up.py --recheck` (postupné ověření obcí bez plánu, ukládá průběžně; dočasný soubor `%TEMP%\stav_up_overeno.json`).
 
 ## Další kroky
 
-1. Napojit Pardubický, Zlínský (JÚAP WMS celého kraje), JMK (ORP Znojmo WMS, Břeclav ArcGIS), Olomoucký kraj.
-2. Díry v ostatních krajích podle `docs/pokryti.md` (Liberecký kraj má mozaiku jen u 50 z 215 obcí).
-3. Výkresy z PDF pro města bez služby (Rychnov n. K. a další, kde kraj má neaktuální verzi). Testovací PDF z MSK je vektorové bez textu: vlícovat přes katastr (korelace čar), chyba do 5 m.
-4. Fáze 2: mapa pokrytí (hranice_obci.json + obce.json), první dojem, mobil 390 px, 3 nápady, screenshoty po.
-5. Revize subagentem, build, smoke test, PR.
+1. Díry v ostatních krajích podle `docs/pokryti.md` (Liberecký 165 obcí, Středočeský 298, Plzeňský 198, Ústecký 97, Jihočeský 79): krajské a ORP služby.
+2. Výkresy z PDF pro města bez služby (Ústí nad Orlicí, Rychnov n. K., Broumov, Vrchlabí, Dobruška, Jaroměř, Holice, Moravská Třebová, Lanškroun, Česká Třebová, Kroměříž…).
+3. Fáze 2: mapa pokrytí (hranice_obci.json + obce.json, kategorie: jednotný standard, kraj, město a ORP, výkres z PDF, jen dokumenty, bez ÚP), první dojem, mobil 390 px, 3 nápady, screenshoty po.
+4. Revize subagentem, build, smoke test (jen místa, která projdou z GitHubu), PR.
 
 ## Rozhodnutí
 
 - Smoke test jen s místy, která projdou z GitHubu (STČ a MSK z ciziny neodpovídají).
-- Pokrytí se ověřuje u každé obce zvlášť, ne podle počtu v konfiguraci. Obec, kterou krajská mozaika nemá, dostane kartu se stavem plánu místo prázdného „Výkres územního plánu“.
-- Stav plánu (má/nemá platný ÚP) bere appka z předpočítaného `obce.json`, protože API NGÚP nemá CORS.
-- Bezešvá WMS KHK: portál kraje je oficiálně v odstávce (503), mapové služby ale odpovídají bez přihlášení. Použitá jen u obcí s aktuální verzí plánu (porovnáno s evidencí NGÚP), dlaždicově a v JPEG (PNG je u tohoto serveru 5× pomalejší). Riziko: služba může zmizet, karta pak řekne, že server neodpovídá.
-- KHK nemá veřejný zdroj s kódy ploch (ÚAP s plochami je za přihlášením), karta tam ukáže výkres a odkazy.
-- Olomoucký kraj: WMTS s ÚP je za heslem (i když zveřejněným), takže ho nepoužívám.
+- Pokrytí se ověřuje u každé obce zvlášť dotazem na bod hlavní části obce. Obec, kterou mozaika nemá, dostane kartu se stavem plánu.
+- Stav plánu bere appka z předpočítaného `obce.json` (API NGÚP nemá CORS). NGÚP se u některých měst zpožďuje (Ústí n. O., Hranice, Val. Meziříčí), karta proto uvádí datum evidence.
+- Bezešvá WMS KHK: portál kraje je oficiálně v odstávce (503), mapové služby odpovídají bez přihlášení. Jen obce s aktuální verzí, dlaždicově v JPEG (PNG 5× pomalejší).
+- Krajské mozaiky s neznámou verzí (Pardubický kraj, JÚAP Zlínský kraj) zapojené s poznámkou v kartě; ověřeně zastaralé obce vynechané. U ORP služeb jen obce s ověřeně aktuální verzí.
+- Koordinační výkresy (Žamberk, Kyjov, Hranice ORP) jen tam, kde hlavní výkres není; karta to říká.
+- Vynechané: Olomoucký kraj (WMTS za zveřejněným heslem, interní proxy portálu), Židlochovice (vrstvy po obcích nejasné), Břeclav, Kuřim, Čebín (zastaralé), Litomyšl ORP (verze neznámá, místo ní krajská mozaika), Malá Vrbka a Nová Lhota (potřebují více vrstev změn).
 
 ## Co beze mě nejde
 
@@ -44,6 +44,5 @@ Zadání (29. 10. 2026, přednáška): Fáze 1 pokrytí (všech 14 krajských m�
 
 ## Zjištění
 
-- NGÚP živě 29. 10. 2026: 381 obcí s jednotnými daty. Z Hradce, Pardubic a okresních měst KHK a Pardubického kraje má jednotná data jen Chrudim.
-- Hradec Králové: nový ÚP účinný od 13. 3. 2026, dlaždice `geoportal.mmhk.cz/.../thematic_up/hv2026`, legenda `hv2026_legenda.png`. Krajská WMS má u Hradce ještě starý ÚPM.
-- Pardubice: platí ÚP města Pardubice z roku 2001 s 21 změnami, nový ÚP se pořizuje.
+- Pokrytí po JMK: NGÚP 381, města 8, kraj s typem 1 104, výkres 2 669, nic 2 096 (z 6 258).
+- Hradec Králové: nový ÚP od 13. 3. 2026 (`thematic_up/hv2026`). Pardubice: nový ÚP od 1. 8. 2026 (Marushka téma 554), NGÚP ho zatím vede jako projednávaný.

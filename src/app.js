@@ -367,18 +367,31 @@
       });
     }
     if (L.kind === 'tiles3857') return new ol.source.XYZ({ url: L.url, maxZoom: L.maxZoom || 19, transition: dur(150) });
+    if (L.kind === 'tilecache') {
+      // TileCache z OpenLayers 2 (Naše mapy): dlaždice od levého dolního rohu `extent`, x a y v cestě po trojicích číslic
+      const pad = n => String(n).padStart(9, '0').replace(/^(\d{3})(\d{3})(\d{3})$/, '$1/$2/$3');
+      return new ol.source.XYZ({
+        projection: 'EPSG:5514', transition: dur(150),
+        tileGrid: new ol.tilegrid.TileGrid({ origin: [L.gridExtent[0], L.gridExtent[1]], resolutions: L.resolutions, tileSize: 256 }),
+        tileUrlFunction: tc => L.url.replace('{z}', String(tc[0]).padStart(2, '0')).replace('{x}', pad(tc[1])).replace('{y}', pad(-tc[2] - 1))
+      });
+    }
     if (L.kind === 'wms') {
       // WMS (Marushka, GObec, MapServer, ArcGIS WMS): obraz v S-JTSK OpenLayers přepočítá do mapy.
       // Pomalé servery po dlaždicích (`tiled`): mapa se dokresluje postupně a nečeká na jeden velký obraz.
       const params = Object.assign({ FORMAT: 'image/png', TRANSPARENT: true, VERSION: L.version || '1.3.0', STYLES: '' }, L.params || {});
       const proj = L.crs || 'EPSG:3857';
+      // dlouhý seznam vrstev (JÚAP: 165 id): čárky nekódovat, jinak adresa přeleze limit 2048 znaků serveru IIS
+      const raw = src => (L.rawCommas ? src.replace(/%2C/gi, ',') : src);
       if (L.tiled) {
         const grid = proj === 'EPSG:5514'
           ? new ol.tilegrid.TileGrid({ origin: [-950000, -900000], resolutions: Array.from({ length: 13 }, (_, i) => 1024 / Math.pow(2, i)), tileSize: L.tileSize || 256 })
-          : undefined;
-        return new ol.source.TileWMS({ url: L.url, projection: proj, tileGrid: grid, params, transition: dur(150), serverType: L.serverType });
+          : (L.tileSize ? ol.tilegrid.createXYZ({ tileSize: L.tileSize, maxZoom: 20 }) : undefined);
+        return new ol.source.TileWMS({ url: L.url, projection: proj, tileGrid: grid, params, transition: dur(150), serverType: L.serverType,
+          tileLoadFunction: (tile, src) => { tile.getImage().src = raw(src); } });
       }
-      return new ol.source.ImageWMS({ url: L.url, ratio: 1.15, projection: proj, serverType: L.serverType, params });
+      return new ol.source.ImageWMS({ url: L.url, ratio: 1.15, projection: proj, serverType: L.serverType, params, hidpi: L.hidpi !== false,
+        imageLoadFunction: (img, src) => { img.getImage().src = raw(src); } });
     }
     if (L.kind === 'arcgisExport' || L.kind === 'arcgisImage') {
       // OpenLayers 10 posílá parametry malými písmeny (format, dpi, ...), tak je přepisujeme stejně
@@ -500,7 +513,7 @@
     }
     const src = regionalSource(L);
     if (!src) return;
-    const Ctor = L.kind.indexOf('tiles') === 0 || (L.kind === 'wms' && L.tiled) ? ol.layer.Tile : ol.layer.Image;
+    const Ctor = L.kind.indexOf('tile') === 0 || (L.kind === 'wms' && L.tiled) ? ol.layer.Tile : ol.layer.Image;
     const layer = new Ctor({
       zIndex: 9, minZoom: L.minZoom || REG_MINZOOM, opacity: 0.66, source: src, extent: L.extent3857 || undefined,
       className: 'ol-layer up-reg up-reg-' + L.key + (L.std ? ' up-reg-std' : '')
@@ -734,7 +747,7 @@
   async function loadRegVector(L, src, extent, resolution) {
     const V = L.vector, names = await namesFor(Object.assign({ url: L.url, cors: L.cors }, V));
     const env = encodeURIComponent(JSON.stringify({ xmin: extent[0], ymin: extent[1], xmax: extent[2], ymax: extent[3], spatialReference: { wkid: 3857 } }));
-    const fields = [...new Set([L.idField, V.code, V.status, V.namesFrom].filter(Boolean))].join(',');
+    const fields = [...new Set([L.idField, V.code, V.status, V.namesFrom, V.name].filter(Boolean))].join(',');
     const feats = [];
     for (let off = 0, g = 0; g < 10; g++) {
       const d = await getJSON(L, `${L.url}/query?f=json&where=1%3D1&geometry=${env}&geometryType=esriGeometryEnvelope&inSR=3857&spatialRel=esriSpatialRelIntersects&outFields=${encodeURIComponent(fields)}&returnGeometry=true&outSR=3857&maxAllowableOffset=${Math.max(0.2, resolution / 3).toFixed(2)}&geometryPrecision=1&resultOffset=${off}&resultRecordCount=1000`, 25000);
@@ -744,7 +757,7 @@
         if (!r.geometry) return;
         const a = r.attributes || {};
         let geom; try { geom = esri.readGeometry(Object.assign({ spatialReference: { wkid: 3857 } }, r.geometry)); } catch (_) { return; }
-        const name = names && V.namesFrom ? names.get(String(a[V.namesFrom])) : null;
+        const name = (V.name && nul(a[V.name])) || (names && V.namesFrom ? names.get(String(a[V.namesFrom])) : null);
         const f = new ol.Feature(geom);
         if (L.idField && a[L.idField] != null) f.setId(L.key + ':' + a[L.idField]);
         f.set('typ', classify(a[V.code], name, V.codes || 'minis'));
@@ -799,6 +812,27 @@
       return parseFeatureInfo(txt, spec.format || 'application/json');
     } finally { clearTimeout(t); }
   }
+  // WFS GetFeature (T-MAPY: plochy s kódem a názvem): malý obdélník kolem bodu, pak jen plochy, které bod opravdu obsahují
+  async function wfsQuery(spec, coord) {
+    const crs = spec.crs || 'EPSG:5514';
+    const p = ol.proj.transform(coord, 'EPSG:3857', crs);
+    const v2 = (spec.version || '2.0.0').indexOf('2.') === 0;
+    const bbox = [p[0] - 1, p[1] - 1, p[0] + 1, p[1] + 1].map(v => v.toFixed(2)).join(',') + ',' + (v2 ? 'urn:ogc:def:crs:EPSG::' + crs.split(':')[1] : crs);
+    const q = { SERVICE: 'WFS', VERSION: spec.version || '2.0.0', REQUEST: 'GetFeature', BBOX: bbox, OUTPUTFORMAT: spec.format || 'application/json; charset=utf-8' };
+    q[v2 ? 'TYPENAMES' : 'TYPENAME'] = spec.typename; q[v2 ? 'COUNT' : 'MAXFEATURES'] = 20;
+    if (!v2) q.SRSNAME = crs;
+    const url = spec.url + (spec.url.indexOf('?') >= 0 ? '&' : '?') + Object.entries(q).map(([k, v]) => k + '=' + encodeURIComponent(v)).join('&');
+    const ctl = new AbortController(); const t = setTimeout(() => ctl.abort(), spec.timeout || 20000);
+    try {
+      const r = await fetch(url, { signal: ctl.signal });
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      const j = await r.json();
+      const fmt = new ol.format.GeoJSON();
+      return (j.features || []).filter(f => {
+        try { const g = fmt.readGeometry(f.geometry, { dataProjection: crs, featureProjection: crs }); return !g || g.intersectsCoordinate(p); } catch (_) { return true; }
+      }).map(f => Object.assign({}, f.properties || {}));
+    } finally { clearTimeout(t); }
+  }
   function parseFeatureInfo(txt, fmt) {
     if (/json/i.test(fmt)) {
       const j = JSON.parse(txt);
@@ -827,7 +861,8 @@
       const kids = [...el.children];
       if (kids.length < 2 || !kids.every(k => !k.children.length)) continue;
       if (kids.some(k => /^(gml:)?(boundedBy|coordinates|posList|pos)$/i.test(k.tagName))) continue;
-      const a = {}; kids.forEach(k => { a[k.localName] = k.textContent.trim(); });
+      // <Attribute Name="NAZEV">…</Attribute> (HYDROSOFT WebMap) má název v atributu, jinak název prvku
+      const a = {}; kids.forEach(k => { a[k.getAttribute('Name') || k.getAttribute('name') || k.localName] = k.textContent.trim(); });
       [...el.attributes].forEach(x => { if (!/^(gml:)?id$|^fid$/i.test(x.name)) a[x.localName] = x.value; });
       out.push(a);
     }
@@ -1163,9 +1198,13 @@
   }
   async function identifyRegional(coord, cfg, R) {
     const perT = cfg.layers.find(L => L.kind === 'tilesPerObec');
+    let perTitle = null;
     if (perT) {
       const t = R && R.obec ? perT.obce[String(R.obec.kod)] : null;
-      return t ? { cfg, hit: null, doc: { title: t[1] } } : { none: true };
+      if (!t) return { none: true };
+      perTitle = t[1];
+      // výkres po obcích bez dotazu na plochu; s WFS (T-MAPY) pokračuje dotazem níž
+      if (!(cfg.info || []).length) return { cfg, hit: null, doc: { title: t[1] } };
     }
     const per = cfg.layers.find(L => L.kind === 'arcgisPerObec');
     if (per) {
@@ -1177,7 +1216,7 @@
     const infos = cfg.info || [], docs = cfg.doc || [];
     const fieldsOf = (F, inf) => (inf && (inf.rulesFields) ? ['*'] : [...new Set(Object.values(F).concat(inf && inf.namesFrom ? [inf.namesFrom] : [], ((inf && inf.extra) || []).map(x => x[1])).filter(Boolean))]);
     const [hits, docHits, nameMaps] = await Promise.all([
-      Promise.all(infos.map(inf => (inf.kind === 'wms' ? wmsQuery(inf, coord) : regionalQuery(inf.url, ll, fieldsOf(inf.fields, inf), inf.timeout, true, inf)).catch(() => null))),
+      Promise.all(infos.map(inf => (inf.kind === 'wms' ? wmsQuery(inf, coord) : inf.kind === 'wfs' ? wfsQuery(inf, coord) : regionalQuery(inf.url, ll, fieldsOf(inf.fields, inf), inf.timeout, true, inf)).catch(() => null))),
       Promise.all(docs.map(dc => (dc.kind === 'wms' ? wmsQuery(dc, coord) : regionalQuery(dc.url, ll, fieldsOf(dc.fields), dc.timeout, false, dc)).catch(() => null))),
       Promise.all(infos.map(inf => namesFor(inf)))
     ]);
@@ -1202,6 +1241,7 @@
       }
     }
     const doc = Object.assign({}, hit ? hit.doc : {});
+    if (perTitle && !doc.title) doc.title = perTitle;
     docs.forEach((dc, i) => {
       const a = (docHits[i] || [])[0]; if (!a) return;
       const v = k => pickVal(a, dc.fields, k);
@@ -1424,7 +1464,12 @@
     let lead;
     if (pl && pl.regional) lead = `Obec zatím nemá plán v jednotných datech. Plochu jsme vzali ${esc(r.cfg.from)} a její význam převedli do jednotné legendy, proto berte výklad jako orientační.`;
     else if (r.hit) lead = `Obec zatím nemá plán v jednotných datech. Plochu jsme našli ${esc(r.cfg.from)}, ale její typ neumíme spolehlivě převést do jednotné legendy.`;
-    else if (r.cfg.drawing) lead = r.cfg.lead ? esc(r.cfg.lead) : `Obec zatím nemá plán v jednotných datech, takže ho neumíme převést do lidské řeči. V mapě vidíte hlavní výkres jejího územního plánu ${esc(r.cfg.from)}. Barvy a zkratky čtěte podle legendy obce.`;
+    else if (r.cfg.drawing) {
+      // obec může mít zveřejněný jen koordinační výkres (plochy i limity, závazný je ale hlavní výkres)
+      const kov = /koordinační/i.test(d.title || '');
+      lead = r.cfg.lead ? esc(r.cfg.lead) : `Obec zatím nemá plán v jednotných datech, takže ho neumíme převést do lidské řeči. V mapě vidíte ${kov ? 'koordinační' : 'hlavní'} výkres jejího územního plánu ${esc(r.cfg.from)}. Barvy a zkratky čtěte podle legendy obce.`
+        + (kov ? ' Koordinační výkres ukazuje kromě ploch i limity a záměry, závazný je hlavní výkres.' : '');
+    }
     else lead = `Obec zatím nemá plán v jednotných datech a ${esc(r.cfg.from)} jsme pro toto místo plochu nenašli.`;
     let html = `<p${pl && pl.regional ? '' : ' class="meaning"'}>${lead}</p>`;
     // zdroj, u kterého neznáme verzi plánu (krajská mozaika bez data a čísla změny)

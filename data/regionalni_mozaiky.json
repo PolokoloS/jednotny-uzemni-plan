@@ -871,6 +871,959 @@
   ]
  },
  {
+  "kraj": 94,
+  "obec": 555134,
+  "searchText": "Pardubice (Pardubice)",
+  "name": "Územní plán Pardubice (2026)",
+  "from": "z hlavního výkresu nového Územního plánu Pardubice, účinného od 1. 8. 2026",
+  "obce": 1,
+  "attribution": "ÚP Pardubice © Statutární město Pardubice",
+  "drawing": true,
+  "lead": "Pardubice mají od 1. 8. 2026 nový územní plán. V mapě vidíte jeho hlavní výkres. Plochy a zkratky čtěte podle legendy v textové části.",
+  "links": [
+   {
+    "label": "Územní plán Pardubice",
+    "url": "https://pardubice.eu/uzemni-plan-pardubice"
+   },
+   {
+    "label": "Textová část ÚP (PDF)",
+    "url": "https://mapy.pardubice.eu/MarushkaGP4/docs/UP_NOVY_legendy_vykresu/TEXT_CAST.pdf"
+   }
+  ],
+  "layers": [
+   {
+    "kind": "tiles5514",
+    "url": "https://mapy.pardubice.eu/MarushkaGP4/handlers/wmts.ashx?ThemeID=554&service=WMTS&request=GetTile&TileMatrixSet=551306D0&TileMatrix=Zoom_{z}&TileRow={y}&TileCol={x}",
+    "origin": [
+     -931496,
+     -819102
+    ],
+    "resolutions": [
+     2048.0,
+     1024.0,
+     512.0,
+     256.0,
+     128.0,
+     64.0,
+     32.0,
+     16.0,
+     8.0,
+     4.0,
+     2.0,
+     1.0,
+     0.5,
+     0.25,
+     0.125,
+     0.0625,
+     0.03125,
+     0.015625,
+     0.0078125,
+     0.00390625
+    ],
+    "extent": [
+     -658128,
+     -1066535,
+     -639342,
+     -1055972
+    ]
+   }
+  ]
+ },
+ {
+  "kraj": 94,
+  "name": "výkresy územních plánů obcí v ORP Svitavy a Polička",
+  "from": "z hlavních výkresů územních plánů obcí, které zveřejňují ORP Svitavy a Polička",
+  "obce": 48,
+  "attribution": "Výkresy ÚP obcí © Město Svitavy, Město Polička",
+  "drawing": true,
+  "layers": [
+   {
+    "kind": "tilesPerObec",
+    "minZoom": 12,
+    "origin": [
+     -931496,
+     -819102
+    ],
+    "resolutions": [
+     2048.0,
+     1024.0,
+     512.0,
+     256.0,
+     128.0,
+     64.0,
+     32.0,
+     16.0,
+     8.0,
+     4.0,
+     2.0,
+     1.0,
+     0.5,
+     0.25,
+     0.125,
+     0.0625,
+     0.03125,
+     0.015625,
+     0.0078125,
+     0.00390625
+    ],
+    "tileSize": 256,
+    "extent": [
+     -630765,
+     -1117681,
+     -593049,
+     -1085669
+    ],
+    "obce": {
+     "505145": [
+      "https://www.svitavy.cz/marushka_ver/handlers/wmts.ashx?ThemeID=10&service=WMTS&request=GetTile&TileMatrixSet=B6A5F9AC&TileMatrix=Zoom_{z}&TileRow={y}&TileCol={x}",
+      "Územní plán Březová nad Svitavou, úplné znění po vydání změny č. 3"
+     ],
+     "572195": [
+      "https://www.svitavy.cz/marushka_ver/handlers/wmts.ashx?ThemeID=10&service=WMTS&request=GetTile&TileMatrixSet=E17EEA7A&TileMatrix=Zoom_{z}&TileRow={y}&TileCol={x}",
+      "Územní plán Želivsko"
+     ],
+     "572560": [
+      "https://www.svitavy.cz/marushka_ver/handlers/wmts.ashx?ThemeID=10&service=WMTS&request=GetTile&TileMatrixSet=7D1C9E57&TileMatrix=Zoom_{z}&TileRow={y}&TileCol={x}",
+      "Územní plán Banín"
+     ],
+     "572586": [
+      "https://www.svitavy.cz/marushka_ver/handlers/wmts.ashx?ThemeID=10&service=WMTS&request=GetTile&TileMatrixSet=5491F2D2&TileMatrix=Zoom_{z}&TileRow={y}&TileCol={x}",
+      "Územní plán Bělá nad Svitavou, úplné znění po vydání změny č. 1"
+     ],
+     "572594": [
+      "https://www.svitavy.cz/marushka_ver/handlers/wmts.ashx?ThemeID=10&service=WMTS&request=GetTile&TileMatrixSet=18D57E36&TileMatrix=Zoom_{z}&TileRow={y}&TileCol={x}",
+      "Územní plán Kukle"
+     ],
+     "572691": [
+      "https://www.svitavy.cz/marushka_ver/handlers/wmts.ashx?ThemeID=10&service=WMTS&request=GetTile&TileMatrixSet=FA340FD0&TileMatrix=Zoom_{z}&TileRow={y}&TileCol={x}",
+      "Územní plán Hradec nad Svitavou, úplné znění po vydání změny č. 1"
+     ],
+     "572713": [
+      "https://www.svitavy.cz/marushka_ver/handlers/wmts.ashx?ThemeID=10&service=WMTS&request=GetTile&TileMatrixSet=3D8A1596&TileMatrix=Zoom_{z}&TileRow={y}&TileCol={x}",
+      "Územní plán Javorník"
+     ],
+     "572721": [
+      "https://www.svitavy.cz/marushka_ver/handlers/wmts.ashx?ThemeID=10&service=WMTS&request=GetTile&TileMatrixSet=C2AF5075&TileMatrix=Zoom_{z}&TileRow={y}&TileCol={x}",
+      "Územní plán Opatovec, úplné znění po vydání změny č. 2"
+     ],
+     "572748": [
+      "https://www.svitavy.cz/marushka_ver/handlers/wmts.ashx?ThemeID=10&service=WMTS&request=GetTile&TileMatrixSet=8FF73E9D&TileMatrix=Zoom_{z}&TileRow={y}&TileCol={x}",
+      "Územní plán Karle, úplné znění po vydání změny č. 1"
+     ],
+     "577731": [
+      "https://www.svitavy.cz/marushka_ver/handlers/wmts.ashx?ThemeID=10&service=WMTS&request=GetTile&TileMatrixSet=530E757D&TileMatrix=Zoom_{z}&TileRow={y}&TileCol={x}",
+      "Územní plán Svitavy, úplné znění po vydání změny č. 5"
+     ],
+     "577812": [
+      "https://www.svitavy.cz/marushka_ver/handlers/wmts.ashx?ThemeID=10&service=WMTS&request=GetTile&TileMatrixSet=1E6E8803&TileMatrix=Zoom_{z}&TileRow={y}&TileCol={x}",
+      "Územní plán Bohuňov"
+     ],
+     "577839": [
+      "https://gis.policka.org/handlers/wmts.ashx?ThemeID=11&service=WMTS&request=GetTile&TileMatrixSet=4651A860&TileMatrix=Zoom_{z}&TileRow={y}&TileCol={x}",
+      "Územní plán Borová, stav po změně č. 1a (3/2025)"
+     ],
+     "577863": [
+      "https://www.svitavy.cz/marushka_ver/handlers/wmts.ashx?ThemeID=10&service=WMTS&request=GetTile&TileMatrixSet=D9D21E04&TileMatrix=Zoom_{z}&TileRow={y}&TileCol={x}",
+      "Územní plán Brněnec, úplné znění po změně č. 4"
+     ],
+     "577898": [
+      "https://gis.policka.org/handlers/wmts.ashx?ThemeID=11&service=WMTS&request=GetTile&TileMatrixSet=3C0938B3&TileMatrix=Zoom_{z}&TileRow={y}&TileCol={x}",
+      "Územní plán Březiny, stav po změně č. 1 (6/2026)"
+     ],
+     "577928": [
+      "https://gis.policka.org/handlers/wmts.ashx?ThemeID=11&service=WMTS&request=GetTile&TileMatrixSet=04170088&TileMatrix=Zoom_{z}&TileRow={y}&TileCol={x}",
+      "Územní plán Bystré"
+     ],
+     "577961": [
+      "https://www.svitavy.cz/marushka_ver/handlers/wmts.ashx?ThemeID=10&service=WMTS&request=GetTile&TileMatrixSet=57D6C4F0&TileMatrix=Zoom_{z}&TileRow={y}&TileCol={x}",
+      "Územní plán Dětřichov"
+     ],
+     "578037": [
+      "https://gis.policka.org/handlers/wmts.ashx?ThemeID=11&service=WMTS&request=GetTile&TileMatrixSet=B4F311E2&TileMatrix=Zoom_{z}&TileRow={y}&TileCol={x}",
+      "Územní plán Hartmanice"
+     ],
+     "578126": [
+      "https://www.svitavy.cz/marushka_ver/handlers/wmts.ashx?ThemeID=10&service=WMTS&request=GetTile&TileMatrixSet=52FCE281&TileMatrix=Zoom_{z}&TileRow={y}&TileCol={x}",
+      "Územní plán Chrastavec"
+     ],
+     "578185": [
+      "https://gis.policka.org/handlers/wmts.ashx?ThemeID=11&service=WMTS&request=GetTile&TileMatrixSet=47C0B416&TileMatrix=Zoom_{z}&TileRow={y}&TileCol={x}",
+      "Územní plán Jedlová, stav po změně č. 1 (10/2022)"
+     ],
+     "578207": [
+      "https://gis.policka.org/handlers/wmts.ashx?ThemeID=11&service=WMTS&request=GetTile&TileMatrixSet=53072805&TileMatrix=Zoom_{z}&TileRow={y}&TileCol={x}",
+      "Územní plán Kamenec u Poličky"
+     ],
+     "578215": [
+      "https://www.svitavy.cz/marushka_ver/handlers/wmts.ashx?ThemeID=10&service=WMTS&request=GetTile&TileMatrixSet=4696FE49&TileMatrix=Zoom_{z}&TileRow={y}&TileCol={x}",
+      "Územní plán Kamenná Horka, úplné znění po vydání změny č. 1"
+     ],
+     "578231": [
+      "https://www.svitavy.cz/marushka_ver/handlers/wmts.ashx?ThemeID=10&service=WMTS&request=GetTile&TileMatrixSet=1419E1A7&TileMatrix=Zoom_{z}&TileRow={y}&TileCol={x}",
+      "Územní plán Koclířov, úplné znění po vydání změny č. 1"
+     ],
+     "578258": [
+      "https://gis.policka.org/handlers/wmts.ashx?ThemeID=11&service=WMTS&request=GetTile&TileMatrixSet=9E4B197A&TileMatrix=Zoom_{z}&TileRow={y}&TileCol={x}",
+      "Územní plán Korouhev, stav po změně č. 1 (1/2018)"
+     ],
+     "578291": [
+      "https://gis.policka.org/handlers/wmts.ashx?ThemeID=11&service=WMTS&request=GetTile&TileMatrixSet=8DAC7BA0&TileMatrix=Zoom_{z}&TileRow={y}&TileCol={x}",
+      "Územní plán Květná, stav po změně č. 1 (9/2021)"
+     ],
+     "578304": [
+      "https://www.svitavy.cz/marushka_ver/handlers/wmts.ashx?ThemeID=10&service=WMTS&request=GetTile&TileMatrixSet=DE88A3EE&TileMatrix=Zoom_{z}&TileRow={y}&TileCol={x}",
+      "Územní plán Lavičné"
+     ],
+     "578398": [
+      "https://www.svitavy.cz/marushka_ver/handlers/wmts.ashx?ThemeID=10&service=WMTS&request=GetTile&TileMatrixSet=04160999&TileMatrix=Zoom_{z}&TileRow={y}&TileCol={x}",
+      "Územní plán Mikuleč, úplné znění po vydání změny č. 1"
+     ],
+     "578452": [
+      "https://gis.policka.org/handlers/wmts.ashx?ThemeID=11&service=WMTS&request=GetTile&TileMatrixSet=B73216A7&TileMatrix=Zoom_{z}&TileRow={y}&TileCol={x}",
+      "Územní plán Nedvězí"
+     ],
+     "578479": [
+      "https://gis.policka.org/handlers/wmts.ashx?ThemeID=11&service=WMTS&request=GetTile&TileMatrixSet=D5DE7096&TileMatrix=Zoom_{z}&TileRow={y}&TileCol={x}",
+      "Územní plán Oldřiš, stav po změně č. 1 (6/2019)"
+     ],
+     "578487": [
+      "https://www.svitavy.cz/marushka_ver/handlers/wmts.ashx?ThemeID=10&service=WMTS&request=GetTile&TileMatrixSet=6989B01C&TileMatrix=Zoom_{z}&TileRow={y}&TileCol={x}",
+      "Územní plán Opatov"
+     ],
+     "578550": [
+      "https://www.svitavy.cz/marushka_ver/handlers/wmts.ashx?ThemeID=10&service=WMTS&request=GetTile&TileMatrixSet=06359632&TileMatrix=Zoom_{z}&TileRow={y}&TileCol={x}",
+      "Územní plán Pohledy, úplné znění po vydání změny č. 3"
+     ],
+     "578576": [
+      "https://gis.policka.org/handlers/wmts.ashx?ThemeID=11&service=WMTS&request=GetTile&TileMatrixSet=B55AF44D&TileMatrix=Zoom_{z}&TileRow={y}&TileCol={x}",
+      "Územní plán Polička, stav po změně č. 5 (12/2025)"
+     ],
+     "578584": [
+      "https://gis.policka.org/handlers/wmts.ashx?ThemeID=11&service=WMTS&request=GetTile&TileMatrixSet=FFBC7F81&TileMatrix=Zoom_{z}&TileRow={y}&TileCol={x}",
+      "Územní plán Pomezí, stav po změně č. 3 (9/2021)"
+     ],
+     "578631": [
+      "https://gis.policka.org/handlers/wmts.ashx?ThemeID=11&service=WMTS&request=GetTile&TileMatrixSet=0AE1CBA1&TileMatrix=Zoom_{z}&TileRow={y}&TileCol={x}",
+      "Územní plán Pustá Kamenice, stav po změně č. 1 (1/2023)"
+     ],
+     "578649": [
+      "https://gis.policka.org/handlers/wmts.ashx?ThemeID=11&service=WMTS&request=GetTile&TileMatrixSet=5CB80930&TileMatrix=Zoom_{z}&TileRow={y}&TileCol={x}",
+      "Územní plán Pustá Rybná"
+     ],
+     "578657": [
+      "https://www.svitavy.cz/marushka_ver/handlers/wmts.ashx?ThemeID=10&service=WMTS&request=GetTile&TileMatrixSet=02D410CD&TileMatrix=Zoom_{z}&TileRow={y}&TileCol={x}",
+      "Územní plán Radiměř, úplné znění po vydání změny č. 2"
+     ],
+     "578673": [
+      "https://www.svitavy.cz/marushka_ver/handlers/wmts.ashx?ThemeID=10&service=WMTS&request=GetTile&TileMatrixSet=800A0C03&TileMatrix=Zoom_{z}&TileRow={y}&TileCol={x}",
+      "Územní plán Rohozná"
+     ],
+     "578681": [
+      "https://www.svitavy.cz/marushka_ver/handlers/wmts.ashx?ThemeID=10&service=WMTS&request=GetTile&TileMatrixSet=187EB47E&TileMatrix=Zoom_{z}&TileRow={y}&TileCol={x}",
+      "Územní plán Rozhraní, úplné znění po změně č. 1"
+     ],
+     "578703": [
+      "https://www.svitavy.cz/marushka_ver/handlers/wmts.ashx?ThemeID=10&service=WMTS&request=GetTile&TileMatrixSet=4EEDAAFD&TileMatrix=Zoom_{z}&TileRow={y}&TileCol={x}",
+      "Územní plán Rudná"
+     ],
+     "578720": [
+      "https://gis.policka.org/handlers/wmts.ashx?ThemeID=11&service=WMTS&request=GetTile&TileMatrixSet=DFA781F8&TileMatrix=Zoom_{z}&TileRow={y}&TileCol={x}",
+      "Územní plán Sádek, stav po změně č. 1 (3/2026)"
+     ],
+     "578754": [
+      "https://www.svitavy.cz/marushka_ver/handlers/wmts.ashx?ThemeID=10&service=WMTS&request=GetTile&TileMatrixSet=3F7BDCAC&TileMatrix=Zoom_{z}&TileRow={y}&TileCol={x}",
+      "Územní plán Sklené"
+     ],
+     "578801": [
+      "https://gis.policka.org/handlers/wmts.ashx?ThemeID=11&service=WMTS&request=GetTile&TileMatrixSet=C1F0C25A&TileMatrix=Zoom_{z}&TileRow={y}&TileCol={x}",
+      "Územní plán Stašov"
+     ],
+     "578843": [
+      "https://gis.policka.org/handlers/wmts.ashx?ThemeID=11&service=WMTS&request=GetTile&TileMatrixSet=501F2E04&TileMatrix=Zoom_{z}&TileRow={y}&TileCol={x}",
+      "Územní plán Svojanov"
+     ],
+     "578851": [
+      "https://gis.policka.org/handlers/wmts.ashx?ThemeID=11&service=WMTS&request=GetTile&TileMatrixSet=596C97DA&TileMatrix=Zoom_{z}&TileRow={y}&TileCol={x}",
+      "Územní plán Široký Důl, stav po změně č. 2 (7/2026)"
+     ],
+     "578860": [
+      "https://www.svitavy.cz/marushka_ver/handlers/wmts.ashx?ThemeID=10&service=WMTS&request=GetTile&TileMatrixSet=8BE44180&TileMatrix=Zoom_{z}&TileRow={y}&TileCol={x}",
+      "Územní plán Študlov"
+     ],
+     "578878": [
+      "https://gis.policka.org/handlers/wmts.ashx?ThemeID=11&service=WMTS&request=GetTile&TileMatrixSet=5C2ECE59&TileMatrix=Zoom_{z}&TileRow={y}&TileCol={x}",
+      "Územní plán Telecí"
+     ],
+     "578886": [
+      "https://gis.policka.org/handlers/wmts.ashx?ThemeID=11&service=WMTS&request=GetTile&TileMatrixSet=A7F64D54&TileMatrix=Zoom_{z}&TileRow={y}&TileCol={x}",
+      "Územní plán Trpín, stav po změně č. 1 (8/2023)"
+     ],
+     "578932": [
+      "https://www.svitavy.cz/marushka_ver/handlers/wmts.ashx?ThemeID=10&service=WMTS&request=GetTile&TileMatrixSet=BBB2D16D&TileMatrix=Zoom_{z}&TileRow={y}&TileCol={x}",
+      "Územní plán Vendolí, úplné znění po vydání změny č. 3"
+     ],
+     "578967": [
+      "https://www.svitavy.cz/marushka_ver/handlers/wmts.ashx?ThemeID=10&service=WMTS&request=GetTile&TileMatrixSet=39A7C001&TileMatrix=Zoom_{z}&TileRow={y}&TileCol={x}",
+      "Územní plán Vítějeves, úplné znění po vydání změny č. 1"
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "kraj": 94,
+  "name": "výkresy územních plánů obcí v ORP Vysoké Mýto a Žamberk",
+  "from": "z výkresů územních plánů obcí, které ORP Vysoké Mýto a Žamberk zveřejňují v GObci",
+  "obce": 64,
+  "attribution": "Výkresy ÚP obcí © ORP Vysoké Mýto, ORP Žamberk (GObec)",
+  "drawing": true,
+  "layers": [
+   {
+    "kind": "tilesPerObec",
+    "crs": "EPSG:3857",
+    "minZoom": 12.6,
+    "minZoomData": 13,
+    "maxZoom": 18,
+    "extent": [
+     -630066,
+     -1086916,
+     -581020,
+     -1052165
+    ],
+    "obce": {
+     "548006": [
+      "https://{a-c}.tiles.gobec.cz/v2/e512eaae87a25f952fd6a71d6f9389de/{z}/{x}/{y}.png",
+      "Územní plán Bošín, právní stav po změně č. 2 (02/2017)"
+     ],
+     "548022": [
+      "https://{a-c}.tiles.gobec.cz/v2/ad204cd733384f984217e85c5125da08/{z}/{x}/{y}.png",
+      "Územní plán Vračovice-Orlov, úplné znění po změně č. 1 (02/2021)"
+     ],
+     "548031": [
+      "https://{a-c}.tiles.gobec.cz/v2/fff9f1c0d286c5f2fd6261fc25a26271/{z}/{x}/{y}.png",
+      "Územní plán Dlouhoňovice, koordinační výkres, úplné znění po vydání změny č. 4 (11/2024)"
+     ],
+     "548049": [
+      "https://{a-c}.tiles.gobec.cz/v2/364f1b6542bdacf6a4d9138c2f428236/{z}/{x}/{y}.png",
+      "Územní plán Helvíkovice, úplné znění po změně č. 3 (12/2024)"
+     ],
+     "553760": [
+      "https://{a-c}.tiles.gobec.cz/v2/217c4bfb16831d41b3e274d1474e4f9e/{z}/{x}/{y}.png",
+      "Územní plán Běstovice, úplné znění po změně č. 1 (04/2023)"
+     ],
+     "571695": [
+      "https://{a-c}.tiles.gobec.cz/v2/839007257d9530151f3daca8b69793ff/{z}/{x}/{y}.png",
+      "Územní plán Leština, právní stav po změně č. 2 (03/2012)"
+     ],
+     "571920": [
+      "https://{a-c}.tiles.gobec.cz/v2/bf7ebaabf3926fe9094384265ca6c62b/{z}/{x}/{y}.png",
+      "Územní plán Nové Hrady"
+     ],
+     "572306": [
+      "https://{a-c}.tiles.gobec.cz/v2/9336339052a6614bf7f8934289a1106a/{z}/{x}/{y}.png",
+      "Územní plán Stradouň"
+     ],
+     "572489": [
+      "https://{a-c}.tiles.gobec.cz/v2/189a0eb40b2d023b9eac2a66b845d4b8/{z}/{x}/{y}.png",
+      "Územní plán Vinary"
+     ],
+     "574449": [
+      "https://{a-c}.tiles.gobec.cz/v2/4fa8c1788bf80e9a133620b6f8e3aa5d/{z}/{x}/{y}.png",
+      "Územní plán Kosořín, úplné znění po změně č. 2 (07/2021)"
+     ],
+     "575542": [
+      "https://{a-c}.tiles.gobec.cz/v2/5f6ef158124aa402fdb9f343f9cbe9fc/{z}/{x}/{y}.png",
+      "Územní plán Radhošť"
+     ],
+     "575861": [
+      "https://{a-c}.tiles.gobec.cz/v2/cc8be9a3f2e1b6f0c8e30a89e19e6951/{z}/{x}/{y}.png",
+      "Územní plán Týnišťko"
+     ],
+     "579963": [
+      "https://{a-c}.tiles.gobec.cz/v2/ebb5ccc1f362060669edb5baaec01db7/{z}/{x}/{y}.png",
+      "Územní plán Bučina"
+     ],
+     "579971": [
+      "https://{a-c}.tiles.gobec.cz/v2/60aafe1258ee4b3c3ba3d3e6f72d7fe0/{z}/{x}/{y}.png",
+      "Územní plán Bystřec, koordinační výkres, úplné znění po změně č. 6 (10/2024)"
+     ],
+     "580023": [
+      "https://{a-c}.tiles.gobec.cz/v2/5017289df45bd89bf5a6befda9a1c7d0/{z}/{x}/{y}.png",
+      "Územní plán Česká Rybná, koordinační výkres, úplné znění po vydání změny č. 4 (06/2026)"
+     ],
+     "580040": [
+      "https://{a-c}.tiles.gobec.cz/v2/d40e730598e4c7bd2b0fffa304e5525e/{z}/{x}/{y}.png",
+      "Územní plán České Heřmanice, úplné znění po změně č. 5 (11/2024)"
+     ],
+     "580066": [
+      "https://{a-c}.tiles.gobec.cz/v2/c8ec75309868a672d9838316048742d9/{z}/{x}/{y}.png",
+      "Územní plán České Petrovice"
+     ],
+     "580091": [
+      "https://{a-c}.tiles.gobec.cz/v2/ce92bb26a97be1d9d124e08d1163adbf/{z}/{x}/{y}.png",
+      "Územní plán Dobříkov, úplné znění po změně č. 2 (10/2022)"
+     ],
+     "580210": [
+      "https://{a-c}.tiles.gobec.cz/v2/82ddeb7e2923e081be1b6630d017024c/{z}/{x}/{y}.png",
+      "Územní plán Džbánov, právní stav po změně č. 1 (03/2017)"
+     ],
+     "580228": [
+      "https://{a-c}.tiles.gobec.cz/v2/52d47f0fcd89223688315d8e65d2431b/{z}/{x}/{y}.png",
+      "Územní plán Hejnice, koordinační výkres, úplné znění po změně č. 3 (11/2025)"
+     ],
+     "580341": [
+      "https://{a-c}.tiles.gobec.cz/v2/a3286cff67adab4f61c3d0460349eec7/{z}/{x}/{y}.png",
+      "Územní plán Hrušová"
+     ],
+     "580350": [
+      "https://{a-c}.tiles.gobec.cz/v2/a4129af9906d02fdbf5e83890536897f/{z}/{x}/{y}.png",
+      "Územní plán Choceň, úplné znění po změně č. 3 (06/2021)"
+     ],
+     "580376": [
+      "https://{a-c}.tiles.gobec.cz/v2/774aeb8178d936e3612bf7a22c8541bf/{z}/{x}/{y}.png",
+      "Územní plán Jablonné nad Orlicí, koordinační výkres, úplné znění po změně č. 1 (11/2022)"
+     ],
+     "580392": [
+      "https://{a-c}.tiles.gobec.cz/v2/264d6ab2b81e79a5ff3c1dff24809f17/{z}/{x}/{y}.png",
+      "Územní plán Jamné nad Orlicí, koordinační výkres, úplné znění po změně č. 4 (09/2024)"
+     ],
+     "580406": [
+      "https://{a-c}.tiles.gobec.cz/v2/0ea6bcc7a8bc4cd60968fabf2e7e9c3a/{z}/{x}/{y}.png",
+      "Územní plán Javorník, úplné znění po změně č. 1 (10/2023)"
+     ],
+     "580422": [
+      "https://{a-c}.tiles.gobec.cz/v2/dd997b4bc3749c6ea78245c70f45c8f0/{z}/{x}/{y}.png",
+      "Územní plán Kameničná, koordinační výkres, úplné znění po vydání změny č. 2 (03/2023)"
+     ],
+     "580431": [
+      "https://{a-c}.tiles.gobec.cz/v2/1604c59072f74fd833bb64bceb20933b/{z}/{x}/{y}.png",
+      "Územní plán Klášterec nad Orlicí, koordinační výkres, úplné znění po vydání změny č. 4 (07/2025)"
+     ],
+     "580465": [
+      "https://{a-c}.tiles.gobec.cz/v2/a60efbc8959d73506b58e13cca500a1d/{z}/{x}/{y}.png",
+      "Územní plán Koldín, úplné znění po změně č. 1 (08/2018)"
+     ],
+     "580503": [
+      "https://{a-c}.tiles.gobec.cz/v2/f43f645efb11ecc3c8132b2eb3109cca/{z}/{x}/{y}.png",
+      "Územní plán Kunvald, koordinační výkres, úplné znění po změně č. 3 (09/2022)"
+     ],
+     "580538": [
+      "https://{a-c}.tiles.gobec.cz/v2/530b6855febd4b44f4e8b48929697e0f/{z}/{x}/{y}.png",
+      "Územní plán Letohrad, koordinační výkres, úplné znění po změně č. 2 (12/2023)"
+     ],
+     "580562": [
+      "https://{a-c}.tiles.gobec.cz/v2/048792524ad1be4e5afd9d97f3c0b682/{z}/{x}/{y}.png",
+      "Územní plán Libecina"
+     ],
+     "580589": [
+      "https://{a-c}.tiles.gobec.cz/v2/b3bad739391ba8bd82d3a339d25a3d46/{z}/{x}/{y}.png",
+      "Územní plán Líšnice, koordinační výkres, úplné znění po změně č. 1 (03/2022)"
+     ],
+     "580627": [
+      "https://{a-c}.tiles.gobec.cz/v2/f625eddde6c7c956c0bf61647307dee1/{z}/{x}/{y}.png",
+      "Územní plán Lukavice, koordinační výkres, úplné znění po změně č. 3 (03/2022)"
+     ],
+     "580643": [
+      "https://{a-c}.tiles.gobec.cz/v2/c90f3f33c6ec7ecdb3057a45234a3294/{z}/{x}/{y}.png",
+      "Územní plán Mistrovice, koordinační výkres, úplné znění po změně č. 4 (02/2024)"
+     ],
+     "580660": [
+      "https://{a-c}.tiles.gobec.cz/v2/59ac84ce5736136ad4d3288d64492591/{z}/{x}/{y}.png",
+      "Územní plán Mostek, úplné znění po změně č. 1 (11/2018)"
+     ],
+     "580678": [
+      "https://{a-c}.tiles.gobec.cz/v2/95c5116c9704de4430a83f71a65538dd/{z}/{x}/{y}.png",
+      "Územní plán Nasavrky, právní stav po změně č. 1 (10/2012)"
+     ],
+     "580686": [
+      "https://{a-c}.tiles.gobec.cz/v2/3defcc71aba1075ce890001bd041b81c/{z}/{x}/{y}.png",
+      "Územní plán Nekoř, koordinační výkres, úplné znění po změně č. 3 (12/2024)"
+     ],
+     "580724": [
+      "https://{a-c}.tiles.gobec.cz/v2/0d6b88f2529723563956dc0005cc86c9/{z}/{x}/{y}.png",
+      "Územní plán Orličky, koordinační výkres (08/2020)"
+     ],
+     "580741": [
+      "https://{a-c}.tiles.gobec.cz/v2/cdf466758376fbeb1b112ab2b527e22d/{z}/{x}/{y}.png",
+      "Územní plán Oucmanice"
+     ],
+     "580759": [
+      "https://{a-c}.tiles.gobec.cz/v2/ce4a1bf52ada374d4bf84b10d46f0a5b/{z}/{x}/{y}.png",
+      "Územní plán Pastviny, koordinační výkres, úplné znění po změně č. 3 (06/2023)"
+     ],
+     "580775": [
+      "https://{a-c}.tiles.gobec.cz/v2/8b15e4f0285055f7e6301367561ced82/{z}/{x}/{y}.png",
+      "Územní plán Písečná, koordinační výkres, úplné znění po změně č. 2 (02/2026)"
+     ],
+     "580783": [
+      "https://{a-c}.tiles.gobec.cz/v2/002f1ace347fb05cc6b2a2b11a535b50/{z}/{x}/{y}.png",
+      "Územní plán Plchovice, právní stav po změně č. 1 (10/2011)"
+     ],
+     "580805": [
+      "https://{a-c}.tiles.gobec.cz/v2/66a4d80a8b110d5691a9cef42f4b5309/{z}/{x}/{y}.png",
+      "Územní plán Podlesí, právní stav po změně č. 1 (05/2012)"
+     ],
+     "580830": [
+      "https://{a-c}.tiles.gobec.cz/v2/dfd7ca250e6bfd7ab63f4134a1247fb3/{z}/{x}/{y}.png",
+      "Územní plán Pustina"
+     ],
+     "580902": [
+      "https://{a-c}.tiles.gobec.cz/v2/b09daaff83bf785aca493d6e1159650c/{z}/{x}/{y}.png",
+      "Územní plán Seč"
+     ],
+     "580929": [
+      "https://{a-c}.tiles.gobec.cz/v2/e2daa47c9f065ba2019582ac3ea80746/{z}/{x}/{y}.png",
+      "Územní plán Skořenice"
+     ],
+     "580945": [
+      "https://{a-c}.tiles.gobec.cz/v2/379186742045b6773b2ba2918bf72b36/{z}/{x}/{y}.png",
+      "Územní plán Slatina, úplné znění po změně č. 1"
+     ],
+     "580970": [
+      "https://{a-c}.tiles.gobec.cz/v2/a6989712f093595ce32fa3ae85ade5b8/{z}/{x}/{y}.png",
+      "Územní plán Sruby, úplné znění po změně č. 3 (03/2020)"
+     ],
+     "580996": [
+      "https://{a-c}.tiles.gobec.cz/v2/b751e898b354e249504ecbb0ec941511/{z}/{x}/{y}.png",
+      "Územní plán Studené, koordinační výkres, úplné znění po vydání změny č. 5 (04/2024)"
+     ],
+     "581011": [
+      "https://{a-c}.tiles.gobec.cz/v2/ca2745db613f425237020344260d85b5/{z}/{x}/{y}.png",
+      "Územní plán Sudslava, úplné znění po změně č. 1 (12/2025)"
+     ],
+     "581038": [
+      "https://{a-c}.tiles.gobec.cz/v2/04e13146a214546025dcd6cebe7a05bb/{z}/{x}/{y}.png",
+      "Územní plán Šedivec, koordinační výkres, úplné znění po změně č. 1 a 2 (02/2024)"
+     ],
+     "581054": [
+      "https://{a-c}.tiles.gobec.cz/v2/3a9820e40c2dd567ba2524d567f59ea3/{z}/{x}/{y}.png",
+      "Územní plán Těchonín"
+     ],
+     "581062": [
+      "https://{a-c}.tiles.gobec.cz/v2/aea888bd18509de52613c9089d8bb401/{z}/{x}/{y}.png",
+      "Územní plán Tisová, úplné znění po změně č. 1 (05/2019)"
+     ],
+     "581089": [
+      "https://{a-c}.tiles.gobec.cz/v2/fc7951e3b44f56e85f28fba0de3c9ff0/{z}/{x}/{y}.png",
+      "Územní plán Újezd u Chocně"
+     ],
+     "581119": [
+      "https://{a-c}.tiles.gobec.cz/v2/5eb81d8017f43432f757811f27191423/{z}/{x}/{y}.png",
+      "Územní plán Verměřovice, koordinační výkres, úplné znění po změně č. 1 (08/2020)"
+     ],
+     "581151": [
+      "https://{a-c}.tiles.gobec.cz/v2/40457fb6a763a311c1c9ca68a9513128/{z}/{x}/{y}.png",
+      "Územní plán Vraclav, úplné znění po změně č. 2 (08/2022)"
+     ],
+     "581186": [
+      "https://{a-c}.tiles.gobec.cz/v2/d1c9806d55d9f3ec6b6bbcad8012fbb3/{z}/{x}/{y}.png",
+      "Územní plán Vysoké Mýto, úplné znění ÚP s prvky regulačního plánu po vydání změn č. 1, 2 a 3, Hlavní výkres (08/2"
+     ],
+     "581194": [
+      "https://{a-c}.tiles.gobec.cz/v2/9d20b1882dac98c6b9426b161377e818/{z}/{x}/{y}.png",
+      "Územní plán Zádolí, úplné znění po změně č. 1 (05/2024)"
+     ],
+     "581208": [
+      "https://{a-c}.tiles.gobec.cz/v2/13647f47c5cba5ca91b3c4013eac71ef/{z}/{x}/{y}.png",
+      "Územní plán Záchlumí, koordinační výkres, úplné znění po změně č. 4 (08/025)"
+     ],
+     "581216": [
+      "https://{a-c}.tiles.gobec.cz/v2/0fabf4a48fd46644bc6c0c79150716ec/{z}/{x}/{y}.png",
+      "Územní plán Zálší, právní stav po změně č. 2 (05/2017)"
+     ],
+     "581224": [
+      "https://{a-c}.tiles.gobec.cz/v2/a72374ab40d3be0a9c541cd5aab14b64/{z}/{x}/{y}.png",
+      "Územní plán Zámrsk"
+     ],
+     "581232": [
+      "https://{a-c}.tiles.gobec.cz/v2/f30a55066e09652ebc80816ad60ff28c/{z}/{x}/{y}.png",
+      "Územní plán Zářecká Lhota"
+     ],
+     "581259": [
+      "https://{a-c}.tiles.gobec.cz/v2/cb66606cd86db93735e8e1bda39f09fd/{z}/{x}/{y}.png",
+      "Územní plán Žamberk, koordinační výkres, úplné znění po změně č. 7 (05/2025)"
+     ],
+     "581267": [
+      "https://{a-c}.tiles.gobec.cz/v2/6ae365e4af11800eceec6060d61f2853/{z}/{x}/{y}.png",
+      "Územní plán Žampach, koordinační výkres (05/2021)"
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "kraj": 94,
+  "name": "územní plány obcí ORP Chrudim",
+  "from": "z databáze územních plánů obcí ORP Chrudim",
+  "obce": 54,
+  "attribution": "ÚPD obcí ORP Chrudim © Město Chrudim",
+  "only": [
+   504301,
+   504807,
+   504921,
+   505030,
+   530697,
+   547808,
+   547832,
+   547859,
+   547867,
+   547875,
+   554847,
+   556882,
+   571181,
+   571202,
+   571229,
+   571245,
+   571270,
+   571458,
+   571474,
+   571482,
+   571504,
+   571547,
+   571563,
+   571610,
+   571652,
+   571725,
+   571733,
+   571750,
+   571768,
+   571776,
+   571857,
+   571903,
+   571911,
+   572004,
+   572039,
+   572071,
+   572098,
+   572101,
+   572110,
+   572179,
+   572225,
+   572268,
+   572276,
+   572314,
+   572331,
+   572420,
+   572454,
+   572471,
+   572535,
+   572641,
+   573787,
+   573876,
+   573949,
+   574007
+  ],
+  "layers": [
+   {
+    "kind": "arcgisVector",
+    "cors": true,
+    "minZoom": 13,
+    "url": "https://services1.arcgis.com/0RbxSLaBHjZHjgGm/arcgis/rest/services/UPD_databaze_pro_dotazy/FeatureServer/9",
+    "idField": "OBJECTID",
+    "vector": {
+     "code": "TYP",
+     "name": "POPIS",
+     "status": "CASH",
+     "codes": "minis"
+    },
+    "extentCrs": "EPSG:3857",
+    "extent": [
+     1724958,
+     6403529,
+     1798264,
+     6446421
+    ]
+   }
+  ],
+  "info": [
+   {
+    "url": "https://services1.arcgis.com/0RbxSLaBHjZHjgGm/arcgis/rest/services/UPD_databaze_pro_dotazy/FeatureServer/9",
+    "cors": true,
+    "codes": "minis",
+    "dateLabel": "Data aktualizována",
+    "fields": {
+     "code": "TYP",
+     "name": "POPIS",
+     "status": "CASH",
+     "label": "INDEX_",
+     "doc": "FAZE_UPD",
+     "date": "AKTUALIZACE"
+    }
+   }
+  ]
+ },
+ {
+  "kraj": 94,
+  "name": "územní plány obcí ORP Chrudim v jednotném standardu",
+  "from": "z databáze územních plánů obcí ORP Chrudim (plány v jednotném standardu)",
+  "obce": 3,
+  "attribution": "ÚPD obcí ORP Chrudim © Město Chrudim",
+  "only": [
+   571385,
+   572241,
+   572578
+  ],
+  "layers": [
+   {
+    "kind": "arcgisVector",
+    "cors": true,
+    "minZoom": 13,
+    "url": "https://services1.arcgis.com/0RbxSLaBHjZHjgGm/arcgis/rest/services/upd_novy_standard_gdb/FeatureServer/2",
+    "idField": "OBJECTID",
+    "vector": {
+     "code": "Typ",
+     "status": "CasH",
+     "codes": "std"
+    },
+    "extentCrs": "EPSG:3857",
+    "extent": [
+     1740690,
+     6411073,
+     1788503,
+     6440126
+    ]
+   }
+  ],
+  "info": [
+   {
+    "url": "https://services1.arcgis.com/0RbxSLaBHjZHjgGm/arcgis/rest/services/upd_novy_standard_gdb/FeatureServer/2",
+    "cors": true,
+    "codes": "std",
+    "dateLabel": "Data aktualizována",
+    "fields": {
+     "code": "Typ",
+     "status": "CasH",
+     "label": "Označení",
+     "doc": "FÁZE_ÚPD",
+     "date": "Aktualizace"
+    }
+   }
+  ]
+ },
+ {
+  "kraj": 94,
+  "name": "bezešvá mapa územních plánů obcí Pardubického kraje",
+  "from": "z bezešvé mapy územně plánovací dokumentace obcí Pardubického kraje",
+  "obce": 269,
+  "attribution": "Bezešvá mapa ÚPD obcí © Pardubický kraj",
+  "drawing": true,
+  "versionNote": "Kraj u výkresů neuvádí verzi plánu. Poslední změna v nich může chybět, platné znění ověřte v dokumentech obce.",
+  "skip": [
+   504301,
+   504807,
+   504921,
+   505030,
+   505145,
+   530697,
+   547808,
+   547832,
+   547859,
+   547867,
+   547875,
+   548006,
+   548022,
+   548031,
+   548049,
+   553760,
+   554847,
+   555134,
+   556882,
+   571181,
+   571202,
+   571229,
+   571245,
+   571253,
+   571270,
+   571385,
+   571458,
+   571474,
+   571482,
+   571504,
+   571547,
+   571563,
+   571610,
+   571652,
+   571695,
+   571725,
+   571733,
+   571750,
+   571768,
+   571776,
+   571857,
+   571890,
+   571903,
+   571911,
+   571920,
+   572004,
+   572039,
+   572071,
+   572098,
+   572101,
+   572110,
+   572179,
+   572195,
+   572225,
+   572241,
+   572268,
+   572276,
+   572306,
+   572314,
+   572331,
+   572420,
+   572438,
+   572454,
+   572471,
+   572489,
+   572535,
+   572560,
+   572578,
+   572586,
+   572594,
+   572624,
+   572641,
+   572691,
+   572713,
+   572721,
+   572748,
+   572942,
+   573027,
+   573787,
+   573876,
+   573949,
+   574007,
+   574449,
+   574821,
+   575127,
+   575542,
+   575861,
+   577731,
+   577812,
+   577839,
+   577863,
+   577898,
+   577928,
+   577961,
+   578037,
+   578126,
+   578185,
+   578207,
+   578215,
+   578231,
+   578258,
+   578291,
+   578304,
+   578398,
+   578452,
+   578479,
+   578487,
+   578550,
+   578576,
+   578584,
+   578631,
+   578649,
+   578657,
+   578673,
+   578681,
+   578703,
+   578720,
+   578754,
+   578801,
+   578843,
+   578851,
+   578860,
+   578878,
+   578886,
+   578894,
+   578932,
+   578967,
+   579891,
+   579963,
+   579971,
+   579980,
+   579998,
+   580023,
+   580040,
+   580066,
+   580091,
+   580210,
+   580228,
+   580341,
+   580350,
+   580376,
+   580392,
+   580406,
+   580422,
+   580431,
+   580465,
+   580503,
+   580538,
+   580562,
+   580589,
+   580627,
+   580643,
+   580660,
+   580678,
+   580686,
+   580724,
+   580741,
+   580759,
+   580775,
+   580783,
+   580805,
+   580830,
+   580902,
+   580929,
+   580945,
+   580970,
+   580996,
+   581011,
+   581038,
+   581054,
+   581062,
+   581089,
+   581119,
+   581151,
+   581186,
+   581194,
+   581208,
+   581216,
+   581224,
+   581232,
+   581259,
+   581267
+  ],
+  "layers": [
+   {
+    "kind": "wms",
+    "url": "https://mapy.pardubickykraj.cz/hv/upd/UPD?MAP=upd_pk&MU=WMS",
+    "crs": "EPSG:5514",
+    "version": "1.3.0",
+    "params": {
+     "LAYERS": "upd_pk_wms"
+    },
+    "extent": [
+     -676844,
+     -1117969,
+     -567666,
+     -1045422
+    ]
+   }
+  ],
+  "doc": [
+   {
+    "kind": "wms",
+    "url": "https://mapy.pardubickykraj.cz/hv/upd/UPD?MAP=upd_pk&MU=WMS",
+    "layers": "upd_pk_wms",
+    "crs": "EPSG:5514",
+    "format": "text/xml",
+    "fields": {
+     "obec": "NAZEV",
+     "legend": "LEGENDA"
+    }
+   }
+  ]
+ },
+ {
   "kraj": 108,
   "name": "územní plány Kraje Vysočina",
   "from": "z dat územních plánů Kraje Vysočina",
@@ -1004,6 +1957,915 @@
   ]
  },
  {
+  "kraj": 116,
+  "name": "výkresy územních plánů obcí v ORP Hodonín, Kyjov, Mikulov a Veselí nad Moravou",
+  "from": "z výkresů územních plánů obcí, které zveřejňují ORP Hodonín, Kyjov, Mikulov a Veselí nad Moravou",
+  "obce": 74,
+  "attribution": "Výkresy ÚP obcí © ORP Hodonín, Kyjov, Mikulov, Veselí nad Moravou",
+  "drawing": true,
+  "layers": [
+   {
+    "kind": "tilesPerObec",
+    "minZoom": 12,
+    "origin": [
+     -1025000,
+     -920000
+    ],
+    "resolutions": [
+     2048.256,
+     1024.128,
+     512.064,
+     256.032,
+     128.016,
+     64.008,
+     32.004,
+     16.002,
+     8.001,
+     4.0005,
+     2.00025,
+     1.000125,
+     0.5000625,
+     0.25003125,
+     0.125015625,
+     0.0625078125
+    ],
+    "tileSize": 256,
+    "extent": [
+     -616124,
+     -1210147,
+     -528066,
+     -1171255
+    ],
+    "obce": {
+     "584304": [
+      "https://mikulov.tmapserver.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upd-bavory-hlv-z0/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Bavory"
+     ],
+     "584410": [
+      "https://mikulov.tmapserver.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upd-dobre-pole-hlv-z1/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Dobré Pole, úplné znění po změně č. 1"
+     ],
+     "584428": [
+      "https://mikulov.tmapserver.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upd-d-dunajovice-hlv-z2_b/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Dolní Dunajovice, úplné znění po změně č. 2"
+     ],
+     "584436": [
+      "https://mikulov.tmapserver.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upd-d-vestonice-hlv-z3/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Dolní Věstonice, úplné znění po změně č. 3"
+     ],
+     "584444": [
+      "https://mikulov.tmapserver.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upd-drnholec-hlv/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Drnholec"
+     ],
+     "584479": [
+      "https://mikulov.tmapserver.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upd-h-vestonice-hlv-z1/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Horní Věstonice, úplné znění po změně č. 1"
+     ],
+     "584525": [
+      "https://mikulov.tmapserver.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upd-jevisovka-hlv-z1/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Jevišovka, úplné znění po změně č. 1"
+     ],
+     "584541": [
+      "https://mikulov.tmapserver.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upd-klentnice-hlv-zm1/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Klentnice, úplné znění po změně č. 1"
+     ],
+     "584649": [
+      "https://mikulov.tmapserver.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upd-mikulov-hlv-z2/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Mikulov, úplné znění po změně č. 2"
+     ],
+     "584657": [
+      "https://mikulov.tmapserver.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upd-milovice-hlv-z4/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Milovice, úplné znění po změně č. 4"
+     ],
+     "584746": [
+      "https://mikulov.tmapserver.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upd-novosedly-hlv-z2/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Novosedly, úplné znění po změně č. 2"
+     ],
+     "584754": [
+      "https://mikulov.tmapserver.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upd-novy-prerov-hlv-z2/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Nový Přerov, úplné znění po změně č. 2"
+     ],
+     "584771": [
+      "https://mikulov.tmapserver.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upd-pavlov-hlv-z1/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Pavlov, úplné znění po změně č. 1"
+     ],
+     "584789": [
+      "https://mikulov.tmapserver.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upd-perna-hlv-z2/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Perná, úplné znění po změně č. 2"
+     ],
+     "586030": [
+      "https://mestokyjov.tmapserver.cz/services/mapserver/local/up/gservice/wmts/1.0.0/up-archlebov-kov-z1/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Archlebov, koordinační výkres, úplné znění po změně č. 1"
+     ],
+     "586048": [
+      "https://gisportal.veseli-nad-moravou.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upd-blatnice-hlv/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Blatnice pod Svatým Antonínkem"
+     ],
+     "586056": [
+      "https://gisportal.veseli-nad-moravou.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upd-blatnicka-hlv-z1/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Blatnička, úplné znění po změně č. 1"
+     ],
+     "586072": [
+      "https://mestokyjov.tmapserver.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upbukovany-kov/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Bukovany, koordinační výkres"
+     ],
+     "586081": [
+      "https://mestokyjov.tmapserver.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upd-bzenec-kov/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Bzenec, koordinační výkres"
+     ],
+     "586099": [
+      "https://gis.muhodonin.cz:7443/services/mapserver/local/up/gservice/wmts/1.0.0/upd-cejc-hlv-z0/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Čejč"
+     ],
+     "586102": [
+      "https://gis.muhodonin.cz:7443/services/mapserver/local/up/gservice/wmts/1.0.0/upd-cejkovice-hlv-zm3/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Čejkovice, úplné znění po změně č. 3"
+     ],
+     "586111": [
+      "https://mestokyjov.tmapserver.cz/services/mapserver/local/up/gservice/wmts/1.0.0/up-celoznice-kov-z1/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Čeložnice, koordinační výkres, úplné znění po změně č. 1"
+     ],
+     "586137": [
+      "https://gis.muhodonin.cz:7443/services/mapserver/local/up/gservice/wmts/1.0.0/upd-dolni-bojanovice-hlv-z2/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Dolní Bojanovice, úplné znění po změně č. 2"
+     ],
+     "586153": [
+      "https://mestokyjov.tmapserver.cz/services/mapserver/local/up/gservice/wmts/1.0.0/updrazuvky-kov/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Dražůvky, koordinační výkres"
+     ],
+     "586161": [
+      "https://gis.muhodonin.cz:7443/services/mapserver/local/up/gservice/wmts/1.0.0/upd-dubnany-hlv-zm2/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Dubňany, úplné znění po změně č. 2"
+     ],
+     "586170": [
+      "https://mestokyjov.tmapserver.cz/services/mapserver/local/up/gservice/wmts/1.0.0/up-hovorany-kov-z5/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Hovorany, koordinační výkres, úplné znění po změně č. 5"
+     ],
+     "586188": [
+      "https://gisportal.veseli-nad-moravou.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upd-h-lhota-hlv/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Hroznová Lhota"
+     ],
+     "586196": [
+      "https://gisportal.veseli-nad-moravou.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upd-h-vrbka-hlv/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Hrubá Vrbka"
+     ],
+     "586200": [
+      "https://mestokyjov.tmapserver.cz/services/mapserver/local/up/gservice/wmts/1.0.0/uphysly/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Hýsly"
+     ],
+     "586218": [
+      "https://gisportal.veseli-nad-moravou.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upd-javornik-hlv-z3/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Javorník, úplné znění po změně č. 3"
+     ],
+     "586242": [
+      "https://gis.muhodonin.cz:7443/services/mapserver/local/up/gservice/wmts/1.0.0/upd-karlin-hlv/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Karlín"
+     ],
+     "586251": [
+      "https://mestokyjov.tmapserver.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upkelcany-kov/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Kelčany, koordinační výkres"
+     ],
+     "586269": [
+      "https://gisportal.veseli-nad-moravou.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upd-knezdub-hlv/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Kněždub"
+     ],
+     "586293": [
+      "https://gisportal.veseli-nad-moravou.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upd-kuzelov-hlv-z1/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Kuželov, úplné znění po změně č. 1"
+     ],
+     "586307": [
+      "https://mestokyjov.tmapserver.cz/services/mapserver/local/up/gservice/wmts/1.0.0/up-kyjov-kov-z3-kyjo/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Kyjov, koordinační výkres, úplné znění po změně č. 3"
+     ],
+     "586315": [
+      "https://mestokyjov.tmapserver.cz/services/mapserver/local/up/gservice/wmts/1.0.0/uplabuty/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Labuty"
+     ],
+     "586323": [
+      "https://gisportal.veseli-nad-moravou.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upd-lipov-hlv/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Lipov"
+     ],
+     "586331": [
+      "https://gisportal.veseli-nad-moravou.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upd-louka-hlv-z2/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Louka, úplné znění po změně č. 2"
+     ],
+     "586340": [
+      "https://mestokyjov.tmapserver.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upd-lovcice-kov-z2/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Lovčice, koordinační výkres, úplné znění po změně č. 2"
+     ],
+     "586358": [
+      "https://gis.muhodonin.cz:7443/services/mapserver/local/up/gservice/wmts/1.0.0/upd-luzice-hlv-z2/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Lužice, úplné znění po změně č. 2"
+     ],
+     "586412": [
+      "https://gis.muhodonin.cz:7443/services/mapserver/local/up/gservice/wmts/1.0.0/upd-mutenice-hlv-zm3/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Mutěnice, úplné znění po změně č. 3"
+     ],
+     "586439": [
+      "https://mestokyjov.tmapserver.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upd-nechvalin-kov-z2/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Nechvalín, koordinační výkres, úplné znění po změně č. 2"
+     ],
+     "586447": [
+      "https://mestokyjov.tmapserver.cz/services/mapserver/local/up/gservice/wmts/1.0.0/up-nenkovice-kov-z2/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Nenkovice, koordinační výkres, úplné znění po změně č. 2"
+     ],
+     "586463": [
+      "https://gis.muhodonin.cz:7443/services/mapserver/local/up/gservice/wmts/1.0.0/upd-novy-poddvorov-hlv/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Nový Poddvorov"
+     ],
+     "586471": [
+      "https://mestokyjov.tmapserver.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upostrovanky-kov/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Ostrovánky, koordinační výkres"
+     ],
+     "586480": [
+      "https://gis.muhodonin.cz:7443/services/mapserver/local/up/gservice/wmts/1.0.0/upd-petrov-hlv/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Petrov"
+     ],
+     "586498": [
+      "https://gis.muhodonin.cz:7443/services/mapserver/local/up/gservice/wmts/1.0.0/upd-prusanky-hlv-z0/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Prušánky"
+     ],
+     "586501": [
+      "https://gisportal.veseli-nad-moravou.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upd-radejov-hlv-z2/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Radějov, úplné znění po změně č. 2"
+     ],
+     "586528": [
+      "https://gis.muhodonin.cz:7443/services/mapserver/local/up/gservice/wmts/1.0.0/upd-rohatec-hlv-z1/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Rohatec, úplné znění po změně č. 1"
+     ],
+     "586579": [
+      "https://mestokyjov.tmapserver.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upstavesice/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Stavěšice"
+     ],
+     "586595": [
+      "https://mestokyjov.tmapserver.cz/services/mapserver/local/up/gservice/wmts/1.0.0/up-strazovice-kov-z1/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Strážovice, koordinační výkres, úplné znění po změně č. 1"
+     ],
+     "586617": [
+      "https://gisportal.veseli-nad-moravou.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upd-suchov-hlv/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Suchov"
+     ],
+     "586625": [
+      "https://mestokyjov.tmapserver.cz/services/mapserver/local/up/gservice/wmts/1.0.0/up-svatmistrin-kov-z1/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Svatobořice-Mistřín, koordinační výkres, úplné znění po změně č. 1"
+     ],
+     "586633": [
+      "https://mestokyjov.tmapserver.cz/services/mapserver/local/up/gservice/wmts/1.0.0/up-syrovin-kov-z1_1,up-syrovin-kov-z1_2/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Syrovín, koordinační výkres, úplné znění po změně č. 1"
+     ],
+     "586641": [
+      "https://mestokyjov.tmapserver.cz/services/mapserver/local/up/gservice/wmts/1.0.0/up-sardice-kov-z1/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Šardice, koordinační výkres, úplné znění po změně č. 1"
+     ],
+     "586650": [
+      "https://gisportal.veseli-nad-moravou.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upd-tasov-hlv/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Tasov"
+     ],
+     "586668": [
+      "https://mestokyjov.tmapserver.cz/services/mapserver/local/up/gservice/wmts/1.0.0/uptemice/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Těmice"
+     ],
+     "586676": [
+      "https://gis.muhodonin.cz:7443/services/mapserver/local/up/gservice/wmts/1.0.0/upd-terezin-hlv-z0/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Terezín"
+     ],
+     "586684": [
+      "https://gisportal.veseli-nad-moravou.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upd-t-lhota-hlv/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Tvarožná Lhota"
+     ],
+     "586692": [
+      "https://mestokyjov.tmapserver.cz/services/mapserver/local/up/gservice/wmts/1.0.0/up-uhrice-kov-z1/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Uhřice, koordinační výkres, úplné znění po změně č. 1"
+     ],
+     "586706": [
+      "https://mestokyjov.tmapserver.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upd-vacenovice-kov/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Vacenovice, koordinační výkres"
+     ],
+     "586714": [
+      "https://gisportal.veseli-nad-moravou.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upd-velka-hlv-z2/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Velká nad Veličkou, úplné znění po změně č. 2"
+     ],
+     "586722": [
+      "https://gisportal.veseli-nad-moravou.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upd-veseli-hlv-z5/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Veselí nad Moravou, úplné znění po změně č. 5"
+     ],
+     "586731": [
+      "https://mestokyjov.tmapserver.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upd-veterov-kov-z2/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Věteřov, koordinační výkres, úplné znění po změně č. 2"
+     ],
+     "586749": [
+      "https://mestokyjov.tmapserver.cz/services/mapserver/local/up/gservice/wmts/1.0.0/up-vlkos-kov-z2/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Vlkoš, koordinační výkres, úplné znění po změně č. 2"
+     ],
+     "586757": [
+      "https://gisportal.veseli-nad-moravou.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upd-vnorovy-hlv-z1/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Vnorovy, úplné znění po změně č. 1"
+     ],
+     "586765": [
+      "https://mestokyjov.tmapserver.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upvracov-kov/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Vracov, koordinační výkres"
+     ],
+     "586781": [
+      "https://mestokyjov.tmapserver.cz/services/mapserver/local/up/gservice/wmts/1.0.0/up-zadovice-kov-z1/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Žádovice, koordinační výkres, úplné znění po změně č. 1"
+     ],
+     "586790": [
+      "https://mestokyjov.tmapserver.cz/services/mapserver/local/up/gservice/wmts/1.0.0/up-zarosice-kov-z1,upzarosice-kov/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Žarošice, koordinační výkres, úplné znění po změně č. 1"
+     ],
+     "586803": [
+      "https://mestokyjov.tmapserver.cz/services/mapserver/local/up/gservice/wmts/1.0.0/up-zdanice-kov-z2/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Ždánice, koordinační výkres, úplné znění po změně č. 2"
+     ],
+     "586811": [
+      "https://mestokyjov.tmapserver.cz/services/mapserver/local/up/gservice/wmts/1.0.0/up-zeletice-kov-z1/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Želetice, koordinační výkres, úplné znění po změně č. 1"
+     ],
+     "586820": [
+      "https://mestokyjov.tmapserver.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upzeravice/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Žeravice"
+     ],
+     "586838": [
+      "https://gisportal.veseli-nad-moravou.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upd-zeraviny-hlv/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Žeraviny"
+     ],
+     "593354": [
+      "https://mestokyjov.tmapserver.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upmouchnice-hlv/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Mouchnice"
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "kraj": 116,
+  "name": "výkresy územních plánů obcí v GObci (ORP Boskovice a další obce)",
+  "from": "z výkresů územních plánů obcí, které obce a ORP Boskovice zveřejňují v GObci",
+  "obce": 72,
+  "attribution": "Výkresy ÚP obcí © obce a ORP Boskovice (GObec)",
+  "drawing": true,
+  "layers": [
+   {
+    "kind": "tilesPerObec",
+    "crs": "EPSG:3857",
+    "minZoom": 12.6,
+    "minZoomData": 13,
+    "maxZoom": 18,
+    "extent": [
+     -645872,
+     -1210147,
+     -531438,
+     -1111969
+    ],
+    "obce": {
+     "513695": [
+      "https://{a-c}.tiles.gobec.cz/v2/998a4f3e0c785eef546a89d2a07299ce/{z}/{x}/{y}.png",
+      "Územní plán Horní Smržov"
+     ],
+     "513709": [
+      "https://{a-c}.tiles.gobec.cz/v2/c7602aa14d77be05ca076418829e1e16/{z}/{x}/{y}.png",
+      "Územní plán Roubanina"
+     ],
+     "530824": [
+      "https://{a-c}.tiles.gobec.cz/v2/15764527a327068375c346d7182c2776/{z}/{x}/{y}.png",
+      "Územní plán Velenov, úplné znění po změně č. 1"
+     ],
+     "531006": [
+      "https://{a-c}.tiles.gobec.cz/v2/d59b82972da5e9a235cebc60ba0dacc1/{z}/{x}/{y}.png",
+      "Územní plán Ludíkov"
+     ],
+     "534692": [
+      "https://{a-c}.tiles.gobec.cz/v2/49e0551a106ccd95bd73ff43dd93b2aa/{z}/{x}/{y}.png",
+      "Územní plán Újezd u Boskovic, úplné znění po změně č. 1"
+     ],
+     "553883": [
+      "https://{a-c}.tiles.gobec.cz/v2/048d2f15c725bcb5fa27b850f8848691/{z}/{x}/{y}.png",
+      "Územní plán Ústup"
+     ],
+     "554162": [
+      "https://{a-c}.tiles.gobec.cz/v2/a8b82d7584a6ef1b86412978535bd66d/{z}/{x}/{y}.png",
+      "Územní plán Crhov"
+     ],
+     "581313": [
+      "https://{a-c}.tiles.gobec.cz/v2/ccfbc44a66cfa9c73f8a3033f265978f/{z}/{x}/{y}.png",
+      "Územní plán Bedřichov"
+     ],
+     "581330": [
+      "https://{a-c}.tiles.gobec.cz/v2/623209e7dcb143e4449a55f65badfaaa/{z}/{x}/{y}.png",
+      "Územní plán Benešov, úplné znění po změně č. 2"
+     ],
+     "581356": [
+      "https://{a-c}.tiles.gobec.cz/v2/7a2d2a14535a70cf392b8543aca928e7/{z}/{x}/{y}.png",
+      "Územní plán Borotín, úplné znění po změně č. 2"
+     ],
+     "581372": [
+      "https://{a-c}.tiles.gobec.cz/v2/20743455baebcb26666a627561a7c667/{z}/{x}/{y}.png",
+      "Územní plán Boskovice, úplné znění po změně č. 7"
+     ],
+     "581500": [
+      "https://{a-c}.tiles.gobec.cz/v2/ac2645fa49bb18eedc9924d72cfebf89/{z}/{x}/{y}.png",
+      "Územní plán Černovice"
+     ],
+     "581518": [
+      "https://{a-c}.tiles.gobec.cz/v2/ea030bd280c37757cd7dce9669936419/{z}/{x}/{y}.png",
+      "Územní plán Deštná"
+     ],
+     "581534": [
+      "https://{a-c}.tiles.gobec.cz/v2/9c36de0ada554c376a456cf279956c7a/{z}/{x}/{y}.png",
+      "Územní plán Chrudichromy"
+     ],
+     "581551": [
+      "https://{a-c}.tiles.gobec.cz/v2/4c3b80660488a4b325185b3a3546a357/{z}/{x}/{y}.png",
+      "Územní plán Drnovice, úplné znění po změně č. 2"
+     ],
+     "581593": [
+      "https://{a-c}.tiles.gobec.cz/v2/757dbfaed5aa8da6b99a4c979e25e195/{z}/{x}/{y}.png",
+      "Územní plán Hodonín, úplné znění po změně č. 1"
+     ],
+     "581631": [
+      "https://{a-c}.tiles.gobec.cz/v2/6f8253280d5914d009d498cbbe3a3c7c/{z}/{x}/{y}.png",
+      "Územní plán Horní Poříčí"
+     ],
+     "581666": [
+      "https://{a-c}.tiles.gobec.cz/v2/a2a805bb4fc46718855a4edbaccad15c/{z}/{x}/{y}.png",
+      "Územní plán Jabloňany, úplné znění po změně č. 1"
+     ],
+     "581721": [
+      "https://{a-c}.tiles.gobec.cz/v2/c9820dd8b411b485fb1d4f64f8f8e72d/{z}/{x}/{y}.png",
+      "Územní plán Kněževes"
+     ],
+     "581739": [
+      "https://{a-c}.tiles.gobec.cz/v2/c2ef6a52e33ba4e4b41e8475a4a678f4/{z}/{x}/{y}.png",
+      "Územní plán Knínice u Bosk., úplné znění po změně č. 1"
+     ],
+     "581755": [
+      "https://{a-c}.tiles.gobec.cz/v2/defb571564b7d21fb2ccfe6991102570/{z}/{x}/{y}.png",
+      "Územní plán Kořenec, úplné znění po změně č. 1"
+     ],
+     "581771": [
+      "https://{a-c}.tiles.gobec.cz/v2/d1205c82c55b48a64297d484d7f800b4/{z}/{x}/{y}.png",
+      "Územní plán Kozárov"
+     ],
+     "581798": [
+      "https://{a-c}.tiles.gobec.cz/v2/0899c13a63df8d14b642f49d39ced6a4/{z}/{x}/{y}.png",
+      "Územní plán Krhov"
+     ],
+     "581801": [
+      "https://{a-c}.tiles.gobec.cz/v2/3dde9afca579892449ce4e3cca246b55/{z}/{x}/{y}.png",
+      "Územní plán Křetín"
+     ],
+     "581810": [
+      "https://{a-c}.tiles.gobec.cz/v2/a75d855399c31184467a61bf3513eb9b/{z}/{x}/{y}.png",
+      "Územní plán Křtěnov"
+     ],
+     "581852": [
+      "https://{a-c}.tiles.gobec.cz/v2/82eb556ba7124bbb33bcd1481a6a1a47/{z}/{x}/{y}.png",
+      "Územní plán Kunice"
+     ],
+     "581879": [
+      "https://{a-c}.tiles.gobec.cz/v2/1cfbd0282160dcee31d98c83c223786c/{z}/{x}/{y}.png",
+      "Územní plán Kunštát, úplné znění po změně č. 3"
+     ],
+     "581887": [
+      "https://{a-c}.tiles.gobec.cz/v2/153969b13c73411c2d3340c5525f3a32/{z}/{x}/{y}.png",
+      "Územní plán Lazinov, úplné znění po změně č. 3"
+     ],
+     "581917": [
+      "https://{a-c}.tiles.gobec.cz/v2/c546b735325160038fae599193e5f2d7/{z}/{x}/{y}.png",
+      "Územní plán Letovice, úplné znění po změně č. 9"
+     ],
+     "581925": [
+      "https://{a-c}.tiles.gobec.cz/v2/df74d8f200eebaf3f7eba0b12c1980c1/{z}/{x}/{y}.png",
+      "Územní plán Lhota-Rapotina, úplné znění po změně č. 1"
+     ],
+     "581941": [
+      "https://{a-c}.tiles.gobec.cz/v2/04247da131a0c75f83df384a1291b580/{z}/{x}/{y}.png",
+      "Územní plán Lhota u Olešnice, úplné znění po změně č. 1"
+     ],
+     "581976": [
+      "https://{a-c}.tiles.gobec.cz/v2/844bf09987dfd5e0bc6e6e7a54a17615/{z}/{x}/{y}.png",
+      "Územní plán Lomnice"
+     ],
+     "582018": [
+      "https://{a-c}.tiles.gobec.cz/v2/a5849d9e116ca7c3e317d3e3e2764f09/{z}/{x}/{y}.png",
+      "Územní plán Lysice"
+     ],
+     "582042": [
+      "https://{a-c}.tiles.gobec.cz/v2/1421a0463b8be20dd9abc21b95b7b3bb/{z}/{x}/{y}.png",
+      "Územní plán Malá Roudka"
+     ],
+     "582069": [
+      "https://{a-c}.tiles.gobec.cz/v2/11c660d1c2309c23e78e62c6033a3671/{z}/{x}/{y}.png",
+      "Územní plán Míchov, úplné znění po změně č. 1"
+     ],
+     "582085": [
+      "https://{a-c}.tiles.gobec.cz/v2/6b8fc911fd21f243f937e54133019b0a/{z}/{x}/{y}.png",
+      "Územní plán Němčice"
+     ],
+     "582107": [
+      "https://{a-c}.tiles.gobec.cz/v2/60eda8a96d17a890a50ceaf18a466200/{z}/{x}/{y}.png",
+      "Územní plán Nýrov"
+     ],
+     "582115": [
+      "https://{a-c}.tiles.gobec.cz/v2/ef80f090e1e658112bfd8bef2b992c1a/{z}/{x}/{y}.png",
+      "Územní plán Obora, úplné znění po změně č. 1"
+     ],
+     "582131": [
+      "https://{a-c}.tiles.gobec.cz/v2/948f079ac4ab28e7d7d297092e1ff451/{z}/{x}/{y}.png",
+      "Územní plán Okrouhlá, úplné znění po změně č. 2"
+     ],
+     "582158": [
+      "https://{a-c}.tiles.gobec.cz/v2/09c393c5ae18e8447069ac2135069252/{z}/{x}/{y}.png",
+      "Územní plán Olešnice"
+     ],
+     "582271": [
+      "https://{a-c}.tiles.gobec.cz/v2/029b49d29d938c321707cb02e94bc0ac/{z}/{x}/{y}.png",
+      "Územní plán Rozseč nad Kunštátem"
+     ],
+     "582280": [
+      "https://{a-c}.tiles.gobec.cz/v2/28de1fbb26339c45754776318eae873c/{z}/{x}/{y}.png",
+      "Územní plán Rozsíčka"
+     ],
+     "582336": [
+      "https://{a-c}.tiles.gobec.cz/v2/bab2861e2cb41a13203a05546e06962e/{z}/{x}/{y}.png",
+      "Územní plán Skalice nad Svitavou"
+     ],
+     "582344": [
+      "https://{a-c}.tiles.gobec.cz/v2/6a969ee034c956eb678bc6330adb0244/{z}/{x}/{y}.png",
+      "Územní plán Skrchov"
+     ],
+     "582395": [
+      "https://{a-c}.tiles.gobec.cz/v2/2c76eff0366951f8af52fba462fd098f/{z}/{x}/{y}.png",
+      "Územní plán Sudice"
+     ],
+     "582409": [
+      "https://{a-c}.tiles.gobec.cz/v2/384c718ae5af3c8fe27fccff6ec3e22f/{z}/{x}/{y}.png",
+      "Územní plán Suchý"
+     ],
+     "582492": [
+      "https://{a-c}.tiles.gobec.cz/v2/56b5de14ff880f1a6858b0a6249c2da6/{z}/{x}/{y}.png",
+      "Územní plán Štěchov"
+     ],
+     "582506": [
+      "https://{a-c}.tiles.gobec.cz/v2/bd106b9f6de9809cbc7bfd99e8f8f59b/{z}/{x}/{y}.png",
+      "Územní plán Tasovice"
+     ],
+     "582531": [
+      "https://{a-c}.tiles.gobec.cz/v2/70b5f8cb30005be1a6d724912d469b16/{z}/{x}/{y}.png",
+      "Územní plán Uhřice"
+     ],
+     "582573": [
+      "https://{a-c}.tiles.gobec.cz/v2/e4c1aa4c02eb30d02df81cb1964c7fae/{z}/{x}/{y}.png",
+      "Územní plán Úsobrno"
+     ],
+     "582581": [
+      "https://{a-c}.tiles.gobec.cz/v2/90fbf1a0e2b6296998aa54b1c05eddab/{z}/{x}/{y}.png",
+      "Územní plán Valchov, úplné znění po změně č. 3"
+     ],
+     "582590": [
+      "https://{a-c}.tiles.gobec.cz/v2/623f7623b25bff24dab47b83055fbe3f/{z}/{x}/{y}.png",
+      "Územní plán Vanovice"
+     ],
+     "582646": [
+      "https://{a-c}.tiles.gobec.cz/v2/fe5575ab1812ed4c74a87d85376b5939/{z}/{x}/{y}.png",
+      "Územní plán Velké Opatovice, úplné znění po změně č. 1"
+     ],
+     "582662": [
+      "https://{a-c}.tiles.gobec.cz/v2/e1b0e13bf48f57fd66c228b63b628ff0/{z}/{x}/{y}.png",
+      "Územní plán Vísky"
+     ],
+     "582671": [
+      "https://{a-c}.tiles.gobec.cz/v2/58faf6f9da21416df36339e28ed4a159/{z}/{x}/{y}.png",
+      "Územní plán Voděrady"
+     ],
+     "582689": [
+      "https://{a-c}.tiles.gobec.cz/v2/594c21b99bbb65b0133ad32c1298256b/{z}/{x}/{y}.png",
+      "Územní plán Vranová"
+     ],
+     "582727": [
+      "https://{a-c}.tiles.gobec.cz/v2/4befa5d272286bd1f3f65f41b6b20782/{z}/{x}/{y}.png",
+      "Územní plán Zbraslavec"
+     ],
+     "582751": [
+      "https://{a-c}.tiles.gobec.cz/v2/6f4f840a86f7351b4a5adb2eefda4fa3/{z}/{x}/{y}.png",
+      "Územní plán Žďárná"
+     ],
+     "582883": [
+      "https://{a-c}.tiles.gobec.cz/v2/fcf9d81f0eb3fac842f8bc71c8dd9147/{z}/{x}/{y}.png",
+      "Územní plán Bratčice"
+     ],
+     "583243": [
+      "https://{a-c}.tiles.gobec.cz/v2/64a1be27b4e8abfefd7893da717590f7/{z}/{x}/{y}.png",
+      "Územní plán Kupařovice"
+     ],
+     "583375": [
+      "https://{a-c}.tiles.gobec.cz/v2/067685547733485c371e78bbcc2a1767/{z}/{x}/{y}.png",
+      "Územní plán Mělčany"
+     ],
+     "583693": [
+      "https://{a-c}.tiles.gobec.cz/v2/70152b02969afc456b0d03c8de9b7b6d/{z}/{x}/{y}.png",
+      "Územní plán Pravlov"
+     ],
+     "584151": [
+      "https://{a-c}.tiles.gobec.cz/v2/a8f1562f8a3b45281305cc6aef7d11ce/{z}/{x}/{y}.png",
+      "Územní plán Vranov"
+     ],
+     "584410": [
+      "https://{a-c}.tiles.gobec.cz/v2/8acd4a7e005f41af199911758c6c6d8e/{z}/{x}/{y}.png",
+      "Územní plán - ÚZ po Z1"
+     ],
+     "584444": [
+      "https://{a-c}.tiles.gobec.cz/v2/6d80430f7ac7a2dd99c516e9df181b9b/{z}/{x}/{y}.png",
+      "Územní plán Drnholec"
+     ],
+     "584789": [
+      "https://{a-c}.tiles.gobec.cz/v2/fd95856ce0366a997ced3dfbc98f7bfe/{z}/{x}/{y}.png",
+      "Územní plán, úplné znění po změně č. 2"
+     ],
+     "586218": [
+      "https://{a-c}.tiles.gobec.cz/v2/baa805908ca24d389bd3646233ea03a6/{z}/{x}/{y}.png",
+      "Územní plán Javorník"
+     ],
+     "593141": [
+      "https://{a-c}.tiles.gobec.cz/v2/0272df5e733dbdc4398804fbd8bcdc8e/{z}/{x}/{y}.png",
+      "Územní plán - ÚZ po Z2"
+     ],
+     "593192": [
+      "https://{a-c}.tiles.gobec.cz/v2/df9288c3c5df464a879bda0c070b0066/{z}/{x}/{y}.png",
+      "Územní plán, úplné znění po změně č. 1"
+     ],
+     "593630": [
+      "https://{a-c}.tiles.gobec.cz/v2/b5ae3b8568c364b4b86c7c2ff23e757c/{z}/{x}/{y}.png",
+      "Územní plán - ÚZ po Z1"
+     ],
+     "594041": [
+      "https://{a-c}.tiles.gobec.cz/v2/2b1b7e1f6c135bdddae4704885afd99f/{z}/{x}/{y}.png",
+      "Územní plán Hluboké Mašůvky"
+     ],
+     "594300": [
+      "https://{a-c}.tiles.gobec.cz/v2/fa0b1461a66b0a093267945ffecfd754/{z}/{x}/{y}.png",
+      "Územní plán Kuchařovice"
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "kraj": 116,
+  "name": "výkresy územních plánů obcí v ORP Hustopeče",
+  "from": "z výkresů územních plánů obcí, které zveřejňuje Městský úřad Hustopeče",
+  "obce": 26,
+  "attribution": "Výkresy ÚP obcí © Město Hustopeče",
+  "drawing": true,
+  "layers": [
+   {
+    "kind": "tilesPerObec",
+    "crs": "EPSG:3857",
+    "minZoom": 13.4,
+    "minZoomData": 14,
+    "maxZoom": 18,
+    "extent": [
+     -602034,
+     -1198942,
+     -575826,
+     -1177484
+    ],
+    "obce": {
+     "550256": [
+      "https://tiles.arcgis.com/tiles/GWRlv8m093C6uRHb/arcgis/rest/services/Kasnice_UZ_Z1_2022/MapServer/tile/{z}/{y}/{x}",
+      "Územní plán Kašnice, úplné znění po změně č. 1 (2022)"
+     ],
+     "555282": [
+      "https://tiles.arcgis.com/tiles/GWRlv8m093C6uRHb/arcgis/rest/services/Kurdejov_UZ_Z1_2025_newf/MapServer/tile/{z}/{y}/{x}",
+      "Územní plán Kurdějov, úplné znění po změně č. 1 (2025)"
+     ],
+     "584321": [
+      "https://tiles.arcgis.com/tiles/GWRlv8m093C6uRHb/arcgis/rest/services/Boleradice_UP_2011/MapServer/tile/{z}/{y}/{x}",
+      "Územní plán Boleradice (2011)"
+     ],
+     "584347": [
+      "https://tiles.arcgis.com/tiles/GWRlv8m093C6uRHb/arcgis/rest/services/Boretice_UZ_Z2_2022/MapServer/tile/{z}/{y}/{x}",
+      "Územní plán Bořetice, úplné znění po změně č. 2 (2022)"
+     ],
+     "584363": [
+      "https://tiles.arcgis.com/tiles/GWRlv8m093C6uRHb/arcgis/rest/services/Brumovice_UZ_Z1_2018/MapServer/tile/{z}/{y}/{x}",
+      "Územní plán Brumovice, úplné znění po změně č. 1 (2018)"
+     ],
+     "584401": [
+      "https://tiles.arcgis.com/tiles/GWRlv8m093C6uRHb/arcgis/rest/services/Divaky_UP_2012/MapServer/tile/{z}/{y}/{x}",
+      "Územní plán Diváky (2012)"
+     ],
+     "584461": [
+      "https://tiles.arcgis.com/tiles/GWRlv8m093C6uRHb/arcgis/rest/services/HBojanovice_UZ_Z1_2024_new/MapServer/tile/{z}/{y}/{x}",
+      "Územní plán Horní Bojanovice, úplné znění po změně č. 1 (2024)"
+     ],
+     "584550": [
+      "https://tiles.arcgis.com/tiles/GWRlv8m093C6uRHb/arcgis/rest/services/Klobouky_UZ_Z2_2021/MapServer/tile/{z}/{y}/{x}",
+      "Územní plán Klobouky u Brna, úplné znění po změně č. 2 (2021)"
+     ],
+     "584568": [
+      "https://tiles.arcgis.com/tiles/GWRlv8m093C6uRHb/arcgis/rest/services/Kobyli_Z4_2009/MapServer/tile/{z}/{y}/{x}",
+      "Územní plán Kobylí, úplné znění po změně č. 4 (2009)"
+     ],
+     "584584": [
+      "https://tiles.arcgis.com/tiles/GWRlv8m093C6uRHb/arcgis/rest/services/Krumvir_UZ_Z2_2022_newf/MapServer/tile/{z}/{y}/{x}",
+      "Územní plán Krumvíř, úplné znění po změně č. 2 (2022)"
+     ],
+     "584592": [
+      "https://tiles.arcgis.com/tiles/GWRlv8m093C6uRHb/arcgis/rest/services/Krepice_UZ_Z2_2024/MapServer/tile/{z}/{y}/{x}",
+      "Územní plán Křepice, úplné znění po změně č. 2 (2024)"
+     ],
+     "584681": [
+      "https://tiles.arcgis.com/tiles/GWRlv8m093C6uRHb/arcgis/rest/services/Morkuvky_UP_2011/MapServer/tile/{z}/{y}/{x}",
+      "Územní plán Morkůvky (2011)"
+     ],
+     "584703": [
+      "https://tiles.arcgis.com/tiles/GWRlv8m093C6uRHb/arcgis/rest/services/Nemcicky_UZ_Z2_2024/MapServer/tile/{z}/{y}/{x}",
+      "Územní plán Němčičky, úplné znění po změně č. 2 (2024)"
+     ],
+     "584711": [
+      "https://tiles.arcgis.com/tiles/GWRlv8m093C6uRHb/arcgis/rest/services/Nikolcice_UZ_Z1_2014_new/MapServer/tile/{z}/{y}/{x}",
+      "Územní plán Nikolčice, úplné znění po změně č. 1 (2014)"
+     ],
+     "584819": [
+      "https://tiles.arcgis.com/tiles/GWRlv8m093C6uRHb/arcgis/rest/services/Popice_UZ_Z3_2022/MapServer/tile/{z}/{y}/{x}",
+      "Územní plán Popice, úplné znění po změně č. 3 (2022)"
+     ],
+     "584835": [
+      "https://tiles.arcgis.com/tiles/GWRlv8m093C6uRHb/arcgis/rest/services/Pouzdrany_UP_2013/MapServer/tile/{z}/{y}/{x}",
+      "Územní plán Pouzdřany (2013)"
+     ],
+     "584894": [
+      "https://tiles.arcgis.com/tiles/GWRlv8m093C6uRHb/arcgis/rest/services/Starovice_UZ_Z2_2023_new/MapServer/tile/{z}/{y}/{x}",
+      "Územní plán Starovice, úplné znění po změně č. 2 (2023)"
+     ],
+     "584908": [
+      "https://tiles.arcgis.com/tiles/GWRlv8m093C6uRHb/arcgis/rest/services/Starovicky_UZ_Z4_2023/MapServer/tile/{z}/{y}/{x}",
+      "Územní plán Starovičky, úplné znění po změně č. 4 (2023)"
+     ],
+     "584916": [
+      "https://tiles.arcgis.com/tiles/GWRlv8m093C6uRHb/arcgis/rest/services/Strachotin_UZ_Z1_2025/MapServer/tile/{z}/{y}/{x}",
+      "Územní plán Strachotín, úplné znění po změně č. 1 (2025)"
+     ],
+     "584924": [
+      "https://tiles.arcgis.com/tiles/GWRlv8m093C6uRHb/arcgis/rest/services/Sakvice_UP_2014/MapServer/tile/{z}/{y}/{x}",
+      "Územní plán Šakvice (2014)"
+     ],
+     "584932": [
+      "https://tiles.arcgis.com/tiles/GWRlv8m093C6uRHb/arcgis/rest/services/Sitborice_UZ_Z1_2024/MapServer/tile/{z}/{y}/{x}",
+      "Územní plán Šitbořice, úplné znění po změně č. 1 (2024)"
+     ],
+     "584967": [
+      "https://tiles.arcgis.com/tiles/GWRlv8m093C6uRHb/arcgis/rest/services/Uhercice_UZ_Z2_2023/MapServer/tile/{z}/{y}/{x}",
+      "Územní plán Uherčice, úplné znění po změně č. 2 (2023)"
+     ],
+     "584991": [
+      "https://tiles.arcgis.com/tiles/GWRlv8m093C6uRHb/arcgis/rest/services/VHosteradky_UZ_Z1_2023/MapServer/tile/{z}/{y}/{x}",
+      "Územní plán Velké Hostěrádky, úplné znění po změně č. 1 (2023)"
+     ],
+     "585009": [
+      "https://tiles.arcgis.com/tiles/GWRlv8m093C6uRHb/arcgis/rest/services/VNemcice_UP_2023/MapServer/tile/{z}/{y}/{x}",
+      "Územní plán Velké Němčice (2023)"
+     ],
+     "585017": [
+      "https://tiles.arcgis.com/tiles/GWRlv8m093C6uRHb/arcgis/rest/services/VPavlovice_UZ_Z4_2024/MapServer/tile/{z}/{y}/{x}",
+      "Územní plán Velké Pavlovice, úplné znění po změně č. 4 (2024)"
+     ],
+     "585041": [
+      "https://tiles.arcgis.com/tiles/GWRlv8m093C6uRHb/arcgis/rest/services/Vrbice_UZ_Z1_2021/MapServer/tile/{z}/{y}/{x}",
+      "Územní plán Vrbice, úplné znění po změně č. 1 (2021)"
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "kraj": 116,
+  "name": "plochy s rozdílným způsobem využití z ÚAP ORP Pohořelice",
+  "from": "z územně analytických podkladů ORP Pohořelice (plochy s rozdílným způsobem využití podle územních plánů obcí)",
+  "obce": 11,
+  "attribution": "ÚAP ORP Pohořelice © Město Pohořelice",
+  "drawing": true,
+  "only": [
+   550272,
+   583332,
+   583529,
+   584517,
+   584762,
+   584843,
+   585025,
+   585033,
+   593834,
+   594377,
+   594962
+  ],
+  "versionNote": "ÚAP rozlišují jen hlavní skupiny ploch (bydlení, smíšené, výroba…). Podrobné členění a podmínky najdete v územním plánu obce.",
+  "layers": [
+   {
+    "kind": "wms",
+    "url": "https://pohorelice2.obce.gepro.cz/OUT/WMS",
+    "crs": "EPSG:5514",
+    "version": "1.3.0",
+    "params": {
+     "LAYERS": "A001a_UU05P00_PlRZV_S_p,A001a_UU05P00_PlRZV_Z_p"
+    },
+    "extent": [
+     -616335,
+     -1196061,
+     -598296,
+     -1176616
+    ]
+   }
+  ]
+ },
+ {
+  "kraj": 116,
+  "name": "plochy s rozdílným způsobem využití z ÚAP ORP Znojmo",
+  "from": "z územně analytických podkladů ORP Znojmo 2024 (plochy s rozdílným způsobem využití podle hlavních výkresů obcí)",
+  "obce": 59,
+  "attribution": "ÚAP ORP Znojmo © Město Znojmo",
+  "drawing": true,
+  "only": [
+   545325,
+   550051,
+   550078,
+   550841,
+   593729,
+   593753,
+   593761,
+   593796,
+   593800,
+   593818,
+   593842,
+   593869,
+   593877,
+   594016,
+   594024,
+   594041,
+   594075,
+   594121,
+   594130,
+   594148,
+   594156,
+   594199,
+   594270,
+   594288,
+   594300,
+   594318,
+   594326,
+   594342,
+   594369,
+   594415,
+   594431,
+   594571,
+   594580,
+   594598,
+   594628,
+   594652,
+   594687,
+   594695,
+   594776,
+   594784,
+   594792,
+   594806,
+   594814,
+   594865,
+   594873,
+   594920,
+   594997,
+   595012,
+   595039,
+   595063,
+   595080,
+   595098,
+   595101,
+   595110,
+   595136,
+   595144,
+   595152,
+   595187,
+   595195
+  ],
+  "versionNote": "Ukazujeme jen obce, u kterých ÚAP odpovídají platnému znění plánu podle ORP Znojmo.",
+  "layers": [
+   {
+    "kind": "wms",
+    "url": "https://mapy.muznojmo.cz/mapserv/hsmap7/index.php?project=uap_hsl_2024",
+    "crs": "EPSG:5514",
+    "version": "1.3.0",
+    "params": {
+     "LAYERS": "rozdilne_plochy_znojm"
+    },
+    "extent": [
+     -679391,
+     -1209018,
+     -613045,
+     -1171855
+    ]
+   }
+  ]
+ },
+ {
   "kraj": 124,
   "obec": 500496,
   "searchText": "Olomouc (Olomouc)",
@@ -1081,6 +2943,705 @@
       ""
      ]
     ]
+   }
+  ]
+ },
+ {
+  "kraj": 124,
+  "obec": 536385,
+  "searchText": "Jeseník (Jeseník)",
+  "name": "Územní plán Jeseník úplné znění po změně č. 3",
+  "from": "z hlavního výkresu územního plánu města Jeseník (mapy.jesenik.cz)",
+  "obce": 1,
+  "attribution": "ÚP Jeseník © Město Jeseník",
+  "drawing": true,
+  "layers": [
+   {
+    "kind": "tiles5514",
+    "url": "https://mapy.jesenik.cz/services/mapserver/local/up/gservice/wmts/1.0.0/up-hlv-536385-Z3/default/EPSG:5514/{z}/{y}/{x}.png",
+    "origin": [
+     -1025000,
+     -920000
+    ],
+    "resolutions": [
+     2048.256,
+     1024.128,
+     512.064,
+     256.032,
+     128.016,
+     64.008,
+     32.004,
+     16.002,
+     8.001,
+     4.0005,
+     2.00025,
+     1.000125,
+     0.5000625,
+     0.25003125,
+     0.125015625,
+     0.0625078125
+    ],
+    "extent": [
+     -546486,
+     -1058390,
+     -537893,
+     -1047980
+    ]
+   }
+  ],
+  "info": [
+   {
+    "kind": "wfs",
+    "url": "https://mapy.jesenik.cz/services/mapserver/local/up/gservice",
+    "typename": "rzv-all-p",
+    "version": "2.0.0",
+    "crs": "EPSG:5514",
+    "codes": "std",
+    "fields": {
+     "code": "kod_fp",
+     "name": "info_title",
+     "doc": "nazev_up",
+     "date": "datum_vyd"
+    },
+    "dateLabel": "Platí od"
+   }
+  ]
+ },
+ {
+  "kraj": 124,
+  "obec": 540471,
+  "searchText": "Mohelnice (Šumperk)",
+  "name": "Územní plán Mohelnice po změně č. 8",
+  "from": "z hlavního výkresu územního plánu města Mohelnice (gis.mohelnice.cz)",
+  "obce": 1,
+  "attribution": "ÚP Mohelnice © Město Mohelnice",
+  "drawing": true,
+  "layers": [
+   {
+    "kind": "tiles5514",
+    "url": "https://gis.mohelnice.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upd-mohelnice-hlv-z8/default/EPSG:5514/{z}/{y}/{x}.png",
+    "origin": [
+     -1025000,
+     -920000
+    ],
+    "resolutions": [
+     2048.256,
+     1024.128,
+     512.064,
+     256.032,
+     128.016,
+     64.008,
+     32.004,
+     16.002,
+     8.001,
+     4.0005,
+     2.00025,
+     1.000125,
+     0.5000625,
+     0.25003125,
+     0.125015625,
+     0.0625078125
+    ],
+    "extent": [
+     -578439,
+     -1101511,
+     -565087,
+     -1092356
+    ]
+   }
+  ],
+  "info": [
+   {
+    "kind": "wfs",
+    "url": "https://gis.mohelnice.cz/services/mapserver/local/up/gservice",
+    "typename": "rzv-all-p",
+    "version": "2.0.0",
+    "crs": "EPSG:5514",
+    "codes": "std",
+    "fields": {
+     "code": "kod_fp",
+     "name": "info_title",
+     "doc": "nazev_up",
+     "date": "datum_vyd"
+    },
+    "dateLabel": "Platí od"
+   }
+  ]
+ },
+ {
+  "kraj": 124,
+  "obec": 589250,
+  "searchText": "Prostějov (Prostějov)",
+  "name": "Územní plán Prostějov po VII. změně",
+  "from": "z hlavního výkresu Územního plánu Prostějov (úplné znění po vydání VII. změny, účinné od 5. 1. 2026)",
+  "obce": 1,
+  "attribution": "ÚP Prostějov © Statutární město Prostějov (Naše mapy)",
+  "drawing": true,
+  "links": [
+   {
+    "label": "Územní plán Prostějov",
+    "url": "https://www.prostejov.eu/cs/obcan/magistrat/informace-z-odboru/odbor-uzemniho-planovani-a-pamatkove-pece/uzemni-planovani/uzemni-plan-prostejov-uplne-zneni-po-vydani-vii-zmeny.html"
+   }
+  ],
+  "layers": [
+   {
+    "kind": "tilecache",
+    "url": "https://tiles.nasemapy.cz/tiles/Prostejov/up2026_02/hlv-vyuziti/{z}/{x}/{y}.png",
+    "gridExtent": [
+     -905000,
+     -1230000,
+     -400000,
+     -900000
+    ],
+    "extent": [
+     -564475,
+     -1139563,
+     -552791,
+     -1130719
+    ],
+    "resolutions": [
+     2540,
+     1270,
+     635,
+     254,
+     127,
+     63.5,
+     25.4,
+     12.7,
+     6.35,
+     2.54,
+     1.27,
+     0.635,
+     0.254,
+     0.127
+    ]
+   }
+  ]
+ },
+ {
+  "kraj": 124,
+  "obec": 511382,
+  "searchText": "Přerov (Přerov)",
+  "name": "Územní plán Přerov po změně č. 17",
+  "from": "z hlavního výkresu Územního plánu města Přerova (úplné znění včetně změn č. 16 a 17)",
+  "obce": 1,
+  "attribution": "ÚP Přerov © Statutární město Přerov",
+  "drawing": true,
+  "layers": [
+   {
+    "kind": "tiles5514",
+    "url": "https://tiles.arcgis.com/tiles/5Akyn3wKZ8uuW09x/arcgis/rest/services/UP_Prerov_HLV/MapServer/tile/{z}/{y}/{x}",
+    "origin": [
+     -925000,
+     -920000
+    ],
+    "extent": [
+     -540721,
+     -1143078,
+     -527717,
+     -1129072
+    ],
+    "resolutions": [
+     67.73346880027094,
+     33.86673440013547,
+     16.933367200067735,
+     8.466683600033868,
+     4.233341800016934,
+     2.116670900008467,
+     1.0583354500042335,
+     0.5291677250021167,
+     0.26458386250105836
+    ]
+   }
+  ]
+ },
+ {
+  "kraj": 124,
+  "name": "výkresy územních plánů obcí v ORP Šumperk",
+  "from": "z výkresů územních plánů obcí, které zveřejňuje Město Šumperk",
+  "obce": 34,
+  "attribution": "Výkresy ÚP obcí © ORP Šumperk",
+  "drawing": true,
+  "layers": [
+   {
+    "kind": "tilesPerObec",
+    "minZoom": 12,
+    "origin": [
+     -1025000,
+     -920000
+    ],
+    "resolutions": [
+     2048.256,
+     1024.128,
+     512.064,
+     256.032,
+     128.016,
+     64.008,
+     32.004,
+     16.002,
+     8.001,
+     4.0005,
+     2.00025,
+     1.000125,
+     0.5000625,
+     0.25003125,
+     0.125015625,
+     0.0625078125
+    ],
+    "tileSize": 256,
+    "extent": [
+     -577642,
+     -1092668,
+     -542925,
+     -1053548
+    ],
+    "obce": {
+     "500020": [
+      "https://gis.sumperk.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upd-petrov-nad-desnou-hlv/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Petrov nad Desnou"
+     ],
+     "523704": [
+      "https://gis.sumperk.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upd-sumperk-hlv-z7/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Šumperk po změně č. 7a"
+     ],
+     "525588": [
+      "https://gis.sumperk.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upd-bludov-hlv-z3/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Bludov po změně č. 3"
+     ],
+     "525804": [
+      "https://gis.sumperk.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upd-bohdikov-hlv/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Bohdíkov"
+     ],
+     "525979": [
+      "https://gis.sumperk.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upd-bohutin-hlv/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Bohutín"
+     ],
+     "526169": [
+      "https://gis.sumperk.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upd-branna-hlv/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Branná"
+     ],
+     "532894": [
+      "https://gis.sumperk.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upd-busin-hlv/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Bušín"
+     ],
+     "533688": [
+      "https://gis.sumperk.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upd-dlouhomilov-hlv-z1/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Dlouhomilov po změně č. 1"
+     ],
+     "535532": [
+      "https://gis.sumperk.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upd-hanusovice-hlv-z1/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Hanušovice po změně č. 1"
+     ],
+     "536091": [
+      "https://gis.sumperk.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upd-hrabisin-hlv-z3/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Hrabišín po změně č. 3"
+     ],
+     "536521": [
+      "https://gis.sumperk.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upd-jindrichov-hlv/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Jindřichov"
+     ],
+     "539961": [
+      "https://gis.sumperk.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upd-libina-hlv/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Libina"
+     ],
+     "540226": [
+      "https://gis.sumperk.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upd-loucna-nad-desnou-hlv-z1/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Loučná nad Desnou"
+     ],
+     "540331": [
+      "https://gis.sumperk.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upd-mala-morava-hlv/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Malá Morava"
+     ],
+     "540501": [
+      "https://gis.sumperk.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upd-novy-malin-hlv-z1/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Nový Malín po změně č. 1"
+     ],
+     "540510": [
+      "https://gis.sumperk.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upd-olsany-hlv-z2/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Olšany po změně č. 2"
+     ],
+     "540544": [
+      "https://gis.sumperk.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upd-oskava-hlv-z1/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Oskava po změně č. 1"
+     ],
+     "540650": [
+      "https://gis.sumperk.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upd-pisarov-hlv-z2a/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Písařov po změně č. 2A"
+     ],
+     "540862": [
+      "https://gis.sumperk.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upd-rapotin-hlv-z3/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Rapotín po změně č. 3"
+     ],
+     "540978": [
+      "https://gis.sumperk.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upd-ruda-nad-moravou-hlv/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Ruda nad Moravou"
+     ],
+     "540986": [
+      "https://gis.sumperk.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upd-sobotin-hlv-z2/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Sobotín po změně č. 2"
+     ],
+     "541109": [
+      "https://gis.sumperk.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upd-sudkov-hlv/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Sudkov"
+     ],
+     "541265": [
+      "https://gis.sumperk.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upd-velke-losiny-hlv-z2/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Velké Losiny po změně č. 2"
+     ],
+     "553191": [
+      "https://gis.sumperk.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upd-vikantice-hlv/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Vikantice"
+     ],
+     "553247": [
+      "https://gis.sumperk.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upd-koprivna-hlv/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Kopřivná"
+     ],
+     "553344": [
+      "https://gis.sumperk.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upd-jakubovice-hlv/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Jakubovice"
+     ],
+     "553379": [
+      "https://gis.sumperk.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upd-dolni-studenky-hlv/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Dolní Studénky"
+     ],
+     "553387": [
+      "https://gis.sumperk.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upd-hrabesice-hlv/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Hraběšice"
+     ],
+     "553395": [
+      "https://gis.sumperk.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upd-rejchartice-zm1-hlv/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Rejchartice po změně č. 1"
+     ],
+     "554146": [
+      "https://gis.sumperk.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upd-vernirovice-hlv/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Vernířovice"
+     ],
+     "569305": [
+      "https://gis.sumperk.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upd-chromec-hlv/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Chromeč"
+     ],
+     "569437": [
+      "https://gis.sumperk.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upd-bratrusov-hlv-z2/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Bratrušov po změně č. 2"
+     ],
+     "569445": [
+      "https://gis.sumperk.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upd-vikyrovice-hlv-z1/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Vikýřovice po změně č. 1"
+     ],
+     "570117": [
+      "https://gis.sumperk.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upd-sleglov-hlv-z1/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Šléglov po změně č. 1"
+     ]
+    }
+   }
+  ],
+  "info": [
+   {
+    "kind": "wfs",
+    "url": "https://gis.sumperk.cz/services/mapserver/local/up/gservice",
+    "typename": "rzv-all-p",
+    "version": "2.0.0",
+    "crs": "EPSG:5514",
+    "codes": "std",
+    "fields": {
+     "code": "kod_fp",
+     "name": "infotext",
+     "status": "typ_fp",
+     "doc": "nazev_up",
+     "date": "datum_vyd"
+    },
+    "dateLabel": "Platí od"
+   }
+  ]
+ },
+ {
+  "kraj": 124,
+  "name": "výkresy územních plánů obcí v ORP Zábřeh",
+  "from": "z výkresů územních plánů obcí, které zveřejňuje Město Zábřeh",
+  "obce": 26,
+  "attribution": "Výkresy ÚP obcí © ORP Zábřeh",
+  "drawing": true,
+  "layers": [
+   {
+    "kind": "tilesPerObec",
+    "minZoom": 12,
+    "origin": [
+     -1025000,
+     -920000
+    ],
+    "resolutions": [
+     2048.256,
+     1024.128,
+     512.064,
+     256.032,
+     128.016,
+     64.008,
+     32.004,
+     16.002,
+     8.001,
+     4.0005,
+     2.00025,
+     1.000125,
+     0.5000625,
+     0.25003125,
+     0.125015625,
+     0.0625078125
+    ],
+    "tileSize": 256,
+    "extent": [
+     -581571,
+     -1096069,
+     -557830,
+     -1071991
+    ],
+    "obce": {
+     "530727": [
+      "https://gis.zabrezsko.cz/services/mapserver/local/up/gservice/wmts/1.0.0/up-hlv-88383119-Z0/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Brníčko"
+     ],
+     "534927": [
+      "https://gis.zabrezsko.cz/services/mapserver/local/up/gservice/wmts/1.0.0/up-hlv-1202312802-Z1/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Dubicko"
+     ],
+     "535770": [
+      "https://gis.zabrezsko.cz/services/mapserver/local/up/gservice/wmts/1.0.0/up-hlv-30456179-Z0/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Horní Studénky"
+     ],
+     "535885": [
+      "https://gis.zabrezsko.cz/services/mapserver/local/up/gservice/wmts/1.0.0/up-hlv-6921808001-Z1/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Hoštejn"
+     ],
+     "536113": [
+      "https://gis.zabrezsko.cz/services/mapserver/local/up/gservice/wmts/1.0.0/up-hlv-81081788-Z0/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Hynčina"
+     ],
+     "536288": [
+      "https://gis.zabrezsko.cz/services/mapserver/local/up/gservice/wmts/1.0.0/up-hlv-3230554501-Z1/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Jedlí"
+     ],
+     "536393": [
+      "https://gis.zabrezsko.cz/services/mapserver/local/up/gservice/wmts/1.0.0/up-hlv-536393-Z2/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Jestřebí"
+     ],
+     "536571": [
+      "https://gis.zabrezsko.cz/services/mapserver/local/up/gservice/wmts/1.0.0/up-hlv-1144067701-Z1/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Kamenná"
+     ],
+     "536733": [
+      "https://gis.zabrezsko.cz/services/mapserver/local/up/gservice/wmts/1.0.0/up-hlv-2439996601-Z1/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Kolšov"
+     ],
+     "536814": [
+      "https://gis.zabrezsko.cz/services/mapserver/local/up/gservice/wmts/1.0.0/up-hlv-973891953914-Z0/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Kosov"
+     ],
+     "537284": [
+      "https://gis.zabrezsko.cz/services/mapserver/local/up/gservice/wmts/1.0.0/up-hlv-973891953896-Z1/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Lesnice"
+     ],
+     "537713": [
+      "https://gis.zabrezsko.cz/services/mapserver/local/up/gservice/wmts/1.0.0/up-hlv-4835473901-Z1/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Leština"
+     ],
+     "540234": [
+      "https://gis.zabrezsko.cz/services/mapserver/local/up/gservice/wmts/1.0.0/up-hlv-86851136-Z0/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Lukavice"
+     ],
+     "540773": [
+      "https://gis.zabrezsko.cz/services/mapserver/local/up/gservice/wmts/1.0.0/up-hlv-540773-Z1/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Postřelmov"
+     ],
+     "540854": [
+      "https://gis.zabrezsko.cz/services/mapserver/local/up/gservice/wmts/1.0.0/up-hlv-66057985-Z0/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Rájec"
+     ],
+     "540919": [
+      "https://gis.zabrezsko.cz/services/mapserver/local/up/gservice/wmts/1.0.0/up-hlv-973891953245-Z1/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Rovensko"
+     ],
+     "541125": [
+      "https://gis.zabrezsko.cz/services/mapserver/local/up/gservice/wmts/1.0.0/up-hlv-21349734-Z0/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Svébohov"
+     ],
+     "541168": [
+      "https://gis.zabrezsko.cz/services/mapserver/local/up/gservice/wmts/1.0.0/up-hlv-71902101-Z0/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Štíty"
+     ],
+     "541354": [
+      "https://gis.zabrezsko.cz/services/mapserver/local/up/gservice/wmts/1.0.0/up-hlv-973891952807-Z4/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Zábřeh"
+     ],
+     "541478": [
+      "https://gis.zabrezsko.cz/services/mapserver/local/up/gservice/wmts/1.0.0/up-hlv-33445376-Z0/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Zvole"
+     ],
+     "553221": [
+      "https://gis.zabrezsko.cz/services/mapserver/local/up/gservice/wmts/1.0.0/up-hlv-973891950770-Z1/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Hrabová"
+     ],
+     "553352": [
+      "https://gis.zabrezsko.cz/services/mapserver/local/up/gservice/wmts/1.0.0/up-hlv-20711482-Z0/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Postřelmůvek"
+     ],
+     "553476": [
+      "https://gis.zabrezsko.cz/services/mapserver/local/up/gservice/wmts/1.0.0/up-hlv-3317682102-Z2/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Nemile"
+     ],
+     "570095": [
+      "https://gis.zabrezsko.cz/services/mapserver/local/up/gservice/wmts/1.0.0/up-hlv-973891950772-Z3/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Vyšehoří"
+     ],
+     "570141": [
+      "https://gis.zabrezsko.cz/services/mapserver/local/up/gservice/wmts/1.0.0/up-hlv-973891950769-Z2/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Drozdov"
+     ],
+     "570338": [
+      "https://gis.zabrezsko.cz/services/mapserver/local/up/gservice/wmts/1.0.0/up-hlv-36110651-Z0/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Zborov"
+     ]
+    }
+   }
+  ],
+  "info": [
+   {
+    "kind": "wfs",
+    "url": "https://gis.zabrezsko.cz/services/mapserver/local/up/gservice",
+    "typename": "regulativy_p",
+    "version": "2.0.0",
+    "crs": "EPSG:5514",
+    "codes": "std",
+    "fields": {
+     "code": "kod_fp",
+     "name": "info_title",
+     "doc": "nazev_up",
+     "date": "ucinnost"
+    },
+    "dateLabel": "Platí od"
+   }
+  ]
+ },
+ {
+  "kraj": 124,
+  "name": "výkresy územních plánů obcí v ORP Hranice",
+  "from": "z výkresů územních plánů obcí, které zveřejňuje Město Hranice",
+  "obce": 16,
+  "attribution": "Výkresy ÚP obcí © ORP Hranice",
+  "drawing": true,
+  "layers": [
+   {
+    "kind": "tilesPerObec",
+    "minZoom": 12,
+    "origin": [
+     -1025000,
+     -920000
+    ],
+    "resolutions": [
+     2048.256,
+     1024.128,
+     512.064,
+     256.032,
+     128.016,
+     64.008,
+     32.004,
+     16.002,
+     8.001,
+     4.0005,
+     2.00025,
+     1.000125,
+     0.5000625,
+     0.25003125,
+     0.125015625,
+     0.0625078125
+    ],
+    "tileSize": 256,
+    "extent": [
+     -521139,
+     -1137202,
+     -502837,
+     -1115093
+    ],
+    "obce": {
+     "512231": [
+      "https://mapy.mesto-hranice.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upd-belotin-kov/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Bělotín, koordinační výkres"
+     ],
+     "513067": [
+      "https://mapy.mesto-hranice.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upd-cernotin-kov-z1/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Černotín, koordinační výkres, po změně č. 1"
+     ],
+     "513636": [
+      "https://mapy.mesto-hranice.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upd-hrabuvka-kov-z1/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Hrabůvka, koordinační výkres, po změně č. 1"
+     ],
+     "513750": [
+      "https://mapy.mesto-hranice.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upd-hranice-hlv-z7/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Hranice úplné znění po změnách 2,3,1,4,6,8 a 7 (Z7 účinná 12.05.2026 per mesto-hranice.cz)"
+     ],
+     "513873": [
+      "https://mapy.mesto-hranice.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upd-jindrichov-kov-z1/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Jindřichov, koordinační výkres, po změně č. 1"
+     ],
+     "514047": [
+      "https://mapy.mesto-hranice.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upd-klokoci-kov-z1/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Klokočí, koordinační výkres, po změně č. 1"
+     ],
+     "515418": [
+      "https://mapy.mesto-hranice.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upd-milenov-kov/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Milenov, koordinační výkres"
+     ],
+     "516686": [
+      "https://mapy.mesto-hranice.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upd-partutovice-kov/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Partutovice, koordinační výkres, po změně č. 1"
+     ],
+     "516911": [
+      "https://mapy.mesto-hranice.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upd-polom-kov/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Polom, koordinační výkres"
+     ],
+     "517275": [
+      "https://mapy.mesto-hranice.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upd-radikov-kov/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Radíkov, koordinační výkres"
+     ],
+     "517747": [
+      "https://mapy.mesto-hranice.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upd-skalicka-kov/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Skalička, koordinační výkres"
+     ],
+     "517909": [
+      "https://mapy.mesto-hranice.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upd-stritez-kov-z1/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Střítež nad Ludinou, koordinační výkres, po změně č. 1"
+     ],
+     "520306": [
+      "https://mapy.mesto-hranice.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upd-usti-kov-z1/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Ústí, koordinační výkres, po změně č. 1"
+     ],
+     "552844": [
+      "https://mapy.mesto-hranice.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upd-olsovec-kov-z2/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Olšovec, koordinační výkres, po změně č. 2"
+     ],
+     "552968": [
+      "https://mapy.mesto-hranice.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upd-h-tesice-kov-z1/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Horní Těšice, koordinační výkres, po změně č. 1"
+     ],
+     "552984": [
+      "https://mapy.mesto-hranice.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upd-d-tesice-kov/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Dolní Těšice, koordinační výkres"
+     ]
+    }
+   }
+  ],
+  "info": [
+   {
+    "kind": "wfs",
+    "url": "https://mapy.mesto-hranice.cz/services/mapserver/local/up/gservice",
+    "typename": "rzv-all-p",
+    "version": "2.0.0",
+    "crs": "EPSG:5514",
+    "codes": "std",
+    "fields": {
+     "code": "kod_fp",
+     "name": "info_title",
+     "link": "link"
+    },
+    "dateLabel": "Platí od"
    }
   ]
  },
@@ -1169,6 +3730,100 @@
      "Podmíněně přípustné využití": "Podmíněně_přípustné_využití_",
      "Nepřípustné využití": "Nepřípustné_využití_"
     }
+   }
+  ]
+ },
+ {
+  "kraj": 141,
+  "name": "výkresy územních plánů měst Vsetín, Valašské Meziříčí, Uherské Hradiště a Uherský Brod",
+  "from": "z hlavních výkresů územních plánů, které města zveřejňují na svých mapových serverech",
+  "obce": 4,
+  "attribution": "Výkresy ÚP © Vsetín, Valašské Meziříčí, Uherské Hradiště, Uherský Brod",
+  "drawing": true,
+  "layers": [
+   {
+    "kind": "tilesPerObec",
+    "minZoom": 12,
+    "origin": [
+     -1025000,
+     -920000
+    ],
+    "resolutions": [
+     2048.256,
+     1024.128,
+     512.064,
+     256.032,
+     128.016,
+     64.008,
+     32.004,
+     16.002,
+     8.001,
+     4.0005,
+     2.00025,
+     1.000125,
+     0.5000625,
+     0.25003125,
+     0.125015625,
+     0.0625078125
+    ],
+    "tileSize": 256,
+    "extent": [
+     -539419,
+     -1192392,
+     -488184,
+     -1135231
+    ],
+    "obce": {
+     "541630": [
+      "https://mapy.mestovsetin.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upd-vsetin-hlv-z6/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Vsetín, úplné znění po změně č. 6"
+     ],
+     "545058": [
+      "https://gis.muvalmez.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upd-val-mez-hlv-z5/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Valašské Meziříčí po změně č. 5"
+     ],
+     "592005": [
+      "https://gis.mesto-uh.cz/services/mapserver/local/up/gservice/wmts/1.0.0/upd-uherske-hradiste-hlv-z1/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Uherské Hradiště po změně č. 1"
+     ],
+     "592731": [
+      "https://gis.ub.cz/services/mapserver/local/up/gservice/wmts/1.0.0/up-hlv-39367312-Z0/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Uherský Brod (2023)"
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "kraj": 141,
+  "name": "hlavní výkres územních plánů obcí Zlínského kraje (JÚAP)",
+  "from": "z mozaiky hlavních výkresů územních plánů obcí v jednotných územně analytických podkladech Zlínského kraje",
+  "obce": 306,
+  "attribution": "Hlavní výkresy ÚP obcí © Zlínský kraj (JÚAP)",
+  "drawing": true,
+  "versionNote": "Mozaiku vede kraj, u jednotlivých obcí neuvádí verzi plánu. Kontrola u několika měst sedí s platným zněním, poslední změna ale může chybět.",
+  "skip": [
+   585793
+  ],
+  "layers": [
+   {
+    "kind": "wms",
+    "url": "https://juapzk.geostore.cz/uap3/handlers/wms.ashx",
+    "crs": "EPSG:3857",
+    "version": "1.3.0",
+    "tiled": true,
+    "tileSize": 512,
+    "rawCommas": true,
+    "minZoom": 13.9,
+    "params": {
+     "LAYERS": "57B2A3C8,AA76C277,8EB2F320,1C85E976,78E744F7,63B1F5CA,20F33514,94989C10,A16527F8,C0900DE2,235780C5,E57E4795,EE037881,8E7C142A,CBC757C6,4EC470FF,4527A000,645FDD3A,84C3EEB1,C6FEC573,F790A3B0,63ED97D8,EDE28F38,810095E1,0B2E5963,3076013E,2F539F38,150999A3,D5EC2963,67F25DEC,C87A0219,F405129B,1C6DC119,83ED36E8,D7951951,19949067,9861E1C7,24426DC4,1DF5A568,B6272164,2811CB21,D8AA043F,E1BFA540,CFCC4516,AA91319C,8E9FF71E,1A6BF342,C7E3C856,F7910C17,9C7D0EE2,1A08D6BA,3933C6C8,44D9C4A3,2832258B,D4F1697B,D29C3C29,4517F764,73FDEA71,A3979190,DC3866EB,FA216274,5F5F76F9,6D99E467,FC0581B3,4B79B103,28EDA798,86DC882A,08E48275,C8C21799,2D6CA20E,C60815E2,FBFCDA25,B1BCA36C,B0DCD0C9,2A84163D,A2DFB7AC,8578031B,6018D53E,D15D5407,E896F5B5,A2504593,2D5D69F1,929376E4,7CA23ECF,01812FAD,80F6DC1D,7E5C2361,22F920C5,9F13AC92,F6359F6B,14197BED,4EDF0135,33EF90A3,CD354F8D,F28D89D1,8DB03BA9,E8ABF707,D43454C9,A334062D,BD5B3EA7,7D7C0250,FD5086A1,88273A6F,4CC20C45,33F3D296,035C6C96,05FD75B1,56CD15B7,E0954668,FB3BEF85,E2BAA8CE,58FC1B24,0E0C3473,AD8D1092,F454A32E,D1C7517C,4E625460,529757E0,BDA5EF11,6DB04E06,A09F02B5,BCCA6653,C33347A8,926A9970,BE528629,ED7D3528,ACB13FA1,CFD553C9,C7CC2677,05DCB07B,A03FE227,B3F18899,49B0EBDD,E6853708,5412A47E,FCD809F2,5ABE94F4,1BCF21AA,D5022A99,ABF28546,D7113194,22CB97D2,99BB7AC3,D0BB6E49,65E10650,597921CA,E139A0A3,B45F7690,9AE3BD1B,B47558F0,51CA4757,B9662DE8,8D8BF806,9E0020E4,2F5F3068,239080A1,38E94A8F,5E388167,393410F3,69984396,F4F1C2DA,CF1F7BC3,DA0E34DA,4FF50129,DCEE16D0"
+    },
+    "extent": [
+     -563319,
+     -1206462,
+     -465229,
+     -1131944
+    ]
    }
   ]
  }
