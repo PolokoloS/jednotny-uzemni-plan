@@ -12,7 +12,9 @@ module.exports = defineConfig({
   use: {
     baseURL: 'http://127.0.0.1:8080',
     viewport: { width: 1280, height: 800 },
-    locale: 'cs-CZ'
+    locale: 'cs-CZ',
+    // Lokálně stačí nainstalovaný Edge, v CI se stahuje Chromium.
+    ...(process.env.CI ? {} : { channel: 'msedge' })
   },
   webServer: {
     command: `${py} -m http.server 8080 -d dist`,

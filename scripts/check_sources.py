@@ -44,7 +44,7 @@ def check(url):
     started = time.time()
     try:
         with urllib.request.urlopen(req, timeout=TIMEOUT) as r:
-            body = r.read(400000)
+            body = r.read()
             ms = int((time.time() - started) * 1000)
             try:
                 data = json.loads(body.decode('utf-8', 'replace'))
