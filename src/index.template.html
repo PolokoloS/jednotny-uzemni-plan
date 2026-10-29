@@ -70,19 +70,15 @@
       <button class="sheet-handle" id="sheetHandle" aria-label="Rozbalit nebo sbalit kartu"><span></span></button>
 
       <section id="intro" class="intro">
-        <h2>Klikněte do mapy a uvidíte, co se na místě smí stavět.</h2>
-        <ol class="steps">
-          <li><span><b>Najděte místo.</b> Adresu, obec nebo číslo parcely, třeba „Liberec 1234/9“.</span></li>
-          <li><span><b>Klikněte na pozemek.</b> Barva ukazuje, k čemu plocha slouží.</span></li>
-          <li><span><b>Přečtěte si kartu.</b> Co se tu smí, co se chystá a na co si dát pozor.</span></li>
-        </ol>
+        <h2>Územní plány obcí z celé republiky v jedné mapě: klikněte na pozemek a uvidíte, co se na něm smí postavit.</h2>
+        <div class="examples" id="examples" aria-label="Příklady"></div>
         <div class="cov">
-          <div class="cov-top"><span class="cov-big num" id="covN">346</span><span class="cov-of">obcí z <span class="num" id="covTotal">6 254</span> už má územní plán v jednotných datech</span></div>
-          <div class="cov-bar" aria-hidden="true"><span id="covBar" style="width:5.5%"></span><span id="covBarReg" class="reg" style="width:0"></span></div>
-          <p id="covRest">Ostatní obce ho mají jen jako PDF. U nich vás pošleme na krajský portál, kde ho najdete.</p>
+          <div class="cov-top"><span class="cov-big num" id="covN">381</span><span class="cov-of" id="covOf">obcí z <span class="num" id="covTotal">6 258</span> už má územní plán v jednotných datech</span></div>
+          <div class="cov-bar" aria-hidden="true" id="covBarBox"><span id="covBar" style="width:5.5%"></span><span id="covBarReg" class="reg" style="width:0"></span></div>
+          <p id="covRest">U dalších obcí ukážeme výkres z dat krajů a měst. U zbytku karta řekne, jestli obec platný plán má, a pošle vás na dokumenty.</p>
           <div class="cov-actions"><button class="btn" id="covMapBtn" aria-pressed="false">Ukázat pokrytí na mapě</button><button class="link-btn" id="covBtn">Seznam obcí s jednotnými daty</button></div>
         </div>
-        <div class="try" id="try"><span>Vyzkoušejte:</span></div>
+        <p class="find-hint">Svůj pozemek najdete nahoře: adresa, obec nebo číslo parcely, třeba „Liberec 1234/9“.</p>
         <p class="disclaimer">Neoficiální nástroj nad otevřenými daty státu. Informace jsou orientační, závazný je územní plán vydaný obcí.</p>
       </section>
 

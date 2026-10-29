@@ -34,7 +34,6 @@
   ];
   const VERDICT = ['Spíš ne', 'Záleží na podmínkách', 'Typicky ano'];
   const VERDICT_ICON = ['i-no', 'i-maybe', 'i-yes'];
-  const TRY = [563889, 554821, 552046, 590266, 545881, 538094];
 
   const TYPE = {};
   STD.forEach(s => { TYPE[s.c] = { n: s.n, rgb: s.rgb }; });
@@ -635,7 +634,7 @@
   // [zdroj n|m|k|v|p|-, index v REGIONAL, stav plánu p|x|?, název plánu, účinnost, změn, poslední změna, pořizuje se, web]
   let OBCE = null, obceP = null;
   function loadObce() {
-    if (!obceP) obceP = fetch('obce.json').then(r => (r.ok ? r.json() : null)).then(d => { OBCE = d && d.o ? d : null; return OBCE; }).catch(() => null);
+    if (!obceP) obceP = fetch('obce.json').then(r => (r.ok ? r.json() : null)).then(d => { OBCE = d && d.o ? d : null; if (OBCE) renderCoverageNumbers(); return OBCE; }).catch(() => null);
     return obceP;
   }
   const obecRec = kod => (OBCE && kod != null ? OBCE.o[String(kod)] || null : null);
@@ -1988,28 +1987,43 @@
   // ---------------------------------------------------------------------------
   // Úvod, seznam obcí, dialogy
   // ---------------------------------------------------------------------------
-  const tryEl = $('#try');
-  TRY.forEach(k => { const o = COVMAP.get(k); if (!o) return; const b = document.createElement('button'); b.textContent = o[1].replace('Brandýs nad Labem-Stará Boleslav', 'Brandýs n. L.'); b.addEventListener('click', () => fitObec(k)); tryEl.appendChild(b); });
-  // ukázky z krajských dat (obce, které v jednotném standardu ještě nejsou)
-  [['Praha', 14.4205, 50.0875, 14.6], ['Brno', 16.608, 49.1951, 14.4], ['Plzeň', 13.3776, 49.7475, 14.4], ['Jihlava', 15.5911, 49.3961, 14.8]].forEach(([n, lon, lat, z]) => {
-    const b = document.createElement('button'); b.textContent = n; b.className = 'reg';
-    b.title = 'Plán z dat kraje nebo města';
-    b.addEventListener('click', () => centerOn(ol.proj.fromLonLat([lon, lat]), z));
-    tryEl.appendChild(b);
+  // Příklady na kliknutí: to nejlepší, co mapa umí (stejná místa používá i prohlídka)
+  const P0 = [15.090024, 50.749004], P1 = [15.0905, 50.7505];
+  function resetModes() { setSwipe(false); setCovMap(false); if (S.intent !== null) setIntent(null); if (S.plan) setPlan(false); }
+  function setPlan(v) { S.plan = !!v; if (S.plan) S.intent = null; syncModeUI(); restyle(); renderLegend(); writeHash(); updateHint(); }
+  const EXAMPLES = [
+    { t: 'Co se smí na pozemku', s: 'Liberec: nová čtvrť a rozluštěný kód plánu', go: () => { centerOn(ol.proj.fromLonLat(P0), 16.3); selectAt(ol.proj.fromLonLat(P0)); } },
+    { t: 'Kde postavit rodinný dům', s: 'Mapa přebarvená podle záměru', go: () => { clearSelection(); view.animate({ center: ol.proj.fromLonLat(P1), zoom: 14.6, duration: dur(600) }); setIntent(0); } },
+    { t: 'Co obec chystá', s: 'Plochy, které zatím stojí jen v plánu', go: () => { clearSelection(); view.animate({ center: ol.proj.fromLonLat(P1), zoom: 14.6, duration: dur(600) }); setPlan(true); } },
+    { t: 'Dnes a podle plánu', s: 'Letecký snímek proti plánu', go: () => { clearSelection(); view.animate({ center: ol.proj.fromLonLat(P1), zoom: 16.2, duration: dur(600) }); setSwipe(true); } },
+    { t: 'Nový plán Hradce Králové', s: 'Hlavní výkres platný od 2026', go: () => { const c = ol.proj.fromLonLat([15.83272, 50.20918]); centerOn(c, 16.2); selectAt(c); } },
+    { t: 'Metropolitní plán Prahy', s: 'Hlavní výkres IPR Praha', go: () => { const c = ol.proj.fromLonLat([14.4205, 50.0875]); centerOn(c, 15); selectAt(c); } },
+    { t: 'Kde mapa plán zná', s: 'Obce podle zdroje dat', go: () => setCovMap(true, true) },
+    { t: 'Prohlídka pro prezentaci', s: 'Sedm kroků, ovládání šipkami', tour: true, go: () => tourGo(0) }
+  ];
+  EXAMPLES.forEach(ex => {
+    const b = document.createElement('button');
+    b.className = 'example'; b.innerHTML = `<b>${esc(ex.t)}</b><small>${esc(ex.s)}</small>`;
+    b.addEventListener('click', () => { if (!ex.tour) resetModes(); ex.go(); });
+    $('#examples').appendChild(b);
   });
   let obceTotal = 0, covLive = false, covPlochy = SNAP.plochy;
   function renderCoverageNumbers(total) {
     if (total) obceTotal = total;
-    $('#covN').textContent = fmtInt(COV.length);
-    if (obceTotal) $('#covTotal').textContent = fmtInt(obceTotal);
-    const t = obceTotal || 6254;
-    $('#covBar').style.width = Math.max(1, (COV.length / t) * 100).toFixed(1) + '%';
-    const covKraj = {};
-    COV.forEach(o => { const k = (OKR[o[2]] || [])[1]; covKraj[k] = (covKraj[k] || 0) + 1; });
-    const regN = REGIONAL.reduce((sum, c) => sum + (c.obec ? (COVMAP.has(c.obec) ? 0 : 1) : Math.max(0, (c.obce || 0) - (covKraj[c.kraj] || 0))), 0);
-    if (regN > 0) {
-      $('#covRest').textContent = `U dalších zhruba ${fmtInt(Math.round(regN / 50) * 50)} obcí ukážeme aspoň výkres z dat kraje nebo města, často i s výkladem plochy. U zbytku vás pošleme na dokumenty obce.`;
-      const rb = $('#covBarReg'); if (rb) rb.style.width = Math.max(0.5, (regN / t) * 100).toFixed(1) + '%';
+    if (OBCE) {
+      // úplný přehled z obce.json: kolik obcí má plán přímo v mapě a kolik lidí v nich žije
+      const n = {}, pop = {}; let all = 0, allPop = 0;
+      Object.values(OBCE.o).forEach(r => { n[r[9]] = (n[r[9]] || 0) + 1; pop[r[9]] = (pop[r[9]] || 0) + (+r[11] || 0); all++; allPop += +r[11] || 0; });
+      const inMap = ['n', 'k', 'm', 'p'].reduce((s, k) => s + (n[k] || 0), 0), inPop = ['n', 'k', 'm', 'p'].reduce((s, k) => s + (pop[k] || 0), 0);
+      $('#covN').textContent = fmtInt(inMap);
+      $('#covOf').innerHTML = `obcí z <span class="num">${fmtInt(all)}</span> má územní plán přímo v mapě, žije v nich ${Math.round(100 * inPop / allPop)} % obyvatel`;
+      $('#covBarBox').innerHTML = COV_CAT.map(([k, label, rgb]) => `<span title="${esc(label)}" style="width:${(100 * (n[k] || 0) / all).toFixed(2)}%;background:${rgba(rgb, 0.92)}"></span>`).join('');
+      $('#covRest').textContent = `V jednotném standardu s plným výkladem je ${fmtInt(n.n || 0)} obcí, ostatní ukazujeme z dat krajů, měst a ORP. U dalších ${fmtInt((n.d || 0) + (n.x || 0))} obcí karta řekne, jestli obec platný plán má, a pošle vás na dokumenty.`;
+    } else {
+      $('#covN').textContent = fmtInt(COV.length);
+      if (obceTotal) $('#covTotal').textContent = fmtInt(obceTotal);
+      const t = obceTotal || 6258;
+      $('#covBar').style.width = Math.max(1, (COV.length / t) * 100).toFixed(1) + '%';
     }
     $('#aboutStamp').textContent = covLive
       ? `Přehled obcí s daty se právě načetl z Národního geoportálu: ${fmtInt(COV.length)} obcí, ${fmtInt(covPlochy)} ploch v aktuálních verzích.`
@@ -2278,11 +2292,11 @@
       if (h.bod) selectAt(ol.proj.fromLonLat([h.bod.lon, h.bod.lat]));
       if (h.pokryti) setCovMap(true, !h.view);
     } else {
+      // první návštěva: barevný plán Liberce a úvod s příklady (kartu otevře klik nebo příklad)
       const c = ol.proj.fromLonLat([CFG.showcase.lon, CFG.showcase.lat]);
       requestAnimationFrame(() => {
-        centerOn(c, CFG.showcase.z, false);
+        centerOn(c, 15.2, false);
         hashLock = false;
-        selectAt(c, { sample: true });
       });
     }
     hashLock = false;
