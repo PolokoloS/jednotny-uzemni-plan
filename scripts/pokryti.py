@@ -254,9 +254,13 @@ def probe_tiles_obec(L, o, xy):
     it = (L.get('obce') or {}).get(str(o['kod']))
     if not it:
         return False
-    if L.get('crs') == 'EPSG:3857':
-        return probe_tiles3857(dict(L, url=it[0]), o['p4326'])
-    return probe_tiles5514(dict(L, url=it[0]), xy)
+    for url in (it[0] if isinstance(it[0], list) else [it[0]]):
+        if L.get('crs') == 'EPSG:3857':
+            if probe_tiles3857(dict(L, url=url), o['p4326']):
+                return True
+        elif probe_tiles5514(dict(L, url=url), xy):
+            return True
+    return False
 
 
 def probe_source(cfg, o):
@@ -300,7 +304,7 @@ def main():
     regional = json.load(open(os.path.join(ROOT, 'data', 'regionalni_mozaiky.json'), encoding='utf-8'))
     pop = {int(k): v for k, v in json.load(open(os.path.join(ROOT, 'data', 'obyvatele_2026.json'), encoding='utf-8'))['obce'].items()}
     vykresy_f = os.path.join(ROOT, 'data', 'vykresy.json')
-    vykresy = {int(v['obec']) for v in json.load(open(vykresy_f, encoding='utf-8'))} if os.path.exists(vykresy_f) else set()
+    vykresy = {int(v['obec']): v['nazev'] for v in json.load(open(vykresy_f, encoding='utf-8')) if v.get('prijato')} if os.path.exists(vykresy_f) else {}
     prev = {}
     out_f = os.path.join(ROOT, 'data', 'pokryti.json')
     if args.kraj and os.path.exists(out_f):
@@ -339,9 +343,10 @@ def main():
         if not zdroj[k]:
             hs.sort()
             zdroj[k] = (hs[0][1], hs[0][2])
-    for k in vykresy:
-        if k in zdroj and not zdroj[k]:
-            zdroj[k] = ('p', 'výkres z PDF')
+    # výkres z PDF má přednost před krajskou mozaikou (bere se jen tam, kde aktuální služba není), NGÚP před ním
+    for k, naz in vykresy.items():
+        if k in zdroj and (not zdroj[k] or zdroj[k][0] in ('k', 'v')):
+            zdroj[k] = ('p', f'výkres z PDF: {naz}')
 
     rows = []
     for k, o in sorted(obce.items()):

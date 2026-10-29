@@ -14,6 +14,23 @@ ver = json.load(open(os.path.join(ROOT, 'data/verze_snapshot.json'), encoding='u
 kraje = json.load(open(os.path.join(ROOT, 'data/kraje.json'), encoding='utf-8'))
 regional = json.load(open(os.path.join(ROOT, 'data/regionalni_mozaiky.json'), encoding='utf-8'))
 
+# Výkresy z PDF (scripts/vykresy.py): obce bez mapové služby, hlavní výkres vlícovaný z PDF a rozřezaný na dlaždice
+vyk_f = os.path.join(ROOT, 'data/vykresy.json')
+pok_kraj = {}
+if os.path.exists(os.path.join(ROOT, 'data/pokryti.json')):
+    pok_kraj = {r[0]: r[2] for r in json.load(open(os.path.join(ROOT, 'data/pokryti.json'), encoding='utf-8'))['obce']}
+vykresy = [v for v in (json.load(open(vyk_f, encoding='utf-8')) if os.path.exists(vyk_f) else []) if v.get('prijato')]
+for v in vykresy:
+    regional.append({
+        'kraj': pok_kraj.get(v['obec']), 'obec': v['obec'], 'name': f'výkres z PDF: {v["nazev"]}',
+        'from': f'z hlavního výkresu ({v["verze"]}), který jsme vlícovali z PDF obce',
+        'obce': 1, 'drawing': True, 'attribution': f'Výkres ÚP © {v["nazev"]}',
+        'pdf': {'url': v['pdf'], 'verze': v['verze'], 'chyba': v['chyba_max_m'], 'oken': v['oken']},
+        'links': [{'label': 'Hlavní výkres v PDF', 'url': v['pdf']}],
+        'layers': [{'kind': 'tiles3857', 'url': f'vykresy/{v["obec"]}/{{z}}/{{x}}/{{y}}.webp', 'maxZoom': v['zoom'][1], 'minZoom': 11.6,
+                    'extentCrs': 'EPSG:3857', 'extent': v['extent3857']}]
+    })
+
 vmap = {r[0]: r for r in ver['res']}
 cov, sup, plochy_total = [], {}, 0
 for o in obce['obce']:
@@ -94,3 +111,14 @@ if os.path.exists(pok_f):
 hr_f = os.path.join(ROOT, 'data/hranice_obci.json')
 if os.path.exists(hr_f):
     shutil.copyfile(hr_f, os.path.join(ROOT, 'dist/hranice.json'))
+
+# Dlaždice výkresů z PDF
+vyk_dir, vyk_out = os.path.join(ROOT, 'data/vykresy'), os.path.join(ROOT, 'dist/vykresy')
+if os.path.exists(vyk_out):
+    shutil.rmtree(vyk_out)
+if vykresy and os.path.isdir(vyk_dir):
+    for v in vykresy:
+        src = os.path.join(vyk_dir, str(v['obec']))
+        if os.path.isdir(src):
+            shutil.copytree(src, os.path.join(vyk_out, str(v['obec'])))
+    print(f'dist/vykresy: {len(vykresy)} obcí, {sum(v.get("kb", 0) for v in vykresy) / 1024:.1f} MB dlaždic')

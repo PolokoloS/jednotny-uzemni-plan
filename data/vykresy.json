@@ -1,0 +1,39 @@
+[
+ {
+  "obec": 579891,
+  "nazev": "Ústí nad Orlicí",
+  "pdf": "https://www.ustinadorlici.cz/images/dokumenty/uzemni_plan-2017/up_usti_po_z5-hlavni_vykres.pdf",
+  "verze": "Územní plán Ústí nad Orlicí, úplné znění po změně č. 5 (účinné od 29. 10. 2026)",
+  "iou": 0.9893,
+  "meritko": 5000,
+  "otoceni": 0.0,
+  "oken": 20,
+  "chyba_max_m": 0.97,
+  "chyba_rms_m": 0.31,
+  "prijato": true,
+  "transformace": [
+   [
+    1.270058,
+    -0.000139,
+    -608291.713943
+   ],
+   [
+    1.5e-05,
+    -1.270097,
+    -1071265.525235
+   ]
+  ],
+  "dlazdic": 412,
+  "kb": 2504,
+  "extent3857": [
+   1818688,
+   6436071,
+   1836924,
+   6444713
+  ],
+  "zoom": [
+   12,
+   16
+  ]
+ }
+]

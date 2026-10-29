@@ -1421,9 +1421,9 @@
         title = r.cfg.drawing ? 'Výkres územního plánu' : `Server ${kdo} teď neodpovídá`;
         official = (r.cfg.drawing ? `Typ plochy se nepodařilo načíst, server ${kdo} neodpověděl. ` : 'Plochu se nepodařilo načíst. ') + '<button class="link-btn" data-act="retry">Zkusit znovu</button>';
       } else {
-        sw = `<div class="tb-swatch none"><b>ÚP</b></div>`;
-        title = r.cfg.drawing ? 'Výkres územního plánu' : `Plocha v datech ${r.cfg.obec ? 'města' : 'kraje'} nenalezena`;
-        official = esc(d.title || d.doc || (r.cfg.drawing ? cap(r.cfg.name) : 'Obec zatím nemá plán v jednotných datech.')) + (d.date ? `, ${esc(d.date)}` : '');
+        sw = `<div class="tb-swatch none"><b>${r.cfg.pdf ? 'PDF' : 'ÚP'}</b></div>`;
+        title = r.cfg.pdf ? 'Výkres územního plánu z PDF' : r.cfg.drawing ? 'Výkres územního plánu' : `Plocha v datech ${r.cfg.obec ? 'města' : 'kraje'} nenalezena`;
+        official = esc(d.title || d.doc || (r.cfg.pdf ? r.cfg.pdf.verze : r.cfg.drawing ? cap(r.cfg.name) : 'Obec zatím nemá plán v jednotných datech.')) + (d.date ? `, ${esc(d.date)}` : '');
       }
     } else if (cov === 'error') {
       sw = `<div class="tb-swatch none"><b>!</b></div>`;
@@ -1482,6 +1482,11 @@
     let lead;
     if (pl && pl.regional) lead = `Obec zatím nemá plán v jednotných datech. Plochu jsme vzali ${esc(r.cfg.from)} a její význam převedli do jednotné legendy, proto berte výklad jako orientační.`;
     else if (r.hit) lead = `Obec zatím nemá plán v jednotných datech. Plochu jsme našli ${esc(r.cfg.from)}, ale její typ neumíme spolehlivě převést do jednotné legendy.`;
+    else if (r.cfg.pdf) {
+      // výkres z PDF obce (scripts/vykresy.py): vlícovaný proti katastru, přesnost změřená v oknech po celé obci
+      const P = r.cfg.pdf, ch = String(Math.max(1, Math.ceil(P.chyba))).replace('.', ',');
+      lead = `Obec nemá mapovou službu s územním plánem, hlavní výkres (${esc(P.verze)}) jsme proto vlícovali z PDF obce. Proti katastrální mapě sedí s odchylkou do ${ch} m, ověřeno v ${P.oken} místech po celé obci. Barvy a zkratky čtěte podle legendy na výkresu.`;
+    }
     else if (r.cfg.drawing) {
       // obec může mít zveřejněný jen koordinační výkres (plochy i limity, závazný je ale hlavní výkres)
       const kov = /koordinační/i.test(d.title || '');
