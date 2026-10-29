@@ -5,25 +5,25 @@ Vytváří `python scripts/pokryti.py`. Zdroj u každé obce je ověřený dotaz
 | Zdroj | Obcí | Obyvatel |
 |---|---:|---:|
 | jednotná data NGÚP | 381 | 1 429 165 |
-| data města | 5 | 869 501 |
+| data města | 7 | 979 087 |
 | kraj, typ plochy | 1 048 | 1 160 224 |
-| kraj, jen výkres | 1 754 | 2 569 464 |
+| kraj, jen výkres | 2 073 | 4 236 126 |
 | výkres z PDF | 0 | 0 |
-| nic | 3 070 | 4 887 485 |
+| nic | 2 749 | 3 111 237 |
 | **celkem** | **6 258** | **10 915 839** |
 
 ## Po krajích
 
 | Kraj | Obcí | S plánem v mapě | Bez dat | Obyvatel bez dat |
 |---|---:|---:|---:|---:|
-| Hlavní město Praha | 0 | 0 | 0 | 0 |
+| Hlavní město Praha | 1 | 1 | 0 | 0 |
 | Středočeský kraj | 1144 | 846 | 298 | 197 233 |
 | Jihočeský kraj | 624 | 545 | 79 | 51 427 |
 | Plzeňský kraj | 501 | 303 | 198 | 97 996 |
 | Karlovarský kraj | 134 | 123 | 11 | 22 580 |
 | Ústecký kraj | 354 | 257 | 97 | 192 981 |
 | Liberecký kraj | 215 | 50 | 165 | 174 833 |
-| Královéhradecký kraj | 448 | 14 | 434 | 527 162 |
+| Královéhradecký kraj | 448 | 334 | 114 | 157 998 |
 | Pardubický kraj | 451 | 15 | 436 | 475 674 |
 | Kraj Vysočina | 704 | 675 | 29 | 4 521 |
 | Jihomoravský kraj | 673 | 29 | 644 | 774 829 |
@@ -132,23 +132,22 @@ Seřazeno podle počtu obyvatel bez dat, u každého ORP největší obce.
 - ORP Železný Brod: 11 obcí, 12 246 obyv. Železný Brod (5 993), Pěnčín (2 102), Koberovy (998), Zásada (901), Skuhrov (643), Držkov (581), Líšný (262), Jílové u Držkova (233), Loužnice (212), Radčice (179), Vlastiboř (142)
 - ORP Jablonec nad Nisou: 10 obcí, 10 784 obyv. Rychnov u Jablonce nad Nisou (2 845), Lučany nad Nisou (1 958), Janov nad Nisou (1 488), Rádlo (1 039), Josefův Důl (860), Frýdštejn (853), Maršovice (638), Pulečný (489), Bedřichov (389), Dalešice (225)
 
-### Královéhradecký kraj: 434 obcí, 527 162 obyvatel
+### Královéhradecký kraj: 114 obcí, 157 998 obyvatel
 
-- ORP Hradec Králové: 79 obcí, 138 199 obyv. Hradec Králové (93 534), Smiřice (3 142), Nechanice (2 545), Černilov (2 488), Stěžery (2 140), Předměřice nad Labem (1 968), Vysoká nad Labem (1 804), Všestary (1 770), Praskačka (1 147), Černožice (1 080), Lhota pod Libčany (1 026), Libčany (979) a dalších 67
-- ORP Náchod: 36 obcí, 60 398 obyv. Náchod (19 649), Červený Kostelec (8 202), Hronov (6 063), Česká Skalice (4 970), Police nad Metují (4 164), Velké Poříčí (2 310), Studnice (1 168), Kramolna (1 059), Machov (1 052), Nový Hrádek (887), Dolní Radechová (765), Velká Jesenice (733) a dalších 24
-- ORP Trutnov: 29 obcí, 57 556 obyv. Trutnov (29 337), Úpice (5 379), Žacléř (3 097), Mladé Buky (2 301), Svoboda nad Úpou (1 923), Velké Svatoňovice (1 254), Pilníkov (1 209), Hajnice (1 071), Chotěvice (1 046), Havlovice (1 009), Horní Maršov (934), Radvanice (922) a dalších 17
-- ORP Jičín: 76 obcí, 48 097 obyv. Jičín (16 052), Lázně Bělohrad (3 701), Sobotka (2 401), Kopidlno (2 135), Libáň (1 918), Železnice (1 435), Valdice (1 272), Vysoké Veselí (889), Libuň (796), Dětenice (759), Jičíněves (661), Lužany (618) a dalších 64
-- ORP Rychnov nad Kněžnou: 31 obcí, 34 576 obyv. Rychnov nad Kněžnou (11 693), Vamberk (4 580), Solnice (2 515), Rokytnice v Orlických horách (2 113), Kvasiny (1 724), Skuhrov nad Bělou (1 113), Potštejn (971), Slatina nad Zdobnicí (871), Černíkovice (809), Bílý Újezd (755), Voděrady (730), Liberk (690) a dalších 19
-- ORP Dvůr Králové nad Labem: 28 obcí, 27 146 obyv. Dvůr Králové nad Labem (15 316), Vítězná (1 498), Bílá Třemešná (1 394), Mostek (1 176), Nemojov (831), Dubenec (682), Choustníkovo Hradiště (624), Kocbeře (517), Třebihošť (463), Horní Brusnice (456), Doubravice (394), Dolní Brusnice (377) a dalších 16
-- ORP Vrchlabí: 15 obcí, 26 655 obyv. Vrchlabí (12 028), Hostinné (4 082), Rudník (1 993), Lánov (1 771), Špindlerův Mlýn (1 089), Dolní Branná (1 017), Dolní Lánov (839), Dolní Kalná (699), Černý Důl (674), Kunčice nad Labem (588), Prosečné (586), Čermná (427) a dalších 3
-- ORP Dobruška: 26 obcí, 20 201 obyv. Dobruška (6 445), Opočno (3 118), České Meziříčí (2 044), Dobré (880), Trnov (779), Pohoří (681), Přepychy (639), Podbřezí (618), Deštné v Orlických horách (529), Ohnišov (511), Semechnice (458), Bačetín (391) a dalších 14
-- ORP Jaroměř: 13 obcí, 18 520 obyv. Jaroměř (12 487), Chvalkovice (818), Velichovky (777), Rychnovek (728), Dolany (721), Rasošky (681), Zaloňov (447), Heřmanice (426), Rožnov (382), Vlkov (379), Nový Ples (357), Šestajovice (165) a dalších 1
-- ORP Kostelec nad Orlicí: 19 obcí, 18 467 obyv. Týniště nad Orlicí (6 133), Borohrádek (2 059), Doudleby nad Orlicí (1 791), Častolovice (1 671), Čermná nad Orlicí (1 099), Albrechtice nad Orlicí (1 000), Bolehošť (665), Lípa nad Orlicí (647), Čestice (581), Žďár nad Orlicí (537), Olešnice (486), Hřibiny-Ledská (404) a dalších 7
-- ORP Hořice: 29 obcí, 18 458 obyv. Hořice (8 427), Ostroměř (1 339), Miletín (951), Cerekvice nad Bystřicí (805), Podhorní Újezd a Vojice (640), Dobrá Voda u Hořic (603), Chomutice (592), Holovousy (559), Jeřice (383), Lukavec u Hořic (330), Rohoznice (325), Milovice u Hořic (314) a dalších 17
-- ORP Nový Bydžov: 23 obcí, 18 175 obyv. Nový Bydžov (7 298), Smidary (1 557), Skřivany (1 145), Nepolisy (990), Hlušice (745), Měník (655), Prasek (645), Sloupno (540), Lužec nad Cidlinou (519), Vinary (472), Starý Bydžov (423), Králíky (409) a dalších 11
-- ORP Broumov: 13 obcí, 14 806 obyv. Broumov (6 998), Meziměstí (2 283), Teplice nad Metují (1 584), Hejtmánkovice (583), Martínkovice (510), Adršpach (491), Křinice (436), Jetřichov (426), Božanov (376), Otovice (323), Vernéřovice (318), Šonov (292) a dalších 1
-- ORP Nová Paka: 5 obcí, 13 093 obyv. Nová Paka (8 834), Stará Paka (2 142), Pecka (1 273), Úbislavice (490), Vidochov (354)
-- ORP Nové Město nad Metují: 12 obcí, 12 815 obyv. Nové Město nad Metují (9 165), Bohuslavice (1 036), Nahořany (623), Černčice (471), Slavoňov (318), Slavětín nad Metují (254), Mezilesí (243), Přibyslav (199), Jestřebí (173), Vršovka (148), Sendraž (111), Libchyně (74)
+- ORP Náchod: 17 obcí, 32 319 obyv. Červený Kostelec (8 202), Hronov (6 063), Česká Skalice (4 970), Police nad Metují (4 164), Velké Poříčí (2 310), Kramolna (1 059), Nový Hrádek (887), Dolní Radechová (765), Žďár nad Metují (643), Hořičky (585), Žďárky (584), Vysokov (534) a dalších 5
+- ORP Vrchlabí: 8 obcí, 18 612 obyv. Vrchlabí (12 028), Rudník (1 993), Lánov (1 771), Špindlerův Mlýn (1 089), Černý Důl (674), Čermná (427), Horní Kalná (370), Dolní Dvůr (260)
+- ORP Rychnov nad Kněžnou: 6 obcí, 15 293 obyv. Rychnov nad Kněžnou (11 693), Potštejn (971), Černíkovice (809), Liberk (690), Lično (657), Pěčín (473)
+- ORP Jaroměř: 5 obcí, 14 814 obyv. Jaroměř (12 487), Velichovky (777), Dolany (721), Zaloňov (447), Rožnov (382)
+- ORP Jičín: 26 obcí, 14 114 obyv. Lázně Bělohrad (3 701), Sobotka (2 401), Kopidlno (2 135), Jičíněves (661), Slatiny (552), Markvartice (526), Libošovice (522), Konecchlumí (424), Údrnice (332), Samšina (272), Češov (246), Vršce (237) a dalších 14
+- ORP Trutnov: 9 obcí, 13 269 obyv. Úpice (5 379), Žacléř (3 097), Hajnice (1 071), Havlovice (1 009), Batňovice (787), Janské Lázně (647), Jívka (605), Dolní Olešnice (370), Horní Olešnice (304)
+- ORP Hradec Králové: 19 obcí, 11 347 obyv. Nechanice (2 545), Všestary (1 770), Roudnice (792), Dolní Přím (773), Kratonohy (645), Osice (566), Syrovátka (467), Blešno (444), Lodín (433), Běleč nad Orlicí (414), Klamoš (393), Kunčice (387) a dalších 7
+- ORP Hořice: 3 obcí, 10 406 obyv. Hořice (8 427), Ostroměř (1 339), Podhorní Újezd a Vojice (640)
+- ORP Kostelec nad Orlicí: 5 obcí, 8 958 obyv. Týniště nad Orlicí (6 133), Doudleby nad Orlicí (1 791), Bolehošť (665), Chleny (201), Svídnice (168)
+- ORP Broumov: 3 obcí, 7 697 obyv. Broumov (6 998), Božanov (376), Otovice (323)
+- ORP Dobruška: 4 obcí, 7 471 obyv. Dobruška (6 445), Podbřezí (618), Bystré (269), Dobřany (139)
+- ORP Dvůr Králové nad Labem: 7 obcí, 2 597 obyv. Kocbeře (517), Třebihošť (463), Horní Brusnice (456), Dolní Brusnice (377), Kohoutov (310), Kuks (243), Borovnička (231)
+- ORP Nový Bydžov: 1 obcí, 990 obyv. Nepolisy (990)
+- ORP Nové Město nad Metují: 1 obcí, 111 obyv. Sendraž (111)
 
 ### Pardubický kraj: 436 obcí, 475 674 obyvatel
 
