@@ -20,13 +20,20 @@ pok_kraj = {}
 if os.path.exists(os.path.join(ROOT, 'data/pokryti.json')):
     pok_kraj = {r[0]: r[2] for r in json.load(open(os.path.join(ROOT, 'data/pokryti.json'), encoding='utf-8'))['obce']}
 vykresy = [v for v in (json.load(open(vyk_f, encoding='utf-8')) if os.path.exists(vyk_f) else []) if v.get('prijato')]
+# poznámka ke kartě (třeba části plánu zrušené soudem) a stránka obce s dokumenty jsou v seznamu zdrojů
+vyk_zdroje = {z['obec']: z for z in json.load(open(os.path.join(ROOT, 'data/vykresy_zdroje.json'), encoding='utf-8'))}
 for v in vykresy:
+    z = vyk_zdroje.get(v['obec'], {})
+    links = [{'label': 'Výkresy v ZIPu (hlavní výkres v PDF)' if v.get('zip') else 'Hlavní výkres v PDF', 'url': v['pdf']}]
+    if z.get('web'):
+        home = z['web'].rstrip('/').count('/') <= 2          # jen titulní stránka webu
+        links.append({'label': 'Web obce' if home else 'Územní plán na webu obce', 'url': z['web']})
     regional.append({
         'kraj': pok_kraj.get(v['obec']), 'obec': v['obec'], 'name': f'výkres z PDF: {v["nazev"]}',
         'from': f'z hlavního výkresu ({v["verze"]}), který jsme vlícovali z PDF obce',
         'obce': 1, 'drawing': True, 'attribution': f'Výkres ÚP © {v["nazev"]}',
         'pdf': {'url': v['pdf'], 'verze': v['verze'], 'chyba': v['chyba_max_m'], 'oken': v['oken']},
-        'links': [{'label': 'Hlavní výkres v PDF', 'url': v['pdf']}],
+        'links': links, **({'versionNote': z['poznamka']} if z.get('poznamka') else {}),
         'layers': [{'kind': 'tiles3857', 'url': f'vykresy/{v["obec"]}/{{z}}/{{x}}/{{y}}.webp', 'maxZoom': v['zoom'][1], 'minZoom': 11.6,
                     'extentCrs': 'EPSG:3857', 'extent': v['extent3857']}]
     })

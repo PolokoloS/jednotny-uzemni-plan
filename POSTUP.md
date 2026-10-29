@@ -19,10 +19,11 @@ Zadání (29. 10. 2026, přednáška): Fáze 1 pokrytí (všech 14 krajských m�
 
 ## Rozdělané
 
-- Výkresy z PDF (`scripts/vykresy.py`, zdroje v `data/vykresy_zdroje.json`, výsledky `data/vykresy.json`, dlaždice `data/vykresy/<kód>`): postup funguje, Ústí nad Orlicí hotové (IoU 0,989, odchylka proti katastru max 0,97 m ve 20 oknech, 412 dlaždic, 2,4 MB). Další města podle průzkumu děr (subagent, výstup `scratchpad/research-diry/diry_zdroje.csv`).
+- Výkresy z PDF (`scripts/vykresy.py`, zdroje v `data/vykresy_zdroje.json`, výsledky `data/vykresy.json`, dlaždice `data/vykresy/<kód>`): Ústí nad Orlicí hotové. Nově umí ZIP (pole `zip`), výkresy 1:10 000 rastruje jemněji (až 200 dpi) a přijme i překryv IoU ≥ 0,8, když katastr potvrdí přesnost v ≥ 8 oknech. Olomoucký kraj: Šternberk (ZIP po změně č. 5), Uničov, Kojetín, Litovel (nový ÚP od 24. 9. 2026), Lipník n. B. (po změně č. 12), Konice. Běží vlícování.
+- Průzkum děr (subagenti): služby a PDF pro ostatní kraje, výstup ve `scratchpad/research-diry`. Revize webu subagentem běží.
 
-- Přepočet pokrytí OLK a ZLK (`python scripts/pokryti.py --kraj 124 --kraj 141`), pak kliknutím ověřit JMK, OLK, ZLK.
-- `python scripts/stav_up.py --recheck` (postupné ověření obcí bez plánu, ukládá průběžně; dočasný soubor `%TEMP%\stav_up_overeno.json`).
+- Ověřeno kliknutím 29. 10. večer: OLK a ZLK (Šumperk, Prostějov, Přerov, Zábřeh, Hranice, Jeseník, Mohelnice, Vsetín, Val. Meziříčí, Uh. Hradiště, Uh. Brod, JÚAP Kroměříž, Rožnov, Slavičín), výkresy sedí na katastr.
+- `stav_up.py --recheck` doběhl: všech 362 obcí bez plánu v evidenci potvrzeno.
 
 ## Další kroky
 

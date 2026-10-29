@@ -160,7 +160,7 @@ def probe_tiles5514(L, xy):
     ox, oy = L['origin']
     fx, fy = (xy[0] - ox) / (res[z] * ts), (oy - xy[1]) / (res[z] * ts)
     col, row = int(math.floor(fx)), int(math.floor(fy))
-    url = L['url'].replace('{z}', str(z)).replace('{y}', str(row)).replace('{x}', str(col))
+    url = L['url'].replace('{zz}', f'{z:02d}').replace('{z}', str(z)).replace('{y}', str(row)).replace('{x}', str(col))
     try:
         img = get(url, raw=True)
     except urllib.error.HTTPError:

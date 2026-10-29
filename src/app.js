@@ -361,10 +361,14 @@
     });
     cfg.extent3857 = cfg.layers.reduce((e, L) => (L.extent3857 ? (e ? ol.extent.extend(e, L.extent3857) : L.extent3857.slice()) : e), null);
   });
+  // adresa dlaždic; {zz} = zoom na dvě číslice (REST WMTS Marushky: Zoom_07)
+  const xyzUrl = url => (url.includes('{zz}')
+    ? { tileUrlFunction: tc => url.replace('{zz}', String(tc[0]).padStart(2, '0')).replace('{x}', tc[1]).replace('{y}', tc[2]) }
+    : { url });
   function regionalSource(L) {
     if (L.kind === 'tiles5514') {
       return new ol.source.XYZ({
-        projection: 'EPSG:5514', url: L.url, transition: dur(150),
+        projection: 'EPSG:5514', ...xyzUrl(L.url), transition: dur(150),
         tileGrid: new ol.tilegrid.TileGrid({ origin: L.origin, resolutions: L.resolutions, tileSize: L.tileSize || 256, extent: L.extent })
       });
     }
@@ -617,8 +621,8 @@
               const lyr = new ol.layer.Tile({
                 extent: o.box, className: 'ol-layer up-reg up-reg-' + L.key,
                 source: L.crs === 'EPSG:3857'
-                  ? new ol.source.XYZ({ url, transition: dur(150), minZoom: L.minZoomData || 0, maxZoom: L.maxZoom || 18 })
-                  : new ol.source.XYZ({ projection: 'EPSG:5514', url, transition: dur(150), tileGrid: new ol.tilegrid.TileGrid({ origin: L.origin, resolutions: L.resolutions, tileSize: L.tileSize || 256 }) })
+                  ? new ol.source.XYZ({ ...xyzUrl(url), transition: dur(150), minZoom: L.minZoomData || 0, maxZoom: L.maxZoom || 18 })
+                  : new ol.source.XYZ({ projection: 'EPSG:5514', ...xyzUrl(url), transition: dur(150), tileGrid: new ol.tilegrid.TileGrid({ origin: L.origin, resolutions: L.resolutions, tileSize: L.tileSize || 256 }) })
               });
               lyr.set('obec', o.kod);
               lyr.on('prerender', e => clipToRings(e, o.rings));
@@ -647,6 +651,8 @@
       if (token !== perObecToken) return;
       kids.getArray().slice().forEach(l => { if (!want.has(l.get('obec'))) kids.remove(l); });
     }
+    // legenda, nápověda a atribuce počítají s výkresy obcí, které jsou teď ve výřezu
+    updateHint(); updateAttrib(); scheduleLegend();
   }
 
   const schedulePerObec = debounce(() => { updatePerObec().catch(() => {}); }, 250);
@@ -671,6 +677,9 @@
     const ext = view.calculateExtent(map.getSize());
     return REGIONAL.filter(c => {
       if (!c.extent3857 || !ol.extent.intersects(ext, c.extent3857)) return false;
+      // výkresy po obcích: jen když je ve výřezu výkres některé obce opravdu načtený
+      const per = c.layers.filter(L => L.kind === 'tilesPerObec' || L.kind === 'arcgisPerObec');
+      if (per.length) return per.some(L => L.layer && L.layer.getLayers().getArray().some(l => { const e = l.getExtent(); return !e || ol.extent.intersects(ext, e); }));
       const K = shapeOf(c);
       return !K || (ol.extent.intersects(ext, K.box) && K.geom.intersectsExtent(ext));
     });

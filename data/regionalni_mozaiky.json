@@ -3853,5 +3853,342 @@
     ]
    }
   ]
+ },
+ {
+  "kraj": 78,
+  "name": "výkresy územních plánů obcí v ORP Liberec",
+  "from": "z hlavních výkresů územních plánů obcí, které zveřejňuje Magistrát města Liberec",
+  "obce": 5,
+  "attribution": "Výkresy ÚP obcí © Statutární město Liberec",
+  "drawing": true,
+  "layers": [
+   {
+    "kind": "tilesPerObec",
+    "minZoom": 12,
+    "origin": [
+     -925000,
+     -920000
+    ],
+    "resolutions": [
+     2048.256,
+     1024.128,
+     512.064,
+     256.032,
+     128.016,
+     64.008,
+     32.004,
+     16.002,
+     8.001,
+     4.0005,
+     2.00025,
+     1.000125,
+     0.5000625,
+     0.25003125,
+     0.125015625,
+     0.0625078125
+    ],
+    "tileSize": 256,
+    "extent": [
+     -712779,
+     -990385,
+     -685010,
+     -959970
+    ],
+    "obce": {
+     "564095": [
+      "https://mapy.liberec.cz/map/rest/WMTS/29/default/E7BA6080/Zoom_{zz}/{y}/{x}",
+      "Územní plán Hrádek nad Nisou, úplné znění po změně č. 2 (účinné od 28. 4. 2026)"
+     ],
+     "564117": [
+      "https://mapy.liberec.cz/map/rest/WMTS/31/default/5702F1CD/Zoom_{zz}/{y}/{x}",
+      "Územní plán Chrastava, úplné znění po změně č. 2 (účinné od 12. 5. 2023)"
+     ],
+     "561631": [
+      "https://mapy.liberec.cz/map/rest/WMTS/32/default/59996485/Zoom_{zz}/{y}/{x}",
+      "Územní plán Jablonné v Podještědí, úplné znění po změnách č. 1 a 2 (účinné od 26. 7. 2025)"
+     ],
+     "564061": [
+      "https://mapy.liberec.cz/map/rest/WMTS/28/default/EFADA88C/Zoom_{zz}/{y}/{x}",
+      "Územní plán Hodkovice nad Mohelkou (účinný od 12. 10. 2024)"
+     ],
+     "563960": [
+      "https://mapy.liberec.cz/map/rest/WMTS/25/default/3FD52768/Zoom_{zz}/{y}/{x}",
+      "Územní plán Český Dub, úplné znění po změně č. 3 (účinné od 9. 6. 2026)"
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "kraj": 78,
+  "name": "výkresy územních plánů obcí v ORP Jilemnice a Jablonec nad Nisou",
+  "from": "z hlavních výkresů územních plánů obcí, které zveřejňují Město Jilemnice a Statutární město Jablonec nad Nisou",
+  "obce": 3,
+  "attribution": "Výkresy ÚP obcí © Město Jilemnice, Statutární město Jablonec nad Nisou",
+  "drawing": true,
+  "layers": [
+   {
+    "kind": "tilesPerObec",
+    "minZoom": 12,
+    "origin": [
+     -1025000,
+     -920000
+    ],
+    "resolutions": [
+     2048.256,
+     1024.128,
+     512.064,
+     256.032,
+     128.016,
+     64.008,
+     32.004,
+     16.002,
+     8.001,
+     4.0005,
+     2.00025,
+     1.000125,
+     0.5000625,
+     0.25003125,
+     0.125015625,
+     0.0625078125
+    ],
+    "tileSize": 256,
+    "extent": [
+     -686532,
+     -998039,
+     -654205,
+     -975226
+    ],
+    "obce": {
+     "577197": [
+      "https://jilemnice.tmapserver.cz/services/mapserver/local/up/gservice/wmts/1.0.0/up-hlv-8215753304-Z4/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Jilemnice, úplné znění po změně č. 4 (účinné od 5. 5. 2023)"
+     ],
+     "577456": [
+      "https://jilemnice.tmapserver.cz/services/mapserver/local/up/gservice/wmts/1.0.0/up-hlv-3045923103-Z4/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Rokytnice nad Jizerou, úplné znění po změně č. 4 (účinné od 12. 10. 2018)"
+     ],
+     "563790": [
+      "https://gis.mestojablonec.cz/services/mapserver/local/up/gservice/wmts/1.0.0/rychnov-up-2012/default/EPSG:5514/{z}/{y}/{x}.png",
+      "Územní plán Rychnov u Jablonce nad Nisou po změně č. 3 (2012)"
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "kraj": 27,
+  "name": "výkresy územních plánů obcí v GObci (Středočeský kraj)",
+  "from": "z výkresů územních plánů, které obce zveřejňují v GObci",
+  "obce": 4,
+  "attribution": "Výkresy ÚP obcí © obce (GObec)",
+  "drawing": true,
+  "layers": [
+   {
+    "kind": "tilesPerObec",
+    "crs": "EPSG:3857",
+    "minZoom": 12.6,
+    "minZoomData": 13,
+    "maxZoom": 18,
+    "extent": [
+     -790161,
+     -1071823,
+     -675021,
+     -1023579
+    ],
+    "obce": {
+     "538574": [
+      "https://{a-c}.tiles.gobec.cz/v2/edf2440a4d131693e7c855d445e6b778/{z}/{x}/{y}.png",
+      "Územní plán Odolena Voda (účinný od 28. 9. 2023)"
+     ],
+     "537489": [
+      "https://{a-c}.tiles.gobec.cz/v2/f825bce2c62c614dfa0d4d9ed51e866e/{z}/{x}/{y}.png",
+      "Územní plán Městec Králové (účinný od 1. 7. 2023)"
+     ],
+     "531324": [
+      "https://{a-c}.tiles.gobec.cz/v2/e3aa7c446b53fa6539ba0a54a873bf6c/{z}/{x}/{y}.png",
+      "Územní plán Komárov, koordinační výkres (účinný od 10. 2. 2023)"
+     ],
+     "538477": [
+      "https://{a-c}.tiles.gobec.cz/v2/952b33c7d2c1d8884f14293191bbac52/{z}/{x}/{y}.png",
+      "Územní plán Měšice, úplné znění po změně č. 3 (účinné od 9. 3. 2018)"
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "kraj": 78,
+  "obec": 563820,
+  "searchText": "Tanvald",
+  "name": "Územní plán Tanvald, úplné znění po změnách č. 1, 2 a 3 (účinné od 1. 1. 2021)",
+  "from": "z hlavního výkresu územního plánu na mapovém serveru obce (tanvald.obce.gepro.cz)",
+  "obce": 1,
+  "attribution": "ÚP Tanvald © Město Tanvald",
+  "drawing": true,
+  "layers": [
+   {
+    "kind": "wms",
+    "url": "https://tanvald.obce.gepro.cz/OUT/WMS",
+    "crs": "EPSG:5514",
+    "version": "1.3.0",
+    "params": {
+     "LAYERS": "UP_Tanvald-Hlavni_vykres",
+     "FORMAT": "image/png",
+     "TRANSPARENT": true
+    },
+    "extent": [
+     -674153,
+     -981067,
+     -667926,
+     -976366
+    ]
+   }
+  ]
+ },
+ {
+  "kraj": 78,
+  "obec": 563811,
+  "searchText": "Smržovka",
+  "name": "Územní plán Smržovka (účinný od 29. 12. 2020)",
+  "from": "z hlavního výkresu územního plánu na mapovém serveru obce (tanvald.obce.gepro.cz)",
+  "obce": 1,
+  "attribution": "ÚP Smržovka © Město Tanvald",
+  "drawing": true,
+  "layers": [
+   {
+    "kind": "wms",
+    "url": "https://tanvald.obce.gepro.cz/OUT/WMS",
+    "crs": "EPSG:5514",
+    "version": "1.3.0",
+    "params": {
+     "LAYERS": "UP_Smrzovka-Hlavni_vykres",
+     "FORMAT": "image/png",
+     "TRANSPARENT": true
+    },
+    "extent": [
+     -677173,
+     -982219,
+     -670820,
+     -976641
+    ]
+   }
+  ]
+ },
+ {
+  "kraj": 78,
+  "obec": 563552,
+  "searchText": "Desná",
+  "name": "Územní plán Desná, úplné znění po změně č. 2 (účinné od 24. 6. 2023)",
+  "from": "z hlavního výkresu územního plánu na mapovém serveru obce (tanvald.obce.gepro.cz)",
+  "obce": 1,
+  "attribution": "ÚP Desná © Město Tanvald",
+  "drawing": true,
+  "layers": [
+   {
+    "kind": "wms",
+    "url": "https://tanvald.obce.gepro.cz/OUT/WMS",
+    "crs": "EPSG:5514",
+    "version": "1.3.0",
+    "params": {
+     "LAYERS": "UP_Desna-Hlavni_vykres",
+     "FORMAT": "image/png",
+     "TRANSPARENT": true
+    },
+    "extent": [
+     -671732,
+     -979004,
+     -667187,
+     -971150
+    ]
+   }
+  ]
+ },
+ {
+  "kraj": 78,
+  "obec": 563749,
+  "searchText": "Pěnčín",
+  "name": "Územní plán Pěnčín, úplné znění po změně č. 1 (účinné od 1. 8. 2025)",
+  "from": "z hlavního výkresu územního plánu na mapovém serveru obce (pencin.obce.gepro.cz)",
+  "obce": 1,
+  "attribution": "ÚP Pěnčín © Obec Pěnčín",
+  "drawing": true,
+  "layers": [
+   {
+    "kind": "wms",
+    "url": "https://pencin.obce.gepro.cz/OUT/WMS",
+    "crs": "EPSG:5514",
+    "version": "1.3.0",
+    "params": {
+     "LAYERS": "hv",
+     "FORMAT": "image/png",
+     "TRANSPARENT": true
+    },
+    "extent": [
+     -679111,
+     -987374,
+     -674331,
+     -981592
+    ]
+   }
+  ]
+ },
+ {
+  "kraj": 27,
+  "obec": 539597,
+  "searchText": "Psáry",
+  "name": "Územní plán Psáry (účinný od 29. 12. 2023)",
+  "from": "z hlavního výkresu územního plánu na mapovém serveru obce (psary.obce.gepro.cz)",
+  "obce": 1,
+  "attribution": "ÚP Psáry © Obec Psáry",
+  "drawing": true,
+  "layers": [
+   {
+    "kind": "wms",
+    "url": "https://psary.obce.gepro.cz/OUT/WMS",
+    "crs": "EPSG:5514",
+    "version": "1.3.0",
+    "params": {
+     "LAYERS": "Uzemni_plan",
+     "FORMAT": "image/png",
+     "TRANSPARENT": true
+    },
+    "extent": [
+     -740542,
+     -1063168,
+     -736158,
+     -1057848
+    ]
+   }
+  ]
+ },
+ {
+  "kraj": 27,
+  "obec": 539813,
+  "searchText": "Velké Přílepy",
+  "name": "Územní plán sídelního útvaru Velké Přílepy, úplné znění po změně č. 5 (účinné od 1. 12. 2023)",
+  "from": "z hlavního výkresu územního plánu na mapovém serveru obce (velke-prilepy.obce.gepro.cz)",
+  "obce": 1,
+  "attribution": "ÚP Velké Přílepy © Obec Velké Přílepy",
+  "drawing": true,
+  "layers": [
+   {
+    "kind": "wms",
+    "url": "https://velke-prilepy.obce.gepro.cz/OUT/WMS",
+    "crs": "EPSG:5514",
+    "version": "1.3.0",
+    "params": {
+     "LAYERS": "VP_zm5",
+     "FORMAT": "image/png",
+     "TRANSPARENT": true
+    },
+    "extent": [
+     -751350,
+     -1035524,
+     -747182,
+     -1032325
+    ]
+   }
+  ]
  }
 ]

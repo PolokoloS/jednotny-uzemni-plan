@@ -8,14 +8,15 @@ Postup pro každou obec z data/vykresy_zdroje.json:
     případně otočení), výsledkem je překryv IoU,
  4. zpřesnění proti katastrální mapě ČÚZK: v oknech po celé obci fázová korelace tenkých čar výkresu a čar katastru,
     z posunů afinní transformace, zbytkové odchylky = přesnost,
- 5. když je přesnost do 5 m (MAX_CHYBA), dlaždice Web Mercator z12–z16 ve WebP oříznuté hranicí obce
-    do data/vykresy/<kód obce>/{z}/{x}/{y}.webp, jinak obec vynechá.
+ 5. když je přesnost do 5 m (MAX_CHYBA) a výkres pokrývá skoro celé území obce, dlaždice Web Mercator z12–z16
+    ve WebP oříznuté hranicí obce do data/vykresy/<kód obce>/{z}/{x}/{y}.webp, jinak obec vynechá.
+    Výkresy v měřítku 1:10 000 se pro zpřesnění a dlaždice rastrují jemněji (až 200 dpi). PDF může být i v ZIPu.
 Výsledek a přesnost zapíše do data/vykresy.json. build.py dlaždice zkopíruje do dist a přidá zdroj do mapy.
 
 Spuštění: python scripts/vykresy.py [--obec 579891] [--limit-mb 100]
 Potřebuje: pymupdf, numpy, opencv-python-headless, pillow, pyproj.
 """
-import argparse, io, json, math, os, shutil, sys, tempfile, time, urllib.parse, urllib.request, zlib
+import argparse, io, json, math, os, shutil, sys, tempfile, time, urllib.parse, urllib.request, zipfile, zlib
 
 import numpy as np
 import cv2
@@ -48,22 +49,29 @@ def get(url, raw=False, timeout=120):
 # ---------------------------------------------------------------------------
 # 1 a 2: PDF -> rastr kolem 100 dpi
 # ---------------------------------------------------------------------------
-def stahni(url, kod):
+def stahni(z, kod):
+    """PDF výkresu do mezipaměti. Když obec dává výkresy jen v ZIPu, "zip" je část názvu souboru v archivu."""
     d = os.path.join(tempfile.gettempdir(), 'jup-vykresy'); os.makedirs(d, exist_ok=True)
     f = os.path.join(d, f'{kod}.pdf')
     if not os.path.exists(f) or os.path.getsize(f) < 1000:
-        open(f, 'wb').write(get(url, raw=True, timeout=600))
+        data = get(z['pdf'], raw=True, timeout=600)
+        if z.get('zip'):
+            arch = zipfile.ZipFile(io.BytesIO(data))
+            data = arch.read(next(n for n in arch.namelist() if z['zip'] in n))
+        open(f, 'wb').write(data)
     return f
 
 
-def rastr(pdf, page_no=0):
+def rastr(pdf, page_no=0, dpi=DPI):
     """Vrátí (RGB pole, metrů papíru na pixel). Velké rastry v PDF dekóduje proudově a rovnou zmenšuje."""
     doc = fitz.open(pdf)
     p = doc[page_no]
+    # obří list (sken uložený jako stránka v pixelech): rastr nejvýš kolem 120 Mpx, ať se vejde do paměti
+    dpi = min(dpi, math.sqrt(120e6 / (p.rect.width / 72 * p.rect.height / 72)))
     try:
-        pix = p.get_pixmap(matrix=fitz.Matrix(DPI / 72, DPI / 72), alpha=False)
+        pix = p.get_pixmap(matrix=fitz.Matrix(dpi / 72, dpi / 72), alpha=False)
         a = np.frombuffer(pix.samples, np.uint8).reshape(pix.height, pix.width, pix.n)[..., :3].copy()
-        return a, 0.0254 / DPI
+        return a, 0.0254 / dpi
     except Exception as e:
         if 'large' not in str(e).lower():
             raise
@@ -71,7 +79,7 @@ def rastr(pdf, page_no=0):
     imgs = p.get_images(full=True)
     xref, w, h = imgs[0][0], imgs[0][2], imgs[0][3]
     page_in = p.rect.width / 72
-    f = max(1, round(w / page_in / DPI))
+    f = max(1, round(w / page_in / dpi))
     filt = str(doc.xref_get_key(xref, 'Filter')[1])
     cs = str(doc.xref_get_key(xref, 'ColorSpace')[1])
     nc = 1 if 'Gray' in cs else 3
@@ -152,7 +160,8 @@ def hrube(img, m_papir, poly):
         return iou, mer, rot, ix, iy, off, sc
 
     best = None
-    for mer in (1000, 2000, 2500, 2880, 4000, 5000, 7500, 10000, 15000, 20000, 25000):
+    # obvyklá měřítka a k tomu hustá řada po 10 % (list bez správné velikosti stránky má měřítko „lichá“)
+    for mer in sorted({1000, 2000, 2500, 2880, 4000, 5000, 7500, 10000, 15000, 20000, 25000} | {round(800 * 1.1 ** i) for i in range(38)}):
         r = zkus(mer, 0)
         if r and (best is None or r[0] > best[0]):
             best = r
@@ -249,6 +258,24 @@ def zpresni(img, Aff, poly, px_m):
     return Aff, res, len(m), hist
 
 
+def pokryti(img, Aff, poly, F=4):
+    """Podíl území obce, na kterém je ve vlícovaném výkresu něco nakreslené (ne bílý papír ani místo mimo list)."""
+    H, W = img.shape[0] // F, img.shape[1] // F
+    ink = (cv2.resize(img, (W, H), interpolation=cv2.INTER_AREA).min(axis=2) < 235).astype(np.uint8)
+    ink = cv2.dilate(ink, np.ones((9, 9), np.uint8))
+    Ainv = np.linalg.inv(np.vstack([Aff, [0, 0, 1]]))[:2]
+    uv = [np.c_[p, np.ones(len(p))] @ Ainv.T / F for p in poly]
+    allp = np.concatenate(uv)
+    off = np.floor(np.minimum(allp.min(0), 0)).astype(int)
+    size = np.ceil(np.maximum(allp.max(0), [W, H])).astype(int) - off + 2
+    pm = np.zeros((size[1], size[0]), np.uint8)
+    for q in uv:
+        cv2.fillPoly(pm, [(q - off).round().astype(np.int32)], 1)
+    canvas = np.zeros_like(pm)
+    canvas[-off[1]:-off[1] + H, -off[0]:-off[0] + W] = ink
+    return float((pm & canvas).sum() / max(1, pm.sum()))
+
+
 # ---------------------------------------------------------------------------
 # 5: dlaždice Web Mercator ve WebP, oříznuté hranicí obce
 # ---------------------------------------------------------------------------
@@ -313,22 +340,32 @@ def main():
         t = time.time()
         print(f'== {z["nazev"]} ({kod})', flush=True)
         try:
-            img, m_papir = rastr(stahni(z['pdf'], kod), z.get('strana', 0))
+            pdf = stahni(z, kod)
+            img, m_papir = rastr(pdf, z.get('strana', 0))
             poly = obec_polygon(kod)
             Aff, iou, mer, rot = hrube(img, m_papir, poly)
             print(f'   hrubě: IoU {iou:.3f}, měřítko 1:{mer:.0f}, otočení {rot}°', flush=True)
+            if mer > 6000:
+                # výkres v drobném měřítku (1:10 000): jemnější rastr, ať čáry pro katastr i dlaždice z16 mají kolem 1,3 m na pixel
+                img, m_hi = rastr(pdf, z.get('strana', 0), DPI * min(2.0, mer / 5000))
+                Aff[:, :2] *= m_hi / m_papir
+                print(f'   jemnější rastr {img.shape[1]} × {img.shape[0]} px', flush=True)
             px_m = math.hypot(Aff[0, 0], Aff[1, 0])
             Aff, res, n_ok, hist = zpresni(img, Aff, poly, px_m)
             if res is None or not res:
                 raise RuntimeError(f'katastr: málo oken s korelací ({n_ok})')
             mx = max(res); rms = math.sqrt(sum(r * r for r in res) / len(res))
             print(f'   katastr: {len(res)} oken, odchylka max {mx:.2f} m, RMS {rms:.2f} m (průběh {hist})', flush=True)
-            ok = iou >= 0.85 and mx <= MAX_CHYBA and len(res) >= 4
+            # překryv masky s hranicí obce je jen hrubá kontrola (bledé barvy maska nepozná);
+            # rozhoduje přesnost proti katastru a to, že výkres pokrývá skoro celé území obce
+            kryti = pokryti(img, Aff, poly)
+            print(f'   výkres pokrývá {kryti:.1%} území obce', flush=True)
+            ok = mx <= MAX_CHYBA and len(res) >= 4 and (iou >= 0.85 or kryti >= 0.97)
             out_dir = os.path.join(ROOT, 'data', 'vykresy', str(kod))
             if os.path.exists(out_dir):
                 shutil.rmtree(out_dir)
-            rec = {'obec': kod, 'nazev': z['nazev'], 'pdf': z['pdf'], 'verze': z['verze'], 'iou': round(iou, 4), 'meritko': round(mer),
-                   'otoceni': rot, 'oken': len(res), 'chyba_max_m': round(mx, 2), 'chyba_rms_m': round(rms, 2), 'prijato': ok,
+            rec = {'obec': kod, 'nazev': z['nazev'], 'pdf': z['pdf'], 'zip': bool(z.get('zip')), 'verze': z['verze'], 'iou': round(iou, 4), 'meritko': round(mer),
+                   'otoceni': rot, 'oken': len(res), 'chyba_max_m': round(mx, 2), 'chyba_rms_m': round(rms, 2), 'pokryti': round(kryti, 3), 'prijato': ok,
                    'transformace': [[round(v, 6) for v in r] for r in Aff.tolist()]}
             if ok:
                 n_t, size, ext = dlazdice(img, Aff, poly, kod, out_dir)
@@ -341,7 +378,10 @@ def main():
             import traceback; traceback.print_exc()
             print(f'   CHYBA: {e}', flush=True)
             meta[kod] = {'obec': kod, 'nazev': z['nazev'], 'pdf': z['pdf'], 'verze': z['verze'], 'prijato': False, 'chyba': str(e)[:200]}
-        json.dump(sorted(meta.values(), key=lambda m: m['obec']), open(meta_f, 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
+        # zapsat jen tuhle obec do aktuálního souboru, ať může běžet víc procesů naráz (každý s jinými obcemi)
+        disk = {m['obec']: m for m in (json.load(open(meta_f, encoding='utf-8')) if os.path.exists(meta_f) else [])}
+        disk[kod] = meta[kod]
+        json.dump(sorted(disk.values(), key=lambda m: m['obec']), open(meta_f, 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
 
 
 if __name__ == '__main__':
