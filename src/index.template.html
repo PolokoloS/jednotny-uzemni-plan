@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Jednotný územní plán</title>
+<meta name="description" content="Územní plány českých obcí v jedné mapě a lidskou řečí. Klikněte na pozemek a uvidíte, co se tam smí stavět, co se chystá a na co si dát pozor.">
+<meta name="theme-color" content="#eef0ec">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Jednotný územní plán">
+<meta property="og:description" content="Územní plány českých obcí v jedné mapě a lidskou řečí. Klikněte na pozemek a uvidíte, co se tam smí stavět, co se chystá a na co si dát pozor.">
+<meta property="og:locale" content="cs_CZ">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect x='1' y='1' width='10' height='10' fill='%23ff6400' stroke='%23000' stroke-width='1'/%3E%3Crect x='13' y='1' width='10' height='10' fill='%23e01616' stroke='%23000' stroke-width='1'/%3E%3Crect x='1' y='13' width='10' height='10' fill='%23648700' stroke='%23000' stroke-width='1'/%3E%3Crect x='13' y='13' width='10' height='10' fill='%23ccd0d0' stroke='%23000' stroke-width='1'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap">
+<style>
+{{OLCSS}}
+{{CSS}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-minus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14"/></symbol>
+    <symbol id="i-locate" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></symbol>
+    <symbol id="i-layers" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="m12 3 9 5-9 5-9-5z"/><path d="m3 13 9 5 9-5"/></symbol>
+    <symbol id="i-rd" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10v10h13V10"/><path d="M10 20v-5h4v5"/></symbol>
+    <symbol id="i-bd" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18"/><path d="M9 7h2M13 7h2M9 11h2M13 11h2M9 15h2M13 15h2"/></symbol>
+    <symbol id="i-chata" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M12 3 3 21h18z"/><path d="M10 21v-5h4v5"/></symbol>
+    <symbol id="i-obchod" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M4 9h16l-1.5-5h-13z"/><path d="M5 9v11h14V9"/><path d="M9.5 20v-6h5v6"/></symbol>
+    <symbol id="i-dilna" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M3 21V11l5 3v-3l5 3v-3l5 3V4h3v17z"/></symbol>
+    <symbol id="i-plan" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="4" width="16" height="16" stroke-dasharray="3 2"/><path d="M4 12 12 4M4 20 20 4M12 20l8-8"/></symbol>
+    <symbol id="i-yes" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
+    <symbol id="i-maybe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M4 13c2.5-3 5-3 8 0s5.5 3 8 0"/></symbol>
+    <symbol id="i-no" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6.5 6.5l11 11M17.5 6.5l-11 11"/></symbol>
+    <symbol id="i-link" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M10 14a4 4 0 0 0 5.66 0l3-3a4 4 0 0 0-5.66-5.66l-1 1"/><path d="M14 10a4 4 0 0 0-5.66 0l-3 3a4 4 0 0 0 5.66 5.66l1-1"/></symbol>
+    <symbol id="i-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></symbol>
+  </defs>
+</svg>
+
+<div id="app">
+  <div id="map" tabindex="0" aria-label="Mapa územních plánů"></div>
+  <div id="progress" class="progress" hidden></div>
+
+  <aside id="panel" class="panel" aria-label="Hledání a karta místa">
+    <header class="brand">
+      <span class="mark" aria-hidden="true"><i style="--c:#ff6400"></i><i style="--c:#e01616"></i><i style="--c:#648700"></i><i style="--c:#878b8b"></i></span>
+      <div class="brand-text">
+        <span class="brand-name">Jednotný územní plán</span>
+        <span class="brand-sub">Co se kde smí stavět, srozumitelně</span>
+      </div>
+      <button class="icon-btn" id="aboutBtn" aria-label="O projektu a zdrojích dat"><svg><use href="#i-info"/></svg></button>
+    </header>
+    <div class="search" role="search">
+      <svg aria-hidden="true"><use href="#i-search"/></svg>
+      <input id="q" type="search" autocomplete="off" spellcheck="false" placeholder="Adresa, obec nebo parcela" aria-label="Hledat adresu, obec nebo číslo parcely" aria-controls="results" aria-expanded="false">
+      <button id="qClear" class="clear" aria-label="Smazat hledání" hidden><svg width="16" height="16"><use href="#i-close"/></svg></button>
+      <div id="results" class="results" role="listbox" hidden></div>
+    </div>
+
+    <div id="sheet" class="sheet" data-state="peek">
+      <button class="sheet-handle" id="sheetHandle" aria-label="Rozbalit nebo sbalit kartu"><span></span></button>
+
+      <section id="intro" class="intro">
+        <h2>Klikněte do mapy a uvidíte, co se na místě smí stavět.</h2>
+        <ol class="steps">
+          <li><span><b>Najděte místo.</b> Adresu, obec nebo číslo parcely, třeba „Liberec 1234/9“.</span></li>
+          <li><span><b>Klikněte na pozemek.</b> Barva ukazuje, k čemu plocha slouží.</span></li>
+          <li><span><b>Přečtěte si kartu.</b> Co se tu smí, co se chystá a na co si dát pozor.</span></li>
+        </ol>
+        <div class="cov">
+          <div class="cov-top"><span class="cov-big num" id="covN">346</span><span class="cov-of">obcí z <span class="num" id="covTotal">6 254</span> už má územní plán v jednotných datech</span></div>
+          <div class="cov-bar" aria-hidden="true"><span id="covBar" style="width:5.5%"></span><span id="covBarReg" class="reg" style="width:0"></span></div>
+          <p id="covRest">Ostatní obce ho mají jen jako PDF. U nich vás pošleme na krajský portál, kde ho najdete.</p>
+          <button class="link-btn" id="covBtn">Seznam obcí s jednotnými daty</button>
+        </div>
+        <div class="try" id="try"><span>Vyzkoušejte:</span></div>
+        <p class="disclaimer">Neoficiální nástroj nad otevřenými daty státu. Informace jsou orientační, závazný je územní plán vydaný obcí.</p>
+      </section>
+
+      <article id="card" class="card" hidden aria-live="polite"></article>
+    </div>
+  </aside>
+
+  <div class="topbar" id="topbar">
+    <div class="intents" role="radiogroup" aria-label="Co chcete postavit?" id="intents">
+      <span class="intents-label">Chci postavit:</span>
+      <button class="chip" role="radio" aria-checked="false" data-intent="0"><svg><use href="#i-rd"/></svg>Rodinný dům</button>
+      <button class="chip" role="radio" aria-checked="false" data-intent="1"><svg><use href="#i-bd"/></svg>Bytový dům</button>
+      <button class="chip" role="radio" aria-checked="false" data-intent="2"><svg><use href="#i-chata"/></svg>Chatu</button>
+      <button class="chip" role="radio" aria-checked="false" data-intent="3"><svg><use href="#i-obchod"/></svg>Obchod</button>
+      <button class="chip" role="radio" aria-checked="false" data-intent="4"><svg><use href="#i-dilna"/></svg>Dílnu</button>
+    </div>
+    <button class="chip plan-toggle" id="planToggle" aria-pressed="false"><svg><use href="#i-plan"/></svg>Co se tu chystá</button>
+  </div>
+
+  <div class="controls">
+    <div class="ctl-group">
+      <button class="ctl" id="zoomIn" aria-label="Přiblížit"><svg><use href="#i-plus"/></svg></button>
+      <button class="ctl" id="zoomOut" aria-label="Oddálit"><svg><use href="#i-minus"/></svg></button>
+    </div>
+    <button class="ctl" id="locateBtn" aria-label="Najít moji polohu"><svg><use href="#i-locate"/></svg></button>
+    <button class="ctl" id="layersBtn" aria-label="Podklad a vrstvy" aria-expanded="false" aria-controls="layersPop"><svg><use href="#i-layers"/></svg></button>
+  </div>
+
+  <div id="layersPop" class="pop" hidden>
+    <h4>Podkladová mapa</h4>
+    <div class="opts">
+      <label><input type="radio" name="base" value="map" id="baseMap" checked><span>Mapa <small>OpenStreetMap</small></span></label>
+      <label><input type="radio" name="base" value="orto" id="baseOrto"><span>Letecký snímek <small>ČÚZK</small></span></label>
+      <label><input type="radio" name="base" value="ztm" id="baseZtm"><span>Základní mapa <small>ČÚZK</small></span></label>
+    </div>
+    <h4>Vrstvy</h4>
+    <div class="opts">
+      <label><input type="checkbox" id="lyUp" checked><span>Územní plán</span></label>
+      <div class="range"><input type="range" id="upOpacity" min="25" max="100" value="66" aria-label="Sytost barev územního plánu"><span class="num" id="upOpacityVal">66 %</span></div>
+      <label><input type="checkbox" id="lyRegional" checked><span>Plány obcí z dat krajů <small>tam, kde jednotná data zatím nejsou</small></span></label>
+      <label><input type="checkbox" id="lyParcels" checked><span>Hranice a čísla parcel <small>katastr ČÚZK</small></span></label>
+      <label><input type="checkbox" id="lyRadon"><span>Radonový index podloží <small>Česká geologická služba</small></span></label>
+      <label><input type="checkbox" id="lyNature"><span>Ochrana přírody <small>národní parky, CHKO, rezervace, Natura 2000</small></span></label>
+      <label><input type="checkbox" id="lyFlood"><span>Záplavová území <small>stoletá voda a aktivní zóna</small></span></label>
+    </div>
+  </div>
+
+  <div id="hint" class="hint" hidden></div>
+
+  <section class="legend" id="legend" data-open="true" aria-label="Legenda">
+    <button id="legendToggle" aria-expanded="true"><span id="legendTitle">Legenda</span><svg><use href="#i-chev"/></svg></button>
+    <div class="legend-body" id="legendBody"></div>
+  </section>
+
+  <div class="footer">
+    <div id="scale"></div>
+    <span class="ratio num" id="ratio"></span>
+    <span class="attrib" id="attrib"></span>
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+  <div id="tip" class="tip" hidden></div>
+
+  <dialog id="aboutDlg" aria-labelledby="aboutTitle">
+    <div class="dlg">
+      <div class="dlg-head"><h2 id="aboutTitle">O projektu</h2><button class="icon-btn" data-close aria-label="Zavřít"><svg><use href="#i-close"/></svg></button></div>
+      <div class="dlg-body">
+        <h3>Proč to vzniklo</h3>
+        <p>Každá obec má svůj územní plán, většinou jako PDF s vlastní legendou. Stát od roku 2023 sbírá nové a převedené plány v jednotném standardu do Národního geoportálu územního plánování. Data tam jsou, jen v podobě pro úředníky a projektanty. Tahle mapa je bere přímo z jeho serveru, kreslí je v jedné legendě a česky vysvětluje, co pro vás znamenají.</p>
+        <h3>Odkud jsou data</h3>
+        <ul>
+          <li>Územní plány v jednotném standardu: Národní geoportál územního plánování, Ministerstvo pro místní rozvoj (mapy.gov.cz).</li>
+          <li>Obce, které v jednotném standardu ještě nejsou: veřejná data krajů. Mozaiky hlavních výkresů Středočeského, Karlovarského, Libereckého a Moravskoslezského kraje, územně analytické podklady Jihočeského, Karlovarského a Ústeckého kraje, územní plány Kraje Vysočina (i v krajském jednotném standardu) a hlavní výkres Metropolitního plánu Prahy (IPR Praha). K tomu vlastní mapové služby měst Brna, Plzně, Olomouce, Zlína a Českých Budějovic.</li>
+          <li>Parcely, adresy, obce a ochrana přírody: RÚIAN, Český úřad zeměměřický a katastrální.</li>
+          <li>Radonový index podloží 1 : 50 000: Česká geologická služba.</li>
+          <li>Záplavová území: Výzkumný ústav vodohospodářský T. G. Masaryka (VÚV TGM).</li>
+          <li>Podkladová mapa: © přispěvatelé OpenStreetMap, OpenMapTiles, OpenFreeMap. Letecký snímek a základní mapa: ČÚZK.</li>
+        </ul>
+        <h3>Jak s daty zacházíme</h3>
+        <p>Geoportál drží i starší verze plánů (původní plán a úplná znění po změnách). Mapa ukazuje vždy nejnovější úplnou verzi a změny, které přišly po ní. Výklad „co se tu smí stavět“ vychází z typu plochy podle vyhlášky č. 157/2024 Sb. Je to orientační vodítko: přesné podmínky (výška, zastavěnost, co je přípustné) stanoví textová část územního plánu dané obce.</p>
+        <p>U obcí bez jednotných dat mapa ukáže výkres z dat kraje. Kde kraj u plochy uvádí její typ nebo název, převedeme ho do jednotné legendy a ukážeme orientační výklad. Kraje svá data označují jako informativní a některé mohou být starší než poslední změna plánu.</p>
+        <h3>Co mapa neumí</h3>
+        <p>Královéhradecký, Pardubický, Jihomoravský, Olomoucký a Zlínský kraj zatím nemají veřejnou službu s plány obcí, kterou by šlo do mapy připojit (kromě krajských měst, která mají vlastní). Tamní obce bez jednotných dat mapa ukáže jako odkaz na dokumenty obce. Mapa nenahrazuje územně plánovací informaci ani vyjádření stavebního úřadu.</p>
+        <p class="muted" id="aboutStamp"></p>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog id="covDlg" aria-labelledby="covTitle">
+    <div class="dlg">
+      <div class="dlg-head"><h2 id="covTitle">Obce s jednotným územním plánem</h2><button class="icon-btn" data-close aria-label="Zavřít"><svg><use href="#i-close"/></svg></button></div>
+      <div class="dlg-body">
+        <input class="cov-filter" id="covFilter" type="search" placeholder="Filtrovat podle názvu nebo okresu" aria-label="Filtrovat obce">
+        <ul class="cov-list" id="covList"></ul>
+      </div>
+    </div>
+  </dialog>
+</div>
+
+<noscript><p style="position:fixed;inset:auto 16px 16px 16px;background:#171c1a;color:#fff;padding:12px 16px;border-radius:6px;z-index:99">Mapa potřebuje zapnutý JavaScript.</p></noscript>
+<script src="https://cdn.jsdelivr.net/npm/ol@10.10.0/dist/ol.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/proj4@2.22.0/dist/proj4.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/ol-mapbox-style@13.5.1/dist/olms.js"></script>
+<script>
+{{DATA}}
+{{PLAIN}}
+{{APP}}
+</script>
+</body>
+</html>

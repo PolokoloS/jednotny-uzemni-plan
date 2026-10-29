@@ -1,0 +1,61 @@
+{
+ "19": {
+  "url": "https://plan.praha.eu/",
+  "label": "Metropolitní plán Prahy",
+  "primary": true,
+  "note": "Praha má od 1. září 2026 nový územní plán, Metropolitní plán. V jednotném standardu zatím není."
+ },
+ "27": {
+  "url": "https://stredoceskykraj.cz/web/urad/mapova-aplikace-Upd-sk",
+  "label": "Mapová aplikace ÚPD Středočeského kraje"
+ },
+ "35": {
+  "url": "https://geoportal.kraj-jihocesky.gov.cz/portal/up/obce",
+  "label": "Územní plány obcí Jihočeského kraje"
+ },
+ "43": {
+  "url": "https://geoportal.plzensky-kraj.cz/portal/uzemni-plany-a-dalsi-nastroje-uzemniho-planovani",
+  "label": "Územní plány obcí Plzeňského kraje"
+ },
+ "51": {
+  "url": "https://experience.arcgis.com/experience/2c3b5a3e54314336b4b6109fe4e14fab",
+  "label": "Mozaika územních plánů Karlovarského kraje"
+ },
+ "60": {
+  "url": "https://geoportal.kr-ustecky.cz/portal/up/obce",
+  "label": "Územní plány obcí Ústeckého kraje"
+ },
+ "78": {
+  "url": "https://maparcgis.kraj-lbc.cz/portal/apps/experiencebuilder/experience/?id=447246bc061e40cc9d891a93caba5993",
+  "label": "Územní plány v Libereckém kraji"
+ },
+ "86": {
+  "url": "https://up.khk.cz/",
+  "label": "Portál územních plánů Královéhradeckého kraje"
+ },
+ "94": {
+  "url": "https://www.pardubickykraj.cz/bezesva-upd-obci-pardubickeho-kraje",
+  "label": "Bezešvá mapa ÚP Pardubického kraje"
+ },
+ "108": {
+  "url": "https://pupo.kr-vysocina.cz/",
+  "label": "Portál územního plánování Kraje Vysočina"
+ },
+ "116": {
+  "url": "https://uzemniplanovani.gov.cz/dokumenty-obci",
+  "label": "Dokumenty obcí v Národním geoportálu ÚP",
+  "note": "Jihomoravský kraj svou mapovou aplikaci územních plánů ukončil a odkazuje na Národní geoportál."
+ },
+ "124": {
+  "url": "https://uap.olkraj.cz/",
+  "label": "Portál územního plánování Olomouckého kraje"
+ },
+ "141": {
+  "url": "https://zlinskykraj.cz/uzemni-plany-obci-zlinskeho-kraje",
+  "label": "Územní plány obcí Zlínského kraje"
+ },
+ "132": {
+  "url": "https://www.msk.cz/cs/temata/mapy/uzemni-plany-obci-432/",
+  "label": "Územní plány obcí Moravskoslezského kraje"
+ }
+}

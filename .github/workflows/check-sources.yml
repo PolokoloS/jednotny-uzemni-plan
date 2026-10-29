@@ -1,0 +1,33 @@
+name: Kontrola zdrojů
+on:
+  schedule:
+    - cron: '17 6 * * 1'
+  workflow_dispatch:
+permissions:
+  contents: read
+  issues: write
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Zkontroluj služby krajů a měst
+        id: check
+        continue-on-error: true
+        run: python scripts/check_sources.py --markdown report.md
+      - name: Nahlas výpadek v issue
+        if: steps.check.outcome == 'failure'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh label create zdroje --color D93F0B --description "Výpadek krajské nebo městské služby" --force
+          num=$(gh issue list --label zdroje --state open --json number --jq '.[0].number')
+          if [ -n "$num" ]; then
+            gh issue comment "$num" --body-file report.md
+          else
+            gh issue create --title "Nefunkční zdroje dat" --label zdroje --body-file report.md
+          fi

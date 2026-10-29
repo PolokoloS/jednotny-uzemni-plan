@@ -1,0 +1,9 @@
+dist/
+node_modules/
+test-results/
+playwright-report/
+__pycache__/
+*.pyc
+report.md
+.DS_Store
+Thumbs.db

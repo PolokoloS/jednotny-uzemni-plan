@@ -1,0 +1,11 @@
+{
+  "name": "jednotny-uzemni-plan",
+  "private": true,
+  "description": "Smoke testy webové mapy Jednotný územní plán",
+  "scripts": {
+    "test": "playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.49.1"
+  }
+}

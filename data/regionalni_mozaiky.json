@@ -1,0 +1,772 @@
+[
+ {
+  "kraj": 19,
+  "name": "hlavní výkres Metropolitního plánu Prahy",
+  "from": "z hlavního výkresu Metropolitního plánu Prahy",
+  "obce": 1,
+  "attribution": "Metropolitní plán © IPR Praha",
+  "drawing": true,
+  "lead": "Praha má od 1. září 2026 nový územní plán, Metropolitní plán. V jednotných datech zatím není, proto v mapě vidíte jeho hlavní výkres. Plochy a značky čtěte podle legendy Metropolitního plánu.",
+  "links": [
+   {
+    "label": "Metropolitní plán online",
+    "url": "https://plan.praha.eu/"
+   }
+  ],
+  "layers": [
+   {
+    "kind": "tiles5514",
+    "tileSize": 512,
+    "url": "https://tiles.arcgis.com/tiles/SBTXIEUGWbqzUecw/arcgis/rest/services/Z02_Hlavni_vykres_struktury_NkV_2605/MapServer/tile/{z}/{y}/{x}",
+    "origin": [
+     -33699800,
+     33699800
+    ],
+    "resolutions": [
+     198.437897,
+     132.291931,
+     92.604352,
+     52.916773,
+     39.687579,
+     26.458386,
+     19.84379,
+     13.229193,
+     6.614597,
+     5.291677,
+     3.968758,
+     2.645839,
+     1.984379,
+     1.322919
+    ],
+    "extent": [
+     -767027,
+     -1061574,
+     -707365,
+     -1031170
+    ]
+   }
+  ]
+ },
+ {
+  "kraj": 27,
+  "name": "mozaika územních plánů Středočeského kraje",
+  "from": "z mozaiky územních plánů Středočeského kraje",
+  "obce": 1144,
+  "attribution": "Mozaika ÚP © Středočeský kraj",
+  "drawing": true,
+  "layers": [
+   {
+    "kind": "tiles5514",
+    "url": "https://gis.kr-stredocesky.cz/wagisas01/rest/services/USR/USR_UPN_UPD_OBEC_HLV/MapServer/tile/{z}/{y}/{x}",
+    "origin": [
+     -920000,
+     -920000
+    ],
+    "resolutions": [
+     256.032512,
+     128.016256,
+     64.008128,
+     32.004064,
+     16.002032,
+     8.001016,
+     4.000508,
+     2.000254,
+     1.000127,
+     0.500064,
+     0.250032
+    ],
+    "extent": [
+     -816245,
+     -1109608,
+     -665631,
+     -989069
+    ]
+   }
+  ],
+  "doc": [
+   {
+    "url": "https://gis.kr-stredocesky.cz/wagisas01/rest/services/USR/USR_UPD_OBCE_LEG_TXT/MapServer/4",
+    "fields": {
+     "obec": "NAZEV_LAU2",
+     "legend": "ODK_LEG_OB",
+     "docs": "ODK_UP_OBC",
+     "changes": "ODK_UP_ZM_"
+    }
+   }
+  ]
+ },
+ {
+  "kraj": 35,
+  "name": "územně analytické podklady Jihočeského kraje",
+  "from": "z územně analytických podkladů Jihočeského kraje",
+  "obce": 500,
+  "attribution": "ÚAP © Jihočeský kraj",
+  "layers": [
+   {
+    "kind": "arcgisExport",
+    "url": "https://gis.kraj-jihocesky.cz/gis/rest/services/UP/UAP_ORP/MapServer",
+    "params": {
+     "layers": "show:18,19,7",
+     "dpi": 24
+    },
+    "minZoom": 13.2,
+    "extent": [
+     -823653,
+     -1211586,
+     -672279,
+     -1097197
+    ]
+   }
+  ],
+  "info": [
+   {
+    "url": "https://gis.kraj-jihocesky.cz/gis/rest/services/UP/UAP_ORP/MapServer/7",
+    "codes": "std",
+    "fields": {
+     "code": "LABEL",
+     "name": "NAZEV_JEVU",
+     "status": "STAV_ID",
+     "date": "DATUM_VYD",
+     "doc": "POZN_OST"
+    },
+    "dateLabel": "Vydáno"
+   },
+   {
+    "url": "https://gis.kraj-jihocesky.cz/gis/rest/services/UP/UAP_ORP/MapServer/19",
+    "codes": "minis",
+    "fixedStatus": 2,
+    "fields": {
+     "code": "FUNKCE_KOD",
+     "name": "NAZEV_JEVU",
+     "obec": "OBEC",
+     "doc": "ZDR_POPIS"
+    }
+   },
+   {
+    "url": "https://gis.kraj-jihocesky.cz/gis/rest/services/UP/UAP_ORP/MapServer/18",
+    "codes": "minis",
+    "fixedStatus": 1,
+    "fields": {
+     "code": "FUNKCE_KOD",
+     "name": "NAZEV_JEVU",
+     "obec": "OBEC",
+     "doc": "ZDR_POPIS"
+    }
+   }
+  ]
+ },
+ {
+  "kraj": 35,
+  "obec": 544256,
+  "searchText": "České Budějovice (České Budějovice)",
+  "name": "hlavní výkres Územního plánu města České Budějovice",
+  "from": "z hlavního výkresu Územního plánu města České Budějovice (stav 2022) a z ÚAP Jihočeského kraje",
+  "obce": 1,
+  "attribution": "ÚP © Statutární město České Budějovice, ÚAP © Jihočeský kraj",
+  "drawing": true,
+  "layers": [
+   {
+    "kind": "tiles3857",
+    "url": "https://tiles.arcgis.com/tiles/8svDug0pVvBQzXWS/arcgis/rest/services/HV_KL_UPnM_png/MapServer/tile/{z}/{y}/{x}",
+    "maxZoom": 17,
+    "extentCrs": "EPSG:3857",
+    "extent": [
+     1601162,
+     6262658,
+     1625179,
+     6280227
+    ]
+   }
+  ],
+  "info": [
+   {
+    "url": "https://gis.kraj-jihocesky.cz/gis/rest/services/UP/UAP_jevyA_CB_DQ_URBAN/MapServer/150",
+    "codes": "minis",
+    "fixedStatus": 2,
+    "dateLabel": "Vydáno",
+    "fields": {
+     "code": "FUNKCE_KOD",
+     "name": "NAZEV_JEVU",
+     "doc": "ZDR_POPIS",
+     "date": "DATUM_VYD"
+    }
+   },
+   {
+    "url": "https://gis.kraj-jihocesky.cz/gis/rest/services/UP/UAP_jevyA_CB_DQ_URBAN/MapServer/149",
+    "codes": "minis",
+    "fixedStatus": 1,
+    "dateLabel": "Vydáno",
+    "fields": {
+     "code": "FUNKCE_KOD",
+     "name": "NAZEV_JEVU",
+     "doc": "ZDR_POPIS",
+     "date": "DATUM_VYD"
+    }
+   },
+   {
+    "url": "https://gis.kraj-jihocesky.cz/gis/rest/services/UP/UAP_ORP/MapServer/19",
+    "codes": "minis",
+    "fixedStatus": 2,
+    "fields": {
+     "code": "FUNKCE_KOD",
+     "name": "NAZEV_JEVU",
+     "doc": "ZDR_POPIS"
+    }
+   },
+   {
+    "url": "https://gis.kraj-jihocesky.cz/gis/rest/services/UP/UAP_ORP/MapServer/18",
+    "codes": "minis",
+    "fixedStatus": 1,
+    "fields": {
+     "code": "FUNKCE_KOD",
+     "name": "NAZEV_JEVU",
+     "doc": "ZDR_POPIS"
+    }
+   }
+  ]
+ },
+ {
+  "kraj": 43,
+  "name": "výkresy územních plánů obcí Plzeňského kraje",
+  "from": "z map územních plánů obcí Plzeňského kraje",
+  "obce": 295,
+  "attribution": "Výkresy ÚP © Plzeňský kraj",
+  "drawing": true,
+  "layers": [
+   {
+    "kind": "arcgisPerObec",
+    "base": "https://ags.plzensky-kraj.cz/arcgis/rest/services/UPD/",
+    "minZoom": 12.6,
+    "okresy": {
+     "3401": "DO",
+     "3404": "KT",
+     "3405": "PM",
+     "3406": "PJ",
+     "3407": "PS",
+     "3408": "RO",
+     "3410": "TC"
+    },
+    "extent": [
+     -891829,
+     -1159683,
+     -787037,
+     -1029959
+    ]
+   }
+  ]
+ },
+ {
+  "kraj": 43,
+  "obec": 554791,
+  "searchText": "Plzeň (Plzeň-město)",
+  "name": "Územní plán Plzeň po změně č. 4",
+  "from": "z dat Územního plánu Plzeň (úplné znění po změně č. 4, platí od 1. 1. 2026)",
+  "obce": 1,
+  "attribution": "ÚP Plzeň © Statutární město Plzeň",
+  "drawing": true,
+  "links": [
+   {
+    "label": "Územní plán Plzeň online",
+    "url": "https://agp.plzen.eu/app/UPP"
+   }
+  ],
+  "layers": [
+   {
+    "kind": "tiles5514",
+    "url": "https://ags.plzen.eu/arcgis/rest/services/GIS_UKR/ukr_UPP_V2_z4_navrh/MapServer/tile/{z}/{y}/{x}",
+    "origin": [
+     -925000,
+     -920000
+    ],
+    "resolutions": [
+     2048.260096520193,
+     1024.1300482600966,
+     512.0650241300483,
+     256.03251206502415,
+     128.01625603251208,
+     64.00812801625604,
+     32.00406400812802,
+     16.00203200406401,
+     8.001016002032005,
+     4.000508001016002,
+     2.000254000508001,
+     1.0001270002540006,
+     0.5000635001270003,
+     0.25003175006350015
+    ],
+    "extent": [
+     -830016,
+     -1078144,
+     -814912,
+     -1063104
+    ]
+   }
+  ],
+  "info": [
+   {
+    "url": "https://ags.plzen.eu/arcgis/rest/services/GIS_UKR/ukr_UPP_V2_z4_navrh/MapServer/9",
+    "codes": "std",
+    "fields": {
+     "code": "RZV_Typ",
+     "status": "RZV_CasH",
+     "label": "kod_lokalita"
+    }
+   }
+  ]
+ },
+ {
+  "kraj": 51,
+  "name": "mozaika územních plánů Karlovarského kraje",
+  "from": "z mozaiky územních plánů Karlovarského kraje",
+  "obce": 134,
+  "attribution": "Mozaika ÚP © Karlovarský kraj",
+  "drawing": true,
+  "layers": [
+   {
+    "kind": "tiles5514",
+    "url": "https://geo-ags.kr-karlovarsky.cz/arcgis/rest/services/Hosted/UP_obci_akt/MapServer/tile/{z}/{y}/{x}",
+    "origin": [
+     -33699800,
+     33699800
+    ],
+    "resolutions": [
+     256.03251,
+     128.01626,
+     64.00813,
+     32.00406,
+     16.00203,
+     8.00102,
+     4.00051,
+     2.00025,
+     1.00013,
+     0.50006,
+     0.25003,
+     0.12502
+    ],
+    "extent": [
+     -904585.49,
+     -1046178.03,
+     -821764.27,
+     -986137.44
+    ]
+   }
+  ],
+  "info": [
+   {
+    "url": "https://geo-ags.kr-karlovarsky.cz/arcgis/rest/services/UAP/UAP_kompletni_uzemne_analyticke_podklady/MapServer/9",
+    "codes": "minis",
+    "timeout": 20000,
+    "navrh": [
+     "ZA"
+    ],
+    "fields": {
+     "code": "Typ",
+     "name": "PrvekNaz",
+     "status": "Stav",
+     "obec": "Obec"
+    }
+   }
+  ],
+  "doc": [
+   {
+    "url": "https://geo-ags.kr-karlovarsky.cz/arcgis/rest/services/Hosted/UP_legendy/FeatureServer/0",
+    "fields": {
+     "title": "popis",
+     "doc": "dokumentace",
+     "date": "ucinnost",
+     "text": "text",
+     "link": "url",
+     "author": "projektant",
+     "obec": "nazev_lau2"
+    }
+   }
+  ]
+ },
+ {
+  "kraj": 60,
+  "name": "územně analytické podklady Ústeckého kraje",
+  "from": "z územně analytických podkladů Ústeckého kraje",
+  "obce": 239,
+  "attribution": "ÚAP © Ústecký kraj",
+  "layers": [
+   {
+    "kind": "arcgisExport",
+    "url": "https://ags.kr-ustecky.cz/arcgis/rest/services/UAP/UAP_ORP_jevy/MapServer",
+    "params": {
+     "layers": "show:3,4"
+    },
+    "extent": [
+     -842072,
+     -1033413,
+     -714002,
+     -935237
+    ]
+   }
+  ],
+  "info": [
+   {
+    "url": "https://ags.kr-ustecky.cz/arcgis/rest/services/UAP/UAP_ORP_jevy/MapServer/4",
+    "codes": "minis",
+    "fixedStatus": 2,
+    "fields": {
+     "code": "FUNKCE_KOD",
+     "name": "NAZEV_JEVU",
+     "obec": "OBEC",
+     "doc": "ZDR_POPIS",
+     "date": "DATUM_VYD",
+     "author": "POSKYT"
+    },
+    "dateLabel": "Vydáno"
+   },
+   {
+    "url": "https://ags.kr-ustecky.cz/arcgis/rest/services/UAP/UAP_ORP_jevy/MapServer/3",
+    "codes": "minis",
+    "fixedStatus": 1,
+    "fields": {
+     "code": "FUNKCE_KOD",
+     "name": "NAZEV_JEVU",
+     "obec": "OBEC",
+     "doc": "ZDR_POPIS",
+     "date": "DATUM_VYD",
+     "author": "POSKYT"
+    },
+    "dateLabel": "Vydáno"
+   }
+  ]
+ },
+ {
+  "kraj": 78,
+  "name": "mozaika hlavních výkresů Libereckého kraje",
+  "from": "z mozaiky hlavních výkresů Libereckého kraje",
+  "obce": 215,
+  "attribution": "Hlavní výkresy ÚP © Liberecký kraj",
+  "drawing": true,
+  "layers": [
+   {
+    "kind": "arcgisExport",
+    "url": "https://maparcgis.kraj-lbc.cz/arcgis/rest/services/11/HlavniVykresyUPvLK/MapServer",
+    "params": {
+     "layers": "show:259,260"
+    },
+    "extent": [
+     -739660,
+     -1008854,
+     -650984,
+     -945466
+    ]
+   }
+  ],
+  "doc": [
+   {
+    "url": "https://maparcgis.kraj-lbc.cz/arcgis/rest/services/11/HlavniVykresyUPvLK/MapServer/257",
+    "skip": "/obec.pdf",
+    "fields": {
+     "obec": "OBEC",
+     "legend": "LEGENDA"
+    }
+   }
+  ]
+ },
+ {
+  "kraj": 108,
+  "name": "územní plány Kraje Vysočina",
+  "from": "z dat územních plánů Kraje Vysočina",
+  "obce": 658,
+  "attribution": "Územní plány © Kraj Vysočina",
+  "drawing": true,
+  "layers": [
+   {
+    "kind": "arcgisImage",
+    "url": "https://maps.kr-vysocina.cz/pupo_ags/rest/services/UPD_HLV_img/ImageServer",
+    "params": {
+     "format": "jpgpng"
+    },
+    "extent": [
+     -720722,
+     -1181252,
+     -607805,
+     -1077934
+    ]
+   },
+   {
+    "kind": "arcgisExport",
+    "url": "https://maps.kr-vysocina.cz/pupo_ags/rest/services/%C3%9APD__%C3%9Azemn%C3%AD_pl%C3%A1ny_v_jednotn%C3%A9m_standardu/MapServer",
+    "params": {
+     "layers": "show:2",
+     "dpi": 48
+    },
+    "std": {
+     "layer": 2,
+     "typ": "typ",
+     "cash": "cas_h"
+    },
+    "cover": {
+     "url": "https://maps.kr-vysocina.cz/pupo_ags/rest/services/%C3%9APD__%C3%9Azemn%C3%AD_pl%C3%A1ny_v_jednotn%C3%A9m_standardu/MapServer/0",
+     "field": "obec_kod"
+    },
+    "extent": [
+     -719993,
+     -1181200,
+     -607867,
+     -1077934
+    ]
+   }
+  ],
+  "info": [
+   {
+    "url": "https://maps.kr-vysocina.cz/pupo_ags/rest/services/%C3%9APD__%C3%9Azemn%C3%AD_pl%C3%A1ny_v_jednotn%C3%A9m_standardu/MapServer/2",
+    "codes": "std",
+    "fields": {
+     "code": "typ",
+     "status": "cas_h",
+     "obec": "obec_nazev"
+    }
+   },
+   {
+    "url": "https://maps.kr-vysocina.cz/pupo_ags/rest/services/UPD_Hlavni_vykres_vse/MapServer/7",
+    "codes": "minis",
+    "fields": {
+     "code": "KOD",
+     "label": "OZNACENI",
+     "text": "infotext",
+     "status": "STAV_ID"
+    }
+   }
+  ],
+  "doc": [
+   {
+    "url": "https://maps.kr-vysocina.cz/pupo_ags/rest/services/%C3%9APD__%C3%9Azemn%C3%AD_pl%C3%A1ny_v_jednotn%C3%A9m_standardu/MapServer/0",
+    "fields": {
+     "date": "plati_od",
+     "author": "proj_jmeno",
+     "maker": "zhot_nazev",
+     "obec": "obec_nazev"
+    }
+   }
+  ]
+ },
+ {
+  "kraj": 116,
+  "obec": 582786,
+  "searchText": "Brno (Brno-město)",
+  "name": "hlavní výkres Územního plánu města Brna",
+  "from": "z hlavního výkresu Územního plánu města Brna",
+  "obce": 1,
+  "attribution": "ÚPmB © Statutární město Brno",
+  "drawing": true,
+  "lead": "Brno má od 31. ledna 2025 nový územní plán (ÚPmB). V jednotných datech zatím není, proto v mapě vidíte jeho hlavní výkres. Plochy a značky čtěte podle legendy ÚPmB.",
+  "links": [
+   {
+    "label": "Územní plán města Brna",
+    "url": "https://upmb.brno.cz/"
+   }
+  ],
+  "layers": [
+   {
+    "kind": "tiles5514",
+    "url": "https://gis.brno.cz/ags2/rest/services/PUBLIC/upmb_v21/MapServer/tile/{z}/{y}/{x}",
+    "origin": [
+     -33699800,
+     33699800
+    ],
+    "resolutions": [
+     64,
+     32,
+     16,
+     8,
+     6.614596562526459,
+     4,
+     2.6458386250105836,
+     2,
+     1.3229193125052918,
+     1,
+     0.5
+    ],
+    "extent": [
+     -611342,
+     -1170535,
+     -588742,
+     -1149635
+    ]
+   }
+  ],
+  "doc": [
+   {
+    "url": "https://gis.brno.cz/ags2/rest/services/PUBLIC/oupr_upmb_zaloby_prezkumy_pub/MapServer/0",
+    "fields": {
+     "court": "c_jednaci",
+     "courtNote": "poznamka"
+    }
+   }
+  ]
+ },
+ {
+  "kraj": 124,
+  "obec": 500496,
+  "searchText": "Olomouc (Olomouc)",
+  "name": "Územní plán Olomouc po změně X/2A",
+  "from": "z dat Územního plánu Olomouc (úplné znění po změně X/2A, platí od 16. 7. 2026)",
+  "obce": 1,
+  "attribution": "ÚP Olomouc © Statutární město Olomouc",
+  "drawing": true,
+  "layers": [
+   {
+    "kind": "tiles5514",
+    "url": "https://tiles.arcgis.com/tiles/W4pu2xsRj3cVEctz/arcgis/rest/services/HLV_UZ_ZX2A/MapServer/tile/{z}/{y}/{x}",
+    "origin": [
+     -925000,
+     -920000
+    ],
+    "resolutions": [
+     2048.260096520193,
+     1024.1300482600966,
+     512.0650241300483,
+     256.03251206502415,
+     128.01625603251208,
+     64.00812801625604,
+     32.00406400812802,
+     16.00203200406401,
+     8.001016002032005,
+     4.000508001016002,
+     2.000254000508001,
+     1.0001270002540006,
+     0.5000635001270003,
+     0.25003175006350015
+    ],
+    "extent": [
+     -553952,
+     -1128340,
+     -533920,
+     -1113078
+    ]
+   }
+  ],
+  "info": [
+   {
+    "url": "https://services3.arcgis.com/W4pu2xsRj3cVEctz/arcgis/rest/services/Plochy_UP_OL/FeatureServer/26",
+    "cors": true,
+    "codes": "std",
+    "fields": {
+     "code": "Typ",
+     "status": "CasH",
+     "label": "kód_plochy"
+    },
+    "extra": [
+     [
+      "Max. výška zástavby",
+      "max__výška_zástavby__m_",
+      " m"
+     ],
+     [
+      "Max. zastavěnost",
+      "max__zastavěnost",
+      ""
+     ],
+     [
+      "Struktura zástavby",
+      "struktura_zástavby",
+      ""
+     ],
+     [
+      "Min. podíl zeleně",
+      "min__podíl_zeleně",
+      ""
+     ],
+     [
+      "Upřesnění podmínek",
+      "zpřesnění_podmínek_využití",
+      ""
+     ]
+    ]
+   }
+  ]
+ },
+ {
+  "kraj": 132,
+  "name": "mozaika územních plánů Moravskoslezského kraje",
+  "from": "z mozaiky územních plánů Moravskoslezského kraje",
+  "obce": 300,
+  "attribution": "Mozaika ÚP © Moravskoslezský kraj",
+  "drawing": true,
+  "layers": [
+   {
+    "kind": "tiles5514",
+    "url": "https://gis2.msk.cz/arcgis/rest/services/UP/UP_02_HlavniVykres/MapServer/tile/{z}/{y}/{x}",
+    "origin": [
+     -33699800,
+     33699800
+    ],
+    "resolutions": [
+     1024.130048,
+     512.065024,
+     256.032512,
+     128.016256,
+     64.008128,
+     32.004064,
+     16.002032,
+     8.001016,
+     4.000508,
+     2.000254,
+     1.000127,
+     0.500064,
+     0.250032
+    ],
+    "extent": [
+     -551472,
+     -1151593,
+     -431724,
+     -1043195
+    ]
+   }
+  ]
+ },
+ {
+  "kraj": 141,
+  "obec": 585068,
+  "searchText": "Zlín (Zlín)",
+  "name": "Územní plán Zlína (stav po změně 4C)",
+  "from": "z dat Územního plánu Zlína ve stavu po změně 4C, novější změny v nich nemusí být",
+  "obce": 1,
+  "attribution": "ÚP Zlín © Statutární město Zlín",
+  "layers": [
+   {
+    "kind": "arcgisVector",
+    "cors": true,
+    "minZoom": 13,
+    "url": "https://services-eu1.arcgis.com/yNltvVkIFFzMClFD/arcgis/rest/services/up_polygon_v%C4%8Detn%C4%9B_4B_final_verze2/FeatureServer/51",
+    "idField": "OBJECTID_12",
+    "vector": {
+     "code": "FUNKCE_KOD",
+     "status": "STAV_ID",
+     "namesFrom": "ENTITA_ID",
+     "codes": "minis"
+    },
+    "extent": [
+     -529011,
+     -1171639,
+     -512317,
+     -1157552
+    ]
+   }
+  ],
+  "info": [
+   {
+    "url": "https://services-eu1.arcgis.com/yNltvVkIFFzMClFD/arcgis/rest/services/up_polygon_v%C4%8Detn%C4%9B_4B_final_verze2/FeatureServer/51",
+    "cors": true,
+    "codes": "minis",
+    "namesFrom": "ENTITA_ID",
+    "fields": {
+     "code": "FUNKCE_KOD",
+     "status": "STAV_ID",
+     "label": "Regulativ_KOD1"
+    },
+    "rulesFields": {
+     "Hlavní využití": "Hlavní_využití_",
+     "Přípustné využití": "Přípustné_využití_",
+     "Podmíněně přípustné využití": "Podmíněně_přípustné_využití_",
+     "Nepřípustné využití": "Nepřípustné_využití_"
+    }
+   }
+  ]
+ }
+]

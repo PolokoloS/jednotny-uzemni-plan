@@ -1,0 +1,749 @@
+[
+{
+"c": "BU",
+"n": "bydlení všeobecné",
+"rgb": [
+255,
+50,
+0
+]
+},
+{
+"c": "BV",
+"n": "bydlení venkovské",
+"rgb": [
+255,
+170,
+15
+]
+},
+{
+"c": "BI",
+"n": "bydlení individuální",
+"rgb": [
+255,
+100,
+0
+]
+},
+{
+"c": "BH",
+"n": "bydlení hromadné",
+"rgb": [
+224,
+22,
+22
+]
+},
+{
+"c": "BX",
+"n": "bydlení jiné",
+"rgb": [
+255,
+0,
+0
+]
+},
+{
+"c": "RU",
+"n": "rekreace všeobecná",
+"rgb": [
+255,
+248,
+4
+]
+},
+{
+"c": "RI",
+"n": "rekreace individuální",
+"rgb": [
+255,
+230,
+0
+]
+},
+{
+"c": "RZ",
+"n": "rekreace v zahrádkářských osadách",
+"rgb": [
+235,
+233,
+15
+]
+},
+{
+"c": "RO",
+"n": "rekreace na oddechových plochách",
+"rgb": [
+240,
+240,
+5
+]
+},
+{
+"c": "RH",
+"n": "rekreace hromadná",
+"rgb": [
+255,
+200,
+15
+]
+},
+{
+"c": "RX",
+"n": "rekreace jiná",
+"rgb": [
+255,
+215,
+50
+]
+},
+{
+"c": "OU",
+"n": "občanské vybavení všeobecné",
+"rgb": [
+220,
+40,
+120
+]
+},
+{
+"c": "OV",
+"n": "občanské vybavení veřejné",
+"rgb": [
+220,
+80,
+140
+]
+},
+{
+"c": "OK",
+"n": "občanské vybavení komerční",
+"rgb": [
+210,
+40,
+110
+]
+},
+{
+"c": "OS",
+"n": "občanské vybavení sport",
+"rgb": [
+255,
+255,
+125
+]
+},
+{
+"c": "OL",
+"n": "občanské vybavení lázeňské",
+"rgb": [
+220,
+150,
+182
+]
+},
+{
+"c": "OH",
+"n": "občanské vybavení hřbitovů",
+"rgb": [
+205,
+195,
+150
+]
+},
+{
+"c": "OX",
+"n": "občanské vybavení jiné",
+"rgb": [
+210,
+70,
+120
+]
+},
+{
+"c": "PU",
+"n": "veřejná prostranství všeobecné",
+"rgb": [
+250,
+245,
+235
+]
+},
+{
+"c": "PX",
+"n": "veřejná prostranství jiné",
+"rgb": [
+250,
+245,
+235
+]
+},
+{
+"c": "ZU",
+"n": "zeleň všeobecná",
+"rgb": [
+137,
+229,
+25
+]
+},
+{
+"c": "ZP",
+"n": "zeleň parková a parkově upravená",
+"rgb": [
+100,
+135,
+0
+]
+},
+{
+"c": "ZZ",
+"n": "zeleň zahradní a sadová",
+"rgb": [
+160,
+220,
+110
+]
+},
+{
+"c": "ZO",
+"n": "zeleň ochranná a izolační",
+"rgb": [
+147,
+255,
+147
+]
+},
+{
+"c": "ZS",
+"n": "zeleň sídelní ostatní",
+"rgb": [
+135,
+187,
+85
+]
+},
+{
+"c": "ZK",
+"n": "zeleň krajinná",
+"rgb": [
+130,
+170,
+0
+]
+},
+{
+"c": "ZX",
+"n": "zeleň jiná",
+"rgb": [
+80,
+180,
+60
+]
+},
+{
+"c": "SU",
+"n": "smíšené obytné všeobecné",
+"rgb": [
+167,
+87,
+87
+]
+},
+{
+"c": "SV",
+"n": "smíšené obytné venkovské",
+"rgb": [
+229,
+153,
+153
+]
+},
+{
+"c": "SM",
+"n": "smíšené obytné městské",
+"rgb": [
+200,
+140,
+150
+]
+},
+{
+"c": "SC",
+"n": "smíšené obytné centrální",
+"rgb": [
+180,
+100,
+110
+]
+},
+{
+"c": "SX",
+"n": "smíšené obytné jiné",
+"rgb": [
+225,
+135,
+155
+]
+},
+{
+"c": "DU",
+"n": "doprava všeobecná",
+"rgb": [
+228,
+189,
+255
+]
+},
+{
+"c": "DS",
+"n": "doprava silniční",
+"rgb": [
+255,
+220,
+175
+]
+},
+{
+"c": "DN",
+"n": "doprava nemotorová",
+"rgb": [
+255,
+240,
+210
+]
+},
+{
+"c": "DD",
+"n": "doprava drážní",
+"rgb": [
+185,
+105,
+175
+]
+},
+{
+"c": "DV",
+"n": "doprava vodní",
+"rgb": [
+247,
+235,
+255
+]
+},
+{
+"c": "DL",
+"n": "doprava letecká",
+"rgb": [
+247,
+235,
+255
+]
+},
+{
+"c": "DK",
+"n": "doprava kombinovaná",
+"rgb": [
+247,
+235,
+255
+]
+},
+{
+"c": "DX",
+"n": "doprava jiná",
+"rgb": [
+247,
+235,
+255
+]
+},
+{
+"c": "TU",
+"n": "technická infrastruktura všeobecná",
+"rgb": [
+210,
+188,
+212
+]
+},
+{
+"c": "TW",
+"n": "vodní hospodářství",
+"rgb": [
+210,
+188,
+212
+]
+},
+{
+"c": "TE",
+"n": "energetika",
+"rgb": [
+210,
+188,
+212
+]
+},
+{
+"c": "TS",
+"n": "elektronické komunikace",
+"rgb": [
+210,
+188,
+212
+]
+},
+{
+"c": "TO",
+"n": "nakládání s odpady",
+"rgb": [
+210,
+188,
+212
+]
+},
+{
+"c": "TX",
+"n": "technická infrastruktura jiná",
+"rgb": [
+210,
+188,
+212
+]
+},
+{
+"c": "VU",
+"n": "výroba všeobecná",
+"rgb": [
+111,
+111,
+111
+]
+},
+{
+"c": "VT",
+"n": "výroba těžká a energetika",
+"rgb": [
+145,
+146,
+146
+]
+},
+{
+"c": "VL",
+"n": "výroba lehká",
+"rgb": [
+175,
+176,
+176
+]
+},
+{
+"c": "VD",
+"n": "výroba drobná a služby",
+"rgb": [
+204,
+208,
+208
+]
+},
+{
+"c": "VS",
+"n": "skladování a logistika",
+"rgb": [
+160,
+161,
+161
+]
+},
+{
+"c": "VZ",
+"n": "výroba zemědělská a lesnická",
+"rgb": [
+190,
+185,
+145
+]
+},
+{
+"c": "VE",
+"n": "výroba energie z obnovitelných zdrojů",
+"rgb": [
+230,
+230,
+220
+]
+},
+{
+"c": "VX",
+"n": "výroba a skladování jiné",
+"rgb": [
+167,
+167,
+167
+]
+},
+{
+"c": "HU",
+"n": "smíšené výrobní všeobecné",
+"rgb": [
+160,
+160,
+185
+]
+},
+{
+"c": "HX",
+"n": "smíšené výrobní jiné",
+"rgb": [
+160,
+160,
+185
+]
+},
+{
+"c": "WU",
+"n": "vodní a vodohospodářské všeobecné",
+"rgb": [
+80,
+240,
+255
+]
+},
+{
+"c": "WT",
+"n": "vodní a vodních toků",
+"rgb": [
+107,
+235,
+255
+]
+},
+{
+"c": "WH",
+"n": "vodohospodářské",
+"rgb": [
+151,
+243,
+255
+]
+},
+{
+"c": "WX",
+"n": "vodní a vodohospodářské jiné",
+"rgb": [
+193,
+243,
+255
+]
+},
+{
+"c": "AU",
+"n": "zemědělské všeobecné",
+"rgb": [
+255,
+249,
+198
+]
+},
+{
+"c": "AP",
+"n": "orné půdy",
+"rgb": [
+255,
+245,
+220
+]
+},
+{
+"c": "AL",
+"n": "trvalé travní porosty",
+"rgb": [
+237,
+244,
+194
+]
+},
+{
+"c": "AT",
+"n": "trvalé kultury",
+"rgb": [
+255,
+225,
+120
+]
+},
+{
+"c": "AX",
+"n": "zemědělské jiné",
+"rgb": [
+255,
+240,
+170
+]
+},
+{
+"c": "LU",
+"n": "lesní všeobecné",
+"rgb": [
+106,
+176,
+133
+]
+},
+{
+"c": "LX",
+"n": "lesní jiné",
+"rgb": [
+106,
+176,
+133
+]
+},
+{
+"c": "NU",
+"n": "přírodní všeobecné",
+"rgb": [
+160,
+210,
+160
+]
+},
+{
+"c": "NX",
+"n": "přírodní jiné",
+"rgb": [
+160,
+210,
+160
+]
+},
+{
+"c": "MU",
+"n": "smíšené krajinné všeobecné",
+"rgb": [
+229,
+255,
+178
+]
+},
+{
+"c": "MX",
+"n": "smíšené krajinné jiné",
+"rgb": [
+229,
+255,
+178
+]
+},
+{
+"c": "GU",
+"n": "těžba všeobecná",
+"rgb": [
+161,
+123,
+77
+]
+},
+{
+"c": "GD",
+"n": "těžba dobývání a úprava",
+"rgb": [
+240,
+180,
+150
+]
+},
+{
+"c": "GZ",
+"n": "těžba stavby a zařízení",
+"rgb": [
+165,
+145,
+115
+]
+},
+{
+"c": "GX",
+"n": "těžba jiná",
+"rgb": [
+195,
+165,
+130
+]
+},
+{
+"c": "XZ",
+"n": "specifické zvláštního určení",
+"rgb": [
+125,
+145,
+195
+]
+},
+{
+"c": "XX",
+"n": "specifické jiné",
+"rgb": [
+125,
+145,
+195
+]
+},
+{
+"c": "MO",
+"n": "městské obytné",
+"rgb": [
+246,
+212,
+213
+]
+},
+{
+"c": "MR",
+"n": "městské rekreační",
+"rgb": [
+252,
+239,
+207
+]
+},
+{
+"c": "MP",
+"n": "městské produkční",
+"rgb": [
+204,
+221,
+237
+]
+},
+{
+"c": "NN",
+"n": "volné krajiny přírodní",
+"rgb": [
+214,
+232,
+216
+]
+},
+{
+"c": "NR",
+"n": "volné krajiny rekreační",
+"rgb": [
+252,
+249,
+204
+]
+},
+{
+"c": "NP",
+"n": "volné krajiny produkční",
+"rgb": [
+242,
+237,
+231
+]
+}
+]
