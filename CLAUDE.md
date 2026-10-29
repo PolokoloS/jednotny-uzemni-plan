@@ -8,9 +8,9 @@ Webová mapa, která sjednocuje územní plány českých obcí a vysvětluje je
 
 - Build: `python build.py` (na Linuxu `python3 build.py`). Složí `src/` a `data/` do `dist/index.html`. OpenLayers 10.10.0, proj4 2.22.0 a ol-mapbox-style 13.5.1 se načítají z CDN jsDelivr s pevnou verzí.
 - Lokálně: `python -m http.server 8080 -d dist` a otevřít http://localhost:8080. Funguje i přímo z disku (file://).
-- Smoke test: `npm install` a `npx playwright test`. Lokálně běží v nainstalovaném Edge (`channel: 'msedge'` v `playwright.config.js`), `npx playwright install` netřeba. Chromium se stahuje jen v CI (je nastavené `CI`). Sahá na živé služby, potřebuje internet. Před testem vždy build.
-- Kontrola zdrojů: `python scripts/check_sources.py` vypíše, které krajské a městské služby neodpovídají. `--markdown report.md` uloží report.
-- Nasazení: Netlify bere `main` podle `netlify.toml` (build `python3 build.py`, publish `dist`). Každý PR dostane Deploy Preview, tam změnu ověř, než se mergne.
+- Smoke test: `npm install` a `npx playwright test`. Lokálně běží v nainstalovaném Edge (`channel: 'msedge'` v `playwright.config.js`), `npx playwright install` netřeba. Chromium se stahuje jen v CI (je nastavené `CI`). Sahá na živé služby, potřebuje internet. Před testem vždy build. Do smoke testu dávej jen místa, která projdou i z GitHubu (servery STČ a MSK z ciziny neodpovídají).
+- Kontrola zdrojů: `python scripts/check_sources.py` vypíše, které krajské a městské služby neodpovídají. `--markdown report.md` uloží report. Na GitHubu se spouští jen ručně, z ciziny hlásí falešné výpadky STČ a MSK.
+- Nasazení: Netlify bere `main` podle `netlify.toml` (build `python3 build.py`, publish `dist`). Každé nasazení z `main` bere kredity free plánu Netlify, proto se do `main` posílá až hotová práce (viz Postup práce). PR dostane Deploy Preview zdarma, tam změnu ověř, než se mergne.
 
 ## Struktura
 
@@ -54,6 +54,13 @@ Jeden záznam je kraj (`kraj` = kód VÚSC z RÚIAN) nebo město (`obec` = kód 
 - Aplikace zůstává jeden soubor bez build závislostí. Knihovny jen z CDN s pevnou verzí.
 - Nepřidávej zdroj, dokud neověříš, že vrací data, že je to platná verze plánu (datum účinnosti, ne návrh) a že k němu není potřeba přihlášení.
 - Nic nemaž z dat ani konfigurace bez vysvětlení v PR.
-- Každá změna přes větev a PR, nic přímo do `main`. Do popisu PR: co funguje, co ne a proč, jak to bylo ověřeno (smoke test, Deploy Preview).
-- PR nemerguj sám. Až projde CI a Deploy Preview, pošli odkaz na preview a co v něm zkontrolovat. Merguje vlastník repa, nebo napíše „mergni“.
 - Po změně zdrojů aktualizuj `README.md` (tabulka zdrojů, pokrytí), text O projektu v `src/index.template.html` a smoke test v `tests/smoke.spec.js`.
+
+## Postup práce
+
+- Pracuje se na větvi `prace`. Po každém hotovém kroku commit a push `prace` jako záloha (větve na Netlify nic nestojí). Do `main` se během práce nic neposílá.
+- V repu se vede `POSTUP.md`: co je hotové, co rozdělané, co dál a proč. Aktualizuje se po každém kroku. Po přerušení (pokyn „pokračuj“) se přečte `POSTUP.md` a `git log` a navazuje se tam, kde práce skončila.
+- Na web jen jednou, na konci: PR z `prace` do `main` (Deploy Preview je zdarma), vlastníkovi repa odkaz na náhled a merge až na jeho pokyn „nasaď“.
+- Drobnosti přímo v `main` jen na výslovný pokyn vlastníka a vždy s `[skip netlify]` ve zprávě commitu, aby se nic nenasadilo.
+- Do popisu PR: co funguje, co ne a proč, jak to bylo ověřeno (smoke test, Deploy Preview).
+- Na nic se neptej a na nic nečekej, rozhoduj podle tohoto souboru a rozhodnutí zapiš do `POSTUP.md` a do shrnutí. Co beze vlastníka nejde (přihlášení, oprávnění), zapiš a pokračuj jinou částí.

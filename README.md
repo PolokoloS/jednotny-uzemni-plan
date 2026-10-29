@@ -86,5 +86,5 @@ Zdrojáky jsou rozdělené (`src/app.js`, `src/plain.js` s lidskými popisy ploc
 
 * `python build.py` postaví web, `python -m http.server 8080 -d dist` ho pustí lokálně.
 * `npx playwright test` projde smoke testy (Liberec, Jihlava, Okříšky, Písek, Plzeň, Olomouc, Zlín, Brno, Praha).
-* `python scripts/check_sources.py` zkontroluje, že odpovídají všechny služby krajů a měst. Na GitHubu to běží samo každé pondělí a při výpadku založí issue.
+* `python scripts/check_sources.py` zkontroluje, že odpovídají všechny služby krajů a měst. Na GitHubu jde spustit ručně (Actions, Kontrola zdrojů) a při výpadku založí issue. Servery Středočeského a Moravskoslezského kraje z ciziny neodpovídají, jejich chybu z GitHubu je proto potřeba ověřit z české sítě.
 * Netlify nasazuje z větve `main` podle `netlify.toml`, každý pull request dostane náhled.

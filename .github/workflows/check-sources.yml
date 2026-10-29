@@ -1,7 +1,6 @@
 name: Kontrola zdrojů
+# Jen ruční spuštění: servery STČ a MSK z ciziny neodpovídají, týdenní běh hlásil falešné výpadky.
 on:
-  schedule:
-    - cron: '17 6 * * 1'
   workflow_dispatch:
 permissions:
   contents: read
