@@ -1,0 +1,1640 @@
+[
+ {
+  "obec": 503444,
+  "nazev": "Litovel",
+  "pdf": "https://www.litovel.eu/filemanager/files/5187291.pdf",
+  "zip": false,
+  "verze": "Územní plán Litovel, nový plán účinný od 24. 9. 2026",
+  "iou": 0.9396,
+  "meritko": 10000,
+  "otoceni": 0.0,
+  "oken": 14,
+  "chyba_max_m": 1.0,
+  "chyba_rms_m": 0.48,
+  "prijato": true,
+  "transformace": [
+   [
+    1.270122,
+    -0.00011,
+    -567306.866048
+   ],
+   [
+    -7.5e-05,
+    -1.270013,
+    -1104277.266066
+   ]
+  ],
+  "dlazdic": 559,
+  "kb": 3300,
+  "extent3857": [
+   1888190,
+   6385875,
+   1908422,
+   6398901
+  ],
+  "zoom": [
+   12,
+   16
+  ]
+ },
+ {
+  "obec": 505188,
+  "nazev": "Šternberk",
+  "pdf": "https://www.sternberk.eu/e_download.php?file=/data/editor/648cs_8.zip&original=%C3%9Apln%C3%A9%20zn%C4%9Bn%C3%AD%20%C3%9Azemn%C3%ADho%20pl%C3%A1nu%20%C5%A0ternberk%20po%20vyd%C3%A1n%C3%AD%20zm%C4%9Bny%20%C4%8D.%205.zip",
+  "zip": true,
+  "verze": "Územní plán Šternberk, úplné znění po změně č. 5 (účinné od 21. 1. 2026)",
+  "iou": 0.8472,
+  "meritko": 10000,
+  "otoceni": 0.0,
+  "oken": 15,
+  "chyba_max_m": 0.64,
+  "chyba_rms_m": 0.23,
+  "pokryti": 1.0,
+  "prijato": true,
+  "transformace": [
+   [
+    1.269929,
+    2.6e-05,
+    -545543.322374
+   ],
+   [
+    -2e-06,
+    -1.269911,
+    -1097792.068247
+   ]
+  ],
+  "dlazdic": 632,
+  "kb": 3254,
+  "extent3857": [
+   1920340,
+   6393306,
+   1934865,
+   6413914
+  ],
+  "zoom": [
+   12,
+   16
+  ]
+ },
+ {
+  "obec": 505587,
+  "nazev": "Uničov",
+  "pdf": "https://www.unicov.cz/assets/File.ashx?id_org=17450&id_dokumenty=27195",
+  "zip": false,
+  "verze": "Územní plán Uničov, úplné znění po změně č. 2 (účinné od 15. 4. 2023)",
+  "iou": 0.7592,
+  "meritko": 5160,
+  "otoceni": 0.0,
+  "oken": 15,
+  "chyba_max_m": 1.25,
+  "chyba_rms_m": 0.52,
+  "pokryti": 1.0,
+  "prijato": true,
+  "transformace": [
+   [
+    1.270075,
+    1.7e-05,
+    -562231.655108
+   ],
+   [
+    5e-06,
+    -1.270052,
+    -1094292.942
+   ]
+  ],
+  "dlazdic": 525,
+  "kb": 4314,
+  "extent3857": [
+   1895908,
+   6397555,
+   1911509,
+   6413805
+  ],
+  "zoom": [
+   12,
+   16
+  ]
+ },
+ {
+  "obec": 505609,
+  "nazev": "Velká Bystřice",
+  "pdf": "https://www.velkabystrice.cz/modules/file_storage/download.php?file=3b833fe9%7C35&inline=1",
+  "zip": false,
+  "verze": "Územní plán Velká Bystřice (účinný od 13. 7. 2015, bez změn)",
+  "iou": 0.4442,
+  "meritko": 976,
+  "otoceni": 0.0,
+  "oken": 16,
+  "chyba_max_m": 2.02,
+  "chyba_rms_m": 0.71,
+  "pokryti": 1.0,
+  "prijato": true,
+  "transformace": [
+   [
+    0.430995,
+    0.000108,
+    -541773.960308
+   ],
+   [
+    -4.7e-05,
+    -0.430961,
+    -1120735.555463
+   ]
+  ],
+  "dlazdic": 128,
+  "kb": 957,
+  "extent3857": [
+   1928906,
+   6371643,
+   1936069,
+   6378759
+  ],
+  "zoom": [
+   12,
+   16
+  ]
+ },
+ {
+  "obec": 514055,
+  "nazev": "Kojetín",
+  "pdf": "https://www.kojetin.cz/filemanager/files/5166266.pdf",
+  "zip": false,
+  "verze": "Územní plán Kojetín, úplné znění po změně č. 2 (účinné od 12. 5. 2026)",
+  "iou": 0.9962,
+  "meritko": 5000,
+  "otoceni": 0.0,
+  "oken": 19,
+  "chyba_max_m": 1.02,
+  "chyba_rms_m": 0.41,
+  "prijato": true,
+  "transformace": [
+   [
+    1.270821,
+    -2.2e-05,
+    -549661.309232
+   ],
+   [
+    1e-06,
+    -1.270809,
+    -1145564.80441
+   ]
+  ],
+  "dlazdic": 356,
+  "kb": 2608,
+  "extent3857": [
+   1920580,
+   6326070,
+   1932147,
+   6339647
+  ],
+  "zoom": [
+   12,
+   16
+  ]
+ },
+ {
+  "obec": 514705,
+  "nazev": "Lipník nad Bečvou",
+  "pdf": "https://www.mesto-lipnik.cz/assets/File.ashx?id_org=8426&id_dokumenty=25807",
+  "zip": false,
+  "verze": "Územní plán Lipník nad Bečvou, úplné znění po změně č. 12 (účinné od 3. 10. 2026)",
+  "iou": 0.9968,
+  "meritko": 5000,
+  "otoceni": 0.0,
+  "oken": 13,
+  "chyba_max_m": 0.17,
+  "chyba_rms_m": 0.11,
+  "pokryti": 1.0,
+  "prijato": true,
+  "transformace": [
+   [
+    1.269941,
+    -1.8e-05,
+    -527280.715383
+   ],
+   [
+    -3.5e-05,
+    -1.269923,
+    -1124060.445676
+   ]
+  ],
+  "dlazdic": 382,
+  "kb": 3519,
+  "extent3857": [
+   1952688,
+   6359610,
+   1964558,
+   6374773
+  ],
+  "zoom": [
+   12,
+   16
+  ]
+ },
+ {
+  "obec": 519146,
+  "nazev": "Tovačov",
+  "pdf": "https://www.tovacov.cz/e_download.php?file=data/editor/66cs_1.pdf&original=I2a_HLAVNI_VYKRES.pdf",
+  "zip": false,
+  "verze": "Územní plán Tovačov (účinný od 21. 10. 2010, bez změn)",
+  "iou": 0.9717,
+  "meritko": 16418,
+  "otoceni": 0.0,
+  "oken": 15,
+  "vyrazeno_oken": 0,
+  "chyba_max_m": 1.52,
+  "chyba_rms_m": 0.85,
+  "pokryti": 1.0,
+  "prijato": true,
+  "transformace": [
+   [
+    1.285912,
+    7e-06,
+    -551207.51197
+   ],
+   [
+    0.000207,
+    -1.285741,
+    -1137053.926607
+   ]
+  ],
+  "dlazdic": 277,
+  "kb": 1402,
+  "extent3857": [
+   1918670,
+   6342427,
+   1930561,
+   6352155
+  ],
+  "zoom": [
+   12,
+   16
+  ]
+ },
+ {
+  "obec": 553671,
+  "nazev": "Horšovský Týn",
+  "pdf": "http://www.horsovskytyn.cz/e_download.php?file=/data/editor/244csabove_7.pdf&original=553671_02_HLV.pdf",
+  "zip": false,
+  "verze": "Územní plán Horšovský Týn, úplné znění po změnách č. 1 až 7 (účinné od 18. 11. 2025)",
+  "iou": 0.8754,
+  "meritko": 5001,
+  "otoceni": -0.0,
+  "oken": 15,
+  "vyrazeno_oken": 0,
+  "chyba_max_m": 0.47,
+  "chyba_rms_m": 0.19,
+  "pokryti": 1.0,
+  "prijato": true,
+  "transformace": [
+   [
+    1.270003,
+    -9e-06,
+    -865875.719935
+   ],
+   [
+    1.9e-05,
+    -1.270022,
+    -1080639.33565
+   ]
+  ],
+  "dlazdic": 781,
+  "kb": 3780,
+  "extent3857": [
+   1426246,
+   6359913,
+   1450150,
+   6375961
+  ],
+  "zoom": [
+   12,
+   16
+  ]
+ },
+ {
+  "obec": 558109,
+  "nazev": "Nepomuk",
+  "pdf": "https://www.nepomuk.cz/evt_file.php?file=7658&original=558109_UZ3_2_HLV.pdf.signed.pdf",
+  "zip": false,
+  "verze": "Územní plán Nepomuk, úplné znění po změně č. 3 (účinné od 11. 7. 2026)",
+  "iou": 0.9257,
+  "meritko": 5000,
+  "otoceni": 0.0,
+  "oken": 10,
+  "vyrazeno_oken": 0,
+  "chyba_max_m": 1.06,
+  "chyba_rms_m": 0.52,
+  "pokryti": 1.0,
+  "prijato": true,
+  "transformace": [
+   [
+    1.270116,
+    0.000347,
+    -817628.313544
+   ],
+   [
+    7.3e-05,
+    -1.269947,
+    -1098788.009125
+   ]
+  ],
+  "dlazdic": 189,
+  "kb": 1078,
+  "extent3857": [
+   1503862,
+   6354546,
+   1515891,
+   6360917
+  ],
+  "zoom": [
+   12,
+   16
+  ]
+ },
+ {
+  "obec": 559075,
+  "nazev": "Kralovice",
+  "pdf": "https://www.kralovice.cz/e_download.php?file=/data/uredni_deska/obsah1615_8.pdf&original=PUBLICITA%20-%20V%C3%9DKRESOV%C3%81%20%C4%8C%C3%81ST.pdf",
+  "zip": false,
+  "verze": "Územní plán Kralovice, úplné znění po změně č. 7 (účinné od 4. 1. 2025)",
+  "iou": 0.8383,
+  "meritko": 5020,
+  "otoceni": 0.0,
+  "oken": 14,
+  "vyrazeno_oken": 1,
+  "chyba_max_m": 0.42,
+  "chyba_rms_m": 0.17,
+  "pokryti": 1.0,
+  "prijato": true,
+  "transformace": [
+   [
+    1.270047,
+    -1e-05,
+    -819251.747124
+   ],
+   [
+    -5e-06,
+    -1.270066,
+    -1040039.259862
+   ]
+  ],
+  "dlazdic": 474,
+  "kb": 3136,
+  "extent3857": [
+   1487689,
+   6438750,
+   1505080,
+   6450552
+  ],
+  "zoom": [
+   12,
+   16
+  ]
+ },
+ {
+  "obec": 561835,
+  "nazev": "Mimoň",
+  "pdf": "https://www.mestomimon.cz/modules/file_storage/download.php?file=acb4a445%7C3816&inline=1",
+  "zip": false,
+  "verze": "Územní plán Mimoň, úplné znění po změně č. 12 (účinné od 29. 10. 2025)",
+  "iou": 0.9441,
+  "meritko": 5000,
+  "otoceni": 0.0,
+  "oken": 17,
+  "chyba_max_m": 0.47,
+  "chyba_rms_m": 0.27,
+  "pokryti": 1.0,
+  "prijato": true,
+  "transformace": [
+   [
+    1.270256,
+    -0.000116,
+    -716006.099774
+   ],
+   [
+    -3.9e-05,
+    -1.270046,
+    -980776.489609
+   ]
+  ],
+  "dlazdic": 191,
+  "kb": 1217,
+  "extent3857": [
+   1634896,
+   6556230,
+   1643606,
+   6564749
+  ],
+  "zoom": [
+   12,
+   16
+  ]
+ },
+ {
+  "obec": 562092,
+  "nazev": "Stráž pod Ralskem",
+  "pdf": "https://maparcgis.kraj-lbc.cz/App/oupsr/stavUP/JDM/StrazPR/UZ_poZ1/grafika/562092_B2_HLV.pdf",
+  "zip": false,
+  "verze": "Územní plán Stráž pod Ralskem, úplné znění po změně č. 1 (účinné od 20. 3. 2025)",
+  "iou": 0.9669,
+  "meritko": 5000,
+  "otoceni": 0.0,
+  "oken": 17,
+  "chyba_max_m": 1.02,
+  "chyba_rms_m": 0.49,
+  "pokryti": 1.0,
+  "prijato": true,
+  "transformace": [
+   [
+    1.269905,
+    9e-06,
+    -710190.572674
+   ],
+   [
+    0.000147,
+    -1.270184,
+    -975277.470566
+   ]
+  ],
+  "dlazdic": 274,
+  "kb": 909,
+  "extent3857": [
+   1643036,
+   6561866,
+   1652263,
+   6573093
+  ],
+  "zoom": [
+   12,
+   16
+  ]
+ },
+ {
+  "obec": 562262,
+  "nazev": "Zákupy",
+  "pdf": "https://www.zakupy.cz/modules/file_storage/download.php?file=798aae47%7C159&inline=1",
+  "zip": false,
+  "verze": "Územní plán Zákupy, úplné znění po změnách č. 1, 2 a 3",
+  "iou": 0.9909,
+  "meritko": 5000,
+  "otoceni": 0.0,
+  "oken": 11,
+  "chyba_max_m": 2.47,
+  "chyba_rms_m": 1.04,
+  "pokryti": 1.0,
+  "prijato": true,
+  "transformace": [
+   [
+    1.269949,
+    -0.000126,
+    -722931.392861
+   ],
+   [
+    3.4e-05,
+    -1.270161,
+    -974829.361821
+   ]
+  ],
+  "dlazdic": 507,
+  "kb": 2256,
+  "extent3857": [
+   1623757,
+   6554596,
+   1636008,
+   6572487
+  ],
+  "zoom": [
+   12,
+   16
+  ]
+ },
+ {
+  "obec": 563129,
+  "nazev": "Klášterec nad Ohří",
+  "pdf": "https://www.klasterec.cz/e_download.php?file=/data/editor/1114cs_2.pdf&original=%C3%9AZ%20%C3%9AP%20KLNO%20-%201.b%20-%20hlavn%C3%AD%20v%C3%BDkres.pdf",
+  "zip": false,
+  "verze": "Územní plán Klášterec nad Ohří, úplné znění po změnách č. 1 až 4 (účinné od 13. 3. 2026)",
+  "iou": 0.9938,
+  "meritko": 10120,
+  "otoceni": 0.0,
+  "oken": 20,
+  "vyrazeno_oken": 0,
+  "chyba_max_m": 0.56,
+  "chyba_rms_m": 0.22,
+  "pokryti": 1.0,
+  "prijato": false,
+  "transformace": [
+   [
+    1.267625,
+    -1.4e-05,
+    -830125.690279
+   ],
+   [
+    -7e-06,
+    -1.267633,
+    -991674.523167
+   ]
+  ],
+  "chyba": "přijato, ale nad limit 100 MB pro dlaždice (pořadí: okresní města, sídla ORP, pak ostatní města)"
+ },
+ {
+  "obec": 563871,
+  "nazev": "Železný Brod",
+  "pdf": "https://www.zeleznybrod.cz/files/uzemni_plan/zelezny-brod/zelbrod_up_vykres_hlavni_vydany.pdf",
+  "zip": false,
+  "verze": "Územní plán Železný Brod (účinný od 27. 12. 2008, bez změn)",
+  "iou": 0.9898,
+  "meritko": 4980,
+  "otoceni": 0.0,
+  "oken": 19,
+  "chyba_max_m": 7.41,
+  "chyba_rms_m": 2.65,
+  "pokryti": 1.0,
+  "prijato": false,
+  "transformace": [
+   [
+    1.269762,
+    -0.000635,
+    -679367.407633
+   ],
+   [
+    -0.000112,
+    -1.269589,
+    -985844.973985
+   ]
+  ]
+ },
+ {
+  "obec": 566616,
+  "nazev": "Podbořany",
+  "pdf": "https://www.podborany.net/e_download.php?file=data/editor/466cs_149.pdf&original=02%20Hlavn%C3%AD%20v%C3%BDkres%20-%20%C3%9AZ%20po%20zm%C4%9Bn%C4%9B%20%C4%8D.%208.pdf",
+  "zip": false,
+  "verze": "Územní plán Podbořany, úplné znění po změně č. 8 (účinné od 26. 3. 2025)",
+  "iou": 0.8257,
+  "meritko": 5000,
+  "otoceni": 0.0,
+  "oken": 14,
+  "vyrazeno_oken": 0,
+  "chyba_max_m": 0.38,
+  "chyba_rms_m": 0.25,
+  "pokryti": 1.0,
+  "prijato": true,
+  "transformace": [
+   [
+    1.270088,
+    4.2e-05,
+    -816904.658094
+   ],
+   [
+    1.3e-05,
+    -1.270075,
+    -1009130.479148
+   ]
+  ],
+  "dlazdic": 673,
+  "kb": 4730,
+  "extent3857": [
+   1485716,
+   6479428,
+   1502006,
+   6498854
+  ],
+  "zoom": [
+   12,
+   16
+  ]
+ },
+ {
+  "obec": 572926,
+  "nazev": "Hořice",
+  "pdf": "https://www.horice.org/assets/File.ashx?id_org=4516&id_dokumenty=27122",
+  "zip": false,
+  "verze": "Územní plán Hořice, úplné znění po změnách č. 1 až 7 (účinné od 18. 7. 2026)",
+  "iou": 0.8709,
+  "meritko": 5001,
+  "otoceni": -0.0,
+  "oken": 20,
+  "vyrazeno_oken": 0,
+  "chyba_max_m": 0.44,
+  "chyba_rms_m": 0.19,
+  "pokryti": 1.0,
+  "prijato": true,
+  "transformace": [
+   [
+    1.269921,
+    5.3e-05,
+    -656194.072784
+   ],
+   [
+    -4e-06,
+    -1.270105,
+    -1019090.099381
+   ]
+  ],
+  "dlazdic": 270,
+  "kb": 2366,
+  "extent3857": [
+   1734846,
+   6506878,
+   1746109,
+   6515799
+  ],
+  "zoom": [
+   12,
+   16
+  ]
+ },
+ {
+  "obec": 573922,
+  "nazev": "Broumov",
+  "pdf": "https://www.broumov-mesto.cz/assets/File.ashx?id_org=1276&id_dokumenty=36143",
+  "zip": false,
+  "verze": "Územní plán Broumov, úplné znění po změnách č. 1, 2 a 4 až 10 (účinné od 16. 7. 2025)",
+  "iou": 0.9428,
+  "meritko": 5000,
+  "otoceni": 0.0,
+  "oken": 18,
+  "vyrazeno_oken": 0,
+  "chyba_max_m": 0.73,
+  "chyba_rms_m": 0.28,
+  "pokryti": 1.0,
+  "prijato": true,
+  "transformace": [
+   [
+    1.270134,
+    4.6e-05,
+    -602882.87538
+   ],
+   [
+    -1.5e-05,
+    -1.270045,
+    -998913.04873
+   ]
+  ],
+  "dlazdic": 288,
+  "kb": 2534,
+  "extent3857": [
+   1815907,
+   6544079,
+   1823646,
+   6557786
+  ],
+  "zoom": [
+   12,
+   16
+  ]
+ },
+ {
+  "obec": 574121,
+  "nazev": "Jaroměř",
+  "pdf": "https://www.jaromer-josefov.cz/e_download.php?file=/data/uredni_deska/obsah5410_14.pdf&original=HV_UZUPpoZ123_16122025_1ku10naA0.pdf",
+  "zip": false,
+  "verze": "Územní plán Jaroměř, úplné znění po změnách č. 1, 2 a 3 (účinné od 21. 2. 2026)",
+  "iou": 0.9854,
+  "meritko": 10000,
+  "otoceni": 0.0,
+  "oken": 14,
+  "vyrazeno_oken": 0,
+  "chyba_max_m": 1.91,
+  "chyba_rms_m": 0.91,
+  "pokryti": 1.0,
+  "prijato": true,
+  "transformace": [
+   [
+    1.270027,
+    -0.000125,
+    -638766.083175
+   ],
+   [
+    0.000176,
+    -1.270265,
+    -1023235.675084
+   ]
+  ],
+  "dlazdic": 310,
+  "kb": 2683,
+  "extent3857": [
+   1766146,
+   6501585,
+   1779429,
+   6513120
+  ],
+  "zoom": [
+   12,
+   16
+  ]
+ },
+ {
+  "obec": 576069,
+  "nazev": "Rychnov nad Kněžnou",
+  "pdf": "https://www.rychnov-city.cz/assets/File.ashx?id_org=14410&id_dokumenty=36005",
+  "zip": false,
+  "verze": "Územní plán Rychnov nad Kněžnou ve znění změny č. 4 (účinné od 21. 10. 2026)",
+  "iou": 0.9315,
+  "meritko": 5000,
+  "otoceni": 0.0,
+  "oken": 19,
+  "vyrazeno_oken": 0,
+  "chyba_max_m": 1.11,
+  "chyba_rms_m": 0.41,
+  "pokryti": 1.0,
+  "prijato": true,
+  "transformace": [
+   [
+    1.270239,
+    -4.2e-05,
+    -615911.993277
+   ],
+   [
+    2.5e-05,
+    -1.270147,
+    -1047463.541212
+   ]
+  ],
+  "dlazdic": 436,
+  "kb": 2401,
+  "extent3857": [
+   1804982,
+   6469237,
+   1819476,
+   6480643
+  ],
+  "zoom": [
+   12,
+   16
+  ]
+ },
+ {
+  "obec": 576271,
+  "nazev": "Dobruška",
+  "pdf": "https://www.mestodobruska.cz/e_download.php?file=/data/editor/2111cs_128.pdf&original=576271_UZ8_B1_HLV.pdf",
+  "zip": false,
+  "verze": "Územní plán Dobruška, úplné znění po změnách č. 2 až 8 (účinné od 3. 1. 2026)",
+  "iou": 0.9949,
+  "meritko": 5000,
+  "otoceni": 0.0,
+  "oken": 14,
+  "vyrazeno_oken": 0,
+  "chyba_max_m": 0.23,
+  "chyba_rms_m": 0.11,
+  "pokryti": 1.0,
+  "prijato": true,
+  "transformace": [
+   [
+    1.270005,
+    1.6e-05,
+    -620295.17174
+   ],
+   [
+    1.7e-05,
+    -1.270033,
+    -1031629.00359
+   ]
+  ],
+  "dlazdic": 410,
+  "kb": 3157,
+  "extent3857": [
+   1793601,
+   6491487,
+   1809000,
+   6503363
+  ],
+  "zoom": [
+   12,
+   16
+  ]
+ },
+ {
+  "obec": 576964,
+  "nazev": "Semily",
+  "pdf": "https://www.semily.cz/assets/File.ashx?id_org=14724&id_dokumenty=19118",
+  "zip": false,
+  "verze": "Územní plán Semily, úplné znění po změně č. 4 (účinné od 20. 4. 2024)",
+  "iou": 0.8841,
+  "meritko": 5000,
+  "otoceni": 0.0,
+  "oken": 16,
+  "chyba_max_m": 1.4,
+  "chyba_rms_m": 0.69,
+  "pokryti": 1.0,
+  "prijato": true,
+  "transformace": [
+   [
+    1.270262,
+    -3.1e-05,
+    -673722.7097
+   ],
+   [
+    1e-05,
+    -1.270129,
+    -989938.673714
+   ]
+  ],
+  "dlazdic": 213,
+  "kb": 1371,
+  "extent3857": [
+   1703141,
+   6548528,
+   1710159,
+   6557695
+  ],
+  "zoom": [
+   12,
+   16
+  ]
+ },
+ {
+  "obec": 577308,
+  "nazev": "Lomnice nad Popelkou",
+  "pdf": "https://www.lomnicenadpopelkou.cz/assets/File.ashx?id_org=8675&id_dokumenty=25595",
+  "zip": false,
+  "verze": "Územní plán Lomnice nad Popelkou, úplné znění po změně č. 6 (účinné od 22. 5. 2026)",
+  "iou": 0.9972,
+  "meritko": 5000,
+  "otoceni": 0.0,
+  "oken": 17,
+  "chyba_max_m": 0.77,
+  "chyba_rms_m": 0.27,
+  "pokryti": 1.0,
+  "prijato": true,
+  "transformace": [
+   [
+    1.270089,
+    -4e-06,
+    -673752.975143
+   ],
+   [
+    1e-06,
+    -1.27009,
+    -999090.105891
+   ]
+  ],
+  "dlazdic": 318,
+  "kb": 1824,
+  "extent3857": [
+   1704465,
+   6532407,
+   1714337,
+   6544668
+  ],
+  "zoom": [
+   12,
+   16
+  ]
+ },
+ {
+  "obec": 579858,
+  "nazev": "Vrchlabí",
+  "pdf": "https://www.muvrchlabi.cz/e_download.php?file=/data/uredni_deska/obsah9_12.pdf&original=Vrchlabi_UP_UZ19_2_Hlavni%20vykres.pdf",
+  "zip": false,
+  "verze": "Územní plán Vrchlabí, úplné znění po změně č. 19 (účinné od 26. 3. 2026)",
+  "iou": 0.9966,
+  "meritko": 5000,
+  "otoceni": 0.0,
+  "oken": 15,
+  "vyrazeno_oken": 0,
+  "chyba_max_m": 1.05,
+  "chyba_rms_m": 0.51,
+  "pokryti": 1.0,
+  "prijato": true,
+  "transformace": [
+   [
+    1.270047,
+    -6e-05,
+    -654326.899459
+   ],
+   [
+    0.000356,
+    -1.270099,
+    -986986.055401
+   ]
+  ],
+  "dlazdic": 340,
+  "kb": 2213,
+  "extent3857": [
+   1732301,
+   6548609,
+   1740569,
+   6565968
+  ],
+  "zoom": [
+   12,
+   16
+  ]
+ },
+ {
+  "obec": 579891,
+  "nazev": "Ústí nad Orlicí",
+  "pdf": "https://www.ustinadorlici.cz/images/dokumenty/uzemni_plan-2017/up_usti_po_z5-hlavni_vykres.pdf",
+  "verze": "Územní plán Ústí nad Orlicí, úplné znění po změně č. 5 (účinné od 29. 10. 2026)",
+  "iou": 0.9893,
+  "meritko": 5000,
+  "otoceni": 0.0,
+  "oken": 20,
+  "chyba_max_m": 0.97,
+  "chyba_rms_m": 0.31,
+  "prijato": true,
+  "transformace": [
+   [
+    1.270058,
+    -0.000139,
+    -608291.713943
+   ],
+   [
+    1.5e-05,
+    -1.270097,
+    -1071265.525235
+   ]
+  ],
+  "dlazdic": 412,
+  "kb": 2504,
+  "extent3857": [
+   1818688,
+   6436071,
+   1836924,
+   6444713
+  ],
+  "zoom": [
+   12,
+   16
+  ]
+ },
+ {
+  "obec": 581283,
+  "nazev": "Blansko",
+  "pdf": "https://www.blansko.cz/file/2460143",
+  "zip": false,
+  "verze": "Územní plán Blansko, úplné znění po změně B2023-STD (účinné od 9. 7. 2024)",
+  "iou": 0.9631,
+  "meritko": 5000,
+  "otoceni": 0.0,
+  "oken": 18,
+  "chyba_max_m": 1.76,
+  "chyba_rms_m": 0.56,
+  "pokryti": 1.0,
+  "prijato": true,
+  "transformace": [
+   [
+    1.270123,
+    5.9e-05,
+    -598281.863941
+   ],
+   [
+    1.7e-05,
+    -1.270059,
+    -1138641.613713
+   ]
+  ],
+  "dlazdic": 508,
+  "kb": 3584,
+  "extent3857": [
+   1845731,
+   6329991,
+   1863556,
+   6342414
+  ],
+  "zoom": [
+   12,
+   16
+  ]
+ },
+ {
+  "obec": 583120,
+  "nazev": "Ivančice",
+  "pdf": "https://upload.ivancice.cz/orr/zmena_c1_uzemniho_planu_ivancice_2023.zip",
+  "zip": true,
+  "verze": "Územní plán Ivančice, úplné znění po změně č. 1 (účinné od 30. 6. 2023)",
+  "iou": 0.9971,
+  "meritko": 5000,
+  "otoceni": 0.0,
+  "oken": 14,
+  "chyba_max_m": 0.48,
+  "chyba_rms_m": 0.18,
+  "pokryti": 1.0,
+  "prijato": true,
+  "transformace": [
+   [
+    1.270009,
+    -3e-05,
+    -624215.748933
+   ],
+   [
+    1.3e-05,
+    -1.269964,
+    -1165047.897771
+   ]
+  ],
+  "dlazdic": 519,
+  "kb": 4608,
+  "extent3857": [
+   1811156,
+   6282608,
+   1827440,
+   6297853
+  ],
+  "zoom": [
+   12,
+   16
+  ]
+ },
+ {
+  "obec": 583251,
+  "nazev": "Kuřim",
+  "pdf": "https://www.kurim.cz/filemanager/files/3986674.zip",
+  "zip": true,
+  "verze": "Územní plán Kuřim, úplné znění po změnách č. 1 až 6 (účinné od 11. 6. 2026)",
+  "iou": 0.9962,
+  "meritko": 5000,
+  "otoceni": 0.0,
+  "oken": 13,
+  "chyba_max_m": 0.83,
+  "chyba_rms_m": 0.43,
+  "pokryti": 1.0,
+  "prijato": true,
+  "transformace": [
+   [
+    1.270344,
+    0.00028,
+    -604990.413834
+   ],
+   [
+    -0.000161,
+    -1.270124,
+    -1145135.347754
+   ]
+  ],
+  "dlazdic": 217,
+  "kb": 1462,
+  "extent3857": [
+   1837014,
+   6320012,
+   1844281,
+   6330816
+  ],
+  "zoom": [
+   12,
+   16
+  ]
+ },
+ {
+  "obec": 583782,
+  "nazev": "Rosice",
+  "pdf": "https://www.rosice.cz/progres/lib/files.php?id=2823",
+  "zip": false,
+  "verze": "Územní plán Rosice, úplné znění po změně č. 2 (účinné od 14. 5. 2025)",
+  "iou": 0.9957,
+  "meritko": 5000,
+  "otoceni": 0.0,
+  "oken": 12,
+  "chyba_max_m": 0.43,
+  "chyba_rms_m": 0.17,
+  "pokryti": 1.0,
+  "prijato": true,
+  "transformace": [
+   [
+    1.269866,
+    -5.1e-05,
+    -617323.800861
+   ],
+   [
+    0.000149,
+    -1.270082,
+    -1156570.134466
+   ]
+  ],
+  "dlazdic": 184,
+  "kb": 1345,
+  "extent3857": [
+   1819532,
+   6301835,
+   1828732,
+   6311146
+  ],
+  "zoom": [
+   12,
+   16
+  ]
+ },
+ {
+  "obec": 583952,
+  "nazev": "Šlapanice",
+  "pdf": "https://www.slapanice.cz/progres/lib/files.php?id=16131",
+  "zip": false,
+  "verze": "Územní plán Šlapanice, úplné znění po změně č. 1 (účinné od 8. 11. 2023)",
+  "iou": 0.6692,
+  "meritko": 8564,
+  "otoceni": 0.0,
+  "oken": 20,
+  "chyba_max_m": 1.13,
+  "chyba_rms_m": 0.37,
+  "pokryti": 0.999,
+  "prijato": true,
+  "transformace": [
+   [
+    1.186441,
+    3.5e-05,
+    -592612.967001
+   ],
+   [
+    -7.8e-05,
+    -1.186625,
+    -1162609.301885
+   ]
+  ],
+  "dlazdic": 185,
+  "kb": 1655,
+  "extent3857": [
+   1858346,
+   6299208,
+   1865322,
+   6306508
+  ],
+  "zoom": [
+   12,
+   16
+  ]
+ },
+ {
+  "obec": 584002,
+  "nazev": "Tišnov",
+  "pdf": "https://www.tisnov.cz/assets/File.ashx?id_org=16737&id_dokumenty=25243",
+  "zip": false,
+  "verze": "Územní plán Tišnov, úplné znění po změně č. 2 (účinné od 26. 7. 2025)",
+  "iou": 0.9891,
+  "meritko": 5000,
+  "otoceni": 0.0,
+  "oken": 30,
+  "vyrazeno_oken": 0,
+  "chyba_max_m": 1.27,
+  "chyba_rms_m": 0.53,
+  "pokryti": 1.0,
+  "prijato": true,
+  "transformace": [
+   [
+    1.270238,
+    -7.5e-05,
+    -610854.024376
+   ],
+   [
+    -0.00038,
+    -1.270209,
+    -1140443.519741
+   ]
+  ],
+  "casti": [
+   {
+    "nazev": "část Tišnov",
+    "pdf": "https://www.tisnov.cz/assets/File.ashx?id_org=16737&id_dokumenty=25243",
+    "transformace": [
+     [
+      1.270238,
+      -7.5e-05,
+      -610854.024376
+     ],
+     [
+      -0.00038,
+      -1.270209,
+      -1140443.519741
+     ]
+    ]
+   },
+   {
+    "nazev": "část Jamné a Hájek",
+    "pdf": "https://www.tisnov.cz/assets/File.ashx?id_org=16737&id_dokumenty=25241",
+    "transformace": [
+     [
+      1.269827,
+      -0.000435,
+      -607388.033282
+     ],
+     [
+      8.6e-05,
+      -1.269492,
+      -1137444.954904
+     ]
+    ]
+   },
+   {
+    "nazev": "část Pejškov",
+    "pdf": "https://www.tisnov.cz/assets/File.ashx?id_org=16737&id_dokumenty=25242",
+    "transformace": [
+     [
+      1.270765,
+      -3.7e-05,
+      -615026.16678
+     ],
+     [
+      0.000339,
+      -1.269723,
+      -1144588.565532
+     ]
+    ]
+   }
+  ],
+  "dlazdic": 262,
+  "kb": 1155,
+  "extent3857": [
+   1820876,
+   6326467,
+   1835610,
+   6342116
+  ],
+  "zoom": [
+   12,
+   16
+  ]
+ },
+ {
+  "obec": 584282,
+  "nazev": "Židlochovice",
+  "pdf": "https://www.zidlochovice.cz/filemanager/files/5085169.pdf",
+  "zip": false,
+  "verze": "Územní plán Židlochovice, úplné znění po změně č. XI (účinné od 10. 7. 2026)",
+  "iou": 0.9941,
+  "meritko": 5000,
+  "otoceni": 0.0,
+  "oken": 7,
+  "chyba_max_m": 0.32,
+  "chyba_rms_m": 0.17,
+  "pokryti": 1.0,
+  "prijato": true,
+  "transformace": [
+   [
+    1.269954,
+    -0.000231,
+    -600902.581502
+   ],
+   [
+    -0.000379,
+    -1.270297,
+    -1176507.871653
+   ]
+  ],
+  "dlazdic": 93,
+  "kb": 749,
+  "extent3857": [
+   1848376,
+   6278175,
+   1853536,
+   6283440
+  ],
+  "zoom": [
+   12,
+   16
+  ]
+ },
+ {
+  "obec": 584291,
+  "nazev": "Břeclav",
+  "pdf": "https://breclav.eu/s-doc/1/15513/638744298339066667/%C3%9Apln%C3%A9%20zn%C4%9Bn%C3%AD_584291_I_2_HLV.pdf",
+  "zip": false,
+  "verze": "Územní plán Břeclav, úplné znění po změnách č. 1, 3 a 4 (účinné od 21. 2. 2025)",
+  "iou": 0.9885,
+  "meritko": 4980,
+  "otoceni": 0.0,
+  "oken": 11,
+  "vyrazeno_oken": 0,
+  "chyba_max_m": 2.08,
+  "chyba_rms_m": 0.85,
+  "pokryti": 1.0,
+  "prijato": true,
+  "transformace": [
+   [
+    1.270228,
+    -7e-06,
+    -589552.636362
+   ],
+   [
+    -0.000338,
+    -1.270042,
+    -1205575.450748
+   ]
+  ],
+  "dlazdic": 811,
+  "kb": 7291,
+  "extent3857": [
+   1869587,
+   6219087,
+   1886311,
+   6242764
+  ],
+  "zoom": [
+   12,
+   16
+  ]
+ },
+ {
+  "obec": 584495,
+  "nazev": "Hustopeče",
+  "pdf": "https://www.hustopece.cz/file/135838/584495-uz8-b2-hlv-sign.pdf",
+  "zip": false,
+  "verze": "Územní plán Hustopeče, úplné znění po změnách č. 1 až 8 (účinné od 6. 10. 2026)",
+  "iou": 0.8077,
+  "meritko": 5001,
+  "otoceni": -20.0,
+  "oken": 17,
+  "vyrazeno_oken": 0,
+  "chyba_max_m": 1.17,
+  "chyba_rms_m": 0.45,
+  "pokryti": 1.0,
+  "prijato": true,
+  "transformace": [
+   [
+    1.193344,
+    -0.434377,
+    -592411.268809
+   ],
+   [
+    -0.434238,
+    -1.193415,
+    -1184880.878127
+   ]
+  ],
+  "dlazdic": 288,
+  "kb": 1593,
+  "extent3857": [
+   1858656,
+   6259099,
+   1867631,
+   6271855
+  ],
+  "zoom": [
+   12,
+   16
+  ]
+ },
+ {
+  "obec": 584801,
+  "nazev": "Pohořelice",
+  "pdf": "https://www.pohorelice.cz/evt_file.php?file=1920",
+  "zip": false,
+  "verze": "Územní plán Pohořelice, úplné znění po změnách č. 1a až 3 (účinné od 15. 10. 2024)",
+  "iou": 0.9058,
+  "meritko": 5000,
+  "otoceni": 0.0,
+  "oken": 14,
+  "chyba_max_m": 3.19,
+  "chyba_rms_m": 0.99,
+  "pokryti": 1.0,
+  "prijato": true,
+  "transformace": [
+   [
+    1.270145,
+    -9.7e-05,
+    -612102.233556
+   ],
+   [
+    0.000116,
+    -1.270226,
+    -1179305.576973
+   ]
+  ],
+  "dlazdic": 487,
+  "kb": 2642,
+  "extent3857": [
+   1831715,
+   6259295,
+   1844704,
+   6278715
+  ],
+  "zoom": [
+   12,
+   16
+  ]
+ },
+ {
+  "obec": 589624,
+  "nazev": "Konice",
+  "pdf": "https://www.konice.cz/file/1021120",
+  "zip": false,
+  "verze": "Územní plán Konice ve znění změny č. 3 (účinné od 17. 3. 2023)",
+  "iou": 0.7851,
+  "meritko": 5000,
+  "otoceni": 0.0,
+  "oken": 10,
+  "chyba_max_m": 0.35,
+  "chyba_rms_m": 0.23,
+  "pokryti": 0.998,
+  "prijato": true,
+  "transformace": [
+   [
+    1.270226,
+    -3.8e-05,
+    -577379.884582
+   ],
+   [
+    -3e-06,
+    -1.270063,
+    -1115996.097445
+   ]
+  ],
+  "dlazdic": 330,
+  "kb": 1295,
+  "extent3857": [
+   1873671,
+   6368735,
+   1889073,
+   6380307
+  ],
+  "zoom": [
+   12,
+   16
+  ]
+ },
+ {
+  "obec": 592889,
+  "nazev": "Vyškov",
+  "pdf": "https://www.vyskov-mesto.cz/assets/File.ashx?id_org=18857&id_dokumenty=1155768",
+  "zip": false,
+  "verze": "Územní plán Vyškov, úplné znění po změně č. 3 (účinné od 5. 8. 2026)",
+  "iou": 0.9914,
+  "meritko": 5000,
+  "otoceni": 47.0,
+  "oken": 10,
+  "vyrazeno_oken": 0,
+  "chyba_max_m": 2.57,
+  "chyba_rms_m": 0.94,
+  "pokryti": 1.0,
+  "prijato": true,
+  "transformace": [
+   [
+    0.868258,
+    0.926516,
+    -581221.556869
+   ],
+   [
+    0.926821,
+    -0.868406,
+    -1148712.734078
+   ]
+  ],
+  "dlazdic": 570,
+  "kb": 5416,
+  "extent3857": [
+   1876925,
+   6316982,
+   1895719,
+   6333948
+  ],
+  "zoom": [
+   12,
+   16
+  ]
+ },
+ {
+  "obec": 593559,
+  "nazev": "Rousínov",
+  "pdf": "https://www.rousinov.cz/e_download.php?file=/data/editor/103cs_26.pdf&original=UZ2_B2_Hlavn%C3%AD%20v%C3%BDkres.pdf",
+  "zip": false,
+  "verze": "Územní plán Rousínov, úplné znění po změně č. 2 (účinné od 2. 10. 2025)",
+  "iou": 0.9866,
+  "meritko": 5000,
+  "otoceni": 0.0,
+  "oken": 16,
+  "chyba_max_m": 1.21,
+  "chyba_rms_m": 0.47,
+  "pokryti": 1.0,
+  "prijato": true,
+  "transformace": [
+   [
+    1.269841,
+    0.000248,
+    -581586.794203
+   ],
+   [
+    0.00015,
+    -1.27016,
+    -1157646.567752
+   ]
+  ],
+  "dlazdic": 270,
+  "kb": 1656,
+  "extent3857": [
+   1874254,
+   6303796,
+   1884329,
+   6315275
+  ],
+  "zoom": [
+   12,
+   16
+  ]
+ },
+ {
+  "obec": 593583,
+  "nazev": "Slavkov u Brna",
+  "pdf": "https://www.slavkov.cz/wp-content/uploads/2026/06/593583_UZ9_I2_HLV_sign.pdf",
+  "zip": false,
+  "verze": "Územní plán Slavkov u Brna, úplné znění po změně č. 9 (účinné od 30. 4. 2026)",
+  "iou": 0.9973,
+  "meritko": 5000,
+  "otoceni": 0.0,
+  "oken": 14,
+  "chyba_max_m": 0.42,
+  "chyba_rms_m": 0.23,
+  "pokryti": 1.0,
+  "prijato": true,
+  "transformace": [
+   [
+    1.270073,
+    2.4e-05,
+    -582452.323311
+   ],
+   [
+    0.000107,
+    -1.270141,
+    -1165086.248442
+   ]
+  ],
+  "dlazdic": 174,
+  "kb": 1346,
+  "extent3857": [
+   1874861,
+   6296567,
+   1882275,
+   6304258
+  ],
+  "zoom": [
+   12,
+   16
+  ]
+ },
+ {
+  "obec": 593711,
+  "nazev": "Znojmo",
+  "pdf": "https://mapy.muznojmo.cz/mapserv/znojmo/vyhlasky/02_HLAVNI_UZ3_celek.pdf",
+  "zip": false,
+  "verze": "Územní plán Znojmo, úplné znění po změně č. 3 (účinné od 26. 12. 2025)",
+  "iou": 0.9934,
+  "meritko": 5000,
+  "otoceni": 0.0,
+  "oken": 15,
+  "chyba_max_m": 1.28,
+  "chyba_rms_m": 0.7,
+  "pokryti": 1.0,
+  "prijato": true,
+  "transformace": [
+   [
+    1.322848,
+    7.7e-05,
+    -649164.357642
+   ],
+   [
+    0.000412,
+    -1.323243,
+    -1186370.913699
+   ]
+  ],
+  "dlazdic": 756,
+  "kb": 5002,
+  "extent3857": [
+   1777580,
+   6241060,
+   1798741,
+   6260114
+  ],
+  "zoom": [
+   12,
+   16
+  ]
+ },
+ {
+  "obec": 594482,
+  "nazev": "Moravský Krumlov",
+  "pdf": "https://www.mkrumlov.cz/file/1637078",
+  "zip": false,
+  "verze": "Územní plán Moravský Krumlov, úplné znění po změně č. 1 (účinné od 29. 2. 2024)",
+  "iou": 0.9066,
+  "meritko": 5000,
+  "otoceni": 0.0,
+  "oken": 15,
+  "chyba_max_m": 4.91,
+  "chyba_rms_m": 1.56,
+  "pokryti": 1.0,
+  "prijato": true,
+  "transformace": [
+   [
+    1.269927,
+    4e-06,
+    -625863.586288
+   ],
+   [
+    -0.000244,
+    -1.270036,
+    -1171021.441601
+   ]
+  ],
+  "dlazdic": 540,
+  "kb": 3152,
+  "extent3857": [
+   1809142,
+   6276264,
+   1828365,
+   6288561
+  ],
+  "zoom": [
+   12,
+   16
+  ]
+ }
+]

@@ -40,6 +40,9 @@
     <symbol id="i-no" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6.5 6.5l11 11M17.5 6.5l-11 11"/></symbol>
     <symbol id="i-link" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M10 14a4 4 0 0 0 5.66 0l3-3a4 4 0 0 0-5.66-5.66l-1 1"/><path d="M14 10a4 4 0 0 0-5.66 0l-3 3a4 4 0 0 0 5.66 5.66l1-1"/></symbol>
     <symbol id="i-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></symbol>
+    <symbol id="i-qr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3.5" y="3.5" width="6.5" height="6.5"/><rect x="14" y="3.5" width="6.5" height="6.5"/><rect x="3.5" y="14" width="6.5" height="6.5"/><path d="M14 14h3v3h-3zM20.5 14v3M17 20.5h3.5M14 20.5h.5"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M7.5 5v14l11-7z"/></symbol>
+    <symbol id="i-swipe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="3.5" y="4.5" width="17" height="15"/><path d="M12 2.5v19M8.5 12h-3M15.5 12h3"/></symbol>
   </defs>
 </svg>
 
@@ -67,19 +70,15 @@
       <button class="sheet-handle" id="sheetHandle" aria-label="Rozbalit nebo sbalit kartu"><span></span></button>
 
       <section id="intro" class="intro">
-        <h2>Klikněte do mapy a uvidíte, co se na místě smí stavět.</h2>
-        <ol class="steps">
-          <li><span><b>Najděte místo.</b> Adresu, obec nebo číslo parcely, třeba „Liberec 1234/9“.</span></li>
-          <li><span><b>Klikněte na pozemek.</b> Barva ukazuje, k čemu plocha slouží.</span></li>
-          <li><span><b>Přečtěte si kartu.</b> Co se tu smí, co se chystá a na co si dát pozor.</span></li>
-        </ol>
+        <h2>Územní plány obcí z celé republiky v jedné mapě: klikněte na pozemek a uvidíte, co se na něm smí postavit.</h2>
+        <div class="examples" id="examples" aria-label="Příklady"></div>
         <div class="cov">
-          <div class="cov-top"><span class="cov-big num" id="covN">346</span><span class="cov-of">obcí z <span class="num" id="covTotal">6 254</span> už má územní plán v jednotných datech</span></div>
-          <div class="cov-bar" aria-hidden="true"><span id="covBar" style="width:5.5%"></span><span id="covBarReg" class="reg" style="width:0"></span></div>
-          <p id="covRest">Ostatní obce ho mají jen jako PDF. U nich vás pošleme na krajský portál, kde ho najdete.</p>
-          <button class="link-btn" id="covBtn">Seznam obcí s jednotnými daty</button>
+          <div class="cov-top"><span class="cov-big num" id="covN">381</span><span class="cov-of" id="covOf">obcí z <span class="num" id="covTotal">6 258</span> už má územní plán v jednotných datech</span></div>
+          <div class="cov-bar" aria-hidden="true" id="covBarBox"><span id="covBar" style="width:5.5%"></span><span id="covBarReg" class="reg" style="width:0"></span></div>
+          <p id="covRest">U dalších obcí ukážeme výkres z dat krajů a měst. U zbytku karta řekne, jestli obec platný plán má, a pošle vás na dokumenty.</p>
+          <div class="cov-actions"><button class="btn" id="covMapBtn" aria-pressed="false">Ukázat pokrytí na mapě</button><button class="link-btn" id="covBtn">Seznam obcí s jednotnými daty</button></div>
         </div>
-        <div class="try" id="try"><span>Vyzkoušejte:</span></div>
+        <p class="find-hint">Svůj pozemek najdete nahoře: adresa, obec nebo číslo parcely, třeba „Liberec 1234/9“.</p>
         <p class="disclaimer">Neoficiální nástroj nad otevřenými daty státu. Informace jsou orientační, závazný je územní plán vydaný obcí.</p>
       </section>
 
@@ -106,6 +105,14 @@
     </div>
     <button class="ctl" id="locateBtn" aria-label="Najít moji polohu"><svg><use href="#i-locate"/></svg></button>
     <button class="ctl" id="layersBtn" aria-label="Podklad a vrstvy" aria-expanded="false" aria-controls="layersPop"><svg><use href="#i-layers"/></svg></button>
+    <button class="ctl" id="swipeBtn" aria-label="Porovnat: dnes a podle plánu" aria-pressed="false" title="Dnes a podle plánu"><svg><use href="#i-swipe"/></svg></button>
+    <button class="ctl" id="qrBtn" aria-label="Otevřít v telefonu (QR kód)" title="Otevřít v telefonu"><svg><use href="#i-qr"/></svg></button>
+    <button class="ctl" id="tourBtn" aria-label="Prohlídka mapou krok za krokem" title="Prohlídka"><svg><use href="#i-play"/></svg></button>
+  </div>
+  <div id="swipe" class="swipe" hidden><div class="swipe-bar"><span class="swipe-l">Dnes</span><button class="swipe-knob" id="swipeKnob" aria-label="Posunout předěl mezi leteckým snímkem a plánem"></button><span class="swipe-r">Podle plánu</span></div></div>
+  <div id="tour" class="tour" hidden role="dialog" aria-label="Prohlídka mapou">
+    <div class="tour-step"><span class="tour-n num" id="tourN"></span><h3 id="tourTitle"></h3><p id="tourText"></p><div class="tour-qr" id="tourQr" hidden></div></div>
+    <div class="tour-nav"><button class="btn" id="tourPrev" aria-label="Předchozí krok">Zpět</button><button class="btn primary" id="tourNext">Další</button><button class="icon-btn" id="tourClose" aria-label="Ukončit prohlídku"><svg><use href="#i-close"/></svg></button></div>
   </div>
 
   <div id="layersPop" class="pop" hidden>
@@ -117,6 +124,7 @@
     </div>
     <h4>Vrstvy</h4>
     <div class="opts">
+      <label><input type="checkbox" id="lyCov"><span>Mapa pokrytí obcí <small>odkud mapa zná plán každé obce</small></span></label>
       <label><input type="checkbox" id="lyUp" checked><span>Územní plán</span></label>
       <div class="range"><input type="range" id="upOpacity" min="25" max="100" value="66" aria-label="Sytost barev územního plánu"><span class="num" id="upOpacityVal">66 %</span></div>
       <label><input type="checkbox" id="lyRegional" checked><span>Plány obcí z dat krajů <small>tam, kde jednotná data zatím nejsou</small></span></label>
@@ -143,6 +151,17 @@
   <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
   <div id="tip" class="tip" hidden></div>
 
+  <dialog id="qrDlg" aria-labelledby="qrTitle">
+    <div class="dlg">
+      <div class="dlg-head"><h2 id="qrTitle">Otevřít v telefonu</h2><button class="icon-btn" data-close aria-label="Zavřít"><svg><use href="#i-close"/></svg></button></div>
+      <div class="dlg-body qr-body">
+        <div class="qr" id="qrBox" aria-hidden="true"></div>
+        <p>Namiřte fotoaparát telefonu na kód. Otevře se stejné místo, stejná karta i režim mapy.</p>
+        <p class="muted qr-url" id="qrUrl"></p>
+      </div>
+    </div>
+  </dialog>
+
   <dialog id="aboutDlg" aria-labelledby="aboutTitle">
     <div class="dlg">
       <div class="dlg-head"><h2 id="aboutTitle">O projektu</h2><button class="icon-btn" data-close aria-label="Zavřít"><svg><use href="#i-close"/></svg></button></div>
@@ -152,7 +171,9 @@
         <h3>Odkud jsou data</h3>
         <ul>
           <li>Územní plány v jednotném standardu: Národní geoportál územního plánování, Ministerstvo pro místní rozvoj (mapy.gov.cz).</li>
-          <li>Obce, které v jednotném standardu ještě nejsou: veřejná data krajů. Mozaiky hlavních výkresů Středočeského, Karlovarského, Libereckého a Moravskoslezského kraje, územně analytické podklady Jihočeského, Karlovarského a Ústeckého kraje, územní plány Kraje Vysočina (i v krajském jednotném standardu) a hlavní výkres Metropolitního plánu Prahy (IPR Praha). K tomu vlastní mapové služby měst Brna, Plzně, Olomouce, Zlína a Českých Budějovic.</li>
+          <li>Obce, které v jednotném standardu ještě nejsou: veřejná data krajů, ORP a měst. Mozaiky hlavních výkresů Středočeského, Karlovarského, Libereckého, Moravskoslezského, Královéhradeckého a Pardubického kraje a jednotné ÚAP Zlínského kraje, územně analytické podklady Jihočeského, Karlovarského a Ústeckého kraje a ORP Znojmo a Pohořelice, územní plány Kraje Vysočina (i v krajském jednotném standardu), hlavní výkres Metropolitního plánu Prahy (IPR Praha). K tomu mapové servery měst a ORP: Brno, Plzeň, Olomouc, Zlín, České Budějovice, Hradec Králové, Pardubice, Jičín, Prostějov, Přerov, Jeseník, Mohelnice, Vsetín, Valašské Meziříčí, Uherské Hradiště, Uherský Brod a obce ORP Trutnov, Dvůr Králové, Svitavy, Polička, Vysoké Mýto, Žamberk, Chrudim, Hodonín, Kyjov, Mikulov, Veselí nad Moravou, Boskovice, Hustopeče, Šumperk, Zábřeh a Hranice.</li>
+          <li>Města bez mapové služby (39, mezi nimi okresní města Znojmo, Břeclav, Vyškov, Blansko, Rychnov nad Kněžnou a Semily): hlavní výkres úplného znění v PDF z webu obce, vlícovaný proti katastrální mapě s odchylkou do 5 metrů.</li>
+          <li>Stav územních plánů obcí (platný plán, změny, pořizování): evidence Národního geoportálu územního plánování. Počty obyvatel: Český statistický úřad, stav k 1. 1. 2026.</li>
           <li>Parcely, adresy, obce a ochrana přírody: RÚIAN, Český úřad zeměměřický a katastrální.</li>
           <li>Radonový index podloží 1 : 50 000: Česká geologická služba.</li>
           <li>Záplavová území: Výzkumný ústav vodohospodářský T. G. Masaryka (VÚV TGM).</li>
@@ -162,7 +183,7 @@
         <p>Geoportál drží i starší verze plánů (původní plán a úplná znění po změnách). Mapa ukazuje vždy nejnovější úplnou verzi a změny, které přišly po ní. Výklad „co se tu smí stavět“ vychází z typu plochy podle vyhlášky č. 157/2024 Sb. Je to orientační vodítko: přesné podmínky (výška, zastavěnost, co je přípustné) stanoví textová část územního plánu dané obce.</p>
         <p>U obcí bez jednotných dat mapa ukáže výkres z dat kraje. Kde kraj u plochy uvádí její typ nebo název, převedeme ho do jednotné legendy a ukážeme orientační výklad. Kraje svá data označují jako informativní a některé mohou být starší než poslední změna plánu.</p>
         <h3>Co mapa neumí</h3>
-        <p>Královéhradecký, Pardubický, Jihomoravský, Olomoucký a Zlínský kraj zatím nemají veřejnou službu s plány obcí, kterou by šlo do mapy připojit (kromě krajských měst, která mají vlastní). Tamní obce bez jednotných dat mapa ukáže jako odkaz na dokumenty obce. Mapa nenahrazuje územně plánovací informaci ani vyjádření stavebního úřadu.</p>
+        <p>Zhruba čtvrtinu obcí, většinou menších (hlavně v Olomouckém a Jihomoravském kraji), mapa zatím neumí nakreslit, protože jejich plán není v žádné veřejné mapové službě. U nich karta řekne, jestli obec platný územní plán má, a pošle vás na jeho dokumenty. Výkresy z dat krajů, ORP a měst jsou obrázky, typ plochy u většiny z nich mapa neumí přečíst. Mapa nenahrazuje územně plánovací informaci ani vyjádření stavebního úřadu.</p>
         <p class="muted" id="aboutStamp"></p>
       </div>
     </div>

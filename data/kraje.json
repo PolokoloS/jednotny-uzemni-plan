@@ -30,8 +30,9 @@
   "label": "Územní plány v Libereckém kraji"
  },
  "86": {
-  "url": "https://up.khk.cz/",
-  "label": "Portál územních plánů Královéhradeckého kraje"
+  "url": "https://www.khk.cz/oblasti/uzemni-planovani",
+  "label": "Územní plánování Královéhradeckého kraje",
+  "note": "Portál územních plánů kraje (up.khk.cz) je od října 2026 v odstávce kvůli bezpečnostní chybě. Jeho mapové služby zatím odpovídají, proto mapa ukazuje bezešvý hlavní výkres kraje u obcí, kde je aktuální."
  },
  "94": {
   "url": "https://www.pardubickykraj.cz/bezesva-upd-obci-pardubickeho-kraje",

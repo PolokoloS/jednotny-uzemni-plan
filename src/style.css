@@ -127,12 +127,28 @@ a { color: var(--blueprint); text-underline-offset: 2px; }
 .cov-bar span.reg[style*="width:0"] { border: 0; }
 .cov p { margin: 0; color: var(--ink-soft); }
 .link-btn { align-self: flex-start; border: 0; background: none; padding: 0; color: var(--blueprint); text-decoration: underline; text-underline-offset: 2px; }
+.cov-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; }
+.cov-actions .btn[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
 .try { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
 .try span { color: var(--ink-soft); margin-right: 2px; }
 .try button { border: 1px solid var(--rule); background: var(--paper); border-radius: 999px; padding: 4px 11px; font-size: 13px; }
 .try button:hover { border-color: var(--ink); }
 .try button.reg { border-style: dashed; border-color: var(--blueprint); }
 .disclaimer { font-size: 12.5px; color: var(--ink-soft); margin: 0; }
+/* příklady na kliknutí v úvodu */
+.examples { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.example {
+  display: flex; flex-direction: column; align-items: flex-start; gap: 3px; text-align: left; min-height: 64px;
+  border: 1px solid var(--rule); background: var(--paper); border-radius: 6px; padding: 9px 11px; color: var(--ink); cursor: pointer;
+  transition: border-color .12s, transform .12s;
+}
+.example b { font-size: 13.5px; font-weight: 700; line-height: 1.2; }
+.example small { font-size: 12px; color: var(--ink-soft); line-height: 1.3; }
+.example:hover { border-color: var(--ink); }
+.example:active { transform: translateY(1px); }
+.example:focus-visible { outline: 2px solid var(--blueprint); outline-offset: 2px; }
+.find-hint { font-size: 13px; color: var(--ink-soft); margin: 0; }
+.cov-bar span[title] { border-right: 1px solid color-mix(in srgb, var(--paper) 60%, transparent); }
 
 /* ---------- Title-block card ---------- */
 .card { padding: 14px 14px 22px; display: flex; flex-direction: column; gap: 16px; }
@@ -261,6 +277,8 @@ a { color: var(--blueprint); text-underline-offset: 2px; }
 .lg-fam { font-size: 11.5px; font-weight: 600; font-stretch: 80%; color: var(--ink-soft); margin: 9px 0 3px; }
 .lg-row { display: grid; grid-template-columns: 22px 30px 1fr; gap: 6px; align-items: center; padding: 2px 0; font-size: 13px; }
 .lg-row.wide { grid-template-columns: 22px 1fr; }
+.lg-row.wide:has(.lg-num) { grid-template-columns: 22px 1fr auto; }
+.lg-num { color: var(--ink-soft); text-align: right; }
 .sw { width: 22px; height: 14px; border: 1px solid rgba(0,0,0,.45); display: block; }
 .sw.hatch { background-image: repeating-linear-gradient(-45deg, var(--hc) 0 2px, transparent 2px 5px) !important; }
 .lg-code { font-weight: 700; font-size: 12px; font-stretch: 90%; }
@@ -273,6 +291,8 @@ a { color: var(--blueprint); text-underline-offset: 2px; }
 }
 .footer .ratio { font-weight: 650; color: var(--ink); white-space: nowrap; }
 .attrib { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+/* celá atribuce po najetí myší nebo klepnutí (jinak je zkrácená do jednoho řádku) */
+.attrib:hover, .attrib:focus-within, .attrib:active { white-space: normal; overflow: visible; }
 .attrib a { color: inherit; }
 #scale .ol-scale-line { position: static; background: none; padding: 0; }
 #scale .ol-scale-line-inner { border: 1.5px solid var(--ink); border-top: 0; color: var(--ink); font-size: 11px; font-weight: 600; text-align: center; margin: 0; }
@@ -294,6 +314,45 @@ a { color: var(--blueprint); text-underline-offset: 2px; }
   padding: 4px 8px; border-radius: 4px; font-size: 12.5px; white-space: nowrap; transform: translate(12px, 12px);
 }
 .tip b { font-stretch: 90%; margin-right: 6px; }
+
+/* ---------- Dnes a podle plánu (porovnání) ---------- */
+.swipe-on .up-plan, .swipe-on .up-reg { clip-path: inset(0 0 0 var(--swipe-x, 50%)); }
+.swipe { position: absolute; inset: 0; z-index: 11; pointer-events: none; }
+.swipe::before { content: ""; position: absolute; top: 0; bottom: 0; left: var(--swipe-x, 50%); width: 3px; margin-left: -1.5px; background: var(--ink); box-shadow: 0 0 0 1px var(--paper); }
+.swipe-bar { position: absolute; left: var(--swipe-x, 50%); top: 50%; transform: translate(-50%, -50%); display: flex; align-items: center; gap: 10px; }
+.swipe-knob { pointer-events: auto; touch-action: none; cursor: ew-resize; width: 44px; height: 44px; border-radius: 50%; border: 2px solid var(--ink); background: var(--sheet); box-shadow: var(--shadow); }
+.swipe-knob::before { content: "‹ ›"; font-weight: 800; font-size: 15px; color: var(--ink); }
+.swipe-l, .swipe-r { background: var(--ink); color: var(--paper); font-size: 12.5px; font-weight: 700; padding: 4px 8px; border-radius: 4px; white-space: nowrap; }
+.ctl[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+
+/* ---------- Prohlídka (prezentace) ---------- */
+.tour {
+  position: absolute; z-index: 40; left: calc((100% + var(--panel-w) + var(--gap)) / 2); transform: translateX(-50%);
+  bottom: calc(52px + env(safe-area-inset-bottom, 0px)); width: min(620px, calc(100% - var(--panel-w) - 48px));
+  background: var(--sheet); border: 1.5px solid var(--ink); border-radius: 8px; box-shadow: var(--shadow); padding: 16px 18px 14px;
+}
+.tour-n { font-size: 12px; font-weight: 700; color: var(--ink-soft); }
+.tour h3 { margin: 4px 0 6px; font-size: 21px; font-stretch: 110%; line-height: 1.2; }
+.tour p { margin: 0; font-size: 15.5px; line-height: 1.45; }
+.tour-nav { display: flex; gap: 8px; align-items: center; justify-content: flex-end; margin-top: 12px; }
+.tour-nav .icon-btn { margin-left: 4px; }
+.tour-on .hint { display: none; }
+.tour-on:not(.cov-on) .legend { display: none; }
+/* v kroku s mapou pokrytí je vidět legenda s barvami, panel prohlídky proto vpravo */
+@media (min-width: 761px) {
+  .tour-on.cov-on .tour { left: auto; right: calc(64px + var(--gap) * 2); transform: none; width: min(460px, calc(100% - var(--panel-w) - 400px)); }
+}
+.tour-qr { display: flex; align-items: center; gap: 14px; margin-top: 12px; }
+.tour-qr svg { width: 136px; height: 136px; flex: none; background: #fff; padding: 4px; border-radius: 4px; }
+.tour-qr span { font-size: 15px; font-weight: 650; word-break: break-all; }
+img.sw { object-fit: contain; background: none; border: 0; }
+
+/* ---------- QR kód ---------- */
+#qrDlg { width: min(420px, calc(100vw - 32px)); }
+.qr-body { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 8px; }
+.qr { width: min(300px, 70vw); aspect-ratio: 1; background: #fff; display: grid; place-items: center; }
+.qr svg { width: 100%; height: 100%; display: block; }
+.qr-url { word-break: break-all; font-size: 12px; margin: 0; }
 
 /* ---------- Dialogs ---------- */
 dialog {
@@ -336,12 +395,16 @@ dialog::backdrop { background: var(--veil); }
     padding-bottom: env(safe-area-inset-bottom, 0px);
   }
   .sheet[data-state="min"] { overflow: hidden; }
-  .sheet-handle { display: grid; place-items: center; position: sticky; top: 0; z-index: 2; height: 26px; background: var(--sheet); border: 0; width: 100%; }
+  .sheet-handle { display: grid; place-items: center; position: sticky; top: 0; z-index: 2; height: 30px; background: var(--sheet); border: 0; width: 100%; touch-action: none; cursor: grab; }
+  .sheet-drag .sheet { transition: none; }
   .sheet-handle span { width: 44px; height: 5px; border-radius: 3px; background: var(--rule); }
   .topbar { left: max(var(--gap), env(safe-area-inset-left, 0px)); right: max(var(--gap), env(safe-area-inset-right, 0px)); top: calc(var(--top-h, 118px) + env(safe-area-inset-top, 0px)); flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
   .topbar::-webkit-scrollbar { display: none; }
   .intents { flex-wrap: nowrap; }
-  .intents-label { display: none; }
+  .intents-label { padding: 0 4px 0 6px; font-size: 12.5px; }
+  .chip { height: 40px; }
+  /* řada voleb se posouvá do strany: okraj vpravo slábne, ať je vidět, že pokračuje */
+  .topbar { -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 28px), transparent); mask-image: linear-gradient(to right, #000 calc(100% - 28px), transparent); padding-right: 24px; }
   .plan-toggle { flex: none; height: 42px; }
   .controls { top: calc(var(--top-h, 118px) + 56px + env(safe-area-inset-top, 0px)); }
   .pop { right: 60px; top: calc(var(--top-h, 118px) + 56px + env(safe-area-inset-top, 0px)); width: min(290px, calc(100vw - 76px)); }
@@ -353,6 +416,21 @@ dialog::backdrop { background: var(--veil); }
   .card .sample-strip { font-size: 12.5px; padding: 6px 10px; }
   .tb-swatch { min-height: 82px; }
   .tb-title { font-size: 18px; }
+  .intro { padding: 4px 14px 18px; gap: 14px; }
+  .intro h2 { font-size: 16.5px; font-stretch: 105%; }
+  .example { min-height: 56px; padding: 8px 10px; }
+  .example b { font-size: 13px; }
+  /* sloupec ovládání: menší tlačítka, ať se vejde nad spodní kartu */
+  .controls { gap: 4px; }
+  .ctl { width: 44px; height: 44px; }
+  #qrBtn { display: none; }
+  .icon-btn { min-width: 40px; min-height: 40px; }
+  .tour-on .legend { display: none; }
+  .tour-qr svg { width: 110px; height: 110px; }
+  .tour { left: var(--gap); right: var(--gap); width: auto; transform: none; bottom: calc(var(--sheet-h, 212px) + 10px); padding: 12px 14px 10px; }
+  .tour h3 { font-size: 18px; }
+  .tour p { font-size: 14px; }
+  .swipe-l, .swipe-r { font-size: 11.5px; padding: 3px 6px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
