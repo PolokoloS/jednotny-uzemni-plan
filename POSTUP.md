@@ -22,13 +22,15 @@ Zadání (29. 10. 2026, přednáška): Fáze 1 pokrytí (všech 14 krajských m�
 - [x] Pokrytí 30. 10.: v mapě 4 600 obcí z 6 258 (89 % obyvatel), NGÚP 385, PDF 39, bez dat 1 658. Sídla ORP 203 z 206, okresní města všechna kromě Teplic.
 - [x] Opravy z revize subagentem: přelety (skok místo dlouhé animace, víc souběžných dlaždic), odkaz z počítače na telefonu, štítky ve vyhledávání podle obce.json, výběr obce zavře kartu, spodní karta (křížek, tažení), legenda zavřená na nízké obrazovce, předěl porovnání ve viditelné části, prohlídka (legenda u mapy pokrytí, krok s obcí bez plánu, QR v panelu, Esc), nápověda podle vybrané obce, vrstvy krajů jen na jejich území, hlídání zaseknutého serveru, výpadek NGÚP bez nekonečného načítání, legenda radonu, přírody a záplav, texty (syrové názvy, zdroj plochy, vnořené závorky, „Obec X nemá“), čísla pokrytí rovnou ve stránce.
 
+- [x] Screenshoty po (`docs/screenshots/po`), smoke test lokálně 16/16, push, PR #3 `prace` → `main` (https://github.com/PolokoloS/jednotny-uzemni-plan/pull/3).
+
 ## Rozdělané
 
-- Screenshoty po (`docs/screenshots/po`), smoke test, commit, push, PR `prace` → `main`.
+- Čeká se na pokyn „nasaď“: pak merge PR #3 do `main` (nasazení na https://venerable-custard-504746.netlify.app). Náhled: https://deploy-preview-3--venerable-custard-504746.netlify.app (za přihlášením týmu Netlify).
 
 ## Další kroky
 
-1. PR s popisem, náhled Netlify (za přihlášením týmu), merge až na „nasaď“.
+1. Merge PR #3 až na „nasaď“, pak ověřit produkční web.
 2. Případně dál: Jihočeský kraj po obcích přes registr DMVS_upd, ORP Děčín (T-MAPY, asi 30 obcí), další města z PDF nad rámec limitu 100 MB.
 
 ## Rozhodnutí
