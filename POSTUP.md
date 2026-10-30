@@ -4,6 +4,24 @@ Paměť pro přerušení a komprimaci kontextu. Po pokynu „pokračuj“ přeč
 
 Zadání (29. 10. 2026, přednáška): Fáze 1 pokrytí (všech 14 krajských měst, všechna sídla ORP, co nejvíc obcí), Fáze 2 zážitek na předvedení. Na konci jeden PR `prace` → `main`, odkaz na náhled, merge až na „nasaď“.
 
+### Fáze 3 (30. 10. 2026, větev `prace3`)
+
+Zadání: zbylých 1 658 obcí bez plánu v mapě (medián 438 obyvatel).
+1. Limit dlaždic 500 MB, menší dlaždice (žádné prázdné mimo obec, kvalita WebP). Nejdřív připravené výkresy (Klášterec n. O., Duchcov, Červený Kostelec, Hronov, Úpice, Česká Skalice, Police n. M., Velké Poříčí), pak podle obyvatel: Krupka, Dubí, obce nad 2 000, pak menší, dokud limit nedojde. Pravidla výkresu z PDF platí dál.
+2. Teplice, Ostrov, Železný Brod: znovu hledat úplné znění nebo výkres poslední změny pro celé území.
+3. Evidence NGÚP: 229 obcí vedených jako bez plánu ověřit jinde (web obce, ÚAP ORP, kraj); kde plán je, přesunout do „jen v dokumentech“ nebo do mapy; u zbytku opatrný text a odkaz na web obce, opatrný název kategorie.
+4. Do shrnutí návrh e-mailu krajskému úřadu Olomouckého kraje (nic neposílat).
+5. Přepočet pokrytí, čísla na webu, README, POSTUP.md, smoke test. Na konci PR `prace3` → `main`, merge až na „nasaď“.
+
+## Fáze 3: stav
+
+- [x] PR #3 mergnutý do `main` (cd7cd906), produkce se nasazuje.
+- [ ] Dlaždice: menší a limit 500 MB.
+- [ ] Připravené výkresy, Teplice, Ostrov, Železný Brod.
+- [ ] Další obce podle velikosti.
+- [ ] Obce bez plánu v evidenci.
+- [ ] Přepočet, čísla, smoke test, PR.
+
 ## Hotovo
 
 - [x] Drobnosti v `main` se `[skip netlify]`: PR #1 mergnutý, týdenní kontrola zdrojů zrušená, Postup práce v CLAUDE.md, issue #2 zavřené.
