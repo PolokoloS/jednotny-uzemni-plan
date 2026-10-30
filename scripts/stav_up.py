@@ -15,6 +15,7 @@ import concurrent.futures as cf
 import datetime as dt
 import json
 import os
+import re
 import sys
 import tempfile
 import time
@@ -47,7 +48,17 @@ def stav(kod):
                  key=lambda i: i['entryIntoEffect'])
     prog = any(i['state']['id'] == 'IN_PROGRESS' for i in items)
     if not new:
-        return ['x', None, None, 0, None, prog, None]
+        # původní plán v evidenci chybí, vydané změny ale ano (Kuřim, Hrádek nad Nisou): obec plán má.
+        # Výjimka: změny starého plánu (ÚPO, ÚPnSÚ, ÚPM) vydané před rokem 2023, takový plán bez úpravy
+        # podle nového zákona skončil 31. 12. 2022.
+        ch = sorted((i for i in items if i['subType']['id'] == 'TPL_CHANGE' and i['state']['id'] == 'ISSUED' and i.get('entryIntoEffect')),
+                    key=lambda i: i['entryIntoEffect'])
+        old = ch and re.search(r'ÚPO|ÚPN ?SÚ|ÚPnSÚ|ÚPM|územní(ho)? plán(u)? obce|sídelního útvaru', ch[-1]['title'], re.I)
+        if not ch or (old and ch[-1]['entryIntoEffect'] < '2023-01-01'):
+            return ['x', None, None, 0, None, prog, None]
+        nazev = re.sub(r'^\s*změna\s+č\.?\s*[\w.]+\s*(územního plánu|ÚP)?\s*', '', ' '.join(ch[-1]['title'].split()), flags=re.I)
+        return ['p', 'Územní plán ' + nazev if nazev and not nazev.lower().startswith('územní') else (nazev or None),
+                None, len(ch), ch[-1]['entryIntoEffect'], prog, None]
     main = new[-1]
     ch = sorted(i['entryIntoEffect'] for i in items if i['subType']['id'] == 'TPL_CHANGE' and i['state']['id'] == 'ISSUED'
                 and (i.get('entryIntoEffect') or '') > main['entryIntoEffect'])

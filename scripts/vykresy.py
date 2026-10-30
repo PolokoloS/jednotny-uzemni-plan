@@ -13,7 +13,8 @@ Postup pro každou obec z data/vykresy_zdroje.json:
     Výkresy v měřítku 1:10 000 se pro zpřesnění a dlaždice rastrují jemněji (až 200 dpi). PDF může být i v ZIPu.
 Výsledek a přesnost zapíše do data/vykresy.json. build.py dlaždice zkopíruje do dist a přidá zdroj do mapy.
 
-Spuštění: python scripts/vykresy.py [--obec 579891] [--limit-mb 100]
+Spuštění: python scripts/vykresy.py [--obec 579891] [--limit-mb 500]
+         python scripts/vykresy.py --jen-dlazdice [--obec ...]   (dlaždice znovu z uložené transformace, bez vlícování)
 Potřebuje: pymupdf, numpy, opencv-python-headless, pillow, pyproj.
 """
 import argparse, io, json, math, os, re, shutil, sys, tempfile, time, urllib.parse, urllib.request, zipfile, zlib
@@ -35,6 +36,8 @@ T_JTSK_MERC = Transformer.from_crs(KROVAK, 'EPSG:3857', always_xy=True)
 DPI = 100
 MAX_CHYBA = 5.0          # m, větší odchylka proti katastru = výkres do mapy nedáme
 ZOOMS = range(12, 17)
+WEBP = {'quality': 65, 'method': 6}   # kvalita 65 a pomalejší komprese: o desetinu menší a zkratky ploch dál čitelné
+MIN_POKRYTI_DLAZDICE = 0.002          # dlaždice, kam obec zasahuje jen tenkým proužkem, se neukládá
 R = 20037508.342789244
 Image.MAX_IMAGE_PIXELS = None
 
@@ -263,7 +266,28 @@ def uvnitr(poly, x, y):
     return any(cv2.pointPolygonTest(p.astype(np.float32), (float(x), float(y)), False) > 0 for p in poly)
 
 
-def posuny(img, Aff, poly, px_m):
+def korekce(K, X, Y):
+    """Posun polynomem 2. stupně (zbytková deformace výkresu po afinní transformaci): bod v terénu -> kam se dívat do výkresu."""
+    if not K:
+        return X, Y
+    x = (X - K['x0']) / K['s']; y = (Y - K['y0']) / K['s']
+    B = [np.ones_like(x), x, y, x * x, x * y, y * y]
+    dx = sum(c * b for c, b in zip(K['cx'], B)); dy = sum(c * b for c, b in zip(K['cy'], B))
+    lim = K.get('lim', 25.0)
+    return X + np.clip(dx, -lim, lim), Y + np.clip(dy, -lim, lim)
+
+
+def fit_korekce(m):
+    """Koeficienty korekce z posunů v oknech (r = (x, y, dx, dy, odezva)), aspoň 8 oken."""
+    P = np.array([[r[0], r[1]] for r in m]); D = np.array([[r[2], r[3]] for r in m])
+    x0, y0 = P[:, 0].mean(), P[:, 1].mean(); sc = max(1.0, np.abs(P - [x0, y0]).max())
+    x = (P[:, 0] - x0) / sc; y = (P[:, 1] - y0) / sc
+    A = np.c_[np.ones_like(x), x, y, x * x, x * y, y * y]
+    cx, *_ = np.linalg.lstsq(A, D[:, 0], rcond=None); cy, *_ = np.linalg.lstsq(A, D[:, 1], rcond=None)
+    return {'x0': float(x0), 'y0': float(y0), 's': float(sc), 'cx': [float(v) for v in cx], 'cy': [float(v) for v in cy], 'lim': 25.0}
+
+
+def posuny(img, Aff, poly, px_m, kor=None):
     pts = np.concatenate(poly)
     x0, y0, x1, y1 = pts[:, 0].min(), pts[:, 1].min(), pts[:, 0].max(), pts[:, 1].max()
     Ainv = np.linalg.inv(np.vstack([Aff, [0, 0, 1]]))[:2]
@@ -278,7 +302,7 @@ def posuny(img, Aff, poly, px_m):
             if not uvnitr(poly, cx, cy):
                 continue
             g = (np.arange(n) + 0.5) * (2 * half / n)
-            XX, YY = np.meshgrid(cx - half + g, cy + half - g)
+            XX, YY = korekce(kor, *np.meshgrid(cx - half + g, cy + half - g))
             U = (Ainv[0, 0] * XX + Ainv[0, 1] * YY + Ainv[0, 2]).astype(np.float32)
             V = (Ainv[1, 0] * XX + Ainv[1, 1] * YY + Ainv[1, 2]).astype(np.float32)
             L = cary(cv2.remap(img, U, V, cv2.INTER_LINEAR, borderValue=(255, 255, 255)))
@@ -324,13 +348,13 @@ def zpresni(img, Aff, poly, px_m):
     return Aff, ok, len(m), hist, len(res) - len(ok)
 
 
-def pokryti(img, Aff, poly, F=4):
+def pokryti(img, Aff, poly, F=4, kor=None):
     """Podíl území obce, na kterém je ve vlícovaném výkresu něco nakreslené (ne bílý papír ani místo mimo list)."""
     H, W = img.shape[0] // F, img.shape[1] // F
     ink = (cv2.resize(img, (W, H), interpolation=cv2.INTER_AREA).min(axis=2) < 235).astype(np.uint8)
     ink = cv2.dilate(ink, np.ones((9, 9), np.uint8))
     Ainv = np.linalg.inv(np.vstack([Aff, [0, 0, 1]]))[:2]
-    uv = [np.c_[p, np.ones(len(p))] @ Ainv.T / F for p in poly]
+    uv = [np.c_[np.column_stack(korekce(kor, p[:, 0], p[:, 1])), np.ones(len(p))] @ Ainv.T / F for p in poly]
     allp = np.concatenate(uv)
     off = np.floor(np.minimum(allp.min(0), 0)).astype(int)
     size = np.ceil(np.maximum(allp.max(0), [W, H])).astype(int) - off + 2
@@ -345,7 +369,7 @@ def pokryti(img, Aff, poly, F=4):
 # ---------------------------------------------------------------------------
 # 5: dlaždice Web Mercator ve WebP, oříznuté hranicí obce
 # ---------------------------------------------------------------------------
-def dlazdice(img, Aff, poly, kod, out_dir):
+def dlazdice(img, Aff, poly, kod, out_dir, kor=None):
     Ainv = np.linalg.inv(np.vstack([Aff, [0, 0, 1]]))[:2]
     px_m = math.hypot(Aff[0, 0], Aff[1, 0])
     # pyramida: pro hrubší zoomy předem zmenšený obraz, ať při vzorkování nevzniká moaré
@@ -370,7 +394,7 @@ def dlazdice(img, Aff, poly, kod, out_dir):
                 g = (np.arange(256) + 0.5) * span / 256
                 XX, YY = np.meshgrid(bx + g, by - g)
                 X, Y = T_MERC_JTSK.transform(XX.ravel(), YY.ravel())
-                X, Y = np.asarray(X).reshape(256, 256), np.asarray(Y).reshape(256, 256)
+                X, Y = korekce(kor, np.asarray(X).reshape(256, 256), np.asarray(Y).reshape(256, 256))
                 U = ((Ainv[0, 0] * X + Ainv[0, 1] * Y + Ainv[0, 2]) / f).astype(np.float32)
                 V = ((Ainv[1, 0] * X + Ainv[1, 1] * Y + Ainv[1, 2]) / f).astype(np.float32)
                 a = np.zeros((256, 256), np.uint8)
@@ -378,7 +402,7 @@ def dlazdice(img, Aff, poly, kod, out_dir):
                     cv2.fillPoly(a, [np.stack([(q[:, 0] - bx) / span * 256, (by - q[:, 1]) / span * 256], 1).round().astype(np.int32)], 255)
                 inside = (U >= 0) & (V >= 0) & (U < src.shape[1] - 1) & (V < src.shape[0] - 1)
                 a[~inside] = 0
-                if not a.any():
+                if (a > 0).mean() < MIN_POKRYTI_DLAZDICE:
                     continue
                 rgb = cv2.remap(src, U, V, cv2.INTER_LINEAR, borderValue=(255, 255, 255))
                 d = os.path.join(out_dir, str(z), str(tx)); os.makedirs(d, exist_ok=True)
@@ -386,7 +410,7 @@ def dlazdice(img, Aff, poly, kod, out_dir):
                 tile = Image.fromarray(np.dstack([rgb, a]))
                 if os.path.exists(fn):           # dlaždici už začal list sousední části obce
                     tile = Image.alpha_composite(Image.open(fn).convert('RGBA'), tile)
-                tile.save(fn, 'WEBP', quality=72, method=4)
+                tile.save(fn, 'WEBP', **WEBP)
                 n_t += 1; size += os.path.getsize(fn)
     return n_t, size, [mx0, my0, mx1, my1]
 
@@ -396,6 +420,7 @@ def vlicuj(src, cache, poly):
     pdf = stahni(src, cache)
     strana = src.get('strana', 0)
     img, m_papir = rastr(pdf, strana)
+    dpi = DPI                                    # rozlišení rastru pro dlaždice (uloží se kvůli přegenerování)
     Aff, iou, mer, rot = hrube(img, m_papir, poly, src.get('otoceni'), src.get('meritko'))
     print(f'   hrubě: IoU {iou:.3f}, měřítko 1:{mer:.0f}, otočení {rot}°', flush=True)
     geo = geopdf(pdf, strana, m_papir) if iou < 0.9 else None
@@ -410,6 +435,7 @@ def vlicuj(src, cache, poly):
         # (velikost rastru hlídá strop v rastr())
         img, m_hi = rastr(pdf, strana, DPI * min(4.0, mer / 5000))
         Aff[:, :2] *= m_hi / m_papir
+        dpi = DPI * min(4.0, mer / 5000)
         print(f'   jemnější rastr {img.shape[1]} × {img.shape[0]} px', flush=True)
     px_m = math.hypot(Aff[0, 0], Aff[1, 0])
     Aff, res, n_ok, hist, n_out = zpresni(img, Aff, poly, px_m)
@@ -419,17 +445,72 @@ def vlicuj(src, cache, poly):
     print(f'   katastr: {len(res)} oken, odchylka max {mx:.2f} m, RMS {rms:.2f} m, vyřazeno {n_out} (průběh {hist})', flush=True)
     # překryv masky s hranicí je jen hrubá kontrola (bledé barvy maska nepozná);
     # rozhoduje přesnost proti katastru a to, že výkres pokrývá skoro celé území
-    kryti = pokryti(img, Aff, poly)
+    kor = None
+    if mx > MAX_CHYBA and len(res) >= 8:
+        # papír nebo starý mapový podklad je zkreslený nerovnoměrně: zbytky afinní transformace proložit polynomem
+        m = [r for r in posuny(img, Aff, poly, px_m) if r[4] > 0.06]
+        lim = max(25.0, 5 * float(np.median([math.hypot(r[2], r[3]) for r in m]))) if m else 0
+        m = [r for r in m if math.hypot(r[2], r[3]) <= lim]
+        if len(m) >= 8:
+            kor = fit_korekce(m)
+            m2 = [r for r in posuny(img, Aff, poly, px_m, kor) if r[4] > 0.06]
+            res2 = [math.hypot(r[2], r[3]) for r in m2]
+            ok2 = [d for d in res2 if d <= max(25.0, 5 * float(np.median(res2)))] if res2 else []
+            if ok2:
+                print(f'   korekce polynomem: {len(ok2)} oken, odchylka max {max(ok2):.2f} m (bez ní {mx:.2f} m)', flush=True)
+            if ok2 and max(ok2) < mx and len(ok2) >= 8:
+                res, n_out = ok2, len(res2) - len(ok2)
+                mx = max(res); rms = math.sqrt(sum(r * r for r in res) / len(res))
+            else:
+                kor = None
+    kryti = pokryti(img, Aff, poly, kor=kor)
     print(f'   výkres pokrývá {kryti:.1%} území', flush=True)
     ok = mx <= MAX_CHYBA and len(res) >= 4 and n_out <= 0.2 * (len(res) + n_out) and (iou >= 0.85 or kryti >= 0.97)
-    return {'img': img, 'Aff': Aff, 'poly': poly, 'iou': iou, 'mer': mer, 'rot': rot, 'res': res, 'n_out': n_out, 'kryti': kryti, 'ok': ok}
+    return {'img': img, 'Aff': Aff, 'poly': poly, 'iou': iou, 'mer': mer, 'rot': rot, 'res': res, 'n_out': n_out, 'kryti': kryti, 'ok': ok, 'dpi': dpi, 'kor': kor}
+
+
+def jen_dlazdice(obce=None):
+    """Dlaždice přijatých výkresů znovu z uložené transformace (třeba po změně kódování), bez nového vlícování."""
+    zdroje = {z['obec']: z for z in json.load(open(os.path.join(ROOT, 'data', 'vykresy_zdroje.json'), encoding='utf-8'))}
+    meta_f = os.path.join(ROOT, 'data', 'vykresy.json')
+    for rec in json.load(open(meta_f, encoding='utf-8')):
+        kod = rec['obec']
+        if not rec.get('prijato') or (obce and kod not in obce) or kod not in zdroje:
+            continue
+        t = time.time()
+        z = zdroje[kod]
+        casti = z.get('casti') or [z]
+        trans = [c['transformace'] for c in rec['casti']] if rec.get('casti') else [rec['transformace']]
+        kors = [c.get('korekce') for c in rec['casti']] if rec.get('casti') else [rec.get('korekce')]
+        out_dir = os.path.join(ROOT, 'data', 'vykresy', str(kod))
+        if os.path.exists(out_dir):
+            shutil.rmtree(out_dir)
+        ext = None
+        for i, (c, T, K) in enumerate(zip(casti, trans, kors)):
+            Aff = np.array(T, float)
+            pdf = stahni(c, kod if len(casti) == 1 else f'{kod}_{i}')
+            # rastr ve stejném rozlišení jako při vlícování (u výkresů 1:10 000 jemnější)
+            dpi = rec.get('dpi') or (DPI * min(4.0, rec['meritko'] / 5000) if rec.get('meritko', 0) > 6000 else DPI)
+            img, _ = rastr(pdf, c.get('strana', 0), dpi)
+            poly = ku_polygon(c['ku']) if c.get('ku') else obec_polygon(kod)
+            _, _, e = dlazdice(img, Aff, poly, kod, out_dir, K)
+            ext = e if ext is None else [min(ext[0], e[0]), min(ext[1], e[1]), max(ext[2], e[2]), max(ext[3], e[3])]
+        files = [os.path.join(r, f) for r, _, fs in os.walk(out_dir) for f in fs]
+        size = sum(os.path.getsize(f) for f in files)
+        print(f'{rec["nazev"]}: {len(files)} dlaždic, {rec.get("kb", 0) / 1024:.1f} -> {size / 1048576:.1f} MB, {time.time() - t:.0f} s', flush=True)
+        disk = {m['obec']: m for m in json.load(open(meta_f, encoding='utf-8'))}
+        disk[kod].update({'dlazdic': len(files), 'kb': round(size / 1024), 'extent3857': [round(x) for x in ext]})
+        json.dump(sorted(disk.values(), key=lambda m: m['obec']), open(meta_f, 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
 
 
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--obec', type=int, action='append')
-    ap.add_argument('--limit-mb', type=float, default=100)
+    ap.add_argument('--limit-mb', type=float, default=500)
+    ap.add_argument('--jen-dlazdice', action='store_true', help='jen znovu vytvořit dlaždice přijatých výkresů z uložené transformace')
     args = ap.parse_args()
+    if args.jen_dlazdice:
+        return jen_dlazdice(args.obec)
     zdroje = json.load(open(os.path.join(ROOT, 'data', 'vykresy_zdroje.json'), encoding='utf-8'))
     meta_f = os.path.join(ROOT, 'data', 'vykresy.json')
     meta = {m['obec']: m for m in (json.load(open(meta_f, encoding='utf-8')) if os.path.exists(meta_f) else [])}
@@ -457,7 +538,7 @@ def main():
                 vys.append(v)
                 if not v['ok']:
                     break
-                _, _, e = dlazdice(v.pop('img'), v['Aff'], v['poly'], kod, out_dir)
+                _, _, e = dlazdice(v.pop('img'), v['Aff'], v['poly'], kod, out_dir, v.get('kor'))
                 ext = e if ext is None else [min(ext[0], e[0]), min(ext[1], e[1]), max(ext[2], e[2]), max(ext[3], e[3])]
             ok = len(vys) == len(casti) and all(v['ok'] for v in vys)
             res = [r for v in vys for r in v['res']]
@@ -466,11 +547,13 @@ def main():
             rec = {'obec': kod, 'nazev': z['nazev'], 'pdf': casti[0]['pdf'], 'zip': bool(casti[0].get('zip')), 'verze': z['verze'],
                    'iou': round(min(v['iou'] for v in vys), 4), 'meritko': round(v0['mer']), 'otoceni': v0['rot'], 'oken': len(res),
                    'vyrazeno_oken': sum(v['n_out'] for v in vys), 'chyba_max_m': round(mx, 2), 'chyba_rms_m': round(rms, 2),
-                   'pokryti': round(min(v['kryti'] for v in vys), 3), 'prijato': ok,
+                   'pokryti': round(min(v['kryti'] for v in vys), 3), 'prijato': ok, 'dpi': v0['dpi'],
                    'transformace': [[round(x, 6) for x in r] for r in v0['Aff'].tolist()]}
+            if v0.get('kor'):
+                rec['korekce'] = v0['kor']
             if len(casti) > 1:
-                rec['casti'] = [{'nazev': c.get('nazev'), 'pdf': c['pdf'], 'transformace': [[round(x, 6) for x in r] for r in v['Aff'].tolist()]}
-                                for c, v in zip(casti, vys)]
+                rec['casti'] = [{'nazev': c.get('nazev'), 'pdf': c['pdf'], 'transformace': [[round(x, 6) for x in r] for r in v['Aff'].tolist()],
+                                 **({'korekce': v['kor']} if v.get('kor') else {})} for c, v in zip(casti, vys)]
             if ok:
                 files = [os.path.join(r, f) for r, _, fs in os.walk(out_dir) for f in fs]
                 size = sum(os.path.getsize(f) for f in files)

@@ -120,7 +120,7 @@ if cov_stats:
     in_map = sum(n.get(k, 0) for k in 'nkmp')
     pct = round(100 * sum(pop.get(k, 0) for k in 'nkmp') / allp)
     barvy = [('n', 'Jednotný standard', (46, 125, 50)), ('k', 'Data kraje', (62, 115, 196)), ('m', 'Data města nebo ORP', (123, 92, 196)),
-             ('p', 'Výkres z PDF', (204, 140, 40)), ('d', 'Jen v dokumentech', (176, 170, 156)), ('x', 'Bez územního plánu v evidenci', (200, 84, 80))]
+             ('p', 'Výkres z PDF', (204, 140, 40)), ('d', 'Jen v dokumentech', (176, 170, 156)), ('x', 'Plán v evidenci nenalezen', (200, 84, 80))]
     bar = ''.join(f'<span title="{label}" style="width:{100 * n.get(k, 0) / alln:.2f}%;background:rgba({r},{g},{bl},0.92)"></span>' for k, label, (r, g, bl) in barvy)
     html = html.replace('<span class="cov-big num" id="covN">381</span><span class="cov-of" id="covOf">obcí z <span class="num" id="covTotal">6 258</span> už má územní plán v jednotných datech</span>',
                         f'<span class="cov-big num" id="covN" data-final="1">{fmt(in_map)}</span><span class="cov-of" id="covOf">obcí z <span class="num">{fmt(alln)}</span> má územní plán přímo v mapě, žije v nich {pct} % obyvatel</span>')

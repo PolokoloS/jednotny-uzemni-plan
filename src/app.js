@@ -1201,7 +1201,7 @@
     const so = S.sel && S.sel.obec;
     if (S.covMap) msg = 'Barvy ukazují, odkud mapa zná plán obce. Klikněte na obec a otevře se její karta.';
     else if (so && (so[9] === 'd' || so[9] === 'x') && z >= CFG.rasterMinZoom - 0.4)
-      msg = so[9] === 'x' ? `Obec ${so[10]} nemá územní plán v evidenci, v mapě proto žádný není.` : `Plán obce ${so[10]} v mapě zatím nemáme. Karta ukáže, kde ho najdete.`;
+      msg = so[9] === 'x' ? `Evidence u obce ${so[10]} územní plán neuvádí. Karta ukáže, kde to ověřit.` : `Plán obce ${so[10]} v mapě zatím nemáme. Karta ukáže, kde ho najdete.`;
     else if (z < CFG.rasterMinZoom - 0.4) msg = 'Modré čtverečky jsou obce s jednotnými daty. Přibližte si obec nebo ji vyhledejte.';
     else if (S.layers.up && !coverageInView()) msg = !regionalInView()
       ? 'Tady jednotná data zatím nejsou. Klikněte do mapy a ukážeme, kde najdete územní plán obce.'
@@ -1554,9 +1554,9 @@
     } else {
       const P = planInfo(sel);
       if (P && P.stav === 'x') {
-        sw = `<div class="tb-swatch none"><b>bez ÚP</b></div>`;
-        title = 'Bez územního plánu v evidenci';
-        official = 'V evidenci Národního geoportálu není žádný vydaný územní plán obce.' + (P.porizuje ? ' Obec ho pořizuje.' : '');
+        sw = `<div class="tb-swatch none"><b>?</b></div>`;
+        title = 'Plán v evidenci nenalezen';
+        official = 'Evidence Národního geoportálu u obce žádný vydaný územní plán neuvádí, nemusí ale být úplná.' + (P.porizuje ? ' Nový plán se podle ní pořizuje.' : '');
       } else if (P && P.stav === 'p') {
         sw = `<div class="tb-swatch none"><b>PDF</b></div>`;
         title = 'Územní plán zatím jen v dokumentech';
@@ -1793,11 +1793,11 @@
     } else if (cov === false) {
       const P = planInfo(sel);
       if (P && P.stav === 'x') {
-        html += `<p>Obec ${esc(obecName)} podle evidence Národního geoportálu územního plánování nemá vydaný územní plán.${P.porizuje ? ' Nový plán se pořizuje.' : ''} Bez územního plánu se nové stavby umisťují hlavně v zastavěném území obce, co přesně jde, posoudí stavební úřad.</p>`
-          + `<p class="note">Obce do evidence plány postupně doplňují. Pokud obec plán má, najdete ho na jejím webu.</p>`;
+        html += `<p>Evidence Národního geoportálu územního plánování u obce ${esc(obecName)} vydaný územní plán neuvádí.${P.porizuje ? ' Podle evidence se nový plán pořizuje.' : ''} Evidence ale není úplná: obce do ní plány doplňují postupně a některé plány v ní chybí. Jestli obec platný plán má, ověřte na jejím webu nebo na obecním úřadě.</p>`
+          + `<p class="note">Kdyby obec plán opravdu neměla, nové stavby se umisťují hlavně v zastavěném území obce a co přesně jde, posoudí stavební úřad.</p>`;
       } else if (P && P.stav === 'p') {
         html += `<p>Obec ${esc(obecName)} má platný ${esc(P.nazev.replace(/^Územní plán/, 'územní plán'))}${P.ucinnost ? `, účinný od ${esc(P.ucinnost)}` : ''}.`
-          + (P.zmen ? ` Od té doby ${plural(P.zmen, 'vyšla', 'vyšly', 'vyšlo')} ${P.zmen} ${plural(P.zmen, 'změna', 'změny', 'změn')}${P.posledni ? `, poslední účinná od ${esc(P.posledni)}` : ''}.` : '')
+          + (P.zmen ? ` ${P.ucinnost ? 'Od té doby' : 'Evidence uvádí'} ${P.ucinnost ? plural(P.zmen, 'vyšla', 'vyšly', 'vyšlo') + ' ' : ''}${P.zmen} ${plural(P.zmen, 'změna', 'změny', 'změn')}${P.ucinnost ? '' : ' plánu'}${P.posledni ? `, poslední účinná od ${esc(P.posledni)}` : ''}.` : '')
           + (P.porizuje ? ' Obec teď pořizuje nový plán nebo další změnu.' : '')
           + ` V mapě ho zatím nemáme, výkresy a textovou část najdete v dokumentech:</p>`;
       } else {
@@ -1806,7 +1806,9 @@
       const ngupBtn = cls => `<a class="btn${cls}" href="${esc(ngupDocsUrl(R))}" target="_blank" rel="noopener">Dokumenty obce v Národním geoportálu</a>`;
       const webBtn = P && P.web ? `<a class="btn" href="${esc(P.web)}" target="_blank" rel="noopener">Web obce</a>` : '';
       const krajBtn = cls => (kraj ? `<a class="btn${cls}" href="${esc(kraj.url)}" target="_blank" rel="noopener">${esc(kraj.label)}</a>` : '');
-      html += `<div class="actions">${kraj && kraj.primary ? krajBtn(' primary') + ngupBtn('') : ngupBtn(' primary') + krajBtn('')}${webBtn}</div>`;
+      const webFirst = P && P.stav === 'x' && P.web;
+      html += `<div class="actions">${webFirst ? webBtn.replace('class="btn"', 'class="btn primary"') + ngupBtn('') + krajBtn('')
+        : (kraj && kraj.primary ? krajBtn(' primary') + ngupBtn('') : ngupBtn(' primary') + krajBtn('')) + webBtn}</div>`;
       if (kraj && kraj.note) html += `<p class="note">${esc(kraj.note)}</p>`;
       if (OBCE && OBCE.stavUP) html += `<p class="note">Stav plánu podle evidence NGÚP k ${esc(OBCE.stavUP.split('-').reverse().map(Number).join('. '))}.</p>`;
     } else {
@@ -1859,7 +1861,7 @@
     ['m', 'Data města nebo ORP', [123, 92, 196]],
     ['p', 'Výkres z PDF', [204, 140, 40]],
     ['d', 'Jen v dokumentech', [176, 170, 156]],
-    ['x', 'Bez územního plánu v evidenci', [200, 84, 80]]
+    ['x', 'Plán v evidenci nenalezen', [200, 84, 80]]
   ];
   const covCat = c => COV_CAT.find(x => x[0] === c) || COV_CAT[4];
   const covMapSrc = new ol.source.Vector();
@@ -2036,7 +2038,7 @@
    [132, 'Bruntál,Frýdek-Místek,Karviná,Nový Jičín,Opava,Ostrava-město']].forEach(([k, list]) => list.split(',').forEach(n => { OKRES_KRAJ[n] = k; }));
   const COV_BY_NAME = new Map();
   COV.forEach(o => { const okr = OKR[o[2]]; COV_BY_NAME.set(o[1] + '|' + (okr ? okr[0] : ''), o); });
-  const BADGE = { n: ['jednotný standard', 'has'], k: ['data kraje', 'reg'], m: ['data města nebo ORP', 'reg'], p: ['výkres z PDF', 'reg'], d: ['jen v dokumentech', ''], x: ['bez ÚP v evidenci', ''] };
+  const BADGE = { n: ['jednotný standard', 'has'], k: ['data kraje', 'reg'], m: ['data města nebo ORP', 'reg'], p: ['výkres z PDF', 'reg'], d: ['jen v dokumentech', ''], x: ['plán v evidenci nenalezen', ''] };
   let nameCatsMap = null;
   function nameCats() {
     if (!nameCatsMap && OBCE) {

@@ -16,10 +16,11 @@ Zadání: zbylých 1 658 obcí bez plánu v mapě (medián 438 obyvatel).
 ## Fáze 3: stav
 
 - [x] PR #3 mergnutý do `main` (cd7cd906), produkce se nasazuje.
-- [ ] Dlaždice: menší a limit 500 MB.
-- [ ] Připravené výkresy, Teplice, Ostrov, Železný Brod.
-- [ ] Další obce podle velikosti.
-- [ ] Obce bez plánu v evidenci.
+- [x] Produkce ověřená (4 600 obcí, dlaždice i obce.json se načítají).
+- [~] Dlaždice: WebP kvalita 65 a method 6 (asi −10 %, AVIF ani paleta nepomohly), okrajové proužky pod 0,2 % se neukládají, prázdné dlaždice mimo obec nevznikají; limit 500 MB. `vykresy.py --jen-dlazdice` přegeneruje dlaždice z uložené transformace (běží pro všech 39). Nově korekce polynomem 2. stupně, když afinní transformace nestačí (zkouším na Železném Brodě).
+- [~] Připravené výkresy: Klášterec (vrácený), Duchcov, Červený Kostelec, Hronov, Úpice, Česká Skalice, Police n. M., Velké Poříčí (běží).
+- [~] Průzkum zdrojů pro zbylé obce: 7 subagentů, zadání `scratchpad/f3/ZADANI.md`, cíle `scratchpad/f3_cile.csv`, výstupy `scratchpad/f3/*.csv` (uk_kv, jmk, olk, stc_pk, lk_khk, jc, evidence_x).
+- [~] Evidence: `stav_up.py` bere obec se změnami bez původního plánu jako s plánem (kromě změn starých ÚPO/ÚPnSÚ/ÚPM před rokem 2023), `--recheck` běží. Texty karty, legendy a hledání u obcí bez plánu v evidenci jsou opatrné („Plán v evidenci nenalezen“, evidence nemusí být úplná, odkaz na web obce).
 - [ ] Přepočet, čísla, smoke test, PR.
 
 ## Hotovo
