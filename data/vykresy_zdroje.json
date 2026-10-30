@@ -82,7 +82,9 @@
   "nazev": "Vyškov",
   "pdf": "https://www.vyskov-mesto.cz/assets/File.ashx?id_org=18857&id_dokumenty=1155768",
   "verze": "Územní plán Vyškov, úplné znění po změně č. 3 (účinné od 5. 8. 2026)",
-  "web": "https://www.vyskov-mesto.cz/"
+  "web": "https://www.vyskov-mesto.cz/",
+  "otoceni": 47,
+  "meritko": 5000
  },
  {
   "obec": 581283,
@@ -205,5 +207,163 @@
   "pdf": "https://maparcgis.kraj-lbc.cz/App/oupsr/stavUP/JDM/StrazPR/UZ_poZ1/grafika/562092_B2_HLV.pdf",
   "verze": "Územní plán Stráž pod Ralskem, úplné znění po změně č. 1 (účinné od 20. 3. 2025)",
   "web": "https://www.strazpodralskem.cz/"
+ },
+ {
+  "obec": 584002,
+  "nazev": "Tišnov",
+  "pdf": "https://www.tisnov.cz/assets/File.ashx?id_org=16737&id_dokumenty=25243",
+  "casti": [
+   {
+    "nazev": "část Tišnov",
+    "pdf": "https://www.tisnov.cz/assets/File.ashx?id_org=16737&id_dokumenty=25243",
+    "ku": [
+     767379
+    ]
+   },
+   {
+    "nazev": "část Jamné a Hájek",
+    "pdf": "https://www.tisnov.cz/assets/File.ashx?id_org=16737&id_dokumenty=25241",
+    "ku": [
+     656607,
+     636711
+    ]
+   },
+   {
+    "nazev": "část Pejškov",
+    "pdf": "https://www.tisnov.cz/assets/File.ashx?id_org=16737&id_dokumenty=25242",
+    "ku": [
+     718840
+    ]
+   }
+  ],
+  "verze": "Územní plán Tišnov, úplné znění po změně č. 2 (účinné od 26. 7. 2025)",
+  "web": "https://www.tisnov.cz/"
+ },
+ {
+  "obec": 576069,
+  "nazev": "Rychnov nad Kněžnou",
+  "pdf": "https://www.rychnov-city.cz/assets/File.ashx?id_org=14410&id_dokumenty=36005",
+  "verze": "Územní plán Rychnov nad Kněžnou ve znění změny č. 4 (účinné od 21. 10. 2026)",
+  "web": "https://www.rychnov-city.cz/",
+  "poznamka": "Výkres je z dokumentace změny č. 4, která řeší celé území města. Úplné znění po této změně město zatím nezveřejnilo."
+ },
+ {
+  "obec": 574121,
+  "nazev": "Jaroměř",
+  "pdf": "https://www.jaromer-josefov.cz/e_download.php?file=/data/uredni_deska/obsah5410_14.pdf&original=HV_UZUPpoZ123_16122025_1ku10naA0.pdf",
+  "verze": "Územní plán Jaroměř, úplné znění po změnách č. 1, 2 a 3 (účinné od 21. 2. 2026)",
+  "web": "https://www.jaromer-josefov.cz/"
+ },
+ {
+  "obec": 579858,
+  "nazev": "Vrchlabí",
+  "pdf": "https://www.muvrchlabi.cz/e_download.php?file=/data/uredni_deska/obsah9_12.pdf&original=Vrchlabi_UP_UZ19_2_Hlavni%20vykres.pdf",
+  "verze": "Územní plán Vrchlabí, úplné znění po změně č. 19 (účinné od 26. 3. 2026)",
+  "web": "https://www.muvrchlabi.cz/"
+ },
+ {
+  "obec": 572926,
+  "nazev": "Hořice",
+  "pdf": "https://www.horice.org/assets/File.ashx?id_org=4516&id_dokumenty=27122",
+  "verze": "Územní plán Hořice, úplné znění po změnách č. 1 až 7 (účinné od 18. 7. 2026)",
+  "web": "https://www.horice.org/"
+ },
+ {
+  "obec": 573922,
+  "nazev": "Broumov",
+  "pdf": "https://www.broumov-mesto.cz/assets/File.ashx?id_org=1276&id_dokumenty=36143",
+  "verze": "Územní plán Broumov, úplné znění po změnách č. 1, 2 a 4 až 10 (účinné od 16. 7. 2025)",
+  "web": "https://www.broumov-mesto.cz/"
+ },
+ {
+  "obec": 576271,
+  "nazev": "Dobruška",
+  "pdf": "https://www.mestodobruska.cz/e_download.php?file=/data/editor/2111cs_128.pdf&original=576271_UZ8_B1_HLV.pdf",
+  "verze": "Územní plán Dobruška, úplné znění po změnách č. 2 až 8 (účinné od 3. 1. 2026)",
+  "web": "https://www.mestodobruska.cz/"
+ },
+ {
+  "obec": 553671,
+  "nazev": "Horšovský Týn",
+  "pdf": "http://www.horsovskytyn.cz/e_download.php?file=/data/editor/244csabove_7.pdf&original=553671_02_HLV.pdf",
+  "verze": "Územní plán Horšovský Týn, úplné znění po změnách č. 1 až 7 (účinné od 18. 11. 2025)",
+  "web": "http://www.horsovskytyn.cz/"
+ },
+ {
+  "obec": 558109,
+  "nazev": "Nepomuk",
+  "pdf": "https://www.nepomuk.cz/evt_file.php?file=7658&original=558109_UZ3_2_HLV.pdf.signed.pdf",
+  "verze": "Územní plán Nepomuk, úplné znění po změně č. 3 (účinné od 11. 7. 2026)",
+  "web": "https://www.nepomuk.cz/"
+ },
+ {
+  "obec": 559075,
+  "nazev": "Kralovice",
+  "pdf": "https://www.kralovice.cz/e_download.php?file=/data/uredni_deska/obsah1615_8.pdf&original=PUBLICITA%20-%20V%C3%9DKRESOV%C3%81%20%C4%8C%C3%81ST.pdf",
+  "verze": "Územní plán Kralovice, úplné znění po změně č. 7 (účinné od 4. 1. 2025)",
+  "web": "https://www.kralovice.cz/"
+ },
+ {
+  "obec": 566616,
+  "nazev": "Podbořany",
+  "pdf": "https://www.podborany.net/e_download.php?file=data/editor/466cs_149.pdf&original=02%20Hlavn%C3%AD%20v%C3%BDkres%20-%20%C3%9AZ%20po%20zm%C4%9Bn%C4%9B%20%C4%8D.%208.pdf",
+  "verze": "Územní plán Podbořany, úplné znění po změně č. 8 (účinné od 26. 3. 2025)",
+  "web": "https://www.podborany.net/"
+ },
+ {
+  "obec": 563129,
+  "nazev": "Klášterec nad Ohří",
+  "pdf": "https://www.klasterec.cz/e_download.php?file=/data/editor/1114cs_2.pdf&original=%C3%9AZ%20%C3%9AP%20KLNO%20-%201.b%20-%20hlavn%C3%AD%20v%C3%BDkres.pdf",
+  "verze": "Územní plán Klášterec nad Ohří, úplné znění po změnách č. 1 až 4 (účinné od 13. 3. 2026)",
+  "web": "https://www.klasterec.cz/"
+ },
+ {
+  "obec": 567515,
+  "nazev": "Duchcov",
+  "pdf": "https://www.duchcov.cz/assets/File.ashx?id_org=3371&id_dokumenty=20939",
+  "verze": "Územní plán Duchcov, úplné znění po změně č. 2 (účinné od 14. 5. 2021)",
+  "web": "https://www.duchcov.cz/"
+ },
+ {
+  "obec": 573965,
+  "nazev": "Červený Kostelec",
+  "pdf": "https://www.mestonachod.cz/urad/vystavba/up-obci/prilohy/10_4312216534.pdf",
+  "verze": "Územní plán Červený Kostelec, úplné znění po změně č. 1 (účinné od 30. 12. 2024)",
+  "web": "https://www.mestonachod.cz/urad/vystavba/up-obci/"
+ },
+ {
+  "obec": 574082,
+  "nazev": "Hronov",
+  "pdf": "https://admin-storage.munipolis.com/632/custom_pages/9942d2d1-06c1-46d2-8fc8-c1267099f1f6.pdf",
+  "verze": "Územní plán Hronov, nový plán účinný od 2. 10. 2026",
+  "web": "https://www.mestohronov.cz/"
+ },
+ {
+  "obec": 579777,
+  "nazev": "Úpice",
+  "pdf": "https://upd.trutnov.cz/storage/app/uploads/public/692/41c/dfd/69241cdfdaca8916298899.pdf",
+  "verze": "Územní plán Úpice, úplné znění po změnách č. 1 a 2 (účinné od 3. 10. 2025)",
+  "web": "https://upd.trutnov.cz/"
+ },
+ {
+  "obec": 573990,
+  "nazev": "Česká Skalice",
+  "pdf": "https://www.mestonachod.cz/urad/vystavba/up-obci/prilohy/13_351517155.pdf",
+  "verze": "Územní plán Česká Skalice, úplné znění po změnách č. 1 a 3",
+  "web": "https://www.mestonachod.cz/urad/vystavba/up-obci/"
+ },
+ {
+  "obec": 574341,
+  "nazev": "Police nad Metují",
+  "pdf": "https://www.mestonachod.cz/urad/vystavba/up-obci/prilohy/24_7534132657.pdf",
+  "verze": "Územní plán Police nad Metují, úplné znění po změnách č. 1 až 5",
+  "web": "https://www.mestonachod.cz/urad/vystavba/up-obci/"
+ },
+ {
+  "obec": 547646,
+  "nazev": "Velké Poříčí",
+  "pdf": "https://www.mestonachod.cz/urad/vystavba/up-obci/prilohy/32_839214260.pdf",
+  "verze": "Územní plán Velké Poříčí, úplné znění po změnách č. 1 až 6 (účinné od 29. 12. 2025)",
+  "web": "https://www.mestonachod.cz/urad/vystavba/up-obci/"
  }
 ]

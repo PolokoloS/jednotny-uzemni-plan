@@ -16,7 +16,7 @@ Výsledek a přesnost zapíše do data/vykresy.json. build.py dlaždice zkopíru
 Spuštění: python scripts/vykresy.py [--obec 579891] [--limit-mb 100]
 Potřebuje: pymupdf, numpy, opencv-python-headless, pillow, pyproj.
 """
-import argparse, io, json, math, os, shutil, sys, tempfile, time, urllib.parse, urllib.request, zipfile, zlib
+import argparse, io, json, math, os, re, shutil, sys, tempfile, time, urllib.parse, urllib.request, zipfile, zlib
 
 import numpy as np
 import cv2
@@ -114,6 +114,13 @@ def obec_polygon(kod):
     return [np.array(r, float) for r in get(q)['features'][0]['geometry']['rings']]
 
 
+def ku_polygon(kody):
+    """Hranice katastrálních území (list výkresu, který kreslí jen část obce)."""
+    w = urllib.parse.quote(f'kod IN ({",".join(map(str, kody))})')
+    q = f'{RUIAN.replace("/12/", "/7/")}?where={w}&returnGeometry=true&outSR=5514&maxAllowableOffset=2&f=json'
+    return [np.array(r, float) for ft in get(q)['features'] for r in ft['geometry']['rings']]
+
+
 def maska_vykresu(img, F):
     hsv = cv2.cvtColor(img, cv2.COLOR_RGB2HSV)
     col = ((hsv[..., 1] > 45) | (hsv[..., 2] < 170)).astype(np.uint8)
@@ -129,8 +136,10 @@ def maska_vykresu(img, F):
     return out
 
 
-def hrube(img, m_papir, poly):
-    """Měřítko, otočení a posun, při kterých se maska výkresu nejvíc kryje s hranicí obce."""
+def hrube(img, m_papir, poly, otoceni=None, meritko=None):
+    """Měřítko, otočení a posun, při kterých se maska výkresu nejvíc kryje s hranicí obce.
+    `otoceni`: přibližné otočení výkresu na listu (stupně), když je velké (území položené na výšku listu);
+    `meritko`: známé měřítko výkresu, zkrátí hledání."""
     F = 4
     mask = maska_vykresu(img, F).astype(np.float32)
     A = np.fft.rfft2(mask)
@@ -161,19 +170,26 @@ def hrube(img, m_papir, poly):
 
     best = None
     # obvyklá měřítka a k tomu hustá řada po 10 % (list bez správné velikosti stránky má měřítko „lichá“)
-    for mer in sorted({1000, 2000, 2500, 2880, 4000, 5000, 7500, 10000, 15000, 20000, 25000} | {round(800 * 1.1 ** i) for i in range(38)}):
-        r = zkus(mer, 0)
-        if r and (best is None or r[0] > best[0]):
-            best = r
+    merita = [meritko] if meritko else sorted({1000, 2000, 2500, 2880, 4000, 5000, 7500, 10000, 15000, 20000, 25000} | {round(800 * 1.1 ** i) for i in range(38)})
+    for rot in (range(otoceni - 10, otoceni + 11, 2) if otoceni is not None else [0]):
+        for mer in merita:
+            r = zkus(mer, rot)
+            if r and (best is None or r[0] > best[0]):
+                best = r
     if best is None:
         raise RuntimeError('výkres se nevešel na žádné měřítko')
-    mer0 = best[1]
+    mer0, rot0 = best[1], best[2]
     for k in np.arange(0.94, 1.0601, 0.004):
-        r = zkus(mer0 * k, 0)
+        r = zkus(mer0 * k, rot0)
         if r and r[0] > best[0]:
             best = r
-    if best[0] < 0.93:                               # zkusit otočení (výkres orientovaný k severu, ne k síti S-JTSK)
-        for rot in range(-12, 13):
+    if otoceni is not None:                          # doladit otočení kolem nalezeného
+        for rot in np.arange(best[2] - 2, best[2] + 2.01, 0.5):
+            r = zkus(best[1], float(rot))
+            if r and r[0] > best[0]:
+                best = r
+    elif best[0] < 0.93:                             # zkusit otočení (výkres orientovaný k severu, ne k síti S-JTSK)
+        for rot in range(-25, 26):
             r = zkus(best[1], rot)
             if r and r[0] > best[0]:
                 best = r
@@ -189,6 +205,42 @@ def hrube(img, m_papir, poly):
     Aff[:, :2] = Minv / F
     Aff[:, 2] = -Minv @ np.array([ix + off[0], iy + off[1]]) + np.array([cx, cy])
     return Aff, float(iou), float(mer), float(rot)
+
+
+def geopdf(pdf, page_no, m_papir):
+    """Georeference z GeoPDF (/VP s /Measure /GEO): afinní transformace pixel rastru -> S-JTSK, nebo None.
+    Body GPTS bývají ve WGS84 i v zeměpisných souřadnicích S-JTSK, na rozdílu ~100 m nezáleží, dorovná to katastr."""
+    doc = fitz.open(pdf)
+    p = doc[page_no]
+    t, v = doc.xref_get_key(p.xref, 'VP')
+    if t == 'null':
+        return None
+    if t == 'xref':
+        v = doc.xref_object(int(v.split()[0]), compressed=True)
+    v = re.sub(r'/Measure\s+(\d+)\s+0\s+R', lambda m: doc.xref_object(int(m.group(1)), compressed=True), v)
+    nums = lambda txt: [float(x) for x in txt.split()]
+    best = None
+    for vp in v.split('/Viewport')[1:]:
+        b, g, l = (re.search(k + r'\s*\[([^\]]*)\]', vp) for k in ('/BBox', '/GPTS', '/LPTS'))
+        if not (b and g and l) or not g.group(1).strip():
+            continue
+        bb, gp, lp = nums(b.group(1)), nums(g.group(1)), nums(l.group(1))
+        area = abs((bb[2] - bb[0]) * (bb[3] - bb[1]))
+        if len(gp) >= 6 and len(gp) == len(lp) and (best is None or area > best[0]):
+            best = (area, bb, gp, lp)
+    if best is None:
+        return None
+    _, bb, gp, lp = best
+    T = Transformer.from_crs('EPSG:4326', KROVAK, always_xy=True)
+    pt = m_papir / 0.0254 * 72                          # bodů PDF na pixel rastru
+    mb = p.mediabox
+    uv, xy = [], []
+    for i in range(0, len(gp), 2):
+        X = bb[0] + lp[i] * (bb[2] - bb[0]); Y = bb[1] + lp[i + 1] * (bb[3] - bb[1])
+        uv.append([(X - mb.x0) / pt, (mb.y1 - Y) / pt, 1])
+        xy.append(T.transform(gp[i + 1], gp[i]))
+    sol, *_ = np.linalg.lstsq(np.array(uv), np.array(xy), rcond=None)
+    return sol.T
 
 
 # ---------------------------------------------------------------------------
@@ -216,7 +268,8 @@ def posuny(img, Aff, poly, px_m):
     x0, y0, x1, y1 = pts[:, 0].min(), pts[:, 1].min(), pts[:, 0].max(), pts[:, 1].max()
     Ainv = np.linalg.inv(np.vstack([Aff, [0, 0, 1]]))[:2]
     n = 512
-    half = n * px_m / 2
+    # katastr ČÚZK kreslí jen do měřítka kolem 1:5 000, okno proto nejvýš 1,3 m na pixel (hrubší výkres se zvětší)
+    half = n * min(px_m, 1.3) / 2
     nx = max(2, min(6, int((x1 - x0) / (4 * half)) + 2)); ny = max(2, min(5, int((y1 - y0) / (4 * half)) + 2))
     out = []
     for fx in np.linspace(0.1, 0.9, nx):
@@ -241,21 +294,34 @@ def posuny(img, Aff, poly, px_m):
 
 
 def zpresni(img, Aff, poly, px_m):
+    """Afinní transformace z posunů proti katastru. Okna s falešnou korelací (posun mimo ostatní) vyřadí.
+    Vrátí transformaci, zbytkové odchylky platných oken, počet oken, průběh a počet vyřazených oken."""
     hist = []
     for it in range(3):
         m = [r for r in posuny(img, Aff, poly, px_m) if r[4] > 0.06]
         if len(m) < 4:
-            return Aff, None, len(m), hist
+            return Aff, None, len(m), hist, 0
         src = np.array([[r[0], r[1]] for r in m]); dst = src - np.array([[r[2], r[3]] for r in m])
         Ainv = np.linalg.inv(np.vstack([Aff, [0, 0, 1]]))[:2]
         uv = np.c_[src, np.ones(len(src))] @ Ainv.T
-        sol, *_ = np.linalg.lstsq(np.c_[uv, np.ones(len(uv))], dst, rcond=None)
+        keep = np.ones(len(m), bool)
+        for _ in range(4):
+            sol, *_ = np.linalg.lstsq(np.c_[uv[keep], np.ones(keep.sum())], dst[keep], rcond=None)
+            e = np.hypot(*(np.c_[uv, np.ones(len(uv))] @ sol - dst).T)
+            new = e <= max(10.0, 3 * float(np.median(e[keep])))
+            if (new == keep).all() or new.sum() < 4:
+                break
+            keep = new
         Aff = sol.T
         hist.append([round(float(math.hypot(r[2], r[3])), 2) for r in m])
-    # kontrolní měření po zpřesnění: zbytkové posuny proti katastru
+    # kontrolní měření po zpřesnění: zbytkové posuny proti katastru; okno daleko mimo ostatní je falešná shoda
     m = [r for r in posuny(img, Aff, poly, px_m) if r[4] > 0.06]
     res = [math.hypot(r[2], r[3]) for r in m]
-    return Aff, res, len(m), hist
+    if not res:
+        return Aff, res, 0, hist, 0
+    lim = max(25.0, 5 * float(np.median(res)))
+    ok = [d for d in res if d <= lim]
+    return Aff, ok, len(m), hist, len(res) - len(ok)
 
 
 def pokryti(img, Aff, poly, F=4):
@@ -317,9 +383,46 @@ def dlazdice(img, Aff, poly, kod, out_dir):
                 rgb = cv2.remap(src, U, V, cv2.INTER_LINEAR, borderValue=(255, 255, 255))
                 d = os.path.join(out_dir, str(z), str(tx)); os.makedirs(d, exist_ok=True)
                 fn = os.path.join(d, f'{ty}.webp')
-                Image.fromarray(np.dstack([rgb, a])).save(fn, 'WEBP', quality=72, method=4)
+                tile = Image.fromarray(np.dstack([rgb, a]))
+                if os.path.exists(fn):           # dlaždici už začal list sousední části obce
+                    tile = Image.alpha_composite(Image.open(fn).convert('RGBA'), tile)
+                tile.save(fn, 'WEBP', quality=72, method=4)
                 n_t += 1; size += os.path.getsize(fn)
     return n_t, size, [mx0, my0, mx1, my1]
+
+
+def vlicuj(src, cache, poly):
+    """Jeden list výkresu: rastr, hrubé přiložení (případně GeoPDF), zpřesnění proti katastru a kontroly."""
+    pdf = stahni(src, cache)
+    strana = src.get('strana', 0)
+    img, m_papir = rastr(pdf, strana)
+    Aff, iou, mer, rot = hrube(img, m_papir, poly, src.get('otoceni'), src.get('meritko'))
+    print(f'   hrubě: IoU {iou:.3f}, měřítko 1:{mer:.0f}, otočení {rot}°', flush=True)
+    geo = geopdf(pdf, strana, m_papir) if iou < 0.9 else None
+    if geo is not None:
+        # hrubé přiložení na hranici nesedí, výkres má ale vlastní georeferenci (GeoPDF)
+        Aff = geo
+        mer = math.hypot(Aff[0, 0], Aff[1, 0]) / m_papir
+        rot = round(math.degrees(math.atan2(Aff[1, 0], Aff[0, 0])), 1)
+        print(f'   GeoPDF: měřítko 1:{mer:.0f}, otočení {rot}°', flush=True)
+    if mer > 6000:
+        # výkres v drobném měřítku (1:10 000): jemnější rastr, ať čáry pro katastr i dlaždice z16 mají kolem 1,3 m na pixel
+        # (velikost rastru hlídá strop v rastr())
+        img, m_hi = rastr(pdf, strana, DPI * min(4.0, mer / 5000))
+        Aff[:, :2] *= m_hi / m_papir
+        print(f'   jemnější rastr {img.shape[1]} × {img.shape[0]} px', flush=True)
+    px_m = math.hypot(Aff[0, 0], Aff[1, 0])
+    Aff, res, n_ok, hist, n_out = zpresni(img, Aff, poly, px_m)
+    if res is None or not res:
+        raise RuntimeError(f'katastr: málo oken s korelací ({n_ok})')
+    mx = max(res); rms = math.sqrt(sum(r * r for r in res) / len(res))
+    print(f'   katastr: {len(res)} oken, odchylka max {mx:.2f} m, RMS {rms:.2f} m, vyřazeno {n_out} (průběh {hist})', flush=True)
+    # překryv masky s hranicí je jen hrubá kontrola (bledé barvy maska nepozná);
+    # rozhoduje přesnost proti katastru a to, že výkres pokrývá skoro celé území
+    kryti = pokryti(img, Aff, poly)
+    print(f'   výkres pokrývá {kryti:.1%} území', flush=True)
+    ok = mx <= MAX_CHYBA and len(res) >= 4 and n_out <= 0.2 * (len(res) + n_out) and (iou >= 0.85 or kryti >= 0.97)
+    return {'img': img, 'Aff': Aff, 'poly': poly, 'iou': iou, 'mer': mer, 'rot': rot, 'res': res, 'n_out': n_out, 'kryti': kryti, 'ok': ok}
 
 
 def main():
@@ -339,44 +442,50 @@ def main():
             print(f'{z["nazev"]}: přeskočeno, dlaždice už mají {used:.0f} MB'); continue
         t = time.time()
         print(f'== {z["nazev"]} ({kod})', flush=True)
+        out_dir = os.path.join(ROOT, 'data', 'vykresy', str(kod))
         try:
-            pdf = stahni(z, kod)
-            img, m_papir = rastr(pdf, z.get('strana', 0))
-            poly = obec_polygon(kod)
-            Aff, iou, mer, rot = hrube(img, m_papir, poly)
-            print(f'   hrubě: IoU {iou:.3f}, měřítko 1:{mer:.0f}, otočení {rot}°', flush=True)
-            if mer > 6000:
-                # výkres v drobném měřítku (1:10 000): jemnější rastr, ať čáry pro katastr i dlaždice z16 mají kolem 1,3 m na pixel
-                img, m_hi = rastr(pdf, z.get('strana', 0), DPI * min(2.0, mer / 5000))
-                Aff[:, :2] *= m_hi / m_papir
-                print(f'   jemnější rastr {img.shape[1]} × {img.shape[0]} px', flush=True)
-            px_m = math.hypot(Aff[0, 0], Aff[1, 0])
-            Aff, res, n_ok, hist = zpresni(img, Aff, poly, px_m)
-            if res is None or not res:
-                raise RuntimeError(f'katastr: málo oken s korelací ({n_ok})')
-            mx = max(res); rms = math.sqrt(sum(r * r for r in res) / len(res))
-            print(f'   katastr: {len(res)} oken, odchylka max {mx:.2f} m, RMS {rms:.2f} m (průběh {hist})', flush=True)
-            # překryv masky s hranicí obce je jen hrubá kontrola (bledé barvy maska nepozná);
-            # rozhoduje přesnost proti katastru a to, že výkres pokrývá skoro celé území obce
-            kryti = pokryti(img, Aff, poly)
-            print(f'   výkres pokrývá {kryti:.1%} území obce', flush=True)
-            ok = mx <= MAX_CHYBA and len(res) >= 4 and (iou >= 0.85 or kryti >= 0.97)
-            out_dir = os.path.join(ROOT, 'data', 'vykresy', str(kod))
             if os.path.exists(out_dir):
                 shutil.rmtree(out_dir)
-            rec = {'obec': kod, 'nazev': z['nazev'], 'pdf': z['pdf'], 'zip': bool(z.get('zip')), 'verze': z['verze'], 'iou': round(iou, 4), 'meritko': round(mer),
-                   'otoceni': rot, 'oken': len(res), 'chyba_max_m': round(mx, 2), 'chyba_rms_m': round(rms, 2), 'pokryti': round(kryti, 3), 'prijato': ok,
-                   'transformace': [[round(v, 6) for v in r] for r in Aff.tolist()]}
+            # obec s výkresem rozděleným do víc PDF (casti): každý list se vlícuje na svá katastrální území
+            casti = z.get('casti') or [z]
+            vys, ext = [], None
+            for i, c in enumerate(casti):
+                if len(casti) > 1:
+                    print(f'   list: {c.get("nazev", i + 1)}', flush=True)
+                poly = ku_polygon(c['ku']) if c.get('ku') else obec_polygon(kod)
+                v = vlicuj(c, kod if len(casti) == 1 else f'{kod}_{i}', poly)
+                vys.append(v)
+                if not v['ok']:
+                    break
+                _, _, e = dlazdice(v.pop('img'), v['Aff'], v['poly'], kod, out_dir)
+                ext = e if ext is None else [min(ext[0], e[0]), min(ext[1], e[1]), max(ext[2], e[2]), max(ext[3], e[3])]
+            ok = len(vys) == len(casti) and all(v['ok'] for v in vys)
+            res = [r for v in vys for r in v['res']]
+            mx = max(res); rms = math.sqrt(sum(r * r for r in res) / len(res))
+            v0 = vys[0]
+            rec = {'obec': kod, 'nazev': z['nazev'], 'pdf': casti[0]['pdf'], 'zip': bool(casti[0].get('zip')), 'verze': z['verze'],
+                   'iou': round(min(v['iou'] for v in vys), 4), 'meritko': round(v0['mer']), 'otoceni': v0['rot'], 'oken': len(res),
+                   'vyrazeno_oken': sum(v['n_out'] for v in vys), 'chyba_max_m': round(mx, 2), 'chyba_rms_m': round(rms, 2),
+                   'pokryti': round(min(v['kryti'] for v in vys), 3), 'prijato': ok,
+                   'transformace': [[round(x, 6) for x in r] for r in v0['Aff'].tolist()]}
+            if len(casti) > 1:
+                rec['casti'] = [{'nazev': c.get('nazev'), 'pdf': c['pdf'], 'transformace': [[round(x, 6) for x in r] for r in v['Aff'].tolist()]}
+                                for c, v in zip(casti, vys)]
             if ok:
-                n_t, size, ext = dlazdice(img, Aff, poly, kod, out_dir)
-                rec.update({'dlazdic': n_t, 'kb': round(size / 1024), 'extent3857': [round(v) for v in ext], 'zoom': [min(ZOOMS), max(ZOOMS)]})
-                print(f'   dlaždice: {n_t}, {size / 1048576:.1f} MB, {time.time() - t:.0f} s', flush=True)
+                files = [os.path.join(r, f) for r, _, fs in os.walk(out_dir) for f in fs]
+                size = sum(os.path.getsize(f) for f in files)
+                rec.update({'dlazdic': len(files), 'kb': round(size / 1024), 'extent3857': [round(x) for x in ext], 'zoom': [min(ZOOMS), max(ZOOMS)]})
+                print(f'   dlaždice: {len(files)}, {size / 1048576:.1f} MB, {time.time() - t:.0f} s', flush=True)
             else:
+                if os.path.exists(out_dir):
+                    shutil.rmtree(out_dir)
                 print('   NEPŘIJATO: přesnost nebo překryv mimo limit', flush=True)
             meta[kod] = rec
         except Exception as e:
             import traceback; traceback.print_exc()
             print(f'   CHYBA: {e}', flush=True)
+            if os.path.exists(out_dir):
+                shutil.rmtree(out_dir)
             meta[kod] = {'obec': kod, 'nazev': z['nazev'], 'pdf': z['pdf'], 'verze': z['verze'], 'prijato': False, 'chyba': str(e)[:200]}
         # zapsat jen tuhle obec do aktuálního souboru, ať může běžet víc procesů naráz (každý s jinými obcemi)
         disk = {m['obec']: m for m in (json.load(open(meta_f, encoding='utf-8')) if os.path.exists(meta_f) else [])}
