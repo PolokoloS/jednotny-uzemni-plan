@@ -124,6 +124,44 @@ def ku_polygon(kody):
     return [np.array(r, float) for ft in get(q)['features'] for r in ft['geometry']['rings']]
 
 
+def pas_polygon(poly, ymin=None, ymax=None):
+    """Obec oříznutá vodorovným pásem souřadnic S-JTSK (list výkresu, který kreslí jen severní nebo jižní část obce)."""
+    def orez(ring, keep, cut):
+        out = []
+        for i in range(len(ring)):
+            a, b = ring[i - 1], ring[i]
+            ia, ib = keep(a), keep(b)
+            if ib:
+                if not ia:
+                    out.append(cut(a, b))
+                out.append(b)
+            elif ia:
+                out.append(cut(a, b))
+        return out
+    def cut_at(y0):
+        return lambda a, b: np.array([a[0] + (b[0] - a[0]) * (y0 - a[1]) / (b[1] - a[1]), y0])
+    res = []
+    for r in poly:
+        r = [np.array(p, float) for p in r]
+        if ymin is not None:
+            r = orez(r, lambda q: q[1] >= ymin, cut_at(ymin))
+        if ymax is not None and r:
+            r = orez(r, lambda q: q[1] <= ymax, cut_at(ymax))
+        if len(r) >= 3:
+            res.append(np.array(r))
+    return res
+
+
+def cast_polygon(kod, c):
+    """Území, které kreslí list: celá obec, vyjmenovaná katastrální území (`ku`) nebo pás (`pas` = [ymin, ymax])."""
+    if c.get('ku'):
+        return ku_polygon(c['ku'])
+    poly = obec_polygon(kod)
+    if c.get('pas'):
+        return pas_polygon(poly, *c['pas'])
+    return poly
+
+
 def maska_vykresu(img, F):
     hsv = cv2.cvtColor(img, cv2.COLOR_RGB2HSV)
     col = ((hsv[..., 1] > 45) | (hsv[..., 2] < 170)).astype(np.uint8)
@@ -415,15 +453,29 @@ def dlazdice(img, Aff, poly, kod, out_dir, kor=None):
     return n_t, size, [mx0, my0, mx1, my1]
 
 
+def vyrizni(img, src):
+    """Jen mapové pole listu (`vyrez` = [x0, y0, x1, y1] v podílech stránky), když se legenda nebo razítko dotýká mapy."""
+    v = src.get('vyrez')
+    if not v:
+        return img
+    h, w = img.shape[:2]
+    return np.ascontiguousarray(img[int(v[1] * h):int(v[3] * h), int(v[0] * w):int(v[2] * w)])
+
+
 def vlicuj(src, cache, poly):
     """Jeden list výkresu: rastr, hrubé přiložení (případně GeoPDF), zpřesnění proti katastru a kontroly."""
     pdf = stahni(src, cache)
     strana = src.get('strana', 0)
     img, m_papir = rastr(pdf, strana)
+    H0, W0 = img.shape[:2]
+    img = vyrizni(img, src)
     dpi = DPI                                    # rozlišení rastru pro dlaždice (uloží se kvůli přegenerování)
     Aff, iou, mer, rot = hrube(img, m_papir, poly, src.get('otoceni'), src.get('meritko'))
     print(f'   hrubě: IoU {iou:.3f}, měřítko 1:{mer:.0f}, otočení {rot}°', flush=True)
     geo = geopdf(pdf, strana, m_papir) if iou < 0.9 else None
+    if geo is not None and src.get('vyrez'):
+        # GeoPDF počítá s celou stránkou, výřez posouvá počátek pixelů
+        geo[:, 2] += geo[:, :2] @ np.array([int(src['vyrez'][0] * W0), int(src['vyrez'][1] * H0)], float)
     if geo is not None:
         # hrubé přiložení na hranici nesedí, výkres má ale vlastní georeferenci (GeoPDF)
         Aff = geo
@@ -434,6 +486,7 @@ def vlicuj(src, cache, poly):
         # výkres v drobném měřítku (1:10 000): jemnější rastr, ať čáry pro katastr i dlaždice z16 mají kolem 1,3 m na pixel
         # (velikost rastru hlídá strop v rastr())
         img, m_hi = rastr(pdf, strana, DPI * min(4.0, mer / 5000))
+        img = vyrizni(img, src)
         Aff[:, :2] *= m_hi / m_papir
         dpi = DPI * min(4.0, mer / 5000)
         print(f'   jemnější rastr {img.shape[1]} × {img.shape[0]} px', flush=True)
@@ -492,7 +545,8 @@ def jen_dlazdice(obce=None):
             # rastr ve stejném rozlišení jako při vlícování (u výkresů 1:10 000 jemnější)
             dpi = rec.get('dpi') or (DPI * min(4.0, rec['meritko'] / 5000) if rec.get('meritko', 0) > 6000 else DPI)
             img, _ = rastr(pdf, c.get('strana', 0), dpi)
-            poly = ku_polygon(c['ku']) if c.get('ku') else obec_polygon(kod)
+            img = vyrizni(img, c)
+            poly = cast_polygon(kod, c)
             _, _, e = dlazdice(img, Aff, poly, kod, out_dir, K)
             ext = e if ext is None else [min(ext[0], e[0]), min(ext[1], e[1]), max(ext[2], e[2]), max(ext[3], e[3])]
         files = [os.path.join(r, f) for r, _, fs in os.walk(out_dir) for f in fs]
@@ -533,7 +587,7 @@ def main():
             for i, c in enumerate(casti):
                 if len(casti) > 1:
                     print(f'   list: {c.get("nazev", i + 1)}', flush=True)
-                poly = ku_polygon(c['ku']) if c.get('ku') else obec_polygon(kod)
+                poly = cast_polygon(kod, c)
                 v = vlicuj(c, kod if len(casti) == 1 else f'{kod}_{i}', poly)
                 vys.append(v)
                 if not v['ok']:
