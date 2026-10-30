@@ -283,7 +283,7 @@ def probe_source(cfg, o):
                   probe_export(L, xy, image=True) if k == 'arcgisImage' else
                   probe_perobec(L, o) if k == 'arcgisPerObec' else
                   probe_tiles_obec(L, o, xy) if k == 'tilesPerObec' else
-                  probe_query(L['url'], ll) if k == 'arcgisVector' else
+                  probe_query(L['url'], ll, L.get('where')) if k == 'arcgisVector' else
                   probe_wms(L, xy, ll) if k == 'wms' else
                   probe_tilecache(L, xy) if k == 'tilecache' else False)
         except Exception:

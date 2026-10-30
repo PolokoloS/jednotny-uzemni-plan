@@ -4190,5 +4190,237 @@
     ]
    }
   ]
+ },
+ {
+  "kraj": 35,
+  "obec": 551953,
+  "searchText": "Vodňany",
+  "name": "Územní plán Vodňany, úplné znění po změně č. 2 (účinné od 31. 12. 2024)",
+  "from": "z hlavního výkresu územního plánu v mapové službě Jihočeského kraje (digitální ÚPD obcí)",
+  "obce": 1,
+  "attribution": "ÚP Vodňany © Jihočeský kraj",
+  "drawing": true,
+  "layers": [
+   {
+    "kind": "arcgisExport",
+    "url": "https://gis.kraj-jihocesky.cz/arcgis/rest/services/DMVS_upd/UP_Vodnany/MapServer",
+    "params": {
+     "layers": "show:0"
+    },
+    "extent": [
+     -779818,
+     -1147998,
+     -769991,
+     -1139731
+    ]
+   }
+  ]
+ },
+ {
+  "kraj": 35,
+  "obec": 546127,
+  "searchText": "Dačice",
+  "name": "Územní plán Dačice, úplné znění po změně č. 4 (účinné od 10. 6. 2025)",
+  "from": "z hlavního výkresu územního plánu v mapové službě Jihočeského kraje (digitální ÚPD obcí)",
+  "obce": 1,
+  "attribution": "ÚP Dačice © Jihočeský kraj",
+  "drawing": true,
+  "layers": [
+   {
+    "kind": "arcgisExport",
+    "url": "https://gis.kraj-jihocesky.cz/arcgis/rest/services/DMVS_upd/UP_Dacice/MapServer",
+    "params": {
+     "layers": "show:81"
+    },
+    "extent": [
+     -693350,
+     -1168585,
+     -678456,
+     -1156956
+    ]
+   }
+  ]
+ },
+ {
+  "kraj": 35,
+  "obec": 553131,
+  "searchText": "Soběslav",
+  "name": "Územní plán Soběslav, úplné znění po změnách č. 1 až 3 (účinné od 6. 10. 2024)",
+  "from": "z hlavního výkresu územního plánu v mapové službě Jihočeského kraje (digitální ÚPD obcí)",
+  "obce": 1,
+  "attribution": "ÚP Soběslav © Jihočeský kraj",
+  "drawing": true,
+  "layers": [
+   {
+    "kind": "arcgisExport",
+    "url": "https://gis.kraj-jihocesky.cz/arcgis/rest/services/DMVS_upd/UP_Sobeslav/MapServer",
+    "params": {
+     "layers": "show:33"
+    },
+    "extent": [
+     -738483,
+     -1141425,
+     -731142,
+     -1133640
+    ]
+   }
+  ]
+ },
+ {
+  "kraj": 35,
+  "obec": 553271,
+  "searchText": "Veselí nad Lužnicí",
+  "name": "Územní plán Veselí nad Lužnicí, úplné znění po změně č. 7b (účinné od 8. 2. 2025)",
+  "from": "z hlavního výkresu územního plánu v mapové službě Jihočeského kraje (digitální ÚPD obcí)",
+  "obce": 1,
+  "attribution": "ÚP Veselí nad Lužnicí © Jihočeský kraj",
+  "drawing": true,
+  "layers": [
+   {
+    "kind": "arcgisExport",
+    "url": "https://gis.kraj-jihocesky.cz/arcgis/rest/services/DMVS_upd/UP_Veseli_nLuznici/MapServer",
+    "params": {
+     "layers": "show:66"
+    },
+    "extent": [
+     -740988,
+     -1149868,
+     -733052,
+     -1142642
+    ]
+   }
+  ]
+ },
+ {
+  "kraj": 35,
+  "obec": 544868,
+  "searchText": "Nové Hrady",
+  "name": "Územní plán Nové Hrady, úplné znění po změně č. 1 (účinné od 20. 6. 2026)",
+  "from": "z hlavního výkresu územního plánu v mapové službě Jihočeského kraje (digitální ÚPD obcí)",
+  "obce": 1,
+  "attribution": "ÚP Nové Hrady © Jihočeský kraj",
+  "drawing": true,
+  "layers": [
+   {
+    "kind": "arcgisExport",
+    "url": "https://gis.kraj-jihocesky.cz/arcgis/rest/services/DMVS_upd/UP_Nove_Hrady/MapServer",
+    "params": {
+     "layers": "show:16"
+    },
+    "extent": [
+     -739475,
+     -1196341,
+     -726712,
+     -1180654
+    ]
+   }
+  ]
+ },
+ {
+  "kraj": 86,
+  "name": "výkresy územních plánů obcí v GObci (Královéhradecký kraj)",
+  "from": "z výkresů územních plánů, které obce zveřejňují v GObci",
+  "obce": 1,
+  "attribution": "Výkresy ÚP obcí © obce (GObec)",
+  "drawing": true,
+  "layers": [
+   {
+    "kind": "tilesPerObec",
+    "crs": "EPSG:3857",
+    "minZoom": 12.6,
+    "minZoomData": 13,
+    "maxZoom": 18,
+    "extent": [
+     -630736,
+     -1053698,
+     -619379,
+     -1044840
+    ],
+    "obce": {
+     "576859": [
+      "https://{a-c}.tiles.gobec.cz/v2/591825c23e1908faf9356ed385030ef3/{z}/{x}/{y}.png",
+      "Územní plán Týniště nad Orlicí, úplné znění po změně č. 2"
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "kraj": 60,
+  "name": "výkresy územních plánů obcí v GObci (Ústecký kraj)",
+  "from": "z výkresů územních plánů, které obce zveřejňují v GObci",
+  "obce": 1,
+  "attribution": "Výkresy ÚP obcí © obce (GObec)",
+  "drawing": true,
+  "layers": [
+   {
+    "kind": "tilesPerObec",
+    "crs": "EPSG:3857",
+    "minZoom": 12.6,
+    "minZoomData": 13,
+    "maxZoom": 18,
+    "extent": [
+     -775627,
+     -1015220,
+     -764745,
+     -1003545
+    ],
+    "obce": {
+     "566551": [
+      "https://{a-c}.tiles.gobec.cz/v2/8fc7dd45a4ed3e06d7e4b797c915f269/{z}/{x}/{y}.png",
+      "Územní plán Peruc (účinný od 25. 6. 2019)"
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "kraj": 60,
+  "name": "územní plány Loun, Jílového a Benešova nad Ploučnicí v jednotném standardu",
+  "from": "z vektorových dat územních plánů v územně analytických podkladech Ústeckého kraje",
+  "obce": 3,
+  "attribution": "ÚAP © Ústecký kraj",
+  "only": [
+   565971,
+   562564,
+   562351
+  ],
+  "layers": [
+   {
+    "kind": "arcgisVector",
+    "minZoom": 13,
+    "url": "https://ags.kr-ustecky.cz/arcgis/rest/services/UAP/uap_projekt/MapServer/4",
+    "where": "up_kod IN (37034243,98852174) OR POSKYT='Město Benešov nad Ploučnicí'",
+    "idField": "OBJECTID",
+    "vector": {
+     "code": "typ",
+     "name": "NAZEV_JEVU",
+     "status": "STAV_ID",
+     "codes": "std"
+    },
+    "extentCrs": "EPSG:3857",
+    "extent": [
+     1530491,
+     6499450,
+     1595364,
+     6588390
+    ]
+   }
+  ],
+  "info": [
+   {
+    "url": "https://ags.kr-ustecky.cz/arcgis/rest/services/UAP/uap_projekt/MapServer/4",
+    "where": "up_kod IN (37034243,98852174) OR POSKYT='Město Benešov nad Ploučnicí'",
+    "codes": "std",
+    "dateLabel": "Data aktualizována",
+    "fields": {
+     "code": "typ",
+     "name": "NAZEV_JEVU",
+     "status": "STAV_ID",
+     "date": "AKTUAL",
+     "author": "POSKYT"
+    }
+   }
+  ]
  }
 ]
