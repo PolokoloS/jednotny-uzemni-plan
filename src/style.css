@@ -291,6 +291,8 @@ a { color: var(--blueprint); text-underline-offset: 2px; }
 }
 .footer .ratio { font-weight: 650; color: var(--ink); white-space: nowrap; }
 .attrib { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+/* celá atribuce po najetí myší nebo klepnutí (jinak je zkrácená do jednoho řádku) */
+.attrib:hover, .attrib:focus-within, .attrib:active { white-space: normal; overflow: visible; }
 .attrib a { color: inherit; }
 #scale .ol-scale-line { position: static; background: none; padding: 0; }
 #scale .ol-scale-line-inner { border: 1.5px solid var(--ink); border-top: 0; color: var(--ink); font-size: 11px; font-weight: 600; text-align: center; margin: 0; }
@@ -334,7 +336,16 @@ a { color: var(--blueprint); text-underline-offset: 2px; }
 .tour p { margin: 0; font-size: 15.5px; line-height: 1.45; }
 .tour-nav { display: flex; gap: 8px; align-items: center; justify-content: flex-end; margin-top: 12px; }
 .tour-nav .icon-btn { margin-left: 4px; }
-.tour-on .legend, .tour-on .hint { display: none; }
+.tour-on .hint { display: none; }
+.tour-on:not(.cov-on) .legend { display: none; }
+/* v kroku s mapou pokrytí je vidět legenda s barvami, panel prohlídky proto vpravo */
+@media (min-width: 761px) {
+  .tour-on.cov-on .tour { left: auto; right: calc(64px + var(--gap) * 2); transform: none; width: min(460px, calc(100% - var(--panel-w) - 400px)); }
+}
+.tour-qr { display: flex; align-items: center; gap: 14px; margin-top: 12px; }
+.tour-qr svg { width: 136px; height: 136px; flex: none; background: #fff; padding: 4px; border-radius: 4px; }
+.tour-qr span { font-size: 15px; font-weight: 650; word-break: break-all; }
+img.sw { object-fit: contain; background: none; border: 0; }
 
 /* ---------- QR kód ---------- */
 #qrDlg { width: min(420px, calc(100vw - 32px)); }
@@ -384,12 +395,16 @@ dialog::backdrop { background: var(--veil); }
     padding-bottom: env(safe-area-inset-bottom, 0px);
   }
   .sheet[data-state="min"] { overflow: hidden; }
-  .sheet-handle { display: grid; place-items: center; position: sticky; top: 0; z-index: 2; height: 26px; background: var(--sheet); border: 0; width: 100%; }
+  .sheet-handle { display: grid; place-items: center; position: sticky; top: 0; z-index: 2; height: 30px; background: var(--sheet); border: 0; width: 100%; touch-action: none; cursor: grab; }
+  .sheet-drag .sheet { transition: none; }
   .sheet-handle span { width: 44px; height: 5px; border-radius: 3px; background: var(--rule); }
   .topbar { left: max(var(--gap), env(safe-area-inset-left, 0px)); right: max(var(--gap), env(safe-area-inset-right, 0px)); top: calc(var(--top-h, 118px) + env(safe-area-inset-top, 0px)); flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
   .topbar::-webkit-scrollbar { display: none; }
   .intents { flex-wrap: nowrap; }
-  .intents-label { display: none; }
+  .intents-label { padding: 0 4px 0 6px; font-size: 12.5px; }
+  .chip { height: 40px; }
+  /* řada voleb se posouvá do strany: okraj vpravo slábne, ať je vidět, že pokračuje */
+  .topbar { -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 28px), transparent); mask-image: linear-gradient(to right, #000 calc(100% - 28px), transparent); padding-right: 24px; }
   .plan-toggle { flex: none; height: 42px; }
   .controls { top: calc(var(--top-h, 118px) + 56px + env(safe-area-inset-top, 0px)); }
   .pop { right: 60px; top: calc(var(--top-h, 118px) + 56px + env(safe-area-inset-top, 0px)); width: min(290px, calc(100vw - 76px)); }
@@ -407,7 +422,11 @@ dialog::backdrop { background: var(--veil); }
   .example b { font-size: 13px; }
   /* sloupec ovládání: menší tlačítka, ať se vejde nad spodní kartu */
   .controls { gap: 4px; }
-  .ctl { width: 40px; height: 40px; }
+  .ctl { width: 44px; height: 44px; }
+  #qrBtn { display: none; }
+  .icon-btn { min-width: 40px; min-height: 40px; }
+  .tour-on .legend { display: none; }
+  .tour-qr svg { width: 110px; height: 110px; }
   .tour { left: var(--gap); right: var(--gap); width: auto; transform: none; bottom: calc(var(--sheet-h, 212px) + 10px); padding: 12px 14px 10px; }
   .tour h3 { font-size: 18px; }
   .tour p { font-size: 14px; }

@@ -15,6 +15,7 @@ const PLACES = [
   { name: 'Hradec Králové, nový plán města', hash: 'mapa=16.20/50.20918/15.83272&bod=50.209180,15.832720', title: /Výkres územního plánu/ },
   { name: 'Slatiňany, plochy ORP Chrudim', hash: 'mapa=17.00/49.92130/15.81370&bod=49.921300,15.813700', title: /Městská zástavba/ },
   { name: 'Ústí nad Orlicí, výkres z PDF', hash: 'mapa=17.00/49.97390/16.39360&bod=49.973900,16.393600', title: /Výkres územního plánu z PDF/ },
+  { name: 'Vyškov, výkres z PDF na otočeném listu', hash: 'mapa=17.00/49.27750/16.99900&bod=49.277500,16.999000', title: /Výkres územního plánu z PDF/ },
   { name: 'Blatec, obec bez plánu v mapě', hash: 'mapa=16.00/49.52834/17.23857&bod=49.528340,17.238570', title: /jen v dokumentech/ }
 ];
 
