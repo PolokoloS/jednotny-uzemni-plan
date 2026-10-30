@@ -13,15 +13,20 @@ Zadání: zbylých 1 658 obcí bez plánu v mapě (medián 438 obyvatel).
 4. Do shrnutí návrh e-mailu krajskému úřadu Olomouckého kraje (nic neposílat).
 5. Přepočet pokrytí, čísla na webu, README, POSTUP.md, smoke test. Na konci PR `prace3` → `main`, merge až na „nasaď“.
 
-## Fáze 3: stav
+## Fáze 3: stav (průběžně, 30. 10. 2026 odpoledne)
 
-- [x] PR #3 mergnutý do `main` (cd7cd906), produkce se nasazuje.
-- [x] Produkce ověřená (4 600 obcí, dlaždice i obce.json se načítají).
-- [~] Dlaždice: WebP kvalita 65 a method 6 (asi −10 %, AVIF ani paleta nepomohly), okrajové proužky pod 0,2 % se neukládají, prázdné dlaždice mimo obec nevznikají; limit 500 MB. `vykresy.py --jen-dlazdice` přegeneruje dlaždice z uložené transformace (běží pro všech 39). Nově korekce polynomem 2. stupně, když afinní transformace nestačí (zkouším na Železném Brodě).
-- [~] Připravené výkresy: Klášterec (vrácený), Duchcov, Červený Kostelec, Hronov, Úpice, Česká Skalice, Police n. M., Velké Poříčí (běží).
-- [~] Průzkum zdrojů pro zbylé obce: 7 subagentů, zadání `scratchpad/f3/ZADANI.md`, cíle `scratchpad/f3_cile.csv`, výstupy `scratchpad/f3/*.csv` (uk_kv, jmk, olk, stc_pk, lk_khk, jc, evidence_x).
-- [~] Evidence: `stav_up.py` bere obec se změnami bez původního plánu jako s plánem (kromě změn starých ÚPO/ÚPnSÚ/ÚPM před rokem 2023), `--recheck` běží. Texty karty, legendy a hledání u obcí bez plánu v evidenci jsou opatrné („Plán v evidenci nenalezen“, evidence nemusí být úplná, odkaz na web obce).
-- [ ] Přepočet, čísla, smoke test, PR.
+- [x] PR #3 mergnutý do `main` (cd7cd906), produkce ověřená (4 600 obcí).
+- [x] Dlaždice: WebP kvalita 65, method 4, proužky pod 0,2 % se neukládají, limit 500 MB. Všech 39 starých výkresů přegenerováno (asi −7 %). Kontrola `scratchpad/check_vykresy.py`: 50 přijatých výkresů, 106,8 MB, bez rozporů.
+- [x] Připravené výkresy přijaté: Klášterec n. O., Duchcov, Červený Kostelec, Úpice, Česká Skalice, Police n. M., Velké Poříčí, Dubí (2 listy, `pas`). Z fronty zatím Řevnice, Moravany, Štěpánov.
+- [ ] Krupka nepřijatá: severní list 5,56 m (jedno okno, místní odchylka podkladu, polynom nepomůže).
+- [~] Hronov: legenda zasahuje do obdélníku mapy, výřez uřízl východní cíp. Nový parametr `zakryj` (vybílené obdélníky), hrubé přiložení teď IoU 0,994 při 1:5000; Malá Čermná je vložený výřez v rohu (druhá část `casti`). Běží `vykresy.py --obec 574082` (log `scratchpad/f3_hronov.log`).
+- [~] Služby v `regionalni_mozaiky.json` (zatím neověřené kliknutím): 56 obcí z DMVS_upd Jihočeského kraje (po obcích, ořez hranicí obce), GObec Zlaté Hory (úplné znění po Z2), WMS Drahany.
+- [~] PDF fronta: `scratchpad/f3_import.py` přidal ~90 obcí (ORP Šlapanice, Olomoucký kraj z webů obcí a archivu kraje, STČ/PK, JČ). Běží `bash scratchpad/run_fronta.sh a 2` (logy `scratchpad/f3/run_a_*.log`). Chyby k opakování (smazat jejich záznam z `vykresy.json` a pustit znovu): Modřice (špatné měřítko, teď pomůže druhý pokus), Horní Bříza (server resetuje spojení), Bílovice n. S. (DNS).
+- [ ] Vícelistové: Radhostice (`pas`, ve frontě), Pozořice (listy se nedělí vodorovně, potřebuje ořez rámem listu), Chotěšov (2 listy + výřezy), Hlubočky (5 listů, otočené).
+- [~] Evidence: kód hotový (`data/overeni_planu.json` → `obce.json` pole 12; karta, nápověda, kategorie „Platný plán v evidenci nenalezen“, u staršího plánu „Starý plán skončil koncem roku 2022“). Chybí data: sestavit z `scratchpad/f3/evidence_x.csv` (zatím 110 obcí, všechny bez plánu) a z řádků `neplatny` v CSV průzkumu (Boudy, Myslín, Němčice, Podolí 583634, Prštice, Kovalovice, Ponětovice).
+- [x] `vykresy.py`: opakované stahování při výpadku, druhý pokus s měřítkem z textu listu (pak 1:5000 a 1:10 000), střídavé doladění měřítka a otočení, `zakryj`.
+- [ ] Agenti průzkumu (ÚK+KV, JMK, OLK, STČ+PK, LK+KHK, evidence) mohou ještě dopisovat CSV: znovu `f3_import.py` a `add_f3_svc.py`, pak fronta.
+- [ ] Přepočet pokrytí, build, ověření kliknutím, README, smoke test, commit dlaždic po `check_vykresy.py`, PR `prace3` → `main`, návrh e-mailu pro Olomoucký kraj do shrnutí.
 
 ## Hotovo
 

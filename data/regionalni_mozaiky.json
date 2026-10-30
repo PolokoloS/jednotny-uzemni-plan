@@ -4422,5 +4422,1463 @@
     }
    }
   ]
+ },
+ {
+  "kraj": 35,
+  "obec": 544884,
+  "searchText": "Olešnice",
+  "name": "Územní plán Olešnice, úplné znění po změně č. 3 (účinné od 22. 10. 2025)",
+  "from": "z hlavního výkresu územního plánu v mapové službě Jihočeského kraje (digitální ÚPD obcí)",
+  "obce": 1,
+  "attribution": "ÚP Olešnice © Jihočeský kraj",
+  "drawing": true,
+  "layers": [
+   {
+    "kind": "arcgisExport",
+    "url": "https://gis.kraj-jihocesky.cz/arcgis/rest/services/DMVS_upd/UP_Olesnice/MapServer",
+    "params": {
+     "layers": "show:33"
+    },
+    "extent": [
+     -743473,
+     -1186681,
+     -736452,
+     -1179909
+    ]
+   }
+  ]
+ },
+ {
+  "kraj": 35,
+  "obec": 546097,
+  "searchText": "Český Rudolec",
+  "name": "Územní plán Český Rudolec (účinný od 15. 12. 2018)",
+  "from": "z hlavního výkresu územního plánu v mapové službě Jihočeského kraje (digitální ÚPD obcí)",
+  "obce": 1,
+  "attribution": "ÚP Český Rudolec © Jihočeský kraj",
+  "drawing": true,
+  "layers": [
+   {
+    "kind": "arcgisExport",
+    "url": "https://gis.kraj-jihocesky.cz/arcgis/rest/services/DMVS_upd/UP_CeskyRudolec/MapServer",
+    "params": {
+     "layers": "show:60"
+    },
+    "extent": [
+     -701675,
+     -1169236,
+     -690149,
+     -1157503
+    ]
+   }
+  ]
+ },
+ {
+  "kraj": 35,
+  "obec": 545414,
+  "searchText": "Besednice",
+  "name": "Územní plán Besednice, úplné znění po změně č. 4 (účinné od 17. 6. 2025)",
+  "from": "z hlavního výkresu územního plánu v mapové službě Jihočeského kraje (digitální ÚPD obcí)",
+  "obce": 1,
+  "attribution": "ÚP Besednice © Jihočeský kraj",
+  "drawing": true,
+  "layers": [
+   {
+    "kind": "arcgisExport",
+    "url": "https://gis.kraj-jihocesky.cz/arcgis/rest/services/DMVS_upd/UP_Besednice/MapServer",
+    "params": {
+     "layers": "show:21"
+    },
+    "extent": [
+     -756090,
+     -1190131,
+     -749627,
+     -1184872
+    ]
+   }
+  ]
+ },
+ {
+  "kraj": 35,
+  "obec": 553239,
+  "searchText": "Tučapy",
+  "name": "Územní plán Tučapy, úplné znění po změně č. 3 (účinné od 17. 3. 2021)",
+  "from": "z hlavního výkresu územního plánu v mapové službě Jihočeského kraje (digitální ÚPD obcí)",
+  "obce": 1,
+  "attribution": "ÚP Tučapy © Jihočeský kraj",
+  "drawing": true,
+  "layers": [
+   {
+    "kind": "arcgisExport",
+    "url": "https://gis.kraj-jihocesky.cz/arcgis/rest/services/DMVS_upd/UP_Tucapy/MapServer",
+    "params": {
+     "layers": "show:28"
+    },
+    "extent": [
+     -730037,
+     -1137016,
+     -724463,
+     -1130681
+    ]
+   }
+  ]
+ },
+ {
+  "kraj": 35,
+  "obec": 549495,
+  "searchText": "Kluky",
+  "name": "Územní plán Kluky, úplné znění po změně č. 1 (účinné od 8. 12. 2020)",
+  "from": "z hlavního výkresu územního plánu v mapové službě Jihočeského kraje (digitální ÚPD obcí)",
+  "obce": 1,
+  "attribution": "ÚP Kluky © Jihočeský kraj",
+  "drawing": true,
+  "layers": [
+   {
+    "kind": "arcgisExport",
+    "url": "https://gis.kraj-jihocesky.cz/arcgis/rest/services/DMVS_upd/UP_Kluky/MapServer",
+    "params": {
+     "layers": "show:21"
+    },
+    "extent": [
+     -769495,
+     -1128945,
+     -764291,
+     -1123654
+    ]
+   }
+  ]
+ },
+ {
+  "kraj": 35,
+  "obec": 545660,
+  "searchText": "Omlenice",
+  "name": "Územní plán Omlenice (účinný od 14. 6. 2014)",
+  "from": "z hlavního výkresu územního plánu v mapové službě Jihočeského kraje (digitální ÚPD obcí)",
+  "obce": 1,
+  "attribution": "ÚP Omlenice © Jihočeský kraj",
+  "drawing": true,
+  "layers": [
+   {
+    "kind": "arcgisExport",
+    "url": "https://gis.kraj-jihocesky.cz/arcgis/rest/services/DMVS_upd/UP_Omlenice/MapServer",
+    "params": {
+     "layers": "show:6"
+    },
+    "extent": [
+     -764841,
+     -1195350,
+     -759183,
+     -1190705
+    ]
+   }
+  ]
+ },
+ {
+  "kraj": 35,
+  "obec": 549801,
+  "searchText": "Putim",
+  "name": "Územní plán Putim (účinný od 28. 12. 2018)",
+  "from": "z hlavního výkresu územního plánu v mapové službě Jihočeského kraje (digitální ÚPD obcí)",
+  "obce": 1,
+  "attribution": "ÚP Putim © Jihočeský kraj",
+  "drawing": true,
+  "layers": [
+   {
+    "kind": "arcgisExport",
+    "url": "https://gis.kraj-jihocesky.cz/arcgis/rest/services/DMVS_upd/UP_Putim/MapServer",
+    "params": {
+     "layers": "show:4"
+    },
+    "extent": [
+     -779598,
+     -1133188,
+     -774523,
+     -1128814
+    ]
+   }
+  ]
+ },
+ {
+  "kraj": 35,
+  "obec": 553077,
+  "searchText": "Skalice",
+  "name": "Územní plán Skalice, úplné znění po změně č. 2 (účinné od 10. 9. 2024)",
+  "from": "z hlavního výkresu územního plánu v mapové službě Jihočeského kraje (digitální ÚPD obcí)",
+  "obce": 1,
+  "attribution": "ÚP Skalice © Jihočeský kraj",
+  "drawing": true,
+  "layers": [
+   {
+    "kind": "arcgisExport",
+    "url": "https://gis.kraj-jihocesky.cz/arcgis/rest/services/DMVS_upd/UP_Skalice/MapServer",
+    "params": {
+     "layers": "show:14"
+    },
+    "extent": [
+     -739480,
+     -1134900,
+     -732796,
+     -1129360
+    ]
+   }
+  ]
+ },
+ {
+  "kraj": 35,
+  "obec": 551333,
+  "searchText": "Libějovice",
+  "name": "Územní plán Libějovice (účinný od 20. 8. 2015)",
+  "from": "z hlavního výkresu územního plánu v mapové službě Jihočeského kraje (digitální ÚPD obcí)",
+  "obce": 1,
+  "attribution": "ÚP Libějovice © Jihočeský kraj",
+  "drawing": true,
+  "layers": [
+   {
+    "kind": "arcgisExport",
+    "url": "https://gis.kraj-jihocesky.cz/arcgis/rest/services/DMVS_upd/UP_Libejovice/MapServer",
+    "params": {
+     "layers": "show:0"
+    },
+    "extent": [
+     -775963,
+     -1150765,
+     -770247,
+     -1146928
+    ]
+   }
+  ]
+ },
+ {
+  "kraj": 35,
+  "obec": 550965,
+  "searchText": "Číčenice",
+  "name": "Územní plán Číčenice, úplné znění po změnách č. 1 a 3 (účinné od 22. 4. 2021)",
+  "from": "z hlavního výkresu územního plánu v mapové službě Jihočeského kraje (digitální ÚPD obcí)",
+  "obce": 1,
+  "attribution": "ÚP Číčenice © Jihočeský kraj",
+  "drawing": true,
+  "layers": [
+   {
+    "kind": "arcgisExport",
+    "url": "https://gis.kraj-jihocesky.cz/arcgis/rest/services/DMVS_upd/UP_Cicenice/MapServer",
+    "params": {
+     "layers": "show:20"
+    },
+    "extent": [
+     -773066,
+     -1147264,
+     -767114,
+     -1142376
+    ]
+   }
+  ]
+ },
+ {
+  "kraj": 35,
+  "obec": 545643,
+  "searchText": "Netřebice",
+  "name": "Územní plán Netřebice, úplné znění po změně č. 1 (účinné od 8. 4. 2025)",
+  "from": "z hlavního výkresu územního plánu v mapové službě Jihočeského kraje (digitální ÚPD obcí)",
+  "obce": 1,
+  "attribution": "ÚP Netřebice © Jihočeský kraj",
+  "drawing": true,
+  "layers": [
+   {
+    "kind": "arcgisExport",
+    "url": "https://gis.kraj-jihocesky.cz/arcgis/rest/services/DMVS_upd/UP_Netrebice/MapServer",
+    "params": {
+     "layers": "show:14"
+    },
+    "extent": [
+     -762911,
+     -1188407,
+     -756467,
+     -1183371
+    ]
+   }
+  ]
+ },
+ {
+  "kraj": 35,
+  "obec": 507717,
+  "searchText": "Peč",
+  "name": "Územní plán Peč, úplné znění po změně č. 1 (účinné od 31. 10. 2023)",
+  "from": "z hlavního výkresu územního plánu v mapové službě Jihočeského kraje (digitální ÚPD obcí)",
+  "obce": 1,
+  "attribution": "ÚP Peč © Jihočeský kraj",
+  "drawing": true,
+  "layers": [
+   {
+    "kind": "arcgisExport",
+    "url": "https://gis.kraj-jihocesky.cz/arcgis/rest/services/DMVS_upd/UP_Pec/MapServer",
+    "params": {
+     "layers": "show:15"
+    },
+    "extent": [
+     -692697,
+     -1167953,
+     -684611,
+     -1162875
+    ]
+   }
+  ]
+ },
+ {
+  "kraj": 35,
+  "obec": 552721,
+  "searchText": "Myslkovice",
+  "name": "Územní plán Myslkovice, právní stav po změně č. 1 (účinné od 27. 6. 2017)",
+  "from": "z hlavního výkresu územního plánu v mapové službě Jihočeského kraje (digitální ÚPD obcí)",
+  "obce": 1,
+  "attribution": "ÚP Myslkovice © Jihočeský kraj",
+  "drawing": true,
+  "layers": [
+   {
+    "kind": "arcgisExport",
+    "url": "https://gis.kraj-jihocesky.cz/arcgis/rest/services/DMVS_upd/UP_Myslkovice/MapServer",
+    "params": {
+     "layers": "show:13"
+    },
+    "extent": [
+     -732664,
+     -1134652,
+     -729270,
+     -1131795
+    ]
+   }
+  ]
+ },
+ {
+  "kraj": 35,
+  "obec": 551139,
+  "searchText": "Chelčice",
+  "name": "Územní plán Chelčice, úplné znění po změnách č. 1 až 4 (účinné od 19. 6. 2020)",
+  "from": "z hlavního výkresu územního plánu v mapové službě Jihočeského kraje (digitální ÚPD obcí)",
+  "obce": 1,
+  "attribution": "ÚP Chelčice © Jihočeský kraj",
+  "drawing": true,
+  "layers": [
+   {
+    "kind": "arcgisExport",
+    "url": "https://gis.kraj-jihocesky.cz/arcgis/rest/services/DMVS_upd/UP_Chelcice/MapServer",
+    "params": {
+     "layers": "show:24"
+    },
+    "extent": [
+     -778879,
+     -1148543,
+     -774441,
+     -1145893
+    ]
+   }
+  ]
+ },
+ {
+  "kraj": 35,
+  "obec": 551538,
+  "searchText": "Střítež",
+  "name": "Územní plán Střítež, úplné znění po změně č. 2 (účinné od 4. 7. 2025)",
+  "from": "z hlavního výkresu územního plánu v mapové službě Jihočeského kraje (digitální ÚPD obcí)",
+  "obce": 1,
+  "attribution": "ÚP Střítež © Jihočeský kraj",
+  "drawing": true,
+  "layers": [
+   {
+    "kind": "arcgisExport",
+    "url": "https://gis.kraj-jihocesky.cz/arcgis/rest/services/DMVS_upd/UP_Stritez/MapServer",
+    "params": {
+     "layers": "show:22"
+    },
+    "extent": [
+     -762705,
+     -1191819,
+     -758113,
+     -1186836
+    ]
+   }
+  ]
+ },
+ {
+  "kraj": 35,
+  "obec": 551015,
+  "searchText": "Drahonice",
+  "name": "Územní plán obce Drahonice, úplné znění po změně č. 1 (účinné od 26. 3. 2020)",
+  "from": "z hlavního výkresu územního plánu v mapové službě Jihočeského kraje (digitální ÚPD obcí)",
+  "obce": 1,
+  "attribution": "ÚP Drahonice © Jihočeský kraj",
+  "drawing": true,
+  "layers": [
+   {
+    "kind": "arcgisExport",
+    "url": "https://gis.kraj-jihocesky.cz/arcgis/rest/services/DMVS_upd/UP_Drahonice/MapServer",
+    "params": {
+     "layers": "show:14"
+    },
+    "extent": [
+     -783238,
+     -1140610,
+     -777569,
+     -1135107
+    ]
+   }
+  ]
+ },
+ {
+  "kraj": 35,
+  "obec": 553409,
+  "searchText": "Zvěrotice",
+  "name": "Územní plán Zvěrotice (účinný od 10. 5. 2023)",
+  "from": "z hlavního výkresu územního plánu v mapové službě Jihočeského kraje (digitální ÚPD obcí)",
+  "obce": 1,
+  "attribution": "ÚP Zvěrotice © Jihočeský kraj",
+  "drawing": true,
+  "layers": [
+   {
+    "kind": "arcgisExport",
+    "url": "https://gis.kraj-jihocesky.cz/arcgis/rest/services/DMVS_upd/UP_Zverotice/MapServer",
+    "params": {
+     "layers": "show:1"
+    },
+    "extent": [
+     -733614,
+     -1137411,
+     -729193,
+     -1134627
+    ]
+   }
+  ]
+ },
+ {
+  "kraj": 35,
+  "obec": 552143,
+  "searchText": "Budislav",
+  "name": "Územní plán Budislav (účinný od 11. 7. 2009)",
+  "from": "z hlavního výkresu územního plánu v mapové službě Jihočeského kraje (digitální ÚPD obcí)",
+  "obce": 1,
+  "attribution": "ÚP Budislav © Jihočeský kraj",
+  "drawing": true,
+  "layers": [
+   {
+    "kind": "arcgisExport",
+    "url": "https://gis.kraj-jihocesky.cz/arcgis/rest/services/DMVS_upd/UP_Budislav/MapServer",
+    "params": {
+     "layers": "show:0"
+    },
+    "extent": [
+     -726057,
+     -1137863,
+     -722213,
+     -1132449
+    ]
+   }
+  ]
+ },
+ {
+  "kraj": 35,
+  "obec": 553182,
+  "searchText": "Sviny",
+  "name": "Územní plán Sviny (účinný od 11. 4. 2019)",
+  "from": "z hlavního výkresu územního plánu v mapové službě Jihočeského kraje (digitální ÚPD obcí)",
+  "obce": 1,
+  "attribution": "ÚP Sviny © Jihočeský kraj",
+  "drawing": true,
+  "layers": [
+   {
+    "kind": "arcgisExport",
+    "url": "https://gis.kraj-jihocesky.cz/arcgis/rest/services/DMVS_upd/UP_Sviny/MapServer",
+    "params": {
+     "layers": "show:0"
+    },
+    "extent": [
+     -743740,
+     -1146967,
+     -737850,
+     -1141990
+    ]
+   }
+  ]
+ },
+ {
+  "kraj": 35,
+  "obec": 553263,
+  "searchText": "Vesce",
+  "name": "Územní plán Vesce, úplné znění po změně č. 1 (účinné od 8. 12. 2023)",
+  "from": "z hlavního výkresu územního plánu v mapové službě Jihočeského kraje (digitální ÚPD obcí)",
+  "obce": 1,
+  "attribution": "ÚP Vesce © Jihočeský kraj",
+  "drawing": true,
+  "layers": [
+   {
+    "kind": "arcgisExport",
+    "url": "https://gis.kraj-jihocesky.cz/arcgis/rest/services/DMVS_upd/UP_Vesce/MapServer",
+    "params": {
+     "layers": "show:6"
+    },
+    "extent": [
+     -739016,
+     -1140405,
+     -734553,
+     -1135756
+    ]
+   }
+  ]
+ },
+ {
+  "kraj": 35,
+  "obec": 563897,
+  "searchText": "Žíšov",
+  "name": "Územní plán Žíšov, úplné znění po změně č. 4 (účinné od 15. 3. 2023)",
+  "from": "z hlavního výkresu územního plánu v mapové službě Jihočeského kraje (digitální ÚPD obcí)",
+  "obce": 1,
+  "attribution": "ÚP Žíšov © Jihočeský kraj",
+  "drawing": true,
+  "layers": [
+   {
+    "kind": "arcgisExport",
+    "url": "https://gis.kraj-jihocesky.cz/arcgis/rest/services/DMVS_upd/UP_Zisov/MapServer",
+    "params": {
+     "layers": "show:25"
+    },
+    "extent": [
+     -738476,
+     -1144546,
+     -734823,
+     -1141299
+    ]
+   }
+  ]
+ },
+ {
+  "kraj": 35,
+  "obec": 549878,
+  "searchText": "Smetanova Lhota",
+  "name": "Územní plán Smetanova Lhota (účinný od 27. 12. 2009)",
+  "from": "z hlavního výkresu územního plánu v mapové službě Jihočeského kraje (digitální ÚPD obcí)",
+  "obce": 1,
+  "attribution": "ÚP Smetanova Lhota © Jihočeský kraj",
+  "drawing": true,
+  "layers": [
+   {
+    "kind": "arcgisExport",
+    "url": "https://gis.kraj-jihocesky.cz/arcgis/rest/services/DMVS_upd/UP_SmetanovaLhota/MapServer",
+    "params": {
+     "layers": "show:11"
+    },
+    "extent": [
+     -778586,
+     -1113637,
+     -773440,
+     -1108030
+    ]
+   }
+  ]
+ },
+ {
+  "kraj": 35,
+  "obec": 553255,
+  "searchText": "Val",
+  "name": "Územní plán Val, úplné znění po změně č. 1 (účinné od 22. 6. 2021)",
+  "from": "z hlavního výkresu územního plánu v mapové službě Jihočeského kraje (digitální ÚPD obcí)",
+  "obce": 1,
+  "attribution": "ÚP Val © Jihočeský kraj",
+  "drawing": true,
+  "layers": [
+   {
+    "kind": "arcgisExport",
+    "url": "https://gis.kraj-jihocesky.cz/arcgis/rest/services/DMVS_upd/UP_Val/MapServer",
+    "params": {
+     "layers": "show:15"
+    },
+    "extent": [
+     -735568,
+     -1154715,
+     -728352,
+     -1147693
+    ]
+   }
+  ]
+ },
+ {
+  "kraj": 35,
+  "obec": 552097,
+  "searchText": "Borkovice",
+  "name": "Územní plán Borkovice, úplné znění po změně č. 4 (účinné od 2. 5. 2024)",
+  "from": "z hlavního výkresu územního plánu v mapové službě Jihočeského kraje (digitální ÚPD obcí)",
+  "obce": 1,
+  "attribution": "ÚP Borkovice © Jihočeský kraj",
+  "drawing": true,
+  "layers": [
+   {
+    "kind": "arcgisExport",
+    "url": "https://gis.kraj-jihocesky.cz/arcgis/rest/services/DMVS_upd/UP_Borkovice/MapServer",
+    "params": {
+     "layers": "show:22"
+    },
+    "extent": [
+     -742469,
+     -1144057,
+     -736768,
+     -1137619
+    ]
+   }
+  ]
+ },
+ {
+  "kraj": 35,
+  "obec": 551741,
+  "searchText": "Skočice",
+  "name": "Územní plán obce Skočice, úplné znění po změně č. 2 (účinné od 8. 2. 2022)",
+  "from": "z hlavního výkresu územního plánu v mapové službě Jihočeského kraje (digitální ÚPD obcí)",
+  "obce": 1,
+  "attribution": "ÚP Skočice © Jihočeský kraj",
+  "drawing": true,
+  "layers": [
+   {
+    "kind": "arcgisExport",
+    "url": "https://gis.kraj-jihocesky.cz/arcgis/rest/services/DMVS_upd/UP_Skocice/MapServer",
+    "params": {
+     "layers": "show:4"
+    },
+    "extent": [
+     -782002,
+     -1141911,
+     -775950,
+     -1137935
+    ]
+   }
+  ]
+ },
+ {
+  "kraj": 35,
+  "obec": 553361,
+  "searchText": "Zálší",
+  "name": "Územní plán Zálší (účinný od 3. 1. 2013)",
+  "from": "z hlavního výkresu územního plánu v mapové službě Jihočeského kraje (digitální ÚPD obcí)",
+  "obce": 1,
+  "attribution": "ÚP Zálší © Jihočeský kraj",
+  "drawing": true,
+  "layers": [
+   {
+    "kind": "arcgisExport",
+    "url": "https://gis.kraj-jihocesky.cz/arcgis/rest/services/DMVS_upd/UP_Zalsi/MapServer",
+    "params": {
+     "layers": "show:1"
+    },
+    "extent": [
+     -744987,
+     -1142950,
+     -741198,
+     -1136965
+    ]
+   }
+  ]
+ },
+ {
+  "kraj": 35,
+  "obec": 552275,
+  "searchText": "Dráchov",
+  "name": "Územní plán Dráchov, úplné znění po změnách č. 1 až 3 (účinné od 2. 1. 2018)",
+  "from": "z hlavního výkresu územního plánu v mapové službě Jihočeského kraje (digitální ÚPD obcí)",
+  "obce": 1,
+  "attribution": "ÚP Dráchov © Jihočeský kraj",
+  "drawing": true,
+  "layers": [
+   {
+    "kind": "arcgisExport",
+    "url": "https://gis.kraj-jihocesky.cz/arcgis/rest/services/DMVS_upd/UP_Drachov/MapServer",
+    "params": {
+     "layers": "show:16"
+    },
+    "extent": [
+     -738878,
+     -1142687,
+     -733903,
+     -1138823
+    ]
+   }
+  ]
+ },
+ {
+  "kraj": 35,
+  "obec": 599263,
+  "searchText": "Sedlečko u Soběslavě",
+  "name": "Územní plán Sedlečko u Soběslavě, úplné znění po změně č. 7 (účinné od 7. 11. 2023)",
+  "from": "z hlavního výkresu územního plánu v mapové službě Jihočeského kraje (digitální ÚPD obcí)",
+  "obce": 1,
+  "attribution": "ÚP Sedlečko u Soběslavě © Jihočeský kraj",
+  "drawing": true,
+  "layers": [
+   {
+    "kind": "arcgisExport",
+    "url": "https://gis.kraj-jihocesky.cz/arcgis/rest/services/DMVS_upd/UP_Sedlecko_u_Sobeslave/MapServer",
+    "params": {
+     "layers": "show:33"
+    },
+    "extent": [
+     -733095,
+     -1135668,
+     -729477,
+     -1133568
+    ]
+   }
+  ]
+ },
+ {
+  "kraj": 35,
+  "obec": 509116,
+  "searchText": "Červený Hrádek",
+  "name": "Územní plán Červený Hrádek (účinný od 7. 7. 2022)",
+  "from": "z hlavního výkresu územního plánu v mapové službě Jihočeského kraje (digitální ÚPD obcí)",
+  "obce": 1,
+  "attribution": "ÚP Červený Hrádek © Jihočeský kraj",
+  "drawing": true,
+  "layers": [
+   {
+    "kind": "arcgisExport",
+    "url": "https://gis.kraj-jihocesky.cz/arcgis/rest/services/DMVS_upd/UP_CervenyHradek/MapServer",
+    "params": {
+     "layers": "show:1"
+    },
+    "extent": [
+     -679406,
+     -1161334,
+     -674121,
+     -1158191
+    ]
+   }
+  ]
+ },
+ {
+  "kraj": 35,
+  "obec": 529966,
+  "searchText": "Buzice",
+  "name": "Územní plán Buzice (účinný od 26. 1. 2024)",
+  "from": "z hlavního výkresu územního plánu v mapové službě Jihočeského kraje (digitální ÚPD obcí)",
+  "obce": 1,
+  "attribution": "ÚP Buzice © Jihočeský kraj",
+  "drawing": true,
+  "layers": [
+   {
+    "kind": "arcgisExport",
+    "url": "https://gis.kraj-jihocesky.cz/arcgis/rest/services/DMVS_upd/UP_Buzice/MapServer",
+    "params": {
+     "layers": "show:4"
+    },
+    "extent": [
+     -789956,
+     -1112754,
+     -784785,
+     -1109325
+    ]
+   }
+  ]
+ },
+ {
+  "kraj": 35,
+  "obec": 536806,
+  "searchText": "Krašlovice",
+  "name": "Územní plán Krašlovice, úplné znění po změnách č. 1 a 3 (účinné od 24. 9. 2020)",
+  "from": "z hlavního výkresu územního plánu v mapové službě Jihočeského kraje (digitální ÚPD obcí)",
+  "obce": 1,
+  "attribution": "ÚP Krašlovice © Jihočeský kraj",
+  "drawing": true,
+  "layers": [
+   {
+    "kind": "arcgisExport",
+    "url": "https://gis.kraj-jihocesky.cz/arcgis/rest/services/DMVS_upd/UP_Kraslovice/MapServer",
+    "params": {
+     "layers": "show:13"
+    },
+    "extent": [
+     -780201,
+     -1143753,
+     -776456,
+     -1140379
+    ]
+   }
+  ]
+ },
+ {
+  "kraj": 35,
+  "obec": 563765,
+  "searchText": "Drahov",
+  "name": "Územní plán Drahov, úplné znění po změně č. 2 (účinné od 11. 6. 2018)",
+  "from": "z hlavního výkresu územního plánu v mapové službě Jihočeského kraje (digitální ÚPD obcí)",
+  "obce": 1,
+  "attribution": "ÚP Drahov © Jihočeský kraj",
+  "drawing": true,
+  "layers": [
+   {
+    "kind": "arcgisExport",
+    "url": "https://gis.kraj-jihocesky.cz/arcgis/rest/services/DMVS_upd/UP_Drahov/MapServer",
+    "params": {
+     "layers": "show:22"
+    },
+    "extent": [
+     -734194,
+     -1148979,
+     -728538,
+     -1145201
+    ]
+   }
+  ]
+ },
+ {
+  "kraj": 35,
+  "obec": 562866,
+  "searchText": "Mažice",
+  "name": "Územní plán Mažice (účinný od 14. 4. 2011)",
+  "from": "z hlavního výkresu územního plánu v mapové službě Jihočeského kraje (digitální ÚPD obcí)",
+  "obce": 1,
+  "attribution": "ÚP Mažice © Jihočeský kraj",
+  "drawing": true,
+  "layers": [
+   {
+    "kind": "arcgisExport",
+    "url": "https://gis.kraj-jihocesky.cz/arcgis/rest/services/DMVS_upd/UP_Mazice/MapServer",
+    "params": {
+     "layers": "show:0"
+    },
+    "extent": [
+     -744062,
+     -1143570,
+     -740638,
+     -1139282
+    ]
+   }
+  ]
+ },
+ {
+  "kraj": 35,
+  "obec": 599280,
+  "searchText": "Komárov",
+  "name": "Územní plán Komárov, úplné znění po změně č. 2 (účinné od 30. 10. 2021)",
+  "from": "z hlavního výkresu územního plánu v mapové službě Jihočeského kraje (digitální ÚPD obcí)",
+  "obce": 1,
+  "attribution": "ÚP Komárov © Jihočeský kraj",
+  "drawing": true,
+  "layers": [
+   {
+    "kind": "arcgisExport",
+    "url": "https://gis.kraj-jihocesky.cz/arcgis/rest/services/DMVS_upd/UP_Komarov/MapServer",
+    "params": {
+     "layers": "show:34"
+    },
+    "extent": [
+     -744877,
+     -1138686,
+     -741088,
+     -1133888
+    ]
+   }
+  ]
+ },
+ {
+  "kraj": 35,
+  "obec": 562271,
+  "searchText": "Temešvár",
+  "name": "Územní plán Temešvár (účinný od 15. 5. 2024)",
+  "from": "z hlavního výkresu územního plánu v mapové službě Jihočeského kraje (digitální ÚPD obcí)",
+  "obce": 1,
+  "attribution": "ÚP Temešvár © Jihočeský kraj",
+  "drawing": true,
+  "layers": [
+   {
+    "kind": "arcgisExport",
+    "url": "https://gis.kraj-jihocesky.cz/arcgis/rest/services/DMVS_upd/UP_Temesvar/MapServer",
+    "params": {
+     "layers": "show:6"
+    },
+    "extent": [
+     -766678,
+     -1125184,
+     -763854,
+     -1119877
+    ]
+   }
+  ]
+ },
+ {
+  "kraj": 35,
+  "obec": 552453,
+  "searchText": "Chotěmice",
+  "name": "Územní plán Chotěmice (účinný od 25. 7. 2009)",
+  "from": "z hlavního výkresu územního plánu v mapové službě Jihočeského kraje (digitální ÚPD obcí)",
+  "obce": 1,
+  "attribution": "ÚP Chotěmice © Jihočeský kraj",
+  "drawing": true,
+  "layers": [
+   {
+    "kind": "arcgisExport",
+    "url": "https://gis.kraj-jihocesky.cz/arcgis/rest/services/DMVS_upd/UP_Chotemice/MapServer",
+    "params": {
+     "layers": "show:0"
+    },
+    "extent": [
+     -724384,
+     -1138988,
+     -720588,
+     -1135224
+    ]
+   }
+  ]
+ },
+ {
+  "kraj": 35,
+  "obec": 599255,
+  "searchText": "Mezná",
+  "name": "Územní plán Mezná, právní stav po změně č. 1 (účinné od 11. 7. 2017)",
+  "from": "z hlavního výkresu územního plánu v mapové službě Jihočeského kraje (digitální ÚPD obcí)",
+  "obce": 1,
+  "attribution": "ÚP Mezná © Jihočeský kraj",
+  "drawing": true,
+  "layers": [
+   {
+    "kind": "arcgisExport",
+    "url": "https://gis.kraj-jihocesky.cz/arcgis/rest/services/DMVS_upd/UP_Mezna/MapServer",
+    "params": {
+     "layers": "show:5"
+    },
+    "extent": [
+     -730459,
+     -1139273,
+     -726386,
+     -1135921
+    ]
+   }
+  ]
+ },
+ {
+  "kraj": 35,
+  "obec": 529923,
+  "searchText": "Žárovná",
+  "name": "Územní plán Žárovná (účinný od 30. 10. 2015)",
+  "from": "z hlavního výkresu územního plánu v mapové službě Jihočeského kraje (digitální ÚPD obcí)",
+  "obce": 1,
+  "attribution": "ÚP Žárovná © Jihočeský kraj",
+  "drawing": true,
+  "layers": [
+   {
+    "kind": "arcgisExport",
+    "url": "https://gis.kraj-jihocesky.cz/arcgis/rest/services/DMVS_upd/UP_Zarovna/MapServer",
+    "params": {
+     "layers": "show:1"
+    },
+    "extent": [
+     -797456,
+     -1153095,
+     -795403,
+     -1150478
+    ]
+   }
+  ]
+ },
+ {
+  "kraj": 35,
+  "obec": 598658,
+  "searchText": "Horní Meziříčko",
+  "name": "Územní plán Horní Meziříčko (účinný od 18. 10. 2016)",
+  "from": "z hlavního výkresu územního plánu v mapové službě Jihočeského kraje (digitální ÚPD obcí)",
+  "obce": 1,
+  "attribution": "ÚP Horní Meziříčko © Jihočeský kraj",
+  "drawing": true,
+  "layers": [
+   {
+    "kind": "arcgisExport",
+    "url": "https://gis.kraj-jihocesky.cz/arcgis/rest/services/DMVS_upd/UP_HorniMeziricko/MapServer",
+    "params": {
+     "layers": "show:1"
+    },
+    "extent": [
+     -698858,
+     -1154359,
+     -695513,
+     -1150818
+    ]
+   }
+  ]
+ },
+ {
+  "kraj": 35,
+  "obec": 562726,
+  "searchText": "Báňovice",
+  "name": "Územní plán Báňovice, úplné znění po změně č. 1 (účinné od 18. 1. 2017)",
+  "from": "z hlavního výkresu územního plánu v mapové službě Jihočeského kraje (digitální ÚPD obcí)",
+  "obce": 1,
+  "attribution": "ÚP Báňovice © Jihočeský kraj",
+  "drawing": true,
+  "layers": [
+   {
+    "kind": "arcgisExport",
+    "url": "https://gis.kraj-jihocesky.cz/arcgis/rest/services/DMVS_upd/UP_Banovice/MapServer",
+    "params": {
+     "layers": "show:16"
+    },
+    "extent": [
+     -683090,
+     -1172667,
+     -679699,
+     -1169772
+    ]
+   }
+  ]
+ },
+ {
+  "kraj": 35,
+  "obec": 562157,
+  "searchText": "Nerestce",
+  "name": "Územní plán Nerestce, úplné znění po změně č. 1 (účinné od 9. 7. 2021)",
+  "from": "z hlavního výkresu územního plánu v mapové službě Jihočeského kraje (digitální ÚPD obcí)",
+  "obce": 1,
+  "attribution": "ÚP Nerestce © Jihočeský kraj",
+  "drawing": true,
+  "layers": [
+   {
+    "kind": "arcgisExport",
+    "url": "https://gis.kraj-jihocesky.cz/arcgis/rest/services/DMVS_upd/UP_Nerestce/MapServer",
+    "params": {
+     "layers": "show:15"
+    },
+    "extent": [
+     -779548,
+     -1105846,
+     -775057,
+     -1103004
+    ]
+   }
+  ]
+ },
+ {
+  "kraj": 35,
+  "obec": 536342,
+  "searchText": "Krajníčko",
+  "name": "Územní plán Krajníčko, úplné znění po změně č. 1 (účinné od 20. 10. 2023)",
+  "from": "z hlavního výkresu územního plánu v mapové službě Jihočeského kraje (digitální ÚPD obcí)",
+  "obce": 1,
+  "attribution": "ÚP Krajníčko © Jihočeský kraj",
+  "drawing": true,
+  "layers": [
+   {
+    "kind": "arcgisExport",
+    "url": "https://gis.kraj-jihocesky.cz/arcgis/rest/services/DMVS_upd/UP_Krajnicko/MapServer",
+    "params": {
+     "layers": "show:6"
+    },
+    "extent": [
+     -787727,
+     -1144743,
+     -783863,
+     -1140496
+    ]
+   }
+  ]
+ },
+ {
+  "kraj": 35,
+  "obec": 598887,
+  "searchText": "Pivkovice",
+  "name": "Územní plán Pivkovice (účinný od 16. 4. 2010)",
+  "from": "z hlavního výkresu územního plánu v mapové službě Jihočeského kraje (digitální ÚPD obcí)",
+  "obce": 1,
+  "attribution": "ÚP Pivkovice © Jihočeský kraj",
+  "drawing": true,
+  "layers": [
+   {
+    "kind": "arcgisExport",
+    "url": "https://gis.kraj-jihocesky.cz/arcgis/rest/services/DMVS_upd/UP_Pivkovice/MapServer",
+    "params": {
+     "layers": "show:0"
+    },
+    "extent": [
+     -783580,
+     -1141466,
+     -780732,
+     -1138602
+    ]
+   }
+  ]
+ },
+ {
+  "kraj": 124,
+  "name": "výkresy územních plánů obcí v GObci (Olomoucký kraj)",
+  "from": "z výkresů územních plánů, které obce zveřejňují v GObci",
+  "obce": 1,
+  "attribution": "Výkresy ÚP obcí © obce (GObec)",
+  "drawing": true,
+  "layers": [
+   {
+    "kind": "tilesPerObec",
+    "crs": "EPSG:3857",
+    "minZoom": 12.6,
+    "minZoomData": 13,
+    "maxZoom": 18,
+    "extent": [
+     -538998,
+     -1058218,
+     -526803,
+     -1045547
+    ],
+    "obce": {
+     "597996": [
+      "https://{a-c}.tiles.gobec.cz/v2/d9e2408d9fe42f9b0088148bc3c988c8/{z}/{x}/{y}.png",
+      "Územní plán Zlaté Hory, úplné znění po změně č. 2 (účinné od 2. 1. 2025)"
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "kraj": 124,
+  "obec": 589462,
+  "searchText": "Drahany",
+  "name": "Územní plán Drahany, úplné znění po změně č. 1 (účinné od 4. 7. 2024)",
+  "from": "z hlavního výkresu územního plánu v mapové službě obce",
+  "obce": 1,
+  "attribution": "ÚP Drahany © Drahany",
+  "drawing": true,
+  "layers": [
+   {
+    "kind": "wms",
+    "url": "https://wms.dataprocon.cz/dataprocon/drahany",
+    "crs": "EPSG:5514",
+    "version": "1.3.0",
+    "params": {
+     "LAYERS": "up_vykres1"
+    },
+    "extent": [
+     -576664,
+     -1138834,
+     -572970,
+     -1134526
+    ]
+   }
+  ]
+ },
+ {
+  "kraj": 35,
+  "obec": 550809,
+  "searchText": "Bavorov",
+  "name": "Územní plán Bavorov, úplné znění po změně č. 3 (účinné od 30. 3. 2023)",
+  "from": "z hlavního výkresu územního plánu v mapové službě Jihočeského kraje (digitální ÚPD obcí)",
+  "obce": 1,
+  "attribution": "ÚP Bavorov © Jihočeský kraj",
+  "drawing": true,
+  "layers": [
+   {
+    "kind": "arcgisExport",
+    "url": "https://gis.kraj-jihocesky.cz/arcgis/rest/services/DMVS_upd/UP_Bavorov/MapServer",
+    "params": {
+     "layers": "show:33"
+    },
+    "extent": [
+     -787075,
+     -1150090,
+     -778355,
+     -1141263
+    ]
+   }
+  ]
+ },
+ {
+  "kraj": 35,
+  "obec": 598631,
+  "searchText": "Kamenný Malíkov",
+  "name": "Územní plán Kamenný Malíkov, úplné znění po změnách č. 1 a 2 (účinné od 5. 3. 2021)",
+  "from": "z hlavního výkresu územního plánu v mapové službě Jihočeského kraje (digitální ÚPD obcí)",
+  "obce": 1,
+  "attribution": "ÚP Kamenný Malíkov © Jihočeský kraj",
+  "drawing": true,
+  "layers": [
+   {
+    "kind": "arcgisExport",
+    "url": "https://gis.kraj-jihocesky.cz/arcgis/rest/services/DMVS_upd/UP_KamennyMalikov/MapServer",
+    "params": {
+     "layers": "show:1"
+    },
+    "extent": [
+     -706953,
+     -1147642,
+     -704074,
+     -1144299
+    ]
+   }
+  ]
+ },
+ {
+  "kraj": 35,
+  "obec": 563153,
+  "searchText": "Třebějice",
+  "name": "Územní plán Třebějice (účinný od 30. 3. 2016)",
+  "from": "z hlavního výkresu územního plánu v mapové službě Jihočeského kraje (digitální ÚPD obcí)",
+  "obce": 1,
+  "attribution": "ÚP Třebějice © Jihočeský kraj",
+  "drawing": true,
+  "layers": [
+   {
+    "kind": "arcgisExport",
+    "url": "https://gis.kraj-jihocesky.cz/arcgis/rest/services/DMVS_upd/UP_Trebejice/MapServer",
+    "params": {
+     "layers": "show:0"
+    },
+    "extent": [
+     -729721,
+     -1142360,
+     -725156,
+     -1138002
+    ]
+   }
+  ]
+ },
+ {
+  "kraj": 35,
+  "obec": 530042,
+  "searchText": "Katov",
+  "name": "Územní plán Katov (účinný od 23. 12. 2014)",
+  "from": "z hlavního výkresu územního plánu v mapové službě Jihočeského kraje (digitální ÚPD obcí)",
+  "obce": 1,
+  "attribution": "ÚP Katov © Jihočeský kraj",
+  "drawing": true,
+  "layers": [
+   {
+    "kind": "arcgisExport",
+    "url": "https://gis.kraj-jihocesky.cz/arcgis/rest/services/DMVS_upd/UP_Katov/MapServer",
+    "params": {
+     "layers": "show:0"
+    },
+    "extent": [
+     -727717,
+     -1137348,
+     -724777,
+     -1134405
+    ]
+   }
+  ]
+ },
+ {
+  "kraj": 35,
+  "obec": 561509,
+  "searchText": "Probulov",
+  "name": "Územní plán Probulov (účinný od 31. 1. 2026)",
+  "from": "z hlavního výkresu územního plánu v mapové službě Jihočeského kraje (digitální ÚPD obcí)",
+  "obce": 1,
+  "attribution": "ÚP Probulov © Jihočeský kraj",
+  "drawing": true,
+  "layers": [
+   {
+    "kind": "arcgisExport",
+    "url": "https://gis.kraj-jihocesky.cz/arcgis/rest/services/DMVS_upd/UP_Probulov/MapServer",
+    "params": {
+     "layers": "show:4"
+    },
+    "extent": [
+     -773141,
+     -1107062,
+     -770132,
+     -1104536
+    ]
+   }
+  ]
+ },
+ {
+  "kraj": 35,
+  "obec": 560171,
+  "searchText": "Budyně",
+  "name": "Územní plán Budyně, úplné znění po změně č. 3 (účinné od 10. 9. 2024)",
+  "from": "z hlavního výkresu územního plánu v mapové službě Jihočeského kraje (digitální ÚPD obcí)",
+  "obce": 1,
+  "attribution": "ÚP Budyně © Jihočeský kraj",
+  "drawing": true,
+  "layers": [
+   {
+    "kind": "arcgisExport",
+    "url": "https://gis.kraj-jihocesky.cz/arcgis/rest/services/DMVS_upd/UP_Budyne/MapServer",
+    "params": {
+     "layers": "show:28"
+    },
+    "extent": [
+     -784412,
+     -1144701,
+     -781349,
+     -1141860
+    ]
+   }
+  ]
+ },
+ {
+  "kraj": 35,
+  "obec": 536415,
+  "searchText": "Měkynec",
+  "name": "Územní plán Měkynec (účinný od 27. 4. 2011)",
+  "from": "z hlavního výkresu územního plánu v mapové službě Jihočeského kraje (digitální ÚPD obcí)",
+  "obce": 1,
+  "attribution": "ÚP Měkynec © Jihočeský kraj",
+  "drawing": true,
+  "layers": [
+   {
+    "kind": "arcgisExport",
+    "url": "https://gis.kraj-jihocesky.cz/arcgis/rest/services/DMVS_upd/UP_Mekynec/MapServer",
+    "params": {
+     "layers": "show:0"
+    },
+    "extent": [
+     -787235,
+     -1142750,
+     -783309,
+     -1140034
+    ]
+   }
+  ]
+ },
+ {
+  "kraj": 35,
+  "obec": 562424,
+  "searchText": "Županovice",
+  "name": "Územní plán Županovice (účinný od 3. 4. 2026)",
+  "from": "z hlavního výkresu územního plánu v mapové službě Jihočeského kraje (digitální ÚPD obcí)",
+  "obce": 1,
+  "attribution": "ÚP Županovice © Jihočeský kraj",
+  "drawing": true,
+  "layers": [
+   {
+    "kind": "arcgisExport",
+    "url": "https://gis.kraj-jihocesky.cz/arcgis/rest/services/DMVS_upd/UP_Zupanovice/MapServer",
+    "params": {
+     "layers": "show:4"
+    },
+    "extent": [
+     -683532,
+     -1179609,
+     -680078,
+     -1176600
+    ]
+   }
+  ]
+ },
+ {
+  "kraj": 35,
+  "obec": 537322,
+  "searchText": "Lužice",
+  "name": "Územní plán Lužice (účinný od 2. 10. 2024)",
+  "from": "z hlavního výkresu územního plánu v mapové službě Jihočeského kraje (digitální ÚPD obcí)",
+  "obce": 1,
+  "attribution": "ÚP Lužice © Jihočeský kraj",
+  "drawing": true,
+  "layers": [
+   {
+    "kind": "arcgisExport",
+    "url": "https://gis.kraj-jihocesky.cz/arcgis/rest/services/DMVS_upd/UP_Luzice/MapServer",
+    "params": {
+     "layers": "show:4"
+    },
+    "extent": [
+     -776119,
+     -1159086,
+     -773277,
+     -1156120
+    ]
+   }
+  ]
+ },
+ {
+  "kraj": 35,
+  "obec": 562416,
+  "searchText": "Dobrohošť",
+  "name": "Územní plán Dobrohošť (účinný od 13. 8. 2014)",
+  "from": "z hlavního výkresu územního plánu v mapové službě Jihočeského kraje (digitální ÚPD obcí)",
+  "obce": 1,
+  "attribution": "ÚP Dobrohošť © Jihočeský kraj",
+  "drawing": true,
+  "layers": [
+   {
+    "kind": "arcgisExport",
+    "url": "https://gis.kraj-jihocesky.cz/arcgis/rest/services/DMVS_upd/UP_Dobrohost/MapServer",
+    "params": {
+     "layers": "show:0"
+    },
+    "extent": [
+     -682088,
+     -1165269,
+     -678620,
+     -1163006
+    ]
+   }
+  ]
+ },
+ {
+  "kraj": 35,
+  "obec": 561690,
+  "searchText": "Hájek",
+  "name": "Územní plán Hájek, úplné znění po změně č. 1 (účinné od 7. 9. 2023)",
+  "from": "z hlavního výkresu územního plánu v mapové službě Jihočeského kraje (digitální ÚPD obcí)",
+  "obce": 1,
+  "attribution": "ÚP Hájek © Jihočeský kraj",
+  "drawing": true,
+  "layers": [
+   {
+    "kind": "arcgisExport",
+    "url": "https://gis.kraj-jihocesky.cz/arcgis/rest/services/DMVS_upd/UP_Hajek/MapServer",
+    "params": {
+     "layers": "show:2"
+    },
+    "extent": [
+     -785240,
+     -1148161,
+     -782363,
+     -1145500
+    ]
+   }
+  ]
+ },
+ {
+  "kraj": 35,
+  "obec": 545422,
+  "searchText": "Boletice",
+  "name": "Územní plán vojenského újezdu Boletice (účinný od 27. 1. 2022)",
+  "from": "z hlavního výkresu územního plánu v mapové službě Jihočeského kraje (digitální ÚPD obcí)",
+  "obce": 1,
+  "attribution": "ÚP Boletice © Jihočeský kraj",
+  "drawing": true,
+  "layers": [
+   {
+    "kind": "arcgisExport",
+    "url": "https://gis.kraj-jihocesky.cz/arcgis/rest/services/DMVS_upd/UP_Boletice/MapServer",
+    "params": {
+     "layers": "show:1"
+    },
+    "extent": [
+     -796003,
+     -1182958,
+     -774713,
+     -1169177
+    ]
+   }
+  ]
+ },
+ {
+  "kraj": 124,
+  "obec": 589721,
+  "searchText": "Mořice",
+  "name": "Územní plán Mořice, úplné znění po změně č. 2 (účinné od 26. 9. 2023)",
+  "from": "z hlavního výkresu územního plánu v mapové službě obce",
+  "obce": 1,
+  "attribution": "ÚP Mořice © Mořice",
+  "drawing": true,
+  "layers": [
+   {
+    "kind": "wms",
+    "url": "https://wms.dataprocon.cz/geomorava/morice",
+    "crs": "EPSG:5514",
+    "version": "1.3.0",
+    "params": {
+     "LAYERS": "up_hlavni"
+    },
+    "extent": [
+     -555145,
+     -1152607,
+     -552643,
+     -1149373
+    ]
+   }
+  ]
  }
 ]

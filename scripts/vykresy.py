@@ -17,7 +17,7 @@ Spuštění: python scripts/vykresy.py [--obec 579891] [--limit-mb 500]
          python scripts/vykresy.py --jen-dlazdice [--obec ...]   (dlaždice znovu z uložené transformace, bez vlícování)
 Potřebuje: pymupdf, numpy, opencv-python-headless, pillow, pyproj.
 """
-import argparse, io, json, math, os, re, shutil, sys, tempfile, time, urllib.parse, urllib.request, zipfile, zlib
+import argparse, io, json, math, os, re, shutil, sys, tempfile, time, urllib.error, urllib.parse, urllib.request, zipfile, zlib
 
 import numpy as np
 import cv2
@@ -44,8 +44,16 @@ Image.MAX_IMAGE_PIXELS = None
 
 def get(url, raw=False, timeout=120):
     req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0 (vykresy; Jednotny uzemni plan)'})
-    with urllib.request.urlopen(req, timeout=timeout) as r:
-        b = r.read()
+    for i in range(3):
+        try:
+            with urllib.request.urlopen(req, timeout=timeout) as r:
+                b = r.read()
+            break
+        except (urllib.error.URLError, ConnectionError, TimeoutError) as e:
+            # výpadek sítě nebo serveru zkusit znovu, chybějící soubor (4xx) ne
+            if i == 2 or (isinstance(e, urllib.error.HTTPError) and e.code < 500):
+                raise
+            time.sleep(10 * (i + 1))
     return b if raw else json.loads(b.decode('utf-8'))
 
 
@@ -234,6 +242,21 @@ def hrube(img, m_papir, poly, otoceni=None, meritko=None):
             r = zkus(best[1], rot)
             if r and r[0] > best[0]:
                 best = r
+    if otoceni is not None or best[2] != 0:
+        # měřítko a otočení doladit střídavě: mřížka po 10 % a 2° umí správnou dvojici minout
+        # (Hronov: list natočený k severu a mírně zmenšený)
+        for _ in range(4):
+            prev = best
+            for k in np.arange(0.97, 1.0301, 0.005):
+                r = zkus(best[1] * k, best[2])
+                if r and r[0] > best[0]:
+                    best = r
+            for d in np.arange(-3, 3.01, 0.5):
+                r = zkus(best[1], float(best[2] + d))
+                if r and r[0] > best[0]:
+                    best = r
+            if best is prev:
+                break
     iou, mer, rot, ix, iy, off, sc = best
     # afinní transformace pixel plného rastru (u, v) -> S-JTSK (x, y)
     c, s = math.cos(math.radians(rot)), math.sin(math.radians(rot))
@@ -454,11 +477,16 @@ def dlazdice(img, Aff, poly, kod, out_dir, kor=None):
 
 
 def vyrizni(img, src):
-    """Jen mapové pole listu (`vyrez` = [x0, y0, x1, y1] v podílech stránky), když se legenda nebo razítko dotýká mapy."""
+    """Jen mapové pole listu (`vyrez` = [x0, y0, x1, y1] v podílech stránky), když se legenda nebo razítko dotýká mapy.
+    `zakryj` = obdélníky ve stejných podílech, které se vybílí (legenda zasahuje do obdélníku mapy, Hronov)."""
+    h, w = img.shape[:2]
+    if src.get('zakryj'):
+        img = img.copy()
+        for x0, y0, x1, y1 in src['zakryj']:
+            img[int(y0 * h):int(y1 * h), int(x0 * w):int(x1 * w)] = 255
     v = src.get('vyrez')
     if not v:
         return img
-    h, w = img.shape[:2]
     return np.ascontiguousarray(img[int(v[1] * h):int(v[3] * h), int(v[0] * w):int(v[2] * w)])
 
 
@@ -520,6 +548,48 @@ def vlicuj(src, cache, poly):
     print(f'   výkres pokrývá {kryti:.1%} území', flush=True)
     ok = mx <= MAX_CHYBA and len(res) >= 4 and n_out <= 0.2 * (len(res) + n_out) and (iou >= 0.85 or kryti >= 0.97)
     return {'img': img, 'Aff': Aff, 'poly': poly, 'iou': iou, 'mer': mer, 'rot': rot, 'res': res, 'n_out': n_out, 'kryti': kryti, 'ok': ok, 'dpi': dpi, 'kor': kor}
+
+
+def meritka_z_textu(pdf, strana=0):
+    """Měřítka napsaná na listu (1 : 5 000), nejčastější první."""
+    try:
+        t = fitz.open(pdf)[strana].get_text()
+    except Exception:
+        return []
+    m = [int(re.sub(r'\D', '', x)) for x in re.findall(r'1\s?:\s?(\d{1,2}[ .\u00a0]?\d{3})(?!\d)', t)]
+    m = [x for x in m if 1000 <= x <= 25000]
+    return sorted(set(m), key=lambda x: -m.count(x))
+
+
+def vlicuj_pokusy(src, cache, poly):
+    """Vlícování; když nevyjde a měřítko není zadané, ještě s měřítkem napsaným na listu, případně 1:5 000 a 1:10 000
+    (maska výkresu s legendou nebo okolím obce umí hrubé hledání měřítka svést)."""
+    try:
+        v, err = vlicuj(src, cache, poly), None
+    except RuntimeError as e:
+        v, err = None, e
+    if (v and v['ok']) or src.get('meritko'):
+        if v is None:
+            raise err
+        return v
+    zkusit = meritka_z_textu(stahni(src, cache), src.get('strana', 0))[:2]
+    zkusit += [m for m in (5000, 10000) if m not in zkusit]
+    for m in zkusit[:3]:
+        if v and abs(v['mer'] / m - 1) < 0.03:
+            continue                                 # tohle měřítko už první pokus našel
+        print(f'   znovu s měřítkem 1:{m}', flush=True)
+        try:
+            w = vlicuj(dict(src, meritko=m), cache, poly)
+        except RuntimeError as e:
+            print(f'   {e}', flush=True)
+            continue
+        if w['ok']:
+            return w
+        if v is None or max(w['res']) < max(v['res']):
+            v = w
+    if v is None:
+        raise err
+    return v
 
 
 def jen_dlazdice(obce=None):
@@ -588,7 +658,7 @@ def main():
                 if len(casti) > 1:
                     print(f'   list: {c.get("nazev", i + 1)}', flush=True)
                 poly = cast_polygon(kod, c)
-                v = vlicuj(c, kod if len(casti) == 1 else f'{kod}_{i}', poly)
+                v = vlicuj_pokusy(c, kod if len(casti) == 1 else f'{kod}_{i}', poly)
                 vys.append(v)
                 if not v['ok']:
                     break

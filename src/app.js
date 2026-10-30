@@ -1201,7 +1201,8 @@
     const so = S.sel && S.sel.obec;
     if (S.covMap) msg = 'Barvy ukazují, odkud mapa zná plán obce. Klikněte na obec a otevře se její karta.';
     else if (so && (so[9] === 'd' || so[9] === 'x') && z >= CFG.rasterMinZoom - 0.4)
-      msg = so[9] === 'x' ? `Evidence u obce ${so[10]} územní plán neuvádí. Karta ukáže, kde to ověřit.` : `Plán obce ${so[10]} v mapě zatím nemáme. Karta ukáže, kde ho najdete.`;
+      msg = so[9] === 'x' ? (so[12] && so[12][0] === 'neplatny' ? `Starý plán obce ${so[10]} skončil koncem roku 2022. Karta řekne víc.` : `Evidence u obce ${so[10]} územní plán neuvádí. Karta ukáže, kde to ověřit.`)
+        : `Plán obce ${so[10]} v mapě zatím nemáme. Karta ukáže, kde ho najdete.`;
     else if (z < CFG.rasterMinZoom - 0.4) msg = 'Modré čtverečky jsou obce s jednotnými daty. Přibližte si obec nebo ji vyhledejte.';
     else if (S.layers.up && !coverageInView()) msg = !regionalInView()
       ? 'Tady jednotná data zatím nejsou. Klikněte do mapy a ukážeme, kde najdete územní plán obce.'
@@ -1492,7 +1493,8 @@
     const R = sel.ruian && !sel.ruian.error ? sel.ruian : null;
     const obec = R && R.obec ? R.obec.nazev : '';
     const d = s => { const m = /^(\d{4})-(\d{2})-(\d{2})/.exec(String(s || '')); return m ? `${+m[3]}. ${+m[2]}. ${m[1]}` : null; };
-    return { stav: r[2], nazev: r[3] || (obec ? 'Územní plán ' + obec : 'Územní plán'), ucinnost: d(r[4]), zmen: +r[5] || 0, posledni: d(r[6]), porizuje: !!r[7], web: safeUrl(r[8] || '') };
+    const ov = r[12] ? { v: r[12][0], t: r[12][1] || '', url: safeUrl(r[12][2] || '') } : null;
+    return { stav: r[2], nazev: r[3] || (obec ? 'Územní plán ' + obec : 'Územní plán'), ucinnost: d(r[4]), zmen: +r[5] || 0, posledni: d(r[6]), porizuje: !!r[7], web: safeUrl(r[8] || ''), ov };
   }
   function titleBlock(sel) {
     const pl = plochaOf(sel);
@@ -1553,7 +1555,11 @@
       official = 'Na tomto místě územní plán obce žádnou plochu nevymezuje.';
     } else {
       const P = planInfo(sel);
-      if (P && P.stav === 'x') {
+      if (P && P.stav === 'x' && P.ov && P.ov.v === 'neplatny') {
+        sw = `<div class="tb-swatch none"><b>?</b></div>`;
+        title = 'Starý plán skončil koncem roku 2022';
+        official = 'Plán schválený před rokem 2007 platil jen do 31. 12. 2022, nový zatím nevyšel.';
+      } else if (P && P.stav === 'x') {
         sw = `<div class="tb-swatch none"><b>?</b></div>`;
         title = 'Plán v evidenci nenalezen';
         official = 'Evidence Národního geoportálu u obce žádný vydaný územní plán neuvádí, nemusí ale být úplná.' + (P.porizuje ? ' Nový plán se podle ní pořizuje.' : '');
@@ -1792,25 +1798,34 @@
       html += `<p>Data územního plánu se teď nepodařilo načíst ze serveru NGÚP.</p><div class="actions"><button class="btn" data-act="retry">Zkusit znovu</button></div>`;
     } else if (cov === false) {
       const P = planInfo(sel);
-      if (P && P.stav === 'x') {
+      const kdy = OBCE && OBCE.overeno ? ' ' + OBCE.overeno.split('-').reverse().map(Number).join('. ') : '';
+      if (P && P.stav === 'x' && P.ov && P.ov.v === 'neplatny') {
+        html += `<p>Obec ${esc(obecName)} měla ${esc(P.nazev.replace(/^Územní plán/, 'územní plán'))} schválený před rokem 2007. Takové plány platily jen do 31. 12. 2022, pokud je obec do té doby nenahradila novým plánem nebo neupravila podle stavebního zákona z roku 2006.${P.ov.t ? ' ' + esc(P.ov.t) : ''} Jestli obec mezitím vydala nový plán, ověřte na jejím webu nebo na obecním úřadě.</p>`
+          + `<p class="note">Bez platného územního plánu se nové stavby umisťují hlavně v zastavěném území obce a co přesně jde, posoudí stavební úřad.</p>`;
+      } else if (P && P.stav === 'x') {
         html += `<p>Evidence Národního geoportálu územního plánování u obce ${esc(obecName)} vydaný územní plán neuvádí.${P.porizuje ? ' Podle evidence se nový plán pořizuje.' : ''} Evidence ale není úplná: obce do ní plány doplňují postupně a některé plány v ní chybí. Jestli obec platný plán má, ověřte na jejím webu nebo na obecním úřadě.</p>`
+          + (P.ov && P.ov.t ? `<p>Při ověření${esc(kdy)} jsme plán nenašli ani na webu obce a v archivu územních plánů kraje. ${esc(P.ov.t)}</p>` : '')
           + `<p class="note">Kdyby obec plán opravdu neměla, nové stavby se umisťují hlavně v zastavěném území obce a co přesně jde, posoudí stavební úřad.</p>`;
       } else if (P && P.stav === 'p') {
         html += `<p>Obec ${esc(obecName)} má platný ${esc(P.nazev.replace(/^Územní plán/, 'územní plán'))}${P.ucinnost ? `, účinný od ${esc(P.ucinnost)}` : ''}.`
           + (P.zmen ? ` ${P.ucinnost ? 'Od té doby' : 'Evidence uvádí'} ${P.ucinnost ? plural(P.zmen, 'vyšla', 'vyšly', 'vyšlo') + ' ' : ''}${P.zmen} ${plural(P.zmen, 'změna', 'změny', 'změn')}${P.ucinnost ? '' : ' plánu'}${P.posledni ? `, poslední účinná od ${esc(P.posledni)}` : ''}.` : '')
           + (P.porizuje ? ' Obec teď pořizuje nový plán nebo další změnu.' : '')
-          + ` V mapě ho zatím nemáme, výkresy a textovou část najdete v dokumentech:</p>`;
+          + ` V mapě ho zatím nemáme, výkresy a textovou část najdete v dokumentech:</p>`
+          + (P.ov && P.ov.v === 'ma' ? `<p class="note">Evidence Národního geoportálu tento plán zatím neuvádí, našli jsme ho${esc(kdy)} ${P.ov.t ? esc(P.ov.t) : 'na webu obce'}.</p>` : '');
       } else {
         html += `<p>Obec ${esc(obecName)} zatím nemá územní plán v datech, která umíme zobrazit. Platný plán i s výkresy najdete tady:</p>`;
       }
       const ngupBtn = cls => `<a class="btn${cls}" href="${esc(ngupDocsUrl(R))}" target="_blank" rel="noopener">Dokumenty obce v Národním geoportálu</a>`;
-      const webBtn = P && P.web ? `<a class="btn" href="${esc(P.web)}" target="_blank" rel="noopener">Web obce</a>` : '';
+      const webBtn = P && P.ov && P.ov.url && P.stav === 'x' ? `<a class="btn" href="${esc(P.ov.url)}" target="_blank" rel="noopener">Územní plán na webu obce</a>`
+        : P && P.web ? `<a class="btn" href="${esc(P.web)}" target="_blank" rel="noopener">Web obce</a>` : '';
+      const ovBtn = P && P.ov && P.ov.v === 'ma' && P.ov.url ? `<a class="btn primary" href="${esc(P.ov.url)}" target="_blank" rel="noopener">Územní plán na webu obce</a>` : '';
       const krajBtn = cls => (kraj ? `<a class="btn${cls}" href="${esc(kraj.url)}" target="_blank" rel="noopener">${esc(kraj.label)}</a>` : '');
-      const webFirst = P && P.stav === 'x' && P.web;
-      html += `<div class="actions">${webFirst ? webBtn.replace('class="btn"', 'class="btn primary"') + ngupBtn('') + krajBtn('')
+      const webFirst = P && P.stav === 'x' && webBtn;
+      html += `<div class="actions">${ovBtn ? ovBtn + krajBtn('') + webBtn
+        : webFirst ? webBtn.replace('class="btn"', 'class="btn primary"') + ngupBtn('') + krajBtn('')
         : (kraj && kraj.primary ? krajBtn(' primary') + ngupBtn('') : ngupBtn(' primary') + krajBtn('')) + webBtn}</div>`;
       if (kraj && kraj.note) html += `<p class="note">${esc(kraj.note)}</p>`;
-      if (OBCE && OBCE.stavUP) html += `<p class="note">Stav plánu podle evidence NGÚP k ${esc(OBCE.stavUP.split('-').reverse().map(Number).join('. '))}.</p>`;
+      if (OBCE && OBCE.stavUP) html += `<p class="note">Stav plánu podle evidence NGÚP k ${esc(OBCE.stavUP.split('-').reverse().map(Number).join('. '))}${P && P.ov && kdy ? `, ověřeno i mimo evidenci${esc(kdy)}` : ''}.</p>`;
     } else {
       html += skel();
     }
@@ -1861,7 +1876,7 @@
     ['m', 'Data města nebo ORP', [123, 92, 196]],
     ['p', 'Výkres z PDF', [204, 140, 40]],
     ['d', 'Jen v dokumentech', [176, 170, 156]],
-    ['x', 'Plán v evidenci nenalezen', [200, 84, 80]]
+    ['x', 'Platný plán v evidenci nenalezen', [200, 84, 80]]
   ];
   const covCat = c => COV_CAT.find(x => x[0] === c) || COV_CAT[4];
   const covMapSrc = new ol.source.Vector();

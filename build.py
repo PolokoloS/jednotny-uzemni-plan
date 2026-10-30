@@ -97,16 +97,28 @@ if os.path.exists(pok_f):
     # web obce z Wikidat (data/weby_obci.json), když evidence NGÚP u plánu žádný neuvádí
     web_f = os.path.join(ROOT, 'data/weby_obci.json')
     weby = json.load(open(web_f, encoding='utf-8'))['obce'] if os.path.exists(web_f) else {}
+    # ruční ověření mimo evidenci (web obce, ÚAP ORP, archivy krajů): "ma" = plán obec má, i když ho evidence neuvádí,
+    # "nema" = plán není ani jinde, "neplatny" = plán z doby před rokem 2007, který skončil 31. 12. 2022
+    ov_f = os.path.join(ROOT, 'data/overeni_planu.json')
+    overeni = json.load(open(ov_f, encoding='utf-8')) if os.path.exists(ov_f) else {'datum': None, 'obce': {}}
     for kod, nazev, kraj, orp, oby, z, zname in pok['obce']:
         s = stav.get(str(kod)) or ['?', None, None, 0, None, False, None]
+        ov = overeni['obce'].get(str(kod))
+        if ov and ov['v'] == 'ma':
+            s = ['p', ov.get('plan'), ov.get('ucinnost'), ov.get('zmen', 0), ov.get('posledni'), s[5], s[6]]
+        elif ov and ov['v'] == 'neplatny':
+            s = ['x'] + list(s[1:])
         plan = s[1] if s[1] and ' '.join(s[1].split()) not in (f'Územní plán {nazev}', f'Územní plán obce {nazev}') else 0
         ri = names.get(zname, -1)
         kat = kategorie(z, regional[ri] if ri >= 0 else None, s[0])
         rec[str(kod)] = [z, ri, s[0], plan, s[2] or 0, s[3] or 0, s[4] or 0, 1 if s[5] else 0, s[6] or weby.get(str(kod)) or 0, kat, nazev, oby]
+        if ov:
+            rec[str(kod)].append([ov['v'], ov.get('t') or 0, ov.get('url') or 0])
         cnt[kat] = cnt.get(kat, 0) + 1
         pop[kat] = pop.get(kat, 0) + (oby or 0)
     cov_stats = (cnt, pop)
-    obce_out = {'stav': pok['stav'], 'stavUP': json.load(open(stav_f, encoding='utf-8'))['stav'] if os.path.exists(stav_f) else None, 'o': rec}
+    obce_out = {'stav': pok['stav'], 'stavUP': json.load(open(stav_f, encoding='utf-8'))['stav'] if os.path.exists(stav_f) else None,
+                'overeno': overeni.get('datum'), 'o': rec}
     with open(os.path.join(ROOT, 'dist/obce.json'), 'w', encoding='utf-8') as f:
         json.dump(obce_out, f, ensure_ascii=False, separators=(',', ':'))
     print(f'dist/obce.json: {os.path.getsize(os.path.join(ROOT, "dist/obce.json"))/1024:.0f} KB, kategorie {cnt}')
@@ -124,7 +136,7 @@ if cov_stats:
     in_map = sum(n.get(k, 0) for k in 'nkmp')
     pct = round(100 * sum(pop.get(k, 0) for k in 'nkmp') / allp)
     barvy = [('n', 'Jednotný standard', (46, 125, 50)), ('k', 'Data kraje', (62, 115, 196)), ('m', 'Data města nebo ORP', (123, 92, 196)),
-             ('p', 'Výkres z PDF', (204, 140, 40)), ('d', 'Jen v dokumentech', (176, 170, 156)), ('x', 'Plán v evidenci nenalezen', (200, 84, 80))]
+             ('p', 'Výkres z PDF', (204, 140, 40)), ('d', 'Jen v dokumentech', (176, 170, 156)), ('x', 'Platný plán v evidenci nenalezen', (200, 84, 80))]
     bar = ''.join(f'<span title="{label}" style="width:{100 * n.get(k, 0) / alln:.2f}%;background:rgba({r},{g},{bl},0.92)"></span>' for k, label, (r, g, bl) in barvy)
     html = html.replace('<span class="cov-big num" id="covN">381</span><span class="cov-of" id="covOf">obcí z <span class="num" id="covTotal">6 258</span> už má územní plán v jednotných datech</span>',
                         f'<span class="cov-big num" id="covN" data-final="1">{fmt(in_map)}</span><span class="cov-of" id="covOf">obcí z <span class="num">{fmt(alln)}</span> má územní plán přímo v mapě, žije v nich {pct} % obyvatel</span>')

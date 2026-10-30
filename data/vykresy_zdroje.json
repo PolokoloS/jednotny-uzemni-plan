@@ -336,7 +336,65 @@
   "nazev": "Hronov",
   "pdf": "https://admin-storage.munipolis.com/632/custom_pages/9942d2d1-06c1-46d2-8fc8-c1267099f1f6.pdf",
   "verze": "Územní plán Hronov, nový plán účinný od 2. 10. 2026",
-  "web": "https://www.mestohronov.cz/"
+  "web": "https://www.mestohronov.cz/",
+  "casti": [
+   {
+    "nazev": "hlavní území",
+    "pdf": "https://admin-storage.munipolis.com/632/custom_pages/9942d2d1-06c1-46d2-8fc8-c1267099f1f6.pdf",
+    "ku": [
+     648370,
+     648396,
+     648400,
+     648418,
+     648434
+    ],
+    "zakryj": [
+     [
+      0.835,
+      0.0,
+      1.0,
+      0.5
+     ],
+     [
+      0.86,
+      0.5,
+      1.0,
+      0.9
+     ],
+     [
+      0.74,
+      0.9,
+      1.0,
+      1.0
+     ],
+     [
+      0.45,
+      0.0,
+      1.0,
+      0.075
+     ],
+     [
+      0.0,
+      0.68,
+      0.16,
+      1.0
+     ]
+    ]
+   },
+   {
+    "nazev": "Malá Čermná (výřez v rohu listu)",
+    "pdf": "https://admin-storage.munipolis.com/632/custom_pages/9942d2d1-06c1-46d2-8fc8-c1267099f1f6.pdf",
+    "ku": [
+     648451
+    ],
+    "vyrez": [
+     0,
+     0.7,
+     0.15,
+     0.99
+    ]
+   }
+  ]
  },
  {
   "obec": 579777,
@@ -365,5 +423,652 @@
   "pdf": "https://www.mestonachod.cz/urad/vystavba/up-obci/prilohy/32_839214260.pdf",
   "verze": "Územní plán Velké Poříčí, úplné znění po změnách č. 1 až 6 (účinné od 29. 12. 2025)",
   "web": "https://www.mestonachod.cz/urad/vystavba/up-obci/"
+ },
+ {
+  "obec": 567639,
+  "nazev": "Krupka",
+  "pdf": "https://www.krupka-mesto.cz/assets/File.ashx?id_org=7526&id_dokumenty=13992",
+  "casti": [
+   {
+    "nazev": "list Jih",
+    "pdf": "https://www.krupka-mesto.cz/assets/File.ashx?id_org=7526&id_dokumenty=13992",
+    "pas": [
+     null,
+     -969935
+    ]
+   },
+   {
+    "nazev": "list Sever",
+    "pdf": "https://www.krupka-mesto.cz/assets/File.ashx?id_org=7526&id_dokumenty=13991",
+    "pas": [
+     -970189,
+     null
+    ]
+   }
+  ],
+  "verze": "Územní plán Krupka, úplné znění po změně č. 1a (změna č. 2 účinná od 22. 12. 2023 výkresy neměnila)",
+  "web": "https://www.krupka-mesto.cz/"
+ },
+ {
+  "obec": 567507,
+  "nazev": "Dubí",
+  "pdf": "https://www.mesto-dubi.cz/modules/file_storage/download.php?file=cac137cd%7C1383&inline=1",
+  "casti": [
+   {
+    "nazev": "horní list",
+    "pdf": "https://www.mesto-dubi.cz/modules/file_storage/download.php?file=cac137cd%7C1383&inline=1",
+    "pas": [
+     -970078,
+     null
+    ]
+   },
+   {
+    "nazev": "spodní list",
+    "pdf": "https://www.mesto-dubi.cz/modules/file_storage/download.php?file=b19c5e89%7C1384&inline=1",
+    "pas": [
+     null,
+     -969913
+    ]
+   }
+  ],
+  "verze": "Územní plán Dubí, úplné znění po změně č. 5 (účinné od 13. 7. 2021)",
+  "web": "https://www.mesto-dubi.cz/"
+ },
+ {
+  "obec": 583391,
+  "nazev": "Modřice",
+  "pdf": "https://www.slapanice.cz/progres/lib/files.php?id=19368",
+  "verze": "Územní plán Modřice, úplné znění po změně č. 1a (účinné od 6. 6. 2025)"
+ },
+ {
+  "obec": 558885,
+  "nazev": "Horní Bříza",
+  "pdf": "https://www.hornibriza.eu/modules/file_storage/download.php?file=9b0c5ad7%7C70",
+  "verze": "Územní plán Horní Bříza (účinný od 17. 4. 2020)"
+ },
+ {
+  "obec": 539643,
+  "nazev": "Řevnice",
+  "pdf": "https://gis.kr-stredocesky.cz/docs/reg/%DAZEMN%CD%20PL%C1NOV%C1N%CD%20NA%20%DAROVNI%20OBCE/Cernosice_230/539643_%F8evnice/01_%DAzemn%ED_pl%E1n/02_USAZENE/539643_02_HLV_UP_2022_Revnice_ORG.pdf",
+  "verze": "Územní plán Řevnice (účinný od 5. 10. 2022)"
+ },
+ {
+  "obec": 582824,
+  "nazev": "Bílovice nad Svitavou",
+  "pdf": "https://www.bilovicens.cz/sites/default/files/imce/imported/UP/u2/1b_hlavni_vykres-po_z2.pdf",
+  "verze": "Územní plán Bílovice nad Svitavou, úplné znění po změně č. 2 (účinné od 14. 6. 2022)"
+ },
+ {
+  "obec": 583413,
+  "nazev": "Moravany",
+  "pdf": "https://www.slapanice.cz/progres/lib/files.php?id=19187",
+  "verze": "Územní plán Moravany, úplné znění po změnách č. 2 a 3 (účinné od 16. 10. 2025)"
+ },
+ {
+  "obec": 505161,
+  "nazev": "Štěpánov",
+  "pdf": "https://www.stepanov.cz/file.php?nid=1512&oid=8350933",
+  "verze": "Územní plán Štěpánov, úplné znění po změně č. 1 (účinné od 16. 6. 2021)"
+ },
+ {
+  "obec": 559491,
+  "nazev": "Tlučná",
+  "pdf": "https://geoportal.plzensky-kraj.cz/ost/filebox/ug_file.php?upload_modul=table&_set_sess_cache_limit_=1&FILE_ID=228862",
+  "verze": "Územní plán Tlučná (účinný od 26. 6. 2025)"
+ },
+ {
+  "obec": 584045,
+  "nazev": "Újezd u Brna",
+  "pdf": "https://www.slapanice.cz/progres/lib/files.php?id=8942",
+  "verze": "Územní plán Újezd u Brna, úplné znění po změně č. 1A (účinné od 21. 3. 2019)"
+ },
+ {
+  "obec": 583910,
+  "nazev": "Střelice",
+  "pdf": "https://www.slapanice.cz/progres/lib/files.php?id=20455",
+  "verze": "Územní plán Střelice (nový, účinný od 17. 10. 2026)"
+ },
+ {
+  "obec": 539066,
+  "nazev": "Zeleneč",
+  "pdf": "https://uzemniplanovani.gov.cz/o/rest/ais/documents/514851ef-04e9-4358-bfa5-e342ea58cfca/download/539066_UZ1_2_HLV.pdf",
+  "verze": "Územní plán Zeleneč, úplné znění po změně č. 1 (účinné od 23. 7. 2026)"
+ },
+ {
+  "obec": 540196,
+  "nazev": "Loštice",
+  "pdf": "https://www.mu-lostice.cz/modules/file_storage/download.php?file=7dccfdf4%7C997&inline=1",
+  "verze": "Územní plán Loštice, úplné znění po změně č. 3 (účinné od 27. 3. 2026)"
+ },
+ {
+  "obec": 583561,
+  "nazev": "Ořechov",
+  "pdf": "https://www.slapanice.cz/progres/lib/files.php?id=10872",
+  "verze": "Územní plán Ořechov, úplné znění po změně č. 2 (účinné od 28. 2. 2020)"
+ },
+ {
+  "obec": 583405,
+  "nazev": "Mokrá-Horákov",
+  "pdf": "https://www.slapanice.cz/progres/lib/files.php?id=7655",
+  "verze": "Územní plán Mokrá-Horákov (účinný od 25. 9. 2018)"
+ },
+ {
+  "obec": 589632,
+  "nazev": "Kostelec na Hané",
+  "pdf": "https://www.kostelecnh.cz/modules/file_storage/download.php?file=d913e535%7C478&inline=1",
+  "verze": "Územní plán Kostelec na Hané (účinný od 1. 8. 2025)"
+ },
+ {
+  "obec": 597678,
+  "nazev": "Moravský Beroun",
+  "pdf": "https://www.morberoun.cz/assets/File.ashx?id_org=9908&id_dokumenty=298049",
+  "verze": "Územní plán Moravský Beroun, úplné znění po změně č. 3 (účinné od 13. 2. 2025)"
+ },
+ {
+  "obec": 536148,
+  "nazev": "Javorník",
+  "pdf": "https://jesenik.cz/storage/UZEMNI_PLANY/1_2020_Vydane_UP/Zmena_1_UP_Javornik/Uplne_zneni_web/536148_I2b_HLV_%C3%9AZ_zm%C4%9Bna_1.pdf",
+  "verze": "Územní plán Javorník, úplné znění po změně č. 1 (účinné od 10. 3. 2021)"
+ },
+ {
+  "obec": 583898,
+  "nazev": "Sokolnice",
+  "pdf": "https://www.slapanice.cz/progres/lib/files.php?id=9538",
+  "verze": "Územní plán Sokolnice, úplné znění po změně č. I (účinné od 27. 6. 2019)"
+ },
+ {
+  "obec": 500852,
+  "nazev": "Bohuňovice",
+  "pdf": "https://www.bohunovice.cz/file/2692351",
+  "verze": "Územní plán Bohuňovice, úplné znění po změně č. 2 (účinné od 6. 8. 2025)"
+ },
+ {
+  "obec": 571784,
+  "nazev": "Libiš",
+  "pdf": "https://gis.kr-stredocesky.cz/docs/reg/%DAZEMN%CD%20PL%C1NOV%C1N%CD%20NA%20%DAROVNI%20OBCE/Neratovice_159/571784_Libi%9A/01_%DAzemn%ED_pl%E1n/02_USAZENE/571784_02_HLV_UP_2022_Libis_ORG.pdf",
+  "verze": "Územní plán Libiš (účinný od 4. 10. 2022)"
+ },
+ {
+  "obec": 584029,
+  "nazev": "Troubsko",
+  "pdf": "https://www.slapanice.cz/progres/lib/files.php?id=19446",
+  "verze": "Územní plán Troubsko, úplné znění po změně č. 2a (účinné od 18. 11. 2025)"
+ },
+ {
+  "obec": 559725,
+  "nazev": "Břasy",
+  "pdf": "https://geoportal.plzensky-kraj.cz/ost/filebox/ug_file.php?upload_modul=table&_set_sess_cache_limit_=1&FILE_ID=228966",
+  "verze": "Územní plán Břasy, úplné znění po změně č. 2 (účinné od 20. 12. 2025)"
+ },
+ {
+  "obec": 589896,
+  "nazev": "Plumlov",
+  "pdf": "https://www.mestoplumlov.cz/images/Zm%C4%9Bna_%C3%9Azemn%C3%ADho_pl%C3%A1nu_Plumlov_%C4%8D.1/up_plumlov_uz_po_z1_i_2_hlv_5_bc458.pdf",
+  "verze": "Územní plán Plumlov, úplné znění po změně č. 1 (účinné od 12. 10. 2024)"
+ },
+ {
+  "obec": 584266,
+  "nazev": "Želešice",
+  "pdf": "https://www.slapanice.cz/progres/lib/files.php?id=13581",
+  "verze": "Územní plán Želešice (účinný od 15. 3. 2022)"
+ },
+ {
+  "obec": 519651,
+  "nazev": "Troubky",
+  "pdf": "https://www.prerov.eu/filemanager/files/84087.pdf",
+  "verze": "Územní plán Troubky, úplné znění po změně č. 1 (účinné od 26. 9. 2025)"
+ },
+ {
+  "obec": 501476,
+  "nazev": "Dlouhá Loučka",
+  "pdf": "https://www.dlouhaloucka.cz/e_download.php?file=data/editor/146cs_11.pdf&original=I.2.b%29%20Hlavn%C3%AD%20v%C3%BDkres%20-%20urbanistick%C3%A1%20koncepce.pdf",
+  "verze": "Územní plán Dlouhá Loučka, úplné znění po změně č. 1 (účinné od 4. 3. 2023)"
+ },
+ {
+  "obec": 583669,
+  "nazev": "Popůvky",
+  "pdf": "https://www.slapanice.cz/progres/lib/files.php?id=17300",
+  "verze": "Územní plán Popůvky, úplné znění po změně č. 1 (účinné od 31. 7. 2024)"
+ },
+ {
+  "obec": 589756,
+  "nazev": "Němčice nad Hanou",
+  "pdf": "https://uzemniplanovani.gov.cz/o/rest/ais/documents/1e7df5db-a92c-4544-b8d6-a93c76180dfd/download/589756_UZ2_I2b_HLV.pdf",
+  "verze": "Územní plán Němčice nad Hanou, úplné znění po změně č. 2 (účinné od 9. 7. 2026)"
+ },
+ {
+  "obec": 589829,
+  "nazev": "Olšany u Prostějova",
+  "pdf": "https://www.olsanyupv.cz/sites/default/files/dokumenty/uz_tisk_2_hl.pdf",
+  "verze": "Územní plán Olšany u Prostějova, úplné znění po změně č. 2 (účinné od 3. 10. 2024)"
+ },
+ {
+  "obec": 512800,
+  "nazev": "Brodek u Přerova",
+  "pdf": "https://www.prerov.eu/filemanager/files/45235.pdf",
+  "verze": "Územní plán Brodek u Přerova (účinný od 7. 11. 2017), bez změn"
+ },
+ {
+  "obec": 505293,
+  "nazev": "Troubelice",
+  "pdf": "https://www.troubelice.cz/doc/file.php?file-type=application/pdf&un=605c88b3b012f&file-name=I.2.b)%20Hlavni%20vykres%20-%20urbanisticka%20koncepce.pdf&file-path=files/605c88b387142.pdf",
+  "verze": "Územní plán Troubelice, úplné znění po změně č. 2 (účinné od 27. 1. 2021)"
+ },
+ {
+  "obec": 505081,
+  "nazev": "Senice na Hané",
+  "pdf": "https://www.litovel.eu/filemanager/files/3653115.pdf",
+  "verze": "Územní plán Senice na Hané, úplné znění po změně č. 2 (účinné od 14. 5. 2024)"
+ },
+ {
+  "obec": 583596,
+  "nazev": "Ostopovice",
+  "pdf": "https://www.slapanice.cz/progres/lib/files.php?id=19412",
+  "verze": "Územní plán Ostopovice, úplné znění po změnách č. 1 a 2A (účinné od 20. 11. 2025)"
+ },
+ {
+  "obec": 590185,
+  "nazev": "Vrbátky",
+  "pdf": "https://www.vrbatky.cz/file.php?nid=1105&oid=12014011",
+  "verze": "Územní plán Vrbátky, úplné znění po změně č. 1 (účinné od 11. 2. 2025)"
+ },
+ {
+  "obec": 558419,
+  "nazev": "Držovice",
+  "pdf": "https://www.drzovice.cz/modules/file_storage/download.php?file=66cf9c1f%7C86",
+  "verze": "Územní plán Držovice, úplné znění po změně č. 1 (účinné od 31. 1. 2025)"
+ },
+ {
+  "obec": 589659,
+  "nazev": "Kralice na Hané",
+  "pdf": "https://www.kralicenahane.cz/file.php?nid=2809&oid=11291671",
+  "verze": "Územní plán Kralice na Hané, úplné znění po změnách č. 1, 2 a 3 (účinné od 27. 6. 2024)"
+ },
+ {
+  "obec": 513768,
+  "nazev": "Hustopeče nad Bečvou",
+  "pdf": "https://www.mesto-hranice.cz/prilohy/513768-uz3-a22-hlv-pdf",
+  "verze": "Územní plán Hustopeče nad Bečvou, úplné znění po vydání změny č. 3 (účinné od 30. 10. 2026)"
+ },
+ {
+  "obec": 583979,
+  "nazev": "Telnice",
+  "pdf": "https://www.slapanice.cz/progres/lib/files.php?id=10761",
+  "verze": "Územní plán Telnice, úplné znění po změně č. 3 (účinné od 7. 1. 2020)"
+ },
+ {
+  "obec": 583537,
+  "nazev": "Ochoz u Brna",
+  "pdf": "https://www.slapanice.cz/progres/lib/files.php?id=17045",
+  "verze": "Územní plán Ochoz u Brna (účinný od 10. 2. 2010)"
+ },
+ {
+  "obec": 582794,
+  "nazev": "Babice nad Svitavou",
+  "pdf": "https://www.slapanice.cz/progres/lib/files.php?id=17625",
+  "verze": "Územní plán Babice nad Svitavou, úplné znění po změně č. 1 (účinné od 10. 4. 2024)"
+ },
+ {
+  "obec": 584126,
+  "nazev": "Viničné Šumice",
+  "pdf": "https://www.slapanice.cz/progres/lib/files.php?id=14578",
+  "verze": "Územní plán Viničné Šumice, úplné znění po změně č. 1 (účinné od 7. 10. 2022)"
+ },
+ {
+  "obec": 584037,
+  "nazev": "Tvarožná",
+  "pdf": "https://www.slapanice.cz/progres/lib/files.php?id=10079",
+  "verze": "Územní plán Tvarožná (účinný od 9. 10. 2019)"
+ },
+ {
+  "obec": 583219,
+  "nazev": "Kobylnice",
+  "pdf": "https://www.slapanice.cz/progres/lib/files.php?id=19245",
+  "verze": "Územní plán Kobylnice (účinný od 16. 10. 2025)"
+ },
+ {
+  "obec": 581429,
+  "nazev": "Březina",
+  "pdf": "https://www.slapanice.cz/progres/lib/files.php?id=18891",
+  "verze": "Územní plán Březina, úplné znění po změně č. 2 (účinné od 7. 8. 2025)"
+ },
+ {
+  "obec": 583197,
+  "nazev": "Kanice",
+  "pdf": "https://www.slapanice.cz/progres/lib/files.php?id=17613",
+  "verze": "Územní plán Kanice, úplné znění po změně č. 1 (účinné od 8. 12. 2022)"
+ },
+ {
+  "obec": 583774,
+  "nazev": "Rebešovice",
+  "pdf": "https://www.slapanice.cz/progres/lib/files.php?id=12689",
+  "verze": "Územní plán Rebešovice, úplné znění po změně č. I (účinné od 19. 8. 2021)"
+ },
+ {
+  "obec": 583863,
+  "nazev": "Sivice",
+  "pdf": "https://www.slapanice.cz/progres/lib/files.php?id=20328",
+  "verze": "Územní plán Sivice s prvky regulačního plánu (nový, účinný od 15. 9. 2026)"
+ },
+ {
+  "obec": 583685,
+  "nazev": "Prace",
+  "pdf": "https://www.slapanice.cz/progres/lib/files.php?id=14098",
+  "verze": "Územní plán Prace, úplné znění po změně č. 3 (účinné od 27. 4. 2022)"
+ },
+ {
+  "obec": 583189,
+  "nazev": "Jiříkovice",
+  "pdf": "https://www.slapanice.cz/progres/lib/files.php?id=18868",
+  "verze": "Územní plán Jiříkovice (účinný od 29. 7. 2025)"
+ },
+ {
+  "obec": 583456,
+  "nazev": "Nebovidy",
+  "pdf": "https://www.slapanice.cz/progres/lib/files.php?id=18031",
+  "verze": "Územní plán Nebovidy, úplné znění po změně č. 2 (účinné od 28. 12. 2024)"
+ },
+ {
+  "obec": 583855,
+  "nazev": "Silůvky",
+  "pdf": "https://www.slapanice.cz/progres/lib/files.php?id=17699",
+  "verze": "Územní plán Silůvky (účinný od 24. 3. 2024)"
+ },
+ {
+  "obec": 583057,
+  "nazev": "Hostěnice",
+  "pdf": "https://www.slapanice.cz/progres/lib/files.php?id=20367",
+  "verze": "Územní plán Hostěnice s prvky regulačního plánu, úplné znění po změně č. 3 (účinné od 7. 12. 2024)"
+ },
+ {
+  "obec": 583821,
+  "nazev": "Řícmanice",
+  "pdf": "https://www.slapanice.cz/progres/lib/files.php?id=17649",
+  "verze": "Územní plán Řícmanice, úplné znění po změně č. 1B (účinné od 14. 12. 2023)"
+ },
+ {
+  "obec": 583545,
+  "nazev": "Omice",
+  "pdf": "https://www.slapanice.cz/progres/lib/files.php?id=9750",
+  "verze": "Územní plán Omice (účinný od 3. 10. 2018)"
+ },
+ {
+  "obec": 583740,
+  "nazev": "Radostice",
+  "pdf": "https://www.slapanice.cz/progres/lib/files.php?id=12433",
+  "verze": "Územní plán Radostice, úplné znění po změně č. 1 (účinné od 6. 4. 2021)"
+ },
+ {
+  "obec": 584096,
+  "nazev": "Velatice",
+  "pdf": "https://www.slapanice.cz/progres/lib/files.php?id=16183",
+  "verze": "Územní plán Velatice, úplné znění po změně č. 2 (účinné od 1. 11. 2023)"
+ },
+ {
+  "obec": 582999,
+  "nazev": "Hajany",
+  "pdf": "https://www.slapanice.cz/progres/lib/files.php?id=14774",
+  "verze": "Územní plán Hajany, úplné znění po změně č. 1 (účinné od 27. 10. 2022)"
+ },
+ {
+  "obec": 542474,
+  "nazev": "Šanov",
+  "pdf": "https://gis.kr-stredocesky.cz/docs/reg/%DAZEMN%CD%20PL%C1NOV%C1N%CD%20NA%20%DAROVNI%20OBCE/Rakovnik_272/542474_%9Aanov/01_%DAzemn%ED_pl%E1n/01_ORIGIN%C1LY/542474_UP_2024_Sanov_ORG/542474_2_HLV.pdf",
+  "verze": "Územní plán Šanov (vydán 9. 10. 2024)"
+ },
+ {
+  "obec": 564605,
+  "nazev": "Hlubyně",
+  "pdf": "https://gis.kr-stredocesky.cz/docs/reg/%DAZEMN%CD%20PL%C1NOV%C1N%CD%20NA%20%DAROVNI%20OBCE/Pribram_256/564605_Hlubyn%EC/01_%DAzemn%ED_pl%E1n/02_USAZENE/564605_02_HLV_UP_2024_Hlubyne_ORG.pdf",
+  "verze": "Územní plán Hlubyně (účinný od 5. 4. 2024)"
+ },
+ {
+  "obec": 599654,
+  "nazev": "Nový Dvůr",
+  "pdf": "https://www.meu-nbk.cz/files/uzemni-plan-obce/novy-dvur/202411_hv.pdf",
+  "verze": "Územní plán Nový Dvůr (účinný od 13. 9. 2024)"
+ },
+ {
+  "obec": 505650,
+  "nazev": "Velký Týnec",
+  "pdf": "https://www.velkytynec.cz/content/files/download/889/i-2-v-tynec-uz2-hv.pdf",
+  "verze": "Územní plán Velký Týnec, úplné znění po vydání souboru změn č. 2 (účinné od 25. 9. 2026)"
+ },
+ {
+  "obec": 503657,
+  "nazev": "Lutín",
+  "pdf": "https://lutin.cz/informace/stavebni_urad/uzemni_plan_2022/grafika/UP_Lutin_HLV.pdf",
+  "verze": "Územní plán Lutín (účinný od 15. 7. 2022)"
+ },
+ {
+  "obec": 540382,
+  "nazev": "Mikulovice",
+  "pdf": "https://jesenik.cz/storage/user-1180/module-1761/plne-zneni-po-zmene-c-1-17543109040phpxspltw.zip",
+  "zip": "540382_IB2_HLV.pdf",
+  "verze": "Územní plán Mikulovice, úplné znění po změně č. 1 (účinné od 18. 7. 2025)"
+ },
+ {
+  "obec": 569356,
+  "nazev": "Česká Ves",
+  "pdf": "https://jesenik.cz/storage/UZEMNI_PLANY/1_2020_Vydane_UP/UP_CESKA_VES/UP/569356_HLV.pdf",
+  "verze": "Územní plán Česká Ves (účinný od 23. 4. 2020)"
+ },
+ {
+  "obec": 540030,
+  "nazev": "Lipová-lázně",
+  "pdf": "https://jesenik.cz/storage/UZEMNI_PLANY/Uplne_zneni_Lipova_po_zmene/2_HLAVNI_VYKRES.pdf",
+  "verze": "Územní plán Lipová-lázně, úplné znění po změně č. 1 (účinné od 1. 3. 2019)"
+ },
+ {
+  "obec": 523917,
+  "nazev": "Bělá pod Pradědem",
+  "pdf": "https://jesenik.cz/storage/hanulik/Stavebni/HABERMANN/%C3%9AP%20B%C4%9Bl%C3%A1%20pod%20Prad%C4%9Bdem%202022/523917_2_HLV.pdf",
+  "verze": "Územní plán Bělá pod Pradědem (účinný od 1. 10. 2022)"
+ },
+ {
+  "obec": 552372,
+  "nazev": "Medlov",
+  "pdf": "https://www.obecmedlov.cz/e_download.php?file=data/editor/208cs_2.pdf&original=I_2_HLAVNI_VYKRES_POZM1.dgn.pdf",
+  "verze": "Územní plán Medlov, úplné znění po vydání změny č. 1 (účinné od 16. 10. 2020)"
+ },
+ {
+  "obec": 590029,
+  "nazev": "Smržice",
+  "pdf": "https://www.smrzice.cz/modules/file_storage/download.php?file=09f249c4%7C65",
+  "zip": "590029_I2b_HLV.pdf",
+  "verze": "Územní plán Smržice (účinný od 26. 9. 2018)"
+ },
+ {
+  "obec": 589730,
+  "nazev": "Mostkovice",
+  "pdf": "https://www.mostkovice.cz/e_download.php?file=/data/multipage/editor/editor-21-133-cs_2.crdownload&original=589730_UZ_Z2_UP_HLV.pdf.crdownload",
+  "verze": "Územní plán Mostkovice, úplné znění po změně č. 2 (účinné od 5. 11. 2021)"
+ },
+ {
+  "obec": 505218,
+  "nazev": "Šumvald",
+  "pdf": "https://uap.olkraj.cz/upd/Detail-uzemniho-planu-2886#505218_UZ_Z7_UP_HLV.pdf",
+  "verze": "Územní plán obce Šumvald, úplné znění po změně č. 7 – koordinační výkres (účinné od 28. 5. 2020)"
+ },
+ {
+  "obec": 589764,
+  "nazev": "Nezamyslice",
+  "pdf": "https://www.nezamyslice.cz/file.php?nid=2065&oid=11814193",
+  "verze": "Územní plán Nezamyslice, úplné znění po změně č. 2 (účinné od 1. 1. 2025)"
+ },
+ {
+  "obec": 589322,
+  "nazev": "Brodek u Prostějova",
+  "pdf": "https://www.brodek.cz/file.php?nid=5422&oid=12287485",
+  "verze": "Územní plán Brodek u Prostějova, úplné znění po změně č. 3 (účinné od 15. 5. 2025)"
+ },
+ {
+  "obec": 513229,
+  "nazev": "Dřevohostice",
+  "pdf": "https://www.prerov.eu/filemanager/files/44940.pdf",
+  "verze": "Územní plán Dřevohostice (účinný od 12. 10. 2017), bez změn"
+ },
+ {
+  "obec": 540480,
+  "nazev": "Moravičany",
+  "pdf": "https://www.obec-moravicany.cz/modules/file_storage/download.php?file=0d1bd561%7C115&inline=1",
+  "verze": "Územní plán Moravičany, úplné znění po změně č. 2 (účinné od 12. 9. 2024)"
+ },
+ {
+  "obec": 590126,
+  "nazev": "Určice",
+  "pdf": "https://www.urcice.cz/file.php?nid=9902&oid=10630993",
+  "verze": "Územní plán Určice, úplné znění po změně č. 2 (účinné od 2. 1. 2024)"
+ },
+ {
+  "obec": 589403,
+  "nazev": "Čelechovice na Hané",
+  "pdf": "https://www.celechovice-na-hane.cz/e_download.php?file=data/editor/155cs_10.pdf&original=2%20-%20Hlavn%C3%AD_v%C3%BDkres.pdf",
+  "verze": "Územní plán Čelechovice na Hané, úplné znění po změně č. 1 (účinné od 19. 4. 2024)"
+ },
+ {
+  "obec": 589845,
+  "nazev": "Otaslavice",
+  "pdf": "https://www.otaslavice.cz/modules/file_storage/download.php?file=8a7a9e0f%7C456&inline=1",
+  "verze": "Územní plán Otaslavice (účinný od 28. 9. 2024)"
+ },
+ {
+  "obec": 589268,
+  "nazev": "Bedihošť",
+  "pdf": "https://www.bedihost.cz/modules/file_storage/download.php?file=831ecb6f%7C63&inline=1",
+  "verze": "Územní plán Bedihošť (účinný od 4. 4. 2011)"
+ },
+ {
+  "obec": 517534,
+  "nazev": "Radslavice",
+  "pdf": "https://www.prerov.eu/filemanager/files/19515.pdf",
+  "verze": "Územní plán Radslavice (účinný od 6. 4. 2010), bez změn"
+ },
+ {
+  "obec": 512532,
+  "nazev": "Bochoř",
+  "pdf": "https://www.prerov.eu/filemanager/files/33874.pdf",
+  "verze": "Územní plán Bochoř (účinný od 10. 12. 2015), bez změn"
+ },
+ {
+  "obec": 517151,
+  "nazev": "Prosenice",
+  "pdf": "https://www.prerov.eu/filemanager/files/77695.pdf",
+  "verze": "Územní plán Prosenice, úplné znění po změně č. 2 (účinné od 5. 10. 2024)"
+ },
+ {
+  "obec": 516694,
+  "nazev": "Pavlovice u Přerova",
+  "pdf": "https://www.prerov.eu/filemanager/files/52257.pdf",
+  "verze": "Územní plán Pavlovice u Přerova (účinný od 21. 3. 2019), bez změn"
+ },
+ {
+  "obec": 515191,
+  "nazev": "Lobodice",
+  "pdf": "https://www.prerov.eu/filemanager/files/72505.pdf",
+  "verze": "Územní plán Lobodice (účinný od 23. 9. 2023), bez změn"
+ },
+ {
+  "obec": 544361,
+  "nazev": "Dívčice",
+  "pdf": "https://twist-gp.kraj-jihocesky.gov.cz/ost/filebox/ug_file.php?upload_modul=table&_set_sess_cache_limit_=1&FILE_ID=68232",
+  "verze": "Územní plán Dívčice, úplné znění po změnách č. 1 až 5 (účinné od 6. 9. 2025)"
+ },
+ {
+  "obec": 589420,
+  "nazev": "Dětkovice",
+  "pdf": "https://uap.olkraj.cz/upd/Detail-uzemniho-planu-3332#589420_UZ_Z2_UP_HLV.pdf",
+  "verze": "Územní plán Dětkovice, úplné znění po změně č. 2 (účinné od 22. 6. 2023)"
+ },
+ {
+  "obec": 562840,
+  "nazev": "Domanín",
+  "pdf": "https://twist-gp.kraj-jihocesky.gov.cz/ost/filebox/ug_file.php?upload_modul=table&_set_sess_cache_limit_=1&FILE_ID=70373",
+  "verze": "Územní plán Domanín (účinný od 1. 10. 2026)"
+ },
+ {
+  "obec": 553298,
+  "nazev": "Vlastiboř",
+  "pdf": "https://twist-gp.kraj-jihocesky.gov.cz/ost/filebox/ug_file.php?upload_modul=table&_set_sess_cache_limit_=1&FILE_ID=69472",
+  "verze": "Územní plán Vlastiboř, úplné znění po změnách č. 1, 2 a 4 (účinné od 21. 8. 2025)"
+ },
+ {
+  "obec": 583677,
+  "nazev": "Pozořice",
+  "pdf": "https://www.slapanice.cz/progres/lib/files.php?id=14635",
+  "casti": [
+   {
+    "nazev": "list A (jih s městysem)",
+    "pdf": "https://www.slapanice.cz/progres/lib/files.php?id=14635",
+    "pas": [
+     null,
+     -1159000
+    ],
+    "meritko": 5000,
+    "zakryj": [
+     [
+      0.72,
+      0.33,
+      1.0,
+      1.0
+     ],
+     [
+      0.0,
+      0.8,
+      0.27,
+      1.0
+     ]
+    ]
+   },
+   {
+    "nazev": "list B (sever, lesy)",
+    "pdf": "https://www.slapanice.cz/progres/lib/files.php?id=14636",
+    "pas": [
+     -1159000,
+     null
+    ],
+    "meritko": 5000,
+    "zakryj": [
+     [
+      0.79,
+      0.0,
+      1.0,
+      0.3
+     ],
+     [
+      0.79,
+      0.8,
+      1.0,
+      1.0
+     ]
+    ]
+   }
+  ],
+  "verze": "Územní plán Pozořice, úplné znění po změně č. 2 (účinné od 9. 11. 2022)",
+  "web": "https://www.slapanice.cz/"
+ },
+ {
+  "obec": 550485,
+  "nazev": "Radhostice",
+  "pdf": "https://twist-gp.kraj-jihocesky.gov.cz/ost/filebox/ug_file.php?upload_modul=table&_set_sess_cache_limit_=1&FILE_ID=70307",
+  "casti": [
+   {
+    "nazev": "list 01 (sever)",
+    "pdf": "https://twist-gp.kraj-jihocesky.gov.cz/ost/filebox/ug_file.php?upload_modul=table&_set_sess_cache_limit_=1&FILE_ID=70307",
+    "pas": [
+     -1149530,
+     null
+    ]
+   },
+   {
+    "nazev": "list 02 (jih)",
+    "pdf": "https://twist-gp.kraj-jihocesky.gov.cz/ost/filebox/ug_file.php?upload_modul=table&_set_sess_cache_limit_=1&FILE_ID=70308",
+    "pas": [
+     null,
+     -1149530
+    ]
+   }
+  ],
+  "verze": "Územní plán Radhostice (účinný od 3. 7. 2026)"
  }
 ]
