@@ -36,7 +36,7 @@ T_JTSK_MERC = Transformer.from_crs(KROVAK, 'EPSG:3857', always_xy=True)
 DPI = 100
 MAX_CHYBA = 5.0          # m, větší odchylka proti katastru = výkres do mapy nedáme
 ZOOMS = range(12, 17)
-WEBP = {'quality': 65, 'method': 6}   # kvalita 65 a pomalejší komprese: o desetinu menší a zkratky ploch dál čitelné
+WEBP = {'quality': 65, 'method': 4}   # kvalita 65: o desetinu menší a zkratky ploch dál čitelné (method 6 ušetří jen 1 %, je pomalá)
 MIN_POKRYTI_DLAZDICE = 0.002          # dlaždice, kam obec zasahuje jen tenkým proužkem, se neukládá
 R = 20037508.342789244
 Image.MAX_IMAGE_PIXELS = None
@@ -499,7 +499,7 @@ def jen_dlazdice(obce=None):
         size = sum(os.path.getsize(f) for f in files)
         print(f'{rec["nazev"]}: {len(files)} dlaždic, {rec.get("kb", 0) / 1024:.1f} -> {size / 1048576:.1f} MB, {time.time() - t:.0f} s', flush=True)
         disk = {m['obec']: m for m in json.load(open(meta_f, encoding='utf-8'))}
-        disk[kod].update({'dlazdic': len(files), 'kb': round(size / 1024), 'extent3857': [round(x) for x in ext]})
+        disk[kod].update({'dlazdic': len(files), 'kb': round(size / 1024), 'extent3857': [round(x) for x in ext], 'zoom': [min(ZOOMS), max(ZOOMS)]})
         json.dump(sorted(disk.values(), key=lambda m: m['obec']), open(meta_f, 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
 
 

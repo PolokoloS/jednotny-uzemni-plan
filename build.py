@@ -19,7 +19,8 @@ vyk_f = os.path.join(ROOT, 'data/vykresy.json')
 pok_kraj = {}
 if os.path.exists(os.path.join(ROOT, 'data/pokryti.json')):
     pok_kraj = {r[0]: r[2] for r in json.load(open(os.path.join(ROOT, 'data/pokryti.json'), encoding='utf-8'))['obce']}
-vykresy = [v for v in (json.load(open(vyk_f, encoding='utf-8')) if os.path.exists(vyk_f) else []) if v.get('prijato')]
+# jen přijaté výkresy s hotovými dlaždicemi (rozsah dlaždic zapisuje vykresy.py až po jejich vytvoření)
+vykresy = [v for v in (json.load(open(vyk_f, encoding='utf-8')) if os.path.exists(vyk_f) else []) if v.get('prijato') and v.get('extent3857')]
 # poznámka ke kartě (třeba části plánu zrušené soudem) a stránka obce s dokumenty jsou v seznamu zdrojů
 vyk_zdroje = {z['obec']: z for z in json.load(open(os.path.join(ROOT, 'data/vykresy_zdroje.json'), encoding='utf-8'))}
 for v in vykresy:
@@ -35,7 +36,7 @@ for v in vykresy:
         'obce': 1, 'drawing': True, 'attribution': f'Výkres ÚP © {v["nazev"]}',
         'pdf': {'url': v['pdf'], 'verze': v['verze'], 'chyba': v['chyba_max_m'], 'oken': v['oken']},
         'links': links, **({'versionNote': z['poznamka']} if z.get('poznamka') else {}),
-        'layers': [{'kind': 'tiles3857', 'url': f'vykresy/{v["obec"]}/{{z}}/{{x}}/{{y}}.webp', 'maxZoom': v['zoom'][1], 'minZoom': 11.6,
+        'layers': [{'kind': 'tiles3857', 'url': f'vykresy/{v["obec"]}/{{z}}/{{x}}/{{y}}.webp', 'maxZoom': (v.get('zoom') or [12, 16])[1], 'minZoom': 11.6,
                     'extentCrs': 'EPSG:3857', 'extent': v['extent3857']}]
     })
 
@@ -93,12 +94,15 @@ if os.path.exists(pok_f):
     stav = json.load(open(stav_f, encoding='utf-8'))['obce'] if os.path.exists(stav_f) else {}
     names = {c['name']: i for i, c in enumerate(regional)}
     rec, cnt, pop = {}, {}, {}
+    # web obce z Wikidat (data/weby_obci.json), když evidence NGÚP u plánu žádný neuvádí
+    web_f = os.path.join(ROOT, 'data/weby_obci.json')
+    weby = json.load(open(web_f, encoding='utf-8'))['obce'] if os.path.exists(web_f) else {}
     for kod, nazev, kraj, orp, oby, z, zname in pok['obce']:
         s = stav.get(str(kod)) or ['?', None, None, 0, None, False, None]
         plan = s[1] if s[1] and ' '.join(s[1].split()) not in (f'Územní plán {nazev}', f'Územní plán obce {nazev}') else 0
         ri = names.get(zname, -1)
         kat = kategorie(z, regional[ri] if ri >= 0 else None, s[0])
-        rec[str(kod)] = [z, ri, s[0], plan, s[2] or 0, s[3] or 0, s[4] or 0, 1 if s[5] else 0, s[6] or 0, kat, nazev, oby]
+        rec[str(kod)] = [z, ri, s[0], plan, s[2] or 0, s[3] or 0, s[4] or 0, 1 if s[5] else 0, s[6] or weby.get(str(kod)) or 0, kat, nazev, oby]
         cnt[kat] = cnt.get(kat, 0) + 1
         pop[kat] = pop.get(kat, 0) + (oby or 0)
     cov_stats = (cnt, pop)
