@@ -17,20 +17,19 @@ Zadání (29. 10. 2026, přednáška): Fáze 1 pokrytí (všech 14 krajských m�
 - [x] Fáze 2 rozpracovaná: mapa pokrytí (`#pokryti=1`), QR kód na mobil, porovnání dnes a podle plánu, prohlídka v 7 krocích, nový úvod s příklady.
 - [x] Olomoucký a Zlínský kraj v konfiguraci: Prostějov, Přerov, Jeseník, Mohelnice, T-MAPY ORP Šumperk, Zábřeh, Hranice (s WFS typem plochy), Vsetín, Val. Meziříčí, Uh. Hradiště, Uh. Brod, JÚAP mozaika Zlínského kraje (306 obcí).
 
+- [x] Výkresy z PDF (`scripts/vykresy.py`): 39 měst, 99 MB dlaždic (limit 100 MB). Okresní města Znojmo, Břeclav, Vyškov, Blansko, Rychnov n. K., Semily, sídla ORP a další města z průzkumu děr. Umí ZIP, 1:10 000, GeoPDF, víc listů po k.ú. (Tišnov), nápovědu otočení (Vyškov 47°), robustní zpřesnění, kontrolu pokrytí obce. Ověřeno kliknutím (všech 39) a obraz proti katastru.
+- [x] Služby z průzkumu děr: Liberecký kraj (Marushka ORP Liberec, T-MAPY Jilemnice a Jablonec, GEPRO Tanvald, Smržovka, Desná, Pěnčín), Středočeský (GObec, GEPRO), Jihočeský (DMVS_upd: Vodňany, Dačice, Soběslav, Veselí n. L., Nové Hrady), KHK (GObec Týniště), Ústecký (vektory ÚAP pro Louny, Jílové, Benešov n. P. s plným výkladem, GObec Peruc). Ověřeno kliknutím (29 míst), Jablonné a Chrastava porovnané s PDF úplného znění.
+- [x] Pokrytí 30. 10.: v mapě 4 600 obcí z 6 258 (89 % obyvatel), NGÚP 385, PDF 39, bez dat 1 658. Sídla ORP 203 z 206, okresní města všechna kromě Teplic.
+- [x] Opravy z revize subagentem: přelety (skok místo dlouhé animace, víc souběžných dlaždic), odkaz z počítače na telefonu, štítky ve vyhledávání podle obce.json, výběr obce zavře kartu, spodní karta (křížek, tažení), legenda zavřená na nízké obrazovce, předěl porovnání ve viditelné části, prohlídka (legenda u mapy pokrytí, krok s obcí bez plánu, QR v panelu, Esc), nápověda podle vybrané obce, vrstvy krajů jen na jejich území, hlídání zaseknutého serveru, výpadek NGÚP bez nekonečného načítání, legenda radonu, přírody a záplav, texty (syrové názvy, zdroj plochy, vnořené závorky, „Obec X nemá“), čísla pokrytí rovnou ve stránce.
+
 ## Rozdělané
 
-- Výkresy z PDF (`scripts/vykresy.py`, zdroje v `data/vykresy_zdroje.json`, výsledky `data/vykresy.json`, dlaždice `data/vykresy/<kód>`): Ústí nad Orlicí hotové. Nově umí ZIP (pole `zip`), výkresy 1:10 000 rastruje jemněji (až 200 dpi) a přijme i překryv IoU ≥ 0,8, když katastr potvrdí přesnost v ≥ 8 oknech. Olomoucký kraj: Šternberk (ZIP po změně č. 5), Uničov, Kojetín, Litovel (nový ÚP od 24. 9. 2026), Lipník n. B. (po změně č. 12), Konice. Běží vlícování.
-- Průzkum děr (subagenti): služby a PDF pro ostatní kraje, výstup ve `scratchpad/research-diry`. Revize webu subagentem běží.
-
-- Ověřeno kliknutím 29. 10. večer: OLK a ZLK (Šumperk, Prostějov, Přerov, Zábřeh, Hranice, Jeseník, Mohelnice, Vsetín, Val. Meziříčí, Uh. Hradiště, Uh. Brod, JÚAP Kroměříž, Rožnov, Slavičín), výkresy sedí na katastr.
-- `stav_up.py --recheck` doběhl: všech 362 obcí bez plánu v evidenci potvrzeno.
+- Screenshoty po (`docs/screenshots/po`), smoke test, commit, push, PR `prace` → `main`.
 
 ## Další kroky
 
-1. Díry v ostatních krajích podle `docs/pokryti.md` (Liberecký 165 obcí, Středočeský 298, Plzeňský 198, Ústecký 97, Jihočeský 79): krajské a ORP služby.
-2. Výkresy z PDF pro města bez služby (Ústí nad Orlicí, Rychnov n. K., Broumov, Vrchlabí, Dobruška, Jaroměř, Holice, Moravská Třebová, Lanškroun, Česká Třebová, Kroměříž…).
-3. Fáze 2: mapa pokrytí (hranice_obci.json + obce.json, kategorie: jednotný standard, kraj, město a ORP, výkres z PDF, jen dokumenty, bez ÚP), první dojem, mobil 390 px, 3 nápady, screenshoty po.
-4. Revize subagentem, build, smoke test (jen místa, která projdou z GitHubu), PR.
+1. PR s popisem, náhled Netlify (za přihlášením týmu), merge až na „nasaď“.
+2. Případně dál: Jihočeský kraj po obcích přes registr DMVS_upd, ORP Děčín (T-MAPY, asi 30 obcí), další města z PDF nad rámec limitu 100 MB.
 
 ## Rozhodnutí
 
@@ -41,6 +40,13 @@ Zadání (29. 10. 2026, přednáška): Fáze 1 pokrytí (všech 14 krajských m�
 - Krajské mozaiky s neznámou verzí (Pardubický kraj, JÚAP Zlínský kraj) zapojené s poznámkou v kartě; ověřeně zastaralé obce vynechané. U ORP služeb jen obce s ověřeně aktuální verzí.
 - Koordinační výkresy (Žamberk, Kyjov, Hranice ORP) jen tam, kde hlavní výkres není; karta to říká.
 - Vynechané: Olomoucký kraj (WMTS za zveřejněným heslem, interní proxy portálu), Židlochovice (vrstvy po obcích nejasné), Břeclav, Kuřim, Čebín (zastaralé), Litomyšl ORP (verze neznámá, místo ní krajská mozaika), Malá Vrbka a Nová Lhota (potřebují více vrstev změn).
+
+- Limit 100 MB dlaždic beru jako strop: Klášterec n. O. (vlícovaný, 3,1 MB) vyřazený, protože by součet přetáhl na 102 MB. Pořadí: okresní města, sídla ORP, pak ostatní města podle počtu obyvatel.
+- Výkres z PDF jen z úplného znění (nebo změny řešící celé území, Rychnov n. K. s poznámkou v kartě). Teplice a Ostrov úplné znění nemají, Železný Brod nesedí na katastr (7,4 m), Zlaté Hory mají na webu jen výkres z roku 2013 bez dvou změn.
+- Přijetí výkresu: odchylka ≤ 5 m v ≥ 4 oknech, ≤ 20 % vyřazených oken a výkres pokrývá ≥ 97 % území obce (IoU masky je jen hrubá kontrola, bledé barvy ji podhodnocují).
+- Žacléř vyřazený: evidence má jen změnu č. 2 starého ÚPM z roku 2013 a nový plán se pořizuje, plán před rokem 2007 bez úpravy skončil koncem roku 2022.
+- Šlapanice s poznámkou v kartě (rozsudky o zrušení části plánu a stavební uzávěra).
+- Hořice: NGÚP má jen hranici řešeného území bez ploch, karta proto bere výkres z PDF.
 
 ## Co beze mě nejde
 

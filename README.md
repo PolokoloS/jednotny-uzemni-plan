@@ -2,7 +2,7 @@
 
 Územní plány českých obcí v jedné mapě a lidskou řečí. Klikneš na pozemek a karta ti řekne, k čemu plocha slouží, co se tam typicky smí postavit, co obec chystá a na co si dát pozor (podmínky, rezervy, veřejně prospěšné stavby, záplavy, radon, ochrana přírody, BPEJ).
 
-Pokrytí (29. 10. 2026): územní plán přímo v mapě má **4 531 obcí z 6 258, žije v nich 84 % obyvatel**. Z toho 381 obcí je v jednotném standardu s plným výkladem, ostatní mapa ukazuje z dat krajů, ORP a měst a jednu (Ústí nad Orlicí) jako hlavní výkres vlícovaný z PDF. U zbylých 1 727 obcí karta řekne, jestli obec platný územní plán má, a pošle na jeho dokumenty. V mapě jsou všechna krajská města a z okresních měst chybí jen Teplice, Znojmo, Břeclav, Vyškov, Blansko, Louny, Rychnov nad Kněžnou a Semily. Přehled po obcích je v `docs/pokryti.md`.
+Pokrytí (30. 10. 2026): územní plán přímo v mapě má **4 600 obcí z 6 258, žije v nich 89 % obyvatel**. Z toho 385 obcí je v jednotném standardu s plným výkladem, ostatní mapa ukazuje z dat krajů, ORP a měst a 39 měst jako hlavní výkres vlícovaný z PDF. U zbylých 1 658 obcí karta řekne, jestli obec platný územní plán má, a pošle na jeho dokumenty. V mapě jsou všechna krajská města, všechna okresní města kromě Teplic a 203 z 206 sídel ORP (chybí Teplice, Ostrov a Železný Brod, viz Omezení). Přehled po obcích je v `docs/pokryti.md`.
 
 Appka je statický web bez backendu: `index.html` s daty obcí v `obce.json`, hranicemi obcí pro mapu pokrytí v `hranice.json` a dlaždicemi výkresů z PDF ve `vykresy/`. Plány se tahají živě ze serverů státu, krajů a měst. Živě: https://venerable-custard-504746.netlify.app
 
@@ -34,13 +34,13 @@ Appka je statický web bez backendu: `index.html` s daty obcí v `obce.json`, hr
 | Územní plány v jednotném standardu | Národní geoportál územního plánování (MMR), `mapy.gov.cz/server/rest/services/UPD` |
 | Stav územních plánů obcí (platný plán, změny, pořizování) | Evidence NGÚP, `uzemniplanovani.gov.cz` |
 | Praha | Hlavní výkres Metropolitního plánu (IPR Praha, dlaždice ArcGIS Online) |
-| Středočeský kraj | Mozaika hlavních výkresů a odkazy na dokumentaci obcí (`gis.kr-stredocesky.cz`) |
-| Jihočeský kraj | Územně analytické podklady, plochy s rozdílným způsobem využití (`gis.kraj-jihocesky.cz`) |
+| Středočeský kraj | Mozaika hlavních výkresů a odkazy na dokumentaci obcí (`gis.kr-stredocesky.cz`), výkresy obcí v GObci (Odolena Voda, Městec Králové, Komárov, Měšice) a GEPRO (Psáry, Velké Přílepy) |
+| Jihočeský kraj | Územně analytické podklady, plochy s rozdílným způsobem využití, hlavní výkresy z digitální ÚPD obcí (Vodňany, Dačice, Soběslav, Veselí nad Lužnicí, Nové Hrady) (`gis.kraj-jihocesky.cz`) |
 | Plzeňský kraj | Výkresy územních plánů jednotlivých obcí (`ags.plzensky-kraj.cz/.../UPD`) |
 | Karlovarský kraj | Mozaika ÚP, legendy a texty obcí, ÚAP současné využití (`geo-ags.kr-karlovarsky.cz`) |
-| Ústecký kraj | Územně analytické podklady, plochy s rozdílným způsobem využití (`ags.kr-ustecky.cz`) |
-| Liberecký kraj | Mozaika hlavních výkresů a legendy obcí (`maparcgis.kraj-lbc.cz`) |
-| Královéhradecký kraj | Bezešvý hlavní výkres kraje u obcí s aktuální verzí (`up.khk.cz`), Hradec Králové (ÚP 2026, `geoportal.mmhk.cz`), Jičín (`gis.mujicin.cz`), výkresy obcí ORP Trutnov a Dvůr Králové (T-MAPY) |
+| Ústecký kraj | Územně analytické podklady, plochy s rozdílným způsobem využití, plochy v jednotném standardu pro Louny, Jílové a Benešov nad Ploučnicí (`ags.kr-ustecky.cz`), Peruc (GObec) |
+| Liberecký kraj | Mozaika hlavních výkresů a legendy obcí (`maparcgis.kraj-lbc.cz`), výkresy obcí ORP Liberec (Marushka města), ORP Jilemnice a Jablonec nad Nisou (T-MAPY), Tanvald, Smržovka, Desná a Pěnčín (GEPRO) |
+| Královéhradecký kraj | Bezešvý hlavní výkres kraje u obcí s aktuální verzí (`up.khk.cz`), Hradec Králové (ÚP 2026, `geoportal.mmhk.cz`), Jičín (`gis.mujicin.cz`), výkresy obcí ORP Trutnov a Dvůr Králové (T-MAPY), Týniště nad Orlicí (GObec) |
 | Pardubický kraj | Pardubice (ÚP 2026, Marushka města), výkresy obcí ORP Svitavy a Polička (Marushka), Vysoké Mýto a Žamberk (GObec), plochy s typem ORP Chrudim (ArcGIS Online), bezešvá mapa ÚPD kraje (`mapy.pardubickykraj.cz`) |
 | Kraj Vysočina | Rastry hlavních výkresů, podmínky využití ploch a krajský jednotný standard (`maps.kr-vysocina.cz`) |
 | Jihomoravský kraj | Brno (`gis.brno.cz`), výkresy obcí ORP Hodonín, Kyjov, Mikulov, Veselí nad Moravou (T-MAPY), Boskovice a další obce (GObec), ORP Hustopeče (ArcGIS Online), plochy z ÚAP ORP Znojmo a Pohořelice |
@@ -48,7 +48,7 @@ Appka je statický web bez backendu: `index.html` s daty obcí v `obce.json`, hr
 | Zlínský kraj | Mozaika hlavních výkresů obcí v JÚAP Zlínského kraje (`juapzk.geostore.cz`), Zlín (ArcGIS Online), Vsetín, Valašské Meziříčí, Uherské Hradiště, Uherský Brod (T-MAPY) |
 | Moravskoslezský kraj | Mozaika hlavních výkresů (`gis2.msk.cz`) |
 | Plzeň, Olomouc, Zlín, České Budějovice | Vlastní data měst (výkres, u Plzně, Olomouce a Zlína i plochy s typem) |
-| Výkres z PDF | Hlavní výkres v PDF z webu obce, vlícovaný proti katastrální mapě (`scripts/vykresy.py`) |
+| Výkres z PDF | Hlavní výkres úplného znění v PDF z webu obce, vlícovaný proti katastrální mapě (`scripts/vykresy.py`): 39 měst, mezi nimi okresní města Znojmo, Břeclav, Vyškov, Blansko, Rychnov nad Kněžnou a Semily |
 | Parcely, adresy, obce, ochrana přírody, BPEJ, hledání | RÚIAN, ČÚZK (`ags.cuzk.cz`) |
 | Hranice a čísla parcel | Katastrální mapa WMS, ČÚZK |
 | Počty obyvatel obcí | ČSÚ, stav k 1. 1. 2026 |
@@ -65,14 +65,16 @@ Appka je statický web bez backendu: `index.html` s daty obcí v `obce.json`, hr
 * Geoportál drží i starší verze plánů. Appka u každé obce pozná nejnovější úplnou verzi a starší vyfiltruje, změny nad ní nechá.
 * Krajská, ORP a městská data jsou popsaná v `data/regionalni_mozaiky.json`: ArcGIS dlaždice a exporty, WMS (Marushka, T-MAPY, HYDROSOFT, GEPRO), dotazy na plochu přes ArcGIS, GetFeatureInfo nebo WFS, výkresy po obcích. Každá vrstva se ořízne hranicí kraje nebo obce a vynechá obce, které mají lepší nebo aktuálnější data. Hranice bere z RÚIAN.
 * `scripts/pokryti.py` u každé obce ověří dotazem na bod v její hlavní části, který zdroj ji opravdu ukáže, a uloží to do `data/pokryti.json` a `docs/pokryti.md`. `scripts/stav_up.py` stáhne z evidence NGÚP stav územního plánu každé obce. `build.py` z obojího složí `dist/obce.json`, podle kterého appka vybírá zdroj pro kartu a kreslí mapu pokrytí.
-* `scripts/vykresy.py` vlícuje hlavní výkres z PDF: maska barevných ploch výkresu se přiloží na hranici obce z RÚIAN (měřítko a posun), pak se v oknech po celé obci změří posun čar výkresu proti katastrální mapě a dopočte se transformace. Výkres se do mapy dá jen s odchylkou do 5 m. Dlaždice z12 až z16 ve WebP jsou v `data/vykresy/`.
+* `scripts/vykresy.py` vlícuje hlavní výkres z PDF: maska barevných ploch výkresu se přiloží na hranici obce z RÚIAN (měřítko, posun a případně otočení listu), u GeoPDF poslouží i georeference uložená v souboru. Pak se v oknech po celé obci změří posun čar výkresu proti katastrální mapě ČÚZK a dopočte se afinní transformace; okna s falešnou shodou se vyřadí. Výkres se do mapy dá jen s odchylkou do 5 m a jen když pokrývá celé území obce. Umí i PDF v ZIPu, výkresy v měřítku 1 : 10 000 a výkres rozdělený do víc PDF po katastrálních územích. Dlaždice z12 až z16 ve WebP jsou v `data/vykresy/`, dohromady nejvýš 100 MB.
 * Kódy ploch z krajských dat (starší standard MINIS a krajské varianty) převádí na typy podle vyhlášky č. 157/2024 Sb. nejdřív podle názvu plochy, pak podle zkratky. Výklad je proto orientační.
 * Mapa startuje až po události `load`, aby pomalé servery krajů nezdržovaly načtení stránky.
 
 ## Omezení
 
-* Jednotná data má zatím jen 381 obcí. Ostatní mapa ukazuje z dat krajů, ORP a měst, většinou jako obrázek výkresu, který neumí převést do lidské řeči.
-* Olomoucký kraj nemá veřejnou službu s plány všech obcí (kraj je má za heslem), mapa tam umí jen města a ORP Šumperk, Zábřeh a Hranice. Krajské služby Zlínského a Pardubického kraje u obcí neuvádějí verzi plánu, karta na to upozorní.
+* Jednotná data má zatím jen 385 obcí. Ostatní mapa ukazuje z dat krajů, ORP a měst, většinou jako obrázek výkresu, který neumí převést do lidské řeči.
+* Teplice a Ostrov nezveřejnily úplné znění územního plánu po změnách, výkres bez změn by byl zastaralý. Výkres Železného Brodu z roku 2008 nesedí na dnešní katastrální mapu (odchylka až 7 m). Karta u nich pošle na dokumenty obce.
+* Výkresy z PDF mají limit 100 MB dlaždic. Přednost dostala okresní města a sídla ORP bez mapové služby, na další města (Klášterec nad Ohří, Duchcov, Červený Kostelec, Hronov, Úpice, Česká Skalice, Police nad Metují, Velké Poříčí) už nezbylo místo; mají připravené zdroje v `data/vykresy_zdroje.json`.
+* Olomoucký kraj nemá veřejnou službu s plány všech obcí (kraj je má za heslem), mapa tam umí jen města (část z nich jako výkres z PDF) a ORP Šumperk, Zábřeh a Hranice. Krajské služby Zlínského a Pardubického kraje u obcí neuvádějí verzi plánu, karta na to upozorní.
 * Portál územních plánů Královéhradeckého kraje je od října 2026 v odstávce kvůli bezpečnostní chybě. Jeho mapové služby zatím odpovídají, mapa je používá jen u obcí, kde je verze aktuální.
 * Evidence NGÚP se proti obcím zpožďuje: obce plány doplňují postupně a nové změny se tam objevují se zpožděním.
 * Krajská data kraje samy označují jako informativní. Některá mohou být starší než poslední změna plánu obce. Data Zlína odpovídají stavu po změně 4C, výkres Českých Budějovic je snímek z roku 2022.
