@@ -996,7 +996,7 @@
   // ---------------------------------------------------------------------------
   // Mapa
   // ---------------------------------------------------------------------------
-  const view = new ol.View({ center: ol.proj.fromLonLat([15.45, 49.8]), zoom: 7.4, minZoom: 6.3, maxZoom: 20.5, enableRotation: false, extent: ol.proj.transformExtent([10.5, 47.8, 20.2, 51.8], 'EPSG:4326', 'EPSG:3857'), constrainOnlyCenter: true });
+  const view = new ol.View({ center: ol.proj.fromLonLat([15.45, 49.8]), zoom: 7.4, minZoom: 6, maxZoom: 20.5, enableRotation: false, extent: ol.proj.transformExtent([12.05, 48.5, 18.9, 51.1], 'EPSG:4326', 'EPSG:3857'), constrainOnlyCenter: true });
   // cíl dostane mapa až po načtení stránky, viz boot() na konci
   const map = new ol.Map({
     // víc souběžných dlaždic: pomalé servery krajů jinak zablokují i podkladovou mapu
@@ -1004,6 +1004,27 @@
     layers: [baseLayer].concat(regionalLayers, [upRaster, upLayer, radonLayer, natureLayer, floodLayer, parcelLayer, covLayer, hoverLayer, selLayer])
   });
   map.addControl(new ol.control.ScaleLine({ target: $('#scale'), units: 'metric', minWidth: 64 }));
+
+  // Jen Česko: okolní státy zakryje maska v barvě papíru stránky (obrys z hranic obcí RÚIAN, data/cesko.json).
+  // Leží nad podkladem i jeho popisky (zIndex 50), pod mapou pokrytí, zvýrazněním a výběrem.
+  const maskLayer = (() => {
+    if (typeof CESKO === 'undefined' || !CESKO) return null;
+    const k = CESKO.krok, r = CESKO.r, ring = [[r[0] * k, r[1] * k]];
+    for (let i = 2; i < r.length; i += 2) { const q = ring[ring.length - 1]; ring.push([q[0] + r[i] * k, q[1] + r[i + 1] * k]); }
+    // vnější obdélník proti směru hodinových ručiček, obrys Česka po směru: díra vyjde v každém pravidle vyplňování
+    const outer = [[-3e6, 3e6], [7e6, 3e6], [7e6, 1e7], [-3e6, 1e7], [-3e6, 3e6]];
+    const styles = {};
+    const layer = new ol.layer.Vector({
+      zIndex: 51, updateWhileAnimating: true, updateWhileInteracting: true,
+      source: new ol.source.Vector({ features: [new ol.Feature(new ol.geom.Polygon([outer, ring]))] }),
+      style: () => styles[theme] || (styles[theme] = new ol.style.Style({
+        fill: new ol.style.Fill({ color: theme === 'dark' ? '#161b19' : '#eef0ec' }),
+        stroke: new ol.style.Stroke({ color: theme === 'dark' ? 'rgba(232,236,233,.5)' : 'rgba(23,28,26,.45)', width: 1.25 })
+      }))
+    });
+    map.addLayer(layer);
+    return layer;
+  })();
 
   function applyBase() {
     const vecOk = !!baseVT && !vectorBaseFailed;
@@ -1023,7 +1044,7 @@
     theme = themeNow();
     styleCache.clear(); Object.keys(covImgCache).forEach(k => delete covImgCache[k]);
     buildVectorBase();
-    upLayer.changed(); covLayer.changed(); selLayer.changed();
+    upLayer.changed(); covLayer.changed(); selLayer.changed(); if (maskLayer) maskLayer.changed();
     updateRaster(); renderLegend();
   }
   mqDark.addEventListener('change', applyTheme);
@@ -1058,6 +1079,9 @@
     if (isMobile()) { const top = $('#panel').offsetHeight + 70; const sheet = parseFloat(getComputedStyle($('#app')).getPropertyValue('--sheet-h')) || 212; return [top, 20, sheet + 20, 20]; }
     return [80, 70, 60, $('#panel').offsetWidth + 40];
   }
+  // Celé Česko ve volné části mapy (vedle panelu, na telefonu nad kartou)
+  const CZ_EXT = ol.proj.transformExtent([12.09, 48.55, 18.86, 51.06], 'EPSG:4326', 'EPSG:3857');
+  function fitCesko() { view.fit(CZ_EXT, { padding: fitPadding(), duration: dur(600) }); }
   function fitObec(kod) {
     const o = COVMAP.get(kod); if (!o) return;
     const ext = ol.proj.transformExtent([o[3] - o[5] / 2, o[4] - o[6] / 2, o[3] + o[5] / 2, o[4] + o[6] / 2], 'EPSG:4326', 'EPSG:3857');
@@ -1907,7 +1931,7 @@
       loadHranice().then(() => { covMapLayer.setVisible(S.covMap); renderLegend(); })
         .catch(() => { S.covMap = false; covLayer.setVisible(true); toast('Mapu pokrytí se nepodařilo načíst.'); renderLegend(); });
       // přehled celé republiky: oddálit i tehdy, když se mapa pokrytí zapne z detailu ulic
-      if (fit || view.getZoom() > 12.5) view.animate({ center: ol.proj.fromLonLat([15.45, 49.8]), zoom: isMobile() ? 6.3 : 7.4, duration: dur(600) });
+      if (fit || view.getZoom() > 12.5) fitCesko();
     } else covMapLayer.setVisible(false);
     renderLegend(); updateHint(); writeHash();
   }
@@ -2337,7 +2361,7 @@
     { t: 'Kde plán v mapě zatím není', x: () => 'U obcí, jejichž plán v mapě zatím není, karta řekne, jestli obec platný plán má, a pošle vás rovnou na jeho dokumenty.',
       go: () => { setSwipe(false); setIntent(null); setCovMap(false); centerOn(lonlat(17.23857, 49.52834), 15.2); selectAt(lonlat(17.23857, 49.52834)); } },
     { t: 'Vyzkoušejte si to v telefonu', x: () => 'Naskenujte kód a najděte svůj pozemek.', qr: true,
-      go: () => { setSwipe(false); setCovMap(false); clearSelection(); view.animate({ center: lonlat(15.45, 49.8), zoom: isMobile() ? 6.3 : 7.4, duration: dur(600) }); } }
+      go: () => { setSwipe(false); setCovMap(false); clearSelection(); fitCesko(); } }
   ];
   let tourI = -1;
   function tourGo(i) {

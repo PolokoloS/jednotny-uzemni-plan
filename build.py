@@ -63,6 +63,7 @@ data_js = (
     'const SUP = ' + json.dumps(sup, separators=(',', ':')) + ';\n'
     'const SUP_EXTRA = ' + json.dumps(sup_extra) + ';\n'
     'const REGIONAL = ' + json.dumps(regional, ensure_ascii=False, separators=(',', ':')) + ';\n'
+    'const CESKO = ' + (rd('data/cesko.json') if os.path.exists(os.path.join(ROOT, 'data/cesko.json')) else 'null') + ';\n'
     'const SNAP = ' + json.dumps({'date': '22. 10. 2026', 'plochy': plochy_total}, ensure_ascii=False) + ';\n'
 )
 
