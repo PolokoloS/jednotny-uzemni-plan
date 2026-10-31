@@ -1,5 +1,87 @@
 [
  {
+  "obec": 500852,
+  "nazev": "Bohuňovice",
+  "pdf": "https://www.bohunovice.cz/file/2692351",
+  "zip": false,
+  "verze": "Územní plán Bohuňovice, úplné znění po změně č. 2 (účinné od 6. 8. 2025)",
+  "iou": 0.9898,
+  "meritko": 1681,
+  "otoceni": 0.0,
+  "oken": 11,
+  "vyrazeno_oken": 0,
+  "chyba_max_m": 3.05,
+  "chyba_rms_m": 1.07,
+  "pokryti": 1.0,
+  "prijato": true,
+  "dpi": 100,
+  "transformace": [
+   [
+    0.645042,
+    0.000196,
+    -548080.119068
+   ],
+   [
+    0.00012,
+    -0.644763,
+    -1110244.159588
+   ]
+  ],
+  "dlazdic": 175,
+  "kb": 729,
+  "extent3857": [
+   1919548,
+   6382372,
+   1926517,
+   6393929
+  ],
+  "zoom": [
+   12,
+   16
+  ]
+ },
+ {
+  "obec": 501476,
+  "nazev": "Dlouhá Loučka",
+  "pdf": "https://www.dlouhaloucka.cz/e_download.php?file=data/editor/146cs_11.pdf&original=I.2.b%29%20Hlavn%C3%AD%20v%C3%BDkres%20-%20urbanistick%C3%A1%20koncepce.pdf",
+  "zip": false,
+  "verze": "Územní plán Dlouhá Loučka, úplné znění po změně č. 1 (účinné od 4. 3. 2023)",
+  "iou": 0.9951,
+  "meritko": 5000,
+  "otoceni": 0.0,
+  "oken": 19,
+  "vyrazeno_oken": 0,
+  "chyba_max_m": 0.67,
+  "chyba_rms_m": 0.32,
+  "pokryti": 1.0,
+  "prijato": true,
+  "dpi": 100,
+  "transformace": [
+   [
+    1.270034,
+    -1.1e-05,
+    -554217.322588
+   ],
+   [
+    0.000117,
+    -1.269888,
+    -1090840.920908
+   ]
+  ],
+  "dlazdic": 302,
+  "kb": 1657,
+  "extent3857": [
+   1908512,
+   6410215,
+   1917483,
+   6422163
+  ],
+  "zoom": [
+   12,
+   16
+  ]
+ },
+ {
   "obec": 503444,
   "nazev": "Litovel",
   "pdf": "https://www.litovel.eu/filemanager/files/5187291.pdf",
@@ -24,13 +106,62 @@
     -1104277.266066
    ]
   ],
-  "dlazdic": 559,
-  "kb": 3300,
+  "dlazdic": 546,
+  "kb": 2903,
   "extent3857": [
    1888190,
    6385875,
    1908422,
    6398901
+  ],
+  "zoom": [
+   12,
+   16
+  ]
+ },
+ {
+  "obec": 505081,
+  "nazev": "Senice na Hané",
+  "pdf": "https://www.litovel.eu/filemanager/files/3653115.pdf",
+  "verze": "Územní plán Senice na Hané, úplné znění po změně č. 2 (účinné od 14. 5. 2024)",
+  "prijato": false,
+  "chyba": "katastr: málo oken s korelací (1)"
+ },
+ {
+  "obec": 505161,
+  "nazev": "Štěpánov",
+  "pdf": "https://www.stepanov.cz/file.php?nid=1512&oid=8350933",
+  "zip": false,
+  "verze": "Územní plán Štěpánov, úplné znění po změně č. 1 (účinné od 16. 6. 2021)",
+  "iou": 0.9893,
+  "meritko": 1722,
+  "otoceni": 0.0,
+  "oken": 15,
+  "vyrazeno_oken": 0,
+  "chyba_max_m": 0.64,
+  "chyba_rms_m": 0.29,
+  "pokryti": 1.0,
+  "prijato": true,
+  "dpi": 100,
+  "transformace": [
+   [
+    0.731226,
+    -3.2e-05,
+    -552492.770446
+   ],
+   [
+    -1e-05,
+    -0.731183,
+    -1107779.562362
+   ]
+  ],
+  "dlazdic": 326,
+  "kb": 1588,
+  "extent3857": [
+   1910448,
+   6385730,
+   1923470,
+   6396737
   ],
   "zoom": [
    12,
@@ -63,13 +194,54 @@
     -1097792.068247
    ]
   ],
-  "dlazdic": 632,
-  "kb": 3254,
+  "dlazdic": 613,
+  "kb": 3047,
   "extent3857": [
    1920340,
    6393306,
    1934865,
    6413914
+  ],
+  "zoom": [
+   12,
+   16
+  ]
+ },
+ {
+  "obec": 505293,
+  "nazev": "Troubelice",
+  "pdf": "https://www.troubelice.cz/doc/file.php?file-type=application/pdf&un=605c88b3b012f&file-name=I.2.b)%20Hlavni%20vykres%20-%20urbanisticka%20koncepce.pdf&file-path=files/605c88b387142.pdf",
+  "zip": false,
+  "verze": "Územní plán Troubelice, úplné znění po změně č. 2 (účinné od 27. 1. 2021)",
+  "iou": 0.9957,
+  "meritko": 5000,
+  "otoceni": 0.0,
+  "oken": 18,
+  "vyrazeno_oken": 0,
+  "chyba_max_m": 3.12,
+  "chyba_rms_m": 0.76,
+  "pokryti": 1.0,
+  "prijato": true,
+  "dpi": 100,
+  "transformace": [
+   [
+    1.270134,
+    -1.9e-05,
+    -561560.987478
+   ],
+   [
+    8.9e-05,
+    -1.270081,
+    -1091000.948456
+   ]
+  ],
+  "dlazdic": 233,
+  "kb": 1623,
+  "extent3857": [
+   1895799,
+   6410240,
+   1906062,
+   6418085
   ],
   "zoom": [
    12,
@@ -102,8 +274,8 @@
     -1094292.942
    ]
   ],
-  "dlazdic": 525,
-  "kb": 4314,
+  "dlazdic": 521,
+  "kb": 3927,
   "extent3857": [
    1895908,
    6397555,
@@ -142,12 +314,94 @@
    ]
   ],
   "dlazdic": 128,
-  "kb": 957,
+  "kb": 886,
   "extent3857": [
    1928906,
    6371643,
    1936069,
    6378759
+  ],
+  "zoom": [
+   12,
+   16
+  ]
+ },
+ {
+  "obec": 512800,
+  "nazev": "Brodek u Přerova",
+  "pdf": "https://www.prerov.eu/filemanager/files/45235.pdf",
+  "zip": false,
+  "verze": "Územní plán Brodek u Přerova (účinný od 7. 11. 2017), bez změn",
+  "iou": 0.9965,
+  "meritko": 5000,
+  "otoceni": 0.0,
+  "oken": 14,
+  "vyrazeno_oken": 0,
+  "chyba_max_m": 0.25,
+  "chyba_rms_m": 0.16,
+  "pokryti": 1.0,
+  "prijato": true,
+  "dpi": 100,
+  "transformace": [
+   [
+    1.27017,
+    4.2e-05,
+    -544413.401983
+   ],
+   [
+    -7.2e-05,
+    -1.270045,
+    -1132880.934012
+   ]
+  ],
+  "dlazdic": 127,
+  "kb": 804,
+  "extent3857": [
+   1926822,
+   6353055,
+   1935152,
+   6359489
+  ],
+  "zoom": [
+   12,
+   16
+  ]
+ },
+ {
+  "obec": 513768,
+  "nazev": "Hustopeče nad Bečvou",
+  "pdf": "https://www.mesto-hranice.cz/prilohy/513768-uz3-a22-hlv-pdf",
+  "zip": false,
+  "verze": "Územní plán Hustopeče nad Bečvou, úplné znění po vydání změny č. 3 (účinné od 30. 10. 2026)",
+  "iou": 0.9073,
+  "meritko": 5000,
+  "otoceni": 0.0,
+  "oken": 20,
+  "vyrazeno_oken": 0,
+  "chyba_max_m": 0.2,
+  "chyba_rms_m": 0.11,
+  "pokryti": 1.0,
+  "prijato": true,
+  "dpi": 100,
+  "transformace": [
+   [
+    1.270098,
+    -2.2e-05,
+    -506297.065108
+   ],
+   [
+    -2e-06,
+    -1.270064,
+    -1128301.456678
+   ]
+  ],
+  "dlazdic": 287,
+  "kb": 2291,
+  "extent3857": [
+   1984436,
+   6361600,
+   1994634,
+   6371805
   ],
   "zoom": [
    12,
@@ -179,8 +433,8 @@
     -1145564.80441
    ]
   ],
-  "dlazdic": 356,
-  "kb": 2608,
+  "dlazdic": 351,
+  "kb": 2282,
   "extent3857": [
    1920580,
    6326070,
@@ -218,8 +472,8 @@
     -1124060.445676
    ]
   ],
-  "dlazdic": 382,
-  "kb": 3519,
+  "dlazdic": 377,
+  "kb": 3296,
   "extent3857": [
    1952688,
    6359610,
@@ -258,13 +512,226 @@
     -1137053.926607
    ]
   ],
-  "dlazdic": 277,
-  "kb": 1402,
+  "dlazdic": 268,
+  "kb": 1309,
   "extent3857": [
    1918670,
    6342427,
    1930561,
    6352155
+  ],
+  "zoom": [
+   12,
+   16
+  ]
+ },
+ {
+  "obec": 519651,
+  "nazev": "Troubky",
+  "pdf": "https://www.prerov.eu/filemanager/files/84087.pdf",
+  "zip": false,
+  "verze": "Územní plán Troubky, úplné znění po změně č. 1 (účinné od 26. 9. 2025)",
+  "iou": 0.6928,
+  "meritko": 5000,
+  "otoceni": -0.0,
+  "oken": 8,
+  "vyrazeno_oken": 0,
+  "chyba_max_m": 0.26,
+  "chyba_rms_m": 0.17,
+  "pokryti": 1.0,
+  "prijato": true,
+  "dpi": 100,
+  "transformace": [
+   [
+    1.26999,
+    6.7e-05,
+    -545206.466046
+   ],
+   [
+    0.000109,
+    -1.269878,
+    -1137356.145232
+   ]
+  ],
+  "dlazdic": 279,
+  "kb": 1397,
+  "extent3857": [
+   1927034,
+   6339664,
+   1938656,
+   6352551
+  ],
+  "zoom": [
+   12,
+   16
+  ]
+ },
+ {
+  "obec": 536148,
+  "nazev": "Javorník",
+  "pdf": "https://jesenik.cz/storage/UZEMNI_PLANY/1_2020_Vydane_UP/Zmena_1_UP_Javornik/Uplne_zneni_web/536148_I2b_HLV_%C3%9AZ_zm%C4%9Bna_1.pdf",
+  "zip": false,
+  "verze": "Územní plán Javorník, úplné znění po změně č. 1 (účinné od 10. 3. 2021)",
+  "iou": 0.9981,
+  "meritko": 5000,
+  "otoceni": 0.0,
+  "oken": 11,
+  "vyrazeno_oken": 0,
+  "chyba_max_m": 3.04,
+  "chyba_rms_m": 1.05,
+  "pokryti": 1.0,
+  "prijato": true,
+  "dpi": 100,
+  "transformace": [
+   [
+    1.269922,
+    2e-05,
+    -564312.548311
+   ],
+   [
+    0.000144,
+    -1.270004,
+    -1026122.900339
+   ]
+  ],
+  "dlazdic": 832,
+  "kb": 2596,
+  "extent3857": [
+   1879696,
+   6500524,
+   1898361,
+   6521513
+  ],
+  "zoom": [
+   12,
+   16
+  ]
+ },
+ {
+  "obec": 539066,
+  "nazev": "Zeleneč",
+  "pdf": "https://uzemniplanovani.gov.cz/o/rest/ais/documents/514851ef-04e9-4358-bfa5-e342ea58cfca/download/539066_UZ1_2_HLV.pdf",
+  "verze": "Územní plán Zeleneč, úplné znění po změně č. 1 (účinné od 23. 7. 2026)",
+  "prijato": false,
+  "chyba": "The read operation timed out"
+ },
+ {
+  "obec": 539643,
+  "nazev": "Řevnice",
+  "pdf": "https://gis.kr-stredocesky.cz/docs/reg/%DAZEMN%CD%20PL%C1NOV%C1N%CD%20NA%20%DAROVNI%20OBCE/Cernosice_230/539643_%F8evnice/01_%DAzemn%ED_pl%E1n/02_USAZENE/539643_02_HLV_UP_2022_Revnice_ORG.pdf",
+  "zip": false,
+  "verze": "Územní plán Řevnice (účinný od 5. 10. 2022)",
+  "iou": 0.9948,
+  "meritko": 5000,
+  "otoceni": 0.0,
+  "oken": 15,
+  "vyrazeno_oken": 0,
+  "chyba_max_m": 1.74,
+  "chyba_rms_m": 0.75,
+  "pokryti": 1.0,
+  "prijato": true,
+  "dpi": 100,
+  "transformace": [
+   [
+    1.270245,
+    0.000218,
+    -761295.825734
+   ],
+   [
+    -3.5e-05,
+    -1.270664,
+    -1059372.732361
+   ]
+  ],
+  "dlazdic": 136,
+  "kb": 713,
+  "extent3857": [
+   1581433,
+   6425560,
+   1587510,
+   6432669
+  ],
+  "zoom": [
+   12,
+   16
+  ]
+ },
+ {
+  "obec": 540196,
+  "nazev": "Loštice",
+  "pdf": "https://www.mu-lostice.cz/modules/file_storage/download.php?file=7dccfdf4%7C997&inline=1",
+  "zip": false,
+  "verze": "Územní plán Loštice, úplné znění po změně č. 3 (účinné od 27. 3. 2026)",
+  "iou": 0.9961,
+  "meritko": 5000,
+  "otoceni": 0.0,
+  "oken": 13,
+  "vyrazeno_oken": 0,
+  "chyba_max_m": 0.47,
+  "chyba_rms_m": 0.23,
+  "pokryti": 1.0,
+  "prijato": true,
+  "dpi": 100,
+  "transformace": [
+   [
+    1.270049,
+    -2.6e-05,
+    -572165.927656
+   ],
+   [
+    6.5e-05,
+    -1.270098,
+    -1100138.658877
+   ]
+  ],
+  "dlazdic": 152,
+  "kb": 992,
+  "extent3857": [
+   1879010,
+   6398477,
+   1887161,
+   6405631
+  ],
+  "zoom": [
+   12,
+   16
+  ]
+ },
+ {
+  "obec": 547646,
+  "nazev": "Velké Poříčí",
+  "pdf": "https://www.mestonachod.cz/urad/vystavba/up-obci/prilohy/32_839214260.pdf",
+  "zip": false,
+  "verze": "Územní plán Velké Poříčí, úplné znění po změnách č. 1 až 6 (účinné od 29. 12. 2025)",
+  "iou": 0.9804,
+  "meritko": 5000,
+  "otoceni": 0.0,
+  "oken": 13,
+  "vyrazeno_oken": 0,
+  "chyba_max_m": 0.26,
+  "chyba_rms_m": 0.14,
+  "pokryti": 1.0,
+  "prijato": true,
+  "dpi": 100,
+  "transformace": [
+   [
+    1.269905,
+    -0.000114,
+    -614632.717055
+   ],
+   [
+    -2.9e-05,
+    -1.270001,
+    -1015970.454079
+   ]
+  ],
+  "dlazdic": 109,
+  "kb": 849,
+  "extent3857": [
+   1799060,
+   6523710,
+   1805646,
+   6528963
   ],
   "zoom": [
    12,
@@ -298,8 +765,8 @@
     -1080639.33565
    ]
   ],
-  "dlazdic": 781,
-  "kb": 3780,
+  "dlazdic": 772,
+  "kb": 3507,
   "extent3857": [
    1426246,
    6359913,
@@ -338,8 +805,8 @@
     -1098788.009125
    ]
   ],
-  "dlazdic": 189,
-  "kb": 1078,
+  "dlazdic": 186,
+  "kb": 1003,
   "extent3857": [
    1503862,
    6354546,
@@ -350,6 +817,55 @@
    12,
    16
   ]
+ },
+ {
+  "obec": 558419,
+  "nazev": "Držovice",
+  "pdf": "https://www.drzovice.cz/modules/file_storage/download.php?file=66cf9c1f%7C86",
+  "zip": false,
+  "verze": "Územní plán Držovice, úplné znění po změně č. 1 (účinné od 31. 1. 2025)",
+  "iou": 0.9891,
+  "meritko": 5000,
+  "otoceni": 0.0,
+  "oken": 11,
+  "vyrazeno_oken": 0,
+  "chyba_max_m": 0.64,
+  "chyba_rms_m": 0.36,
+  "pokryti": 1.0,
+  "prijato": true,
+  "dpi": 100,
+  "transformace": [
+   [
+    1.269861,
+    -0.000379,
+    -558275.85987
+   ],
+   [
+    0.00027,
+    -1.269743,
+    -1129915.727464
+   ]
+  ],
+  "dlazdic": 102,
+  "kb": 539,
+  "extent3857": [
+   1905058,
+   6356498,
+   1911241,
+   6361894
+  ],
+  "zoom": [
+   12,
+   16
+  ]
+ },
+ {
+  "obec": 558885,
+  "nazev": "Horní Bříza",
+  "pdf": "https://www.hornibriza.eu/modules/file_storage/download.php?file=9b0c5ad7%7C70",
+  "verze": "Územní plán Horní Bříza (účinný od 17. 4. 2020)",
+  "prijato": false,
+  "chyba": "<urlopen error [WinError 10054] Stávající připojení bylo vynuceně ukončeno vzdáleným hostitelem>"
  },
  {
   "obec": 559075,
@@ -378,13 +894,95 @@
     -1040039.259862
    ]
   ],
-  "dlazdic": 474,
-  "kb": 3136,
+  "dlazdic": 471,
+  "kb": 2912,
   "extent3857": [
    1487689,
    6438750,
    1505080,
    6450552
+  ],
+  "zoom": [
+   12,
+   16
+  ]
+ },
+ {
+  "obec": 559491,
+  "nazev": "Tlučná",
+  "pdf": "https://geoportal.plzensky-kraj.cz/ost/filebox/ug_file.php?upload_modul=table&_set_sess_cache_limit_=1&FILE_ID=228862",
+  "zip": false,
+  "verze": "Územní plán Tlučná (účinný od 26. 6. 2025)",
+  "iou": 0.9931,
+  "meritko": 1992,
+  "otoceni": 0.0,
+  "oken": 19,
+  "vyrazeno_oken": 0,
+  "chyba_max_m": 3.29,
+  "chyba_rms_m": 1.45,
+  "pokryti": 1.0,
+  "prijato": true,
+  "dpi": 100,
+  "transformace": [
+   [
+    0.505501,
+    0.000119,
+    -834489.788486
+   ],
+   [
+    -0.00067,
+    -0.508497,
+    -1068035.887274
+   ]
+  ],
+  "dlazdic": 97,
+  "kb": 619,
+  "extent3857": [
+   1471534,
+   6396349,
+   1476483,
+   6402466
+  ],
+  "zoom": [
+   12,
+   16
+  ]
+ },
+ {
+  "obec": 559725,
+  "nazev": "Břasy",
+  "pdf": "https://geoportal.plzensky-kraj.cz/ost/filebox/ug_file.php?upload_modul=table&_set_sess_cache_limit_=1&FILE_ID=228966",
+  "zip": false,
+  "verze": "Územní plán Břasy, úplné znění po změně č. 2 (účinné od 20. 12. 2025)",
+  "iou": 0.9969,
+  "meritko": 5000,
+  "otoceni": 0.0,
+  "oken": 15,
+  "vyrazeno_oken": 0,
+  "chyba_max_m": 0.62,
+  "chyba_rms_m": 0.24,
+  "pokryti": 1.0,
+  "prijato": true,
+  "dpi": 100,
+  "transformace": [
+   [
+    1.269887,
+    -6.8e-05,
+    -811561.0573
+   ],
+   [
+    -1e-06,
+    -1.269951,
+    -1058744.657962
+   ]
+  ],
+  "dlazdic": 263,
+  "kb": 1511,
+  "extent3857": [
+   1504212,
+   6411501,
+   1514007,
+   6422567
   ],
   "zoom": [
    12,
@@ -418,7 +1016,7 @@
    ]
   ],
   "dlazdic": 191,
-  "kb": 1217,
+  "kb": 1136,
   "extent3857": [
    1634896,
    6556230,
@@ -456,8 +1054,8 @@
     -975277.470566
    ]
   ],
-  "dlazdic": 274,
-  "kb": 909,
+  "dlazdic": 270,
+  "kb": 838,
   "extent3857": [
    1643036,
    6561866,
@@ -495,8 +1093,8 @@
     -974829.361821
    ]
   ],
-  "dlazdic": 507,
-  "kb": 2256,
+  "dlazdic": 499,
+  "kb": 2083,
   "extent3857": [
    1623757,
    6554596,
@@ -522,7 +1120,7 @@
   "chyba_max_m": 0.56,
   "chyba_rms_m": 0.22,
   "pokryti": 1.0,
-  "prijato": false,
+  "prijato": true,
   "transformace": [
    [
     1.267625,
@@ -535,7 +1133,14 @@
     -991674.523167
    ]
   ],
-  "chyba": "přijato, ale nad limit 100 MB pro dlaždice (pořadí: okresní města, sídla ORP, pak ostatní města)"
+  "dlazdic": 617,
+  "kb": 2902,
+  "extent3857": [
+   1460130,
+   6506996,
+   1475453,
+   6523157
+  ]
  },
  {
   "obec": 563871,
@@ -547,10 +1152,12 @@
   "meritko": 4980,
   "otoceni": 0.0,
   "oken": 19,
-  "chyba_max_m": 7.41,
-  "chyba_rms_m": 2.65,
+  "vyrazeno_oken": 0,
+  "chyba_max_m": 6.13,
+  "chyba_rms_m": 2.62,
   "pokryti": 1.0,
   "prijato": false,
+  "dpi": 100,
   "transformace": [
    [
     1.269762,
@@ -562,7 +1169,29 @@
     -1.269589,
     -985844.973985
    ]
-  ]
+  ],
+  "korekce": {
+   "x0": -675288.207368421,
+   "y0": -988846.0,
+   "s": 2963.1073684210423,
+   "cx": [
+    0.7427202486607495,
+    -1.0866204719517956,
+    -1.1549560099234868,
+    0.17425288917553458,
+    0.4258218152918675,
+    -2.7185175614156223
+   ],
+   "cy": [
+    -0.554819615532256,
+    0.1594813421808848,
+    -0.3274486397885642,
+    0.6069349832081186,
+    -4.046942640154522,
+    0.00936546244820205
+   ],
+   "lim": 25.0
+  }
  },
  {
   "obec": 566616,
@@ -591,13 +1220,233 @@
     -1009130.479148
    ]
   ],
-  "dlazdic": 673,
-  "kb": 4730,
+  "dlazdic": 665,
+  "kb": 4382,
   "extent3857": [
    1485716,
    6479428,
    1502006,
    6498854
+  ],
+  "zoom": [
+   12,
+   16
+  ]
+ },
+ {
+  "obec": 567507,
+  "nazev": "Dubí",
+  "pdf": "https://www.mesto-dubi.cz/modules/file_storage/download.php?file=cac137cd%7C1383&inline=1",
+  "zip": false,
+  "verze": "Územní plán Dubí, úplné znění po změně č. 5 (účinné od 13. 7. 2021)",
+  "iou": 0.9515,
+  "meritko": 5000,
+  "otoceni": 0.0,
+  "oken": 33,
+  "vyrazeno_oken": 0,
+  "chyba_max_m": 1.42,
+  "chyba_rms_m": 0.41,
+  "pokryti": 0.987,
+  "prijato": true,
+  "dpi": 100,
+  "transformace": [
+   [
+    1.270311,
+    -0.000222,
+    -780774.791554
+   ],
+   [
+    -9e-05,
+    -1.270055,
+    -964812.907875
+   ]
+  ],
+  "casti": [
+   {
+    "nazev": "horní list",
+    "pdf": "https://www.mesto-dubi.cz/modules/file_storage/download.php?file=cac137cd%7C1383&inline=1",
+    "transformace": [
+     [
+      1.270311,
+      -0.000222,
+      -780774.791554
+     ],
+     [
+      -9e-05,
+      -1.270055,
+      -964812.907875
+     ]
+    ]
+   },
+   {
+    "nazev": "spodní list",
+    "pdf": "https://www.mesto-dubi.cz/modules/file_storage/download.php?file=b19c5e89%7C1384&inline=1",
+    "transformace": [
+     [
+      1.270052,
+      0.000169,
+      -780774.782606
+     ],
+     [
+      3.1e-05,
+      -1.270198,
+      -969912.966328
+     ]
+    ]
+   }
+  ],
+  "dlazdic": 402,
+  "kb": 2293,
+  "extent3857": [
+   1530288,
+   6559446,
+   1539094,
+   6574787
+  ],
+  "zoom": [
+   12,
+   16
+  ]
+ },
+ {
+  "obec": 567515,
+  "nazev": "Duchcov",
+  "pdf": "https://www.duchcov.cz/assets/File.ashx?id_org=3371&id_dokumenty=20939",
+  "zip": false,
+  "verze": "Územní plán Duchcov, úplné znění po změně č. 2 (účinné od 14. 5. 2021)",
+  "iou": 0.995,
+  "meritko": 5000,
+  "otoceni": 0.0,
+  "oken": 10,
+  "vyrazeno_oken": 1,
+  "chyba_max_m": 0.83,
+  "chyba_rms_m": 0.34,
+  "pokryti": 1.0,
+  "prijato": true,
+  "dpi": 100,
+  "transformace": [
+   [
+    1.269917,
+    3.3e-05,
+    -785764.351648
+   ],
+   [
+    -8.9e-05,
+    -1.270118,
+    -976318.900276
+   ]
+  ],
+  "dlazdic": 199,
+  "kb": 792,
+  "extent3857": [
+   1525040,
+   6546423,
+   1532905,
+   6555327
+  ],
+  "zoom": [
+   12,
+   16
+  ]
+ },
+ {
+  "obec": 567639,
+  "nazev": "Krupka",
+  "pdf": "https://www.krupka-mesto.cz/assets/File.ashx?id_org=7526&id_dokumenty=13992",
+  "zip": false,
+  "verze": "Územní plán Krupka, úplné znění po změně č. 1a (změna č. 2 účinná od 22. 12. 2023 výkresy neměnila)",
+  "iou": 0.974,
+  "meritko": 5080,
+  "otoceni": 0.0,
+  "oken": 38,
+  "vyrazeno_oken": 0,
+  "chyba_max_m": 5.56,
+  "chyba_rms_m": 1.58,
+  "pokryti": 0.977,
+  "prijato": false,
+  "dpi": 100,
+  "transformace": [
+   [
+    1.270011,
+    3.2e-05,
+    -776391.417746
+   ],
+   [
+    -0.0,
+    -1.269982,
+    -969940.307963
+   ]
+  ],
+  "casti": [
+   {
+    "nazev": "list Jih",
+    "pdf": "https://www.krupka-mesto.cz/assets/File.ashx?id_org=7526&id_dokumenty=13992",
+    "transformace": [
+     [
+      1.270011,
+      3.2e-05,
+      -776391.417746
+     ],
+     [
+      -0.0,
+      -1.269982,
+      -969940.307963
+     ]
+    ]
+   },
+   {
+    "nazev": "list Sever",
+    "pdf": "https://www.krupka-mesto.cz/assets/File.ashx?id_org=7526&id_dokumenty=13991",
+    "transformace": [
+     [
+      1.269584,
+      -0.000825,
+      -776607.892341
+     ],
+     [
+      0.000334,
+      -1.269557,
+      -964923.852404
+     ]
+    ]
+   }
+  ]
+ },
+ {
+  "obec": 571784,
+  "nazev": "Libiš",
+  "pdf": "https://gis.kr-stredocesky.cz/docs/reg/%DAZEMN%CD%20PL%C1NOV%C1N%CD%20NA%20%DAROVNI%20OBCE/Neratovice_159/571784_Libi%9A/01_%DAzemn%ED_pl%E1n/02_USAZENE/571784_02_HLV_UP_2022_Libis_ORG.pdf",
+  "zip": false,
+  "verze": "Územní plán Libiš (účinný od 4. 10. 2022)",
+  "iou": 0.9875,
+  "meritko": 5000,
+  "otoceni": 0.0,
+  "oken": 11,
+  "vyrazeno_oken": 0,
+  "chyba_max_m": 0.38,
+  "chyba_rms_m": 0.18,
+  "pokryti": 1.0,
+  "prijato": true,
+  "dpi": 100,
+  "transformace": [
+   [
+    1.269843,
+    -4.6e-05,
+    -737124.963973
+   ],
+   [
+    7e-06,
+    -1.269917,
+    -1021371.259915
+   ]
+  ],
+  "dlazdic": 95,
+  "kb": 561,
+  "extent3857": [
+   1611340,
+   6491667,
+   1617567,
+   6496573
   ],
   "zoom": [
    12,
@@ -631,8 +1480,8 @@
     -1019090.099381
    ]
   ],
-  "dlazdic": 270,
-  "kb": 2366,
+  "dlazdic": 267,
+  "kb": 2211,
   "extent3857": [
    1734846,
    6506878,
@@ -671,8 +1520,8 @@
     -998913.04873
    ]
   ],
-  "dlazdic": 288,
-  "kb": 2534,
+  "dlazdic": 286,
+  "kb": 2381,
   "extent3857": [
    1815907,
    6544079,
@@ -683,6 +1532,96 @@
    12,
    16
   ]
+ },
+ {
+  "obec": 573965,
+  "nazev": "Červený Kostelec",
+  "pdf": "https://www.mestonachod.cz/urad/vystavba/up-obci/prilohy/10_4312216534.pdf",
+  "zip": false,
+  "verze": "Územní plán Červený Kostelec, úplné znění po změně č. 1 (účinné od 30. 12. 2024)",
+  "iou": 0.9913,
+  "meritko": 4980,
+  "otoceni": 0.0,
+  "oken": 16,
+  "vyrazeno_oken": 0,
+  "chyba_max_m": 1.39,
+  "chyba_rms_m": 0.41,
+  "pokryti": 1.0,
+  "prijato": true,
+  "dpi": 100,
+  "transformace": [
+   [
+    1.270018,
+    1.4e-05,
+    -622636.619487
+   ],
+   [
+    -0.00012,
+    -1.270063,
+    -1011870.62574
+   ]
+  ],
+  "dlazdic": 295,
+  "kb": 2096,
+  "extent3857": [
+   1786087,
+   6522149,
+   1796667,
+   6534292
+  ],
+  "zoom": [
+   12,
+   16
+  ]
+ },
+ {
+  "obec": 573990,
+  "nazev": "Česká Skalice",
+  "pdf": "https://www.mestonachod.cz/urad/vystavba/up-obci/prilohy/13_351517155.pdf",
+  "zip": false,
+  "verze": "Územní plán Česká Skalice, úplné znění po změnách č. 1 a 3",
+  "iou": 0.6913,
+  "meritko": 5020,
+  "otoceni": 0.0,
+  "oken": 16,
+  "vyrazeno_oken": 0,
+  "chyba_max_m": 0.4,
+  "chyba_rms_m": 0.25,
+  "pokryti": 1.0,
+  "prijato": true,
+  "dpi": 100,
+  "transformace": [
+   [
+    1.270083,
+    -5.1e-05,
+    -625974.45224
+   ],
+   [
+    6e-05,
+    -1.27003,
+    -1019947.523622
+   ]
+  ],
+  "dlazdic": 218,
+  "kb": 1026,
+  "extent3857": [
+   1782591,
+   6511515,
+   1790538,
+   6520993
+  ],
+  "zoom": [
+   12,
+   16
+  ]
+ },
+ {
+  "obec": 574082,
+  "nazev": "Hronov",
+  "pdf": "https://admin-storage.munipolis.com/632/custom_pages/9942d2d1-06c1-46d2-8fc8-c1267099f1f6.pdf",
+  "verze": "Územní plán Hronov, nový plán účinný od 2. 10. 2026",
+  "prijato": false,
+  "chyba": "katastr: málo oken s korelací (2)"
  },
  {
   "obec": 574121,
@@ -711,13 +1650,54 @@
     -1023235.675084
    ]
   ],
-  "dlazdic": 310,
-  "kb": 2683,
+  "dlazdic": 306,
+  "kb": 2499,
   "extent3857": [
    1766146,
    6501585,
    1779429,
    6513120
+  ],
+  "zoom": [
+   12,
+   16
+  ]
+ },
+ {
+  "obec": 574341,
+  "nazev": "Police nad Metují",
+  "pdf": "https://www.mestonachod.cz/urad/vystavba/up-obci/prilohy/24_7534132657.pdf",
+  "zip": false,
+  "verze": "Územní plán Police nad Metují, úplné znění po změnách č. 1 až 5",
+  "iou": 0.8462,
+  "meritko": 5000,
+  "otoceni": 0.0,
+  "oken": 14,
+  "vyrazeno_oken": 0,
+  "chyba_max_m": 2.58,
+  "chyba_rms_m": 0.83,
+  "pokryti": 1.0,
+  "prijato": true,
+  "dpi": 100,
+  "transformace": [
+   [
+    1.269983,
+    -1.5e-05,
+    -611042.531401
+   ],
+   [
+    -0.000142,
+    -1.270226,
+    -1000760.724182
+   ]
+  ],
+  "dlazdic": 312,
+  "kb": 1835,
+  "extent3857": [
+   1803815,
+   6535451,
+   1811015,
+   6550968
   ],
   "zoom": [
    12,
@@ -751,8 +1731,8 @@
     -1047463.541212
    ]
   ],
-  "dlazdic": 436,
-  "kb": 2401,
+  "dlazdic": 424,
+  "kb": 2226,
   "extent3857": [
    1804982,
    6469237,
@@ -791,8 +1771,8 @@
     -1031629.00359
    ]
   ],
-  "dlazdic": 410,
-  "kb": 3157,
+  "dlazdic": 402,
+  "kb": 2941,
   "extent3857": [
    1793601,
    6491487,
@@ -830,8 +1810,8 @@
     -989938.673714
    ]
   ],
-  "dlazdic": 213,
-  "kb": 1371,
+  "dlazdic": 210,
+  "kb": 1273,
   "extent3857": [
    1703141,
    6548528,
@@ -869,13 +1849,54 @@
     -999090.105891
    ]
   ],
-  "dlazdic": 318,
-  "kb": 1824,
+  "dlazdic": 313,
+  "kb": 1701,
   "extent3857": [
    1704465,
    6532407,
    1714337,
    6544668
+  ],
+  "zoom": [
+   12,
+   16
+  ]
+ },
+ {
+  "obec": 579777,
+  "nazev": "Úpice",
+  "pdf": "https://upd.trutnov.cz/storage/app/uploads/public/692/41c/dfd/69241cdfdaca8916298899.pdf",
+  "zip": false,
+  "verze": "Územní plán Úpice, úplné znění po změnách č. 1 a 2 (účinné od 3. 10. 2025)",
+  "iou": 0.9214,
+  "meritko": 5000,
+  "otoceni": 0.0,
+  "oken": 19,
+  "vyrazeno_oken": 0,
+  "chyba_max_m": 0.41,
+  "chyba_rms_m": 0.26,
+  "pokryti": 1.0,
+  "prijato": true,
+  "dpi": 100,
+  "transformace": [
+   [
+    1.270057,
+    -9.7e-05,
+    -630128.29114
+   ],
+   [
+    -1.9e-05,
+    -1.269782,
+    -1007870.865217
+   ]
+  ],
+  "dlazdic": 193,
+  "kb": 878,
+  "extent3857": [
+   1775855,
+   6531550,
+   1786519,
+   6537780
   ],
   "zoom": [
    12,
@@ -909,8 +1930,8 @@
     -986986.055401
    ]
   ],
-  "dlazdic": 340,
-  "kb": 2213,
+  "dlazdic": 338,
+  "kb": 2067,
   "extent3857": [
    1732301,
    6548609,
@@ -946,8 +1967,8 @@
     -1071265.525235
    ]
   ],
-  "dlazdic": 412,
-  "kb": 2504,
+  "dlazdic": 409,
+  "kb": 2318,
   "extent3857": [
    1818688,
    6436071,
@@ -985,8 +2006,8 @@
     -1138641.613713
    ]
   ],
-  "dlazdic": 508,
-  "kb": 3584,
+  "dlazdic": 497,
+  "kb": 3335,
   "extent3857": [
    1845731,
    6329991,
@@ -997,6 +2018,14 @@
    12,
    16
   ]
+ },
+ {
+  "obec": 582824,
+  "nazev": "Bílovice nad Svitavou",
+  "pdf": "https://www.bilovicens.cz/sites/default/files/imce/imported/UP/u2/1b_hlavni_vykres-po_z2.pdf",
+  "verze": "Územní plán Bílovice nad Svitavou, úplné znění po změně č. 2 (účinné od 14. 6. 2022)",
+  "prijato": false,
+  "chyba": "<urlopen error [Errno 11001] getaddrinfo failed>"
  },
  {
   "obec": 583120,
@@ -1024,8 +2053,8 @@
     -1165047.897771
    ]
   ],
-  "dlazdic": 519,
-  "kb": 4608,
+  "dlazdic": 516,
+  "kb": 4300,
   "extent3857": [
    1811156,
    6282608,
@@ -1063,13 +2092,193 @@
     -1145135.347754
    ]
   ],
-  "dlazdic": 217,
-  "kb": 1462,
+  "dlazdic": 205,
+  "kb": 1357,
   "extent3857": [
    1837014,
    6320012,
    1844281,
    6330816
+  ],
+  "zoom": [
+   12,
+   16
+  ]
+ },
+ {
+  "obec": 583391,
+  "nazev": "Modřice",
+  "pdf": "https://www.slapanice.cz/progres/lib/files.php?id=19368",
+  "verze": "Územní plán Modřice, úplné znění po změně č. 1a (účinné od 6. 6. 2025)",
+  "prijato": false,
+  "chyba": "katastr: málo oken s korelací (0)"
+ },
+ {
+  "obec": 583405,
+  "nazev": "Mokrá-Horákov",
+  "pdf": "https://www.slapanice.cz/progres/lib/files.php?id=7655",
+  "zip": false,
+  "verze": "Územní plán Mokrá-Horákov (účinný od 25. 9. 2018)",
+  "iou": 0.9588,
+  "meritko": 5167,
+  "otoceni": 0.0,
+  "oken": 14,
+  "vyrazeno_oken": 0,
+  "chyba_max_m": 2.76,
+  "chyba_rms_m": 0.86,
+  "pokryti": 1.0,
+  "prijato": true,
+  "dpi": 100,
+  "transformace": [
+   [
+    1.312414,
+    3.1e-05,
+    -590445.37839
+   ],
+   [
+    0.000321,
+    -1.312102,
+    -1156416.350098
+   ]
+  ],
+  "dlazdic": 156,
+  "kb": 824,
+  "extent3857": [
+   1860387,
+   6308250,
+   1867022,
+   6316302
+  ],
+  "zoom": [
+   12,
+   16
+  ]
+ },
+ {
+  "obec": 583413,
+  "nazev": "Moravany",
+  "pdf": "https://www.slapanice.cz/progres/lib/files.php?id=19187",
+  "zip": false,
+  "verze": "Územní plán Moravany, úplné znění po změnách č. 2 a 3 (účinné od 16. 10. 2025)",
+  "iou": 0.9912,
+  "meritko": 5000,
+  "otoceni": 0.0,
+  "oken": 11,
+  "vyrazeno_oken": 0,
+  "chyba_max_m": 0.59,
+  "chyba_rms_m": 0.28,
+  "pokryti": 1.0,
+  "prijato": true,
+  "dpi": 100,
+  "transformace": [
+   [
+    1.27028,
+    0.000249,
+    -604817.772052
+   ],
+   [
+    0.000152,
+    -1.269981,
+    -1164113.119512
+   ]
+  ],
+  "dlazdic": 100,
+  "kb": 447,
+  "extent3857": [
+   1841110,
+   6296522,
+   1847496,
+   6302351
+  ],
+  "zoom": [
+   12,
+   16
+  ]
+ },
+ {
+  "obec": 583561,
+  "nazev": "Ořechov",
+  "pdf": "https://www.slapanice.cz/progres/lib/files.php?id=10872",
+  "verze": "Územní plán Ořechov, úplné znění po změně č. 2 (účinné od 28. 2. 2020)",
+  "prijato": false,
+  "chyba": "katastr: málo oken s korelací (0)"
+ },
+ {
+  "obec": 583596,
+  "nazev": "Ostopovice",
+  "pdf": "https://www.slapanice.cz/progres/lib/files.php?id=19412",
+  "zip": false,
+  "verze": "Územní plán Ostopovice, úplné znění po změnách č. 1 a 2A (účinné od 20. 11. 2025)",
+  "iou": 0.8241,
+  "meritko": 5000,
+  "otoceni": 0.0,
+  "oken": 7,
+  "vyrazeno_oken": 0,
+  "chyba_max_m": 0.41,
+  "chyba_rms_m": 0.26,
+  "pokryti": 1.0,
+  "prijato": true,
+  "dpi": 100,
+  "transformace": [
+   [
+    1.270467,
+    8.7e-05,
+    -604667.184289
+   ],
+   [
+    0.000225,
+    -1.270034,
+    -1162943.345558
+   ]
+  ],
+  "dlazdic": 63,
+  "kb": 341,
+  "extent3857": [
+   1839801,
+   6299560,
+   1844053,
+   6303794
+  ],
+  "zoom": [
+   12,
+   16
+  ]
+ },
+ {
+  "obec": 583669,
+  "nazev": "Popůvky",
+  "pdf": "https://www.slapanice.cz/progres/lib/files.php?id=17300",
+  "zip": false,
+  "verze": "Územní plán Popůvky, úplné znění po změně č. 1 (účinné od 31. 7. 2024)",
+  "iou": 0.9906,
+  "meritko": 5000,
+  "otoceni": 0.0,
+  "oken": 10,
+  "vyrazeno_oken": 0,
+  "chyba_max_m": 0.29,
+  "chyba_rms_m": 0.19,
+  "pokryti": 1.0,
+  "prijato": true,
+  "dpi": 100,
+  "transformace": [
+   [
+    1.27004,
+    -1.2e-05,
+    -609867.48157
+   ],
+   [
+    -0.000104,
+    -1.27003,
+    -1159136.359119
+   ]
+  ],
+  "dlazdic": 108,
+  "kb": 838,
+  "extent3857": [
+   1830858,
+   6302882,
+   1836510,
+   6308730
   ],
   "zoom": [
    12,
@@ -1102,13 +2311,62 @@
     -1156570.134466
    ]
   ],
-  "dlazdic": 184,
-  "kb": 1345,
+  "dlazdic": 178,
+  "kb": 1254,
   "extent3857": [
    1819532,
    6301835,
    1828732,
    6311146
+  ],
+  "zoom": [
+   12,
+   16
+  ]
+ },
+ {
+  "obec": 583898,
+  "nazev": "Sokolnice",
+  "pdf": "https://www.slapanice.cz/progres/lib/files.php?id=9538",
+  "verze": "Územní plán Sokolnice, úplné znění po změně č. I (účinné od 27. 6. 2019)",
+  "prijato": false,
+  "chyba": "katastr: málo oken s korelací (2)"
+ },
+ {
+  "obec": 583910,
+  "nazev": "Střelice",
+  "pdf": "https://www.slapanice.cz/progres/lib/files.php?id=20455",
+  "zip": false,
+  "verze": "Územní plán Střelice (nový, účinný od 17. 10. 2026)",
+  "iou": 0.9957,
+  "meritko": 5000,
+  "otoceni": 0.0,
+  "oken": 22,
+  "vyrazeno_oken": 0,
+  "chyba_max_m": 1.36,
+  "chyba_rms_m": 0.4,
+  "pokryti": 1.0,
+  "prijato": true,
+  "dpi": 100,
+  "transformace": [
+   [
+    1.270063,
+    5.3e-05,
+    -610627.15234
+   ],
+   [
+    1.7e-05,
+    -1.270182,
+    -1162635.500164
+   ]
+  ],
+  "dlazdic": 182,
+  "kb": 1217,
+  "extent3857": [
+   1831782,
+   6296969,
+   1840292,
+   6303339
   ],
   "zoom": [
    12,
@@ -1141,8 +2399,8 @@
     -1162609.301885
    ]
   ],
-  "dlazdic": 185,
-  "kb": 1655,
+  "dlazdic": 179,
+  "kb": 1547,
   "extent3857": [
    1858346,
    6299208,
@@ -1231,8 +2489,8 @@
     ]
    }
   ],
-  "dlazdic": 262,
-  "kb": 1155,
+  "dlazdic": 260,
+  "kb": 1012,
   "extent3857": [
    1820876,
    6326467,
@@ -1243,6 +2501,84 @@
    12,
    16
   ]
+ },
+ {
+  "obec": 584029,
+  "nazev": "Troubsko",
+  "pdf": "https://www.slapanice.cz/progres/lib/files.php?id=19446",
+  "zip": false,
+  "verze": "Územní plán Troubsko, úplné znění po změně č. 2a (účinné od 18. 11. 2025)",
+  "iou": 0.9945,
+  "meritko": 5000,
+  "otoceni": 0.0,
+  "oken": 8,
+  "vyrazeno_oken": 0,
+  "chyba_max_m": 0.2,
+  "chyba_rms_m": 0.12,
+  "pokryti": 1.0,
+  "prijato": true,
+  "dpi": 100,
+  "transformace": [
+   [
+    1.270022,
+    5.3e-05,
+    -609002.72452
+   ],
+   [
+    -3.6e-05,
+    -1.270136,
+    -1160793.512812
+   ]
+  ],
+  "dlazdic": 97,
+  "kb": 722,
+  "extent3857": [
+   1832990,
+   6301520,
+   1840568,
+   6306520
+  ],
+  "zoom": [
+   12,
+   16
+  ]
+ },
+ {
+  "obec": 584045,
+  "nazev": "Újezd u Brna",
+  "pdf": "https://www.slapanice.cz/progres/lib/files.php?id=8942",
+  "zip": false,
+  "verze": "Územní plán Újezd u Brna, úplné znění po změně č. 1A (účinné od 21. 3. 2019)",
+  "iou": 0.9966,
+  "meritko": 5000,
+  "otoceni": 0.0,
+  "oken": 6,
+  "vyrazeno_oken": 0,
+  "chyba_max_m": 5.65,
+  "chyba_rms_m": 2.76,
+  "pokryti": 0.997,
+  "prijato": false,
+  "dpi": 100,
+  "transformace": [
+   [
+    1.272193,
+    0.002592,
+    -590948.83868
+   ],
+   [
+    0.00087,
+    -1.268378,
+    -1170142.938932
+   ]
+  ]
+ },
+ {
+  "obec": 584266,
+  "nazev": "Želešice",
+  "pdf": "https://www.slapanice.cz/progres/lib/files.php?id=13581",
+  "verze": "Územní plán Želešice (účinný od 15. 3. 2022)",
+  "prijato": false,
+  "chyba": "katastr: málo oken s korelací (0)"
  },
  {
   "obec": 584282,
@@ -1270,8 +2606,8 @@
     -1176507.871653
    ]
   ],
-  "dlazdic": 93,
-  "kb": 749,
+  "dlazdic": 89,
+  "kb": 695,
   "extent3857": [
    1848376,
    6278175,
@@ -1310,8 +2646,8 @@
     -1205575.450748
    ]
   ],
-  "dlazdic": 811,
-  "kb": 7291,
+  "dlazdic": 805,
+  "kb": 6768,
   "extent3857": [
    1869587,
    6219087,
@@ -1350,8 +2686,8 @@
     -1184880.878127
    ]
   ],
-  "dlazdic": 288,
-  "kb": 1593,
+  "dlazdic": 281,
+  "kb": 1474,
   "extent3857": [
    1858656,
    6259099,
@@ -1389,8 +2725,8 @@
     -1179305.576973
    ]
   ],
-  "dlazdic": 487,
-  "kb": 2642,
+  "dlazdic": 484,
+  "kb": 2458,
   "extent3857": [
    1831715,
    6259295,
@@ -1428,13 +2764,259 @@
     -1115996.097445
    ]
   ],
-  "dlazdic": 330,
-  "kb": 1295,
+  "dlazdic": 319,
+  "kb": 1194,
   "extent3857": [
    1873671,
    6368735,
    1889073,
    6380307
+  ],
+  "zoom": [
+   12,
+   16
+  ]
+ },
+ {
+  "obec": 589632,
+  "nazev": "Kostelec na Hané",
+  "pdf": "https://www.kostelecnh.cz/modules/file_storage/download.php?file=d913e535%7C478&inline=1",
+  "zip": false,
+  "verze": "Územní plán Kostelec na Hané (účinný od 1. 8. 2025)",
+  "iou": 0.9973,
+  "meritko": 5000,
+  "otoceni": 0.0,
+  "oken": 11,
+  "vyrazeno_oken": 0,
+  "chyba_max_m": 0.24,
+  "chyba_rms_m": 0.11,
+  "pokryti": 1.0,
+  "prijato": true,
+  "dpi": 100,
+  "transformace": [
+   [
+    1.27003,
+    4.2e-05,
+    -567125.568562
+   ],
+   [
+    -7e-05,
+    -1.270052,
+    -1125229.690658
+   ]
+  ],
+  "dlazdic": 195,
+  "kb": 975,
+  "extent3857": [
+   1891228,
+   6358099,
+   1902952,
+   6366484
+  ],
+  "zoom": [
+   12,
+   16
+  ]
+ },
+ {
+  "obec": 589659,
+  "nazev": "Kralice na Hané",
+  "pdf": "https://www.kralicenahane.cz/file.php?nid=2809&oid=11291671",
+  "zip": false,
+  "verze": "Územní plán Kralice na Hané, úplné znění po změnách č. 1, 2 a 3 (účinné od 27. 6. 2024)",
+  "iou": 0.994,
+  "meritko": 5000,
+  "otoceni": 0.0,
+  "oken": 14,
+  "vyrazeno_oken": 1,
+  "chyba_max_m": 1.97,
+  "chyba_rms_m": 0.76,
+  "pokryti": 1.0,
+  "prijato": true,
+  "dpi": 100,
+  "transformace": [
+   [
+    1.269856,
+    -1.3e-05,
+    -556712.152178
+   ],
+   [
+    1.9e-05,
+    -1.270112,
+    -1132583.066047
+   ]
+  ],
+  "dlazdic": 167,
+  "kb": 670,
+  "extent3857": [
+   1908393,
+   6350153,
+   1917148,
+   6358214
+  ],
+  "zoom": [
+   12,
+   16
+  ]
+ },
+ {
+  "obec": 589756,
+  "nazev": "Němčice nad Hanou",
+  "pdf": "https://uzemniplanovani.gov.cz/o/rest/ais/documents/1e7df5db-a92c-4544-b8d6-a93c76180dfd/download/589756_UZ2_I2b_HLV.pdf",
+  "zip": false,
+  "verze": "Územní plán Němčice nad Hanou, úplné znění po změně č. 2 (účinné od 9. 7. 2026)",
+  "iou": 0.735,
+  "meritko": 5636,
+  "otoceni": -2.0,
+  "oken": 16,
+  "vyrazeno_oken": 0,
+  "chyba_max_m": 0.39,
+  "chyba_rms_m": 0.2,
+  "pokryti": 1.0,
+  "prijato": true,
+  "dpi": 100,
+  "transformace": [
+   [
+    1.269884,
+    2e-05,
+    -555385.26049
+   ],
+   [
+    -1e-05,
+    -1.269991,
+    -1144735.533847
+   ]
+  ],
+  "dlazdic": 154,
+  "kb": 1027,
+  "extent3857": [
+   1912048,
+   6330961,
+   1917950,
+   6338391
+  ],
+  "zoom": [
+   12,
+   16
+  ]
+ },
+ {
+  "obec": 589829,
+  "nazev": "Olšany u Prostějova",
+  "pdf": "https://www.olsanyupv.cz/sites/default/files/dokumenty/uz_tisk_2_hl.pdf",
+  "zip": false,
+  "verze": "Územní plán Olšany u Prostějova, úplné znění po změně č. 2 (účinné od 3. 10. 2024)",
+  "iou": 0.9952,
+  "meritko": 5000,
+  "otoceni": 0.0,
+  "oken": 18,
+  "vyrazeno_oken": 0,
+  "chyba_max_m": 0.36,
+  "chyba_rms_m": 0.2,
+  "pokryti": 1.0,
+  "prijato": true,
+  "dpi": 100,
+  "transformace": [
+   [
+    1.270215,
+    7.3e-05,
+    -557572.354298
+   ],
+   [
+    0.000141,
+    -1.270079,
+    -1125058.8841
+   ]
+  ],
+  "dlazdic": 136,
+  "kb": 940,
+  "extent3857": [
+   1906813,
+   6362859,
+   1913081,
+   6369445
+  ],
+  "zoom": [
+   12,
+   16
+  ]
+ },
+ {
+  "obec": 589896,
+  "nazev": "Plumlov",
+  "pdf": "https://www.mestoplumlov.cz/images/Zm%C4%9Bna_%C3%9Azemn%C3%ADho_pl%C3%A1nu_Plumlov_%C4%8D.1/up_plumlov_uz_po_z1_i_2_hlv_5_bc458.pdf",
+  "zip": false,
+  "verze": "Územní plán Plumlov, úplné znění po změně č. 1 (účinné od 12. 10. 2024)",
+  "iou": 0.9953,
+  "meritko": 5000,
+  "otoceni": 0.0,
+  "oken": 13,
+  "vyrazeno_oken": 0,
+  "chyba_max_m": 0.8,
+  "chyba_rms_m": 0.35,
+  "pokryti": 1.0,
+  "prijato": true,
+  "dpi": 100,
+  "transformace": [
+   [
+    1.270008,
+    0.000212,
+    -570268.306946
+   ],
+   [
+    -0.000124,
+    -1.270006,
+    -1131065.010509
+   ]
+  ],
+  "dlazdic": 145,
+  "kb": 923,
+  "extent3857": [
+   1887156,
+   6352303,
+   1896261,
+   6357824
+  ],
+  "zoom": [
+   12,
+   16
+  ]
+ },
+ {
+  "obec": 590185,
+  "nazev": "Vrbátky",
+  "pdf": "https://www.vrbatky.cz/file.php?nid=1105&oid=12014011",
+  "zip": false,
+  "verze": "Územní plán Vrbátky, úplné znění po změně č. 1 (účinné od 11. 2. 2025)",
+  "iou": 0.9967,
+  "meritko": 5000,
+  "otoceni": 0.0,
+  "oken": 17,
+  "vyrazeno_oken": 0,
+  "chyba_max_m": 0.38,
+  "chyba_rms_m": 0.23,
+  "pokryti": 1.0,
+  "prijato": true,
+  "dpi": 100,
+  "transformace": [
+   [
+    1.270244,
+    -2.5e-05,
+    -554900.465918
+   ],
+   [
+    5e-05,
+    -1.270188,
+    -1127933.065412
+   ]
+  ],
+  "dlazdic": 160,
+  "kb": 981,
+  "extent3857": [
+   1910300,
+   6357172,
+   1917818,
+   6364692
   ],
   "zoom": [
    12,
@@ -1468,8 +3050,8 @@
     -1148712.734078
    ]
   ],
-  "dlazdic": 570,
-  "kb": 5416,
+  "dlazdic": 561,
+  "kb": 5072,
   "extent3857": [
    1876925,
    6316982,
@@ -1507,8 +3089,8 @@
     -1157646.567752
    ]
   ],
-  "dlazdic": 270,
-  "kb": 1656,
+  "dlazdic": 269,
+  "kb": 1526,
   "extent3857": [
    1874254,
    6303796,
@@ -1546,8 +3128,8 @@
     -1165086.248442
    ]
   ],
-  "dlazdic": 174,
-  "kb": 1346,
+  "dlazdic": 170,
+  "kb": 1251,
   "extent3857": [
    1874861,
    6296567,
@@ -1585,8 +3167,8 @@
     -1186370.913699
    ]
   ],
-  "dlazdic": 756,
-  "kb": 5002,
+  "dlazdic": 749,
+  "kb": 4635,
   "extent3857": [
    1777580,
    6241060,
@@ -1624,13 +3206,54 @@
     -1171021.441601
    ]
   ],
-  "dlazdic": 540,
-  "kb": 3152,
+  "dlazdic": 537,
+  "kb": 2935,
   "extent3857": [
    1809142,
    6276264,
    1828365,
    6288561
+  ],
+  "zoom": [
+   12,
+   16
+  ]
+ },
+ {
+  "obec": 597678,
+  "nazev": "Moravský Beroun",
+  "pdf": "https://www.morberoun.cz/assets/File.ashx?id_org=9908&id_dokumenty=298049",
+  "zip": false,
+  "verze": "Územní plán Moravský Beroun, úplné znění po změně č. 3 (účinné od 13. 2. 2025)",
+  "iou": 0.9982,
+  "meritko": 5000,
+  "otoceni": 0.0,
+  "oken": 14,
+  "vyrazeno_oken": 0,
+  "chyba_max_m": 1.06,
+  "chyba_rms_m": 0.57,
+  "pokryti": 1.0,
+  "prijato": true,
+  "dpi": 100,
+  "transformace": [
+   [
+    1.269997,
+    4.5e-05,
+    -535489.559437
+   ],
+   [
+    -7.4e-05,
+    -1.270002,
+    -1091653.904271
+   ]
+  ],
+  "dlazdic": 574,
+  "kb": 2907,
+  "extent3857": [
+   1935545,
+   6403719,
+   1948834,
+   6424566
   ],
   "zoom": [
    12,
